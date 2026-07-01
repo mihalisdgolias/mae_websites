@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="MG">
+<title>MSc in Management and AI: Entrepreneurship and Digital Transformation — Cyprus University of Technology</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;600;700&family=Source+Serif+4:wght@400;600&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.65;
+    color: #2a2a2a;
+    background: #f5f5f5;
+  }
+
+  /* ---- HEADER ---- */
+  .page-header {
+    background: #1a3a5c;
+    color: #fff;
+    padding: 48px 0 40px;
+  }
+  .page-header .wrap {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+  .page-header h1 {
+    font-family: 'Source Serif 4', serif;
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  .page-header .subtitle {
+    font-size: 0.95rem;
+    font-weight: 300;
+    opacity: 0.85;
+  }
+
+  /* ---- TABS NAV ---- */
+  .tabs-nav {
+    background: #fff;
+    border-bottom: 2px solid #ddd;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .tabs-nav .wrap {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    gap: 0;
+  }
+  .tabs-nav button {
+    background: none;
+    border: none;
+    padding: 14px 18px;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: #666;
+    cursor: pointer;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .tabs-nav button:hover { color: #1a3a5c; }
+  .tabs-nav button.active {
+    color: #1a3a5c;
+    border-bottom-color: #1a3a5c;
+  }
+
+  /* ---- CONTENT ---- */
+  .tab-content {
+    display: none;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+  }
+  .tab-content.active { display: block; }
+
+  h2 {
+    font-family: 'Source Serif 4', serif;
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: #1a3a5c;
+    margin-bottom: 24px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+  }
+  h3 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #1a3a5c;
+    margin: 32px 0 12px;
+  }
+  h4 {
+    font-size: 1.02rem;
+    font-weight: 700;
+    color: #333;
+    margin: 28px 0 8px;
+  }
+  p { margin-bottom: 14px; }
+
+  /* ---- TABLES ---- */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0 24px;
+    font-size: 0.93rem;
+  }
+  th, td {
+    text-align: left;
+    padding: 10px 14px;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  th {
+    background: #f0f3f6;
+    font-weight: 600;
+    color: #1a3a5c;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+  tr:hover td { background: #fafbfc; }
+
+  /* key-features table (2-col, no header) */
+  .kf-table th { display: none; }
+  .kf-table td:first-child {
+    font-weight: 600;
+    width: 160px;
+    color: #1a3a5c;
+  }
+
+  /* ---- LISTS ---- */
+  ul, ol { margin: 10px 0 16px 22px; }
+  li { margin-bottom: 6px; }
+
+  /* ---- COURSE CARD ---- */
+  .course {
+    background: #fff;
+    border: 1px solid #e4e4e4;
+    border-radius: 6px;
+    padding: 24px 28px;
+    margin: 20px 0;
+  }
+  .course h4 {
+    margin: 0 0 4px;
+    color: #1a3a5c;
+  }
+  .course .ects {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: #888;
+    margin-bottom: 14px;
+  }
+  .course p { margin-bottom: 12px; }
+  .course p:last-child { margin-bottom: 0; }
+  .course .prereq {
+    font-size: 0.88rem;
+    color: #777;
+    font-style: italic;
+    margin-top: 10px;
+  }
+
+  .course-group-heading {
+    font-family: 'Source Serif 4', serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1a3a5c;
+    margin: 40px 0 8px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid #e0e0e0;
+  }
+
+  /* ---- MISC ---- */
+  .note {
+    background: #fffbe6;
+    border-left: 4px solid #e6c200;
+    padding: 14px 18px;
+    margin: 18px 0;
+    font-size: 0.93rem;
+    border-radius: 0 4px 4px 0;
+  }
+  .cta-button {
+    display: inline-block;
+    background: #1a3a5c;
+    color: #fff;
+    padding: 12px 28px;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 4px;
+    margin-top: 16px;
+    font-size: 0.95rem;
+    transition: background 0.2s;
+  }
+  .cta-button:hover { background: #264d73; }
+
+  .contact-block { margin-bottom: 24px; }
+  .contact-block strong { display: block; margin-bottom: 2px; }
+
+  /* responsive */
+  @media (max-width: 640px) {
+    .page-header h1 { font-size: 1.5rem; }
+    .tabs-nav button { padding: 12px 12px; font-size: 0.8rem; }
+    .course { padding: 18px 16px; }
+    table { font-size: 0.85rem; }
+    th, td { padding: 8px 10px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ==================== HEADER ==================== -->
+<header class="page-header">
+  <div class="wrap">
+    <h1>MSc in Management and AI: Entrepreneurship and Digital Transformation</h1>
+    <div class="subtitle">Department of Management, Entrepreneurship and Digital Enterprise · School of Tourism Management, Hospitality and Entrepreneurship · Cyprus University of Technology</div>
+  </div>
+</header>
+
+<!-- ==================== TAB NAV ==================== -->
+<nav class="tabs-nav">
+  <div class="wrap">
+    <button class="active" data-tab="overview">Overview</button>
+    <button data-tab="structure">Programme Structure</button>
+    <button data-tab="courses">Course Descriptions</button>
+    <button data-tab="admission">Admission</button>
+    <button data-tab="tuition">Tuition &amp; Scholarships</button>
+    <button data-tab="learning">How You Will Learn</button>
+    <button data-tab="careers">Recognition &amp; Careers</button>
+    <button data-tab="support">Student Support</button>
+    <button data-tab="contact">Contact</button>
+  </div>
+</nav>
+
+<!-- ==================== TAB 1: OVERVIEW ==================== -->
+<div class="tab-content active" id="overview">
+  <h2>Overview</h2>
+  <p>The MSc in Management and AI: Entrepreneurship and Digital Transformation is a postgraduate programme of the Cyprus University of Technology, offered by the Department of Management, Entrepreneurship and Digital Enterprise within the School of Tourism Management, Hospitality and Entrepreneurship. The programme combines the study of management with the application of artificial intelligence and digital technologies, and is organised around two concentrations: <strong>Entrepreneurship</strong> and <strong>Digital Transformation</strong>.</p>
+  <p>As its title indicates, the programme is intended for graduates and professionals who wish to develop and lead ventures, and to manage technology-driven change within organisations. The Entrepreneurship concentration is oriented towards the creation, financing and growth of new ventures, while the Digital Transformation concentration is oriented towards the adoption of digital and AI-enabled technologies to redesign organisational processes, products and business models.</p>
+
+  <h3>Key Features</h3>
+  <table class="kf-table">
+    <tr><td>Award</td><td>Postgraduate degree (MSc)</td></tr>
+    <tr><td>Credits</td><td>90 ECTS</td></tr>
+    <tr><td>Duration</td><td>2.5 years</td></tr>
+    <tr><td>Campus</td><td>Limassol, Cyprus</td></tr>
+    <tr><td>Established</td><td>2015</td></tr>
+    <tr><td>Concentrations</td><td>Entrepreneurship; Digital Transformation</td></tr>
+    <tr><td>Language of instruction</td><td>English</td></tr>
+  </table>
+
+  <div class="note">Detailed programme information (full aims, course list and descriptions) is not currently published online; the content below the verified key facts is to be supplied by the Department.</div>
+
+  <h3>Concentrations</h3>
+  <p><strong>1. Entrepreneurship</strong> — concerned with the development of new business ventures and entrepreneurial activity, including opportunity identification, venture creation, financing and growth. The specific course content of this concentration is to be supplied by the Department.</p>
+  <p><strong>2. Digital Transformation</strong> — concerned with the use of digital and AI-enabled technologies to change how organisations operate and deliver value, including the management of technology-driven change in business processes, products and business models. The specific course content of this concentration is to be supplied by the Department.</p>
+
+  <h3>Intended Learning Outcomes</h3>
+  <p>The following learning outcomes are <strong>indicative</strong>. They are derived qualitatively from the programme title and its two concentrations (Entrepreneurship and Digital Transformation) and are intended as a starting point only.</p>
+
+  <div class="note">The intended learning outcomes below are indicative and must be reviewed and ratified by the Department before publication. The official ILOs for this programme are not currently available online and are to be supplied by the Department.</div>
+
+  <h3>Knowledge</h3>
+  <p>On successful completion of the programme, graduates would be expected to be able to:</p>
+  <ul>
+    <li>Demonstrate an advanced understanding of management concepts and their application in entrepreneurial and digitally transforming organisations.</li>
+    <li>Explain the role of artificial intelligence and digital technologies in contemporary management and business decision-making.</li>
+    <li>Describe the processes involved in creating, financing and growing new ventures (Entrepreneurship concentration).</li>
+    <li>Describe the principles and processes of digital transformation in organisations (Digital Transformation concentration).</li>
+  </ul>
+
+  <h3>Skills</h3>
+  <p>On successful completion of the programme, graduates would be expected to be able to:</p>
+  <ul>
+    <li>Apply management and analytical methods to entrepreneurial and digital-transformation problems.</li>
+    <li>Evaluate opportunities for new ventures and for the adoption of AI-enabled and digital technologies.</li>
+    <li>Design and assess plans for launching ventures and for managing technology-driven organisational change.</li>
+    <li>Communicate analyses, recommendations and decisions to specialist and non-specialist audiences.</li>
+  </ul>
+
+  <h3>Competences</h3>
+  <p>On successful completion of the programme, graduates would be expected to be able to:</p>
+  <ul>
+    <li>Act autonomously and responsibly in managing entrepreneurial and digital-transformation initiatives.</li>
+    <li>Lead and work within teams undertaking innovation and change in organisations.</li>
+    <li>Make and justify decisions in complex and uncertain business environments, taking ethical and societal considerations into account.</li>
+    <li>Continue learning independently in a rapidly evolving technological landscape.</li>
+  </ul>
+
+  <div class="note">This is identified as the programme's primary information gap: the official, Department-approved Knowledge / Skills / Competences outcomes are required and are not yet available.</div>
+</div>
+
+<!-- ==================== TAB 3: PROGRAMME STRUCTURE ==================== -->
+<div class="tab-content" id="structure">
+  <h2>Programme Structure</h2>
+  <p>The programme comprises a total of <strong>90 ECTS</strong> and has a duration of <strong>2.5 years</strong>. It offers two concentrations: Entrepreneurship and Digital Transformation.</p>
+
+  <div class="note">[PLACEHOLDER — full course list with codes, titles and ECTS to be supplied by the Department]</div>
+
+  <p>No course codes, titles or per-course ECTS allocations are currently published online for this programme. The structure of core courses, concentration courses and any thesis/project component is to be supplied by the Department and inserted here.</p>
+</div>
+
+<!-- ==================== TAB 4: COURSE DESCRIPTIONS ==================== -->
+<div class="tab-content" id="courses">
+  <h2>Course Descriptions</h2>
+
+  <div class="note">[PLACEHOLDER — per-course descriptions to be supplied by the Department]</div>
+
+  <p>Individual course descriptions (aims, content and learning outcomes for each course) are not currently published online for this programme and are to be supplied by the Department.</p>
+</div>
+
+<!-- ==================== TAB 5: ADMISSION ==================== -->
+<div class="tab-content" id="admission">
+  <h2>Admission Requirements</h2>
+
+  <h3>Eligibility</h3>
+  <p>As with other postgraduate programmes at the Cyprus University of Technology, applicants are normally expected to hold a recognised bachelor's degree (or a qualification recognised as equivalent). The specific entry requirements for this programme are to be confirmed by the Department.</p>
+
+  <div class="note">[PLACEHOLDER — specific eligibility criteria, required qualifications and any language requirements to be supplied by the Department.]</div>
+
+  <h3>Required Documents</h3>
+  <div class="note">[PLACEHOLDER — list of required application documents to be supplied by the Department.]</div>
+
+  <h3>Application Deadlines</h3>
+  <div class="note">[PLACEHOLDER — application periods and deadlines to be supplied by the Department.]</div>
+
+  <h3>How to Apply</h3>
+  <p>Applications are submitted online through the University's portal.</p>
+  <a href="#" class="cta-button">Apply Online</a>
+  <p style="margin-top:8px; font-size:0.88rem; color:#888;">[Application link — TBC]</p>
+</div>
+
+<!-- ==================== TAB 6: TUITION ==================== -->
+<div class="tab-content" id="tuition">
+  <h2>Tuition and Scholarships</h2>
+
+  <h3>Tuition Fees</h3>
+  <div class="note">[PLACEHOLDER — total programme tuition and any payment schedule to be supplied by the Department. No fee figures are currently published online for this programme.]</div>
+
+  <h3>Scholarships</h3>
+  <p>The Cyprus University of Technology offers various scholarships and financial-support schemes to its students. The schemes applicable to this programme are to be confirmed.</p>
+  <div class="note">[PLACEHOLDER — scholarship schemes, amounts, eligibility criteria and application process applicable to this programme to be supplied by the Department.]</div>
+</div>
+
+<!-- ==================== TAB 7: HOW YOU WILL LEARN ==================== -->
+<div class="tab-content" id="learning">
+  <h2>How You Will Learn</h2>
+  <p>The programme is taught in English. Teaching, learning and assessment methods for this programme are to be confirmed by the Department.</p>
+
+  <div class="note">[PLACEHOLDER — teaching and assessment methods, mode of delivery, weekly structure and study commitment to be supplied by the Department.]</div>
+</div>
+
+<!-- ==================== TAB 8: RECOGNITION & CAREERS ==================== -->
+<div class="tab-content" id="careers">
+  <h2>Professional Recognition and Career Prospects</h2>
+
+  <h3>Professional Recognition</h3>
+  <p>No professional-body exemptions currently apply to this programme.</p>
+  <div class="note">If the Department establishes accreditation by, or exemptions from, any professional body, the details should be inserted here.</div>
+
+  <h3>Career Prospects</h3>
+  <p>The programme's two concentrations point to a range of career directions. Graduates of the <strong>Entrepreneurship</strong> concentration would typically pursue roles in founding and growing new ventures, as well as roles supporting entrepreneurship and innovation within established organisations. Graduates of the <strong>Digital Transformation</strong> concentration would typically pursue roles in leading and managing technology-driven change, including the adoption of AI-enabled and digital technologies in business. More generally, the programme is oriented towards AI-enabled management roles across sectors.</p>
+
+  <h3>Employment Outcomes</h3>
+  <div class="note">[PLACEHOLDER — graduate employment statistics and outcomes to be supplied by the Department. No employment figures are currently published online for this programme.]</div>
+</div>
+
+<!-- ==================== TAB 9: STUDENT SUPPORT & CONTACT ==================== -->
+<div class="tab-content" id="support">
+  <h2>Student Support and Resources</h2>
+
+  <h3>Academic Advisor</h3>
+  <p>Postgraduate students are normally assigned academic guidance to support course selection, academic progress and career planning. The specific arrangements for this programme are to be confirmed by the Department.</p>
+
+  <h3>Learning Development Network (LDN)</h3>
+  <p>Technical support, study skills, writing support, and related learning resources.</p>
+
+  <h3>Library</h3>
+  <p>Access to electronic journals, databases, and citation management tools.</p>
+
+  <h3>Career Services</h3>
+  <p>Career counselling, CV review, interview preparation, and networking events.</p>
+
+  <h3>Counselling Services</h3>
+  <p>Confidential support available to students.</p>
+  <div class="note">[PLACEHOLDER — counselling and student-support contact details to be confirmed.]</div>
+</div>
+
+<!-- ==================== TAB 9: CONTACT ==================== -->
+<div class="tab-content" id="contact">
+  <h2>Contact</h2>
+
+  <div class="contact-block">
+    <strong>Department Chair</strong>
+    Professor Andreas Petrou, Chair, Department of Management, Entrepreneurship and Digital Enterprise<br>
+    Email: [Email — placeholder]<br>
+    Tel: [Phone — placeholder]
+  </div>
+
+  <div class="contact-block">
+    <strong>Programme / Department Enquiries</strong>
+    Department of Management, Entrepreneurship and Digital Enterprise<br>
+    School of Tourism Management, Hospitality and Entrepreneurship<br>
+    Cyprus University of Technology, Limassol<br>
+    Email: [Email — placeholder]<br>
+    Tel: [Phone — placeholder]
+  </div>
+
+  <div class="note">Programme/Department email and phone — TBC. The Department Chair name (Professor Andreas Petrou) is verified; the contact email and phone are placeholders pending confirmation.</div>
+
+  <a href="#" class="cta-button">Apply Online</a>
+  <p style="margin-top:8px; font-size:0.88rem; color:#888;">[Application link — TBC]</p>
+</div>
+
+<!-- ==================== JS ==================== -->
+<script>
+  document.querySelectorAll('.tabs-nav button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tabs-nav button').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tab-content').forEach(tc => tc.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById(btn.dataset.tab).classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  });
+</script>
+</body>
+</html>

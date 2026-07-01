@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="MG">
+<title>BSc in Data Science — Cyprus University of Technology</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;600;700&family=Source+Serif+4:wght@400;600&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.65;
+    color: #2a2a2a;
+    background: #f5f5f5;
+  }
+
+  /* ---- HEADER ---- */
+  .page-header {
+    background: #1a3a5c;
+    color: #fff;
+    padding: 48px 0 40px;
+  }
+  .page-header .wrap {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+  .page-header h1 {
+    font-family: 'Source Serif 4', serif;
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  .page-header .subtitle {
+    font-size: 0.95rem;
+    font-weight: 300;
+    opacity: 0.85;
+  }
+
+  /* ---- TABS NAV ---- */
+  .tabs-nav {
+    background: #fff;
+    border-bottom: 2px solid #ddd;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .tabs-nav .wrap {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    gap: 0;
+  }
+  .tabs-nav button {
+    background: none;
+    border: none;
+    padding: 14px 18px;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: #666;
+    cursor: pointer;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .tabs-nav button:hover { color: #1a3a5c; }
+  .tabs-nav button.active {
+    color: #1a3a5c;
+    border-bottom-color: #1a3a5c;
+  }
+
+  /* ---- CONTENT ---- */
+  .tab-content {
+    display: none;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+  }
+  .tab-content.active { display: block; }
+
+  h2 {
+    font-family: 'Source Serif 4', serif;
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: #1a3a5c;
+    margin-bottom: 24px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+  }
+  h3 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #1a3a5c;
+    margin: 32px 0 12px;
+  }
+  h4 {
+    font-size: 1.02rem;
+    font-weight: 700;
+    color: #333;
+    margin: 28px 0 8px;
+  }
+  p { margin-bottom: 14px; }
+
+  /* ---- TABLES ---- */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0 24px;
+    font-size: 0.93rem;
+  }
+  th, td {
+    text-align: left;
+    padding: 10px 14px;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  th {
+    background: #f0f3f6;
+    font-weight: 600;
+    color: #1a3a5c;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+  tr:hover td { background: #fafbfc; }
+
+  /* key-features table (2-col, no header) */
+  .kf-table th { display: none; }
+  .kf-table td:first-child {
+    font-weight: 600;
+    width: 160px;
+    color: #1a3a5c;
+  }
+
+  /* ---- LISTS ---- */
+  ul, ol { margin: 10px 0 16px 22px; }
+  li { margin-bottom: 6px; }
+
+  /* ---- COURSE CARD ---- */
+  .course {
+    background: #fff;
+    border: 1px solid #e4e4e4;
+    border-radius: 6px;
+    padding: 24px 28px;
+    margin: 20px 0;
+  }
+  .course h4 {
+    margin: 0 0 4px;
+    color: #1a3a5c;
+  }
+  .course .ects {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: #888;
+    margin-bottom: 14px;
+  }
+  .course p { margin-bottom: 12px; }
+  .course p:last-child { margin-bottom: 0; }
+  .course .prereq {
+    font-size: 0.88rem;
+    color: #777;
+    font-style: italic;
+    margin-top: 10px;
+  }
+
+  .course-group-heading {
+    font-family: 'Source Serif 4', serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1a3a5c;
+    margin: 40px 0 8px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid #e0e0e0;
+  }
+
+  /* ---- MISC ---- */
+  .note {
+    background: #fffbe6;
+    border-left: 4px solid #e6c200;
+    padding: 14px 18px;
+    margin: 18px 0;
+    font-size: 0.93rem;
+    border-radius: 0 4px 4px 0;
+  }
+  .cta-button {
+    display: inline-block;
+    background: #1a3a5c;
+    color: #fff;
+    padding: 12px 28px;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 4px;
+    margin-top: 16px;
+    font-size: 0.95rem;
+    transition: background 0.2s;
+  }
+  .cta-button:hover { background: #264d73; }
+
+  .contact-block { margin-bottom: 24px; }
+  .contact-block strong { display: block; margin-bottom: 2px; }
+
+  /* responsive */
+  @media (max-width: 640px) {
+    .page-header h1 { font-size: 1.5rem; }
+    .tabs-nav button { padding: 12px 12px; font-size: 0.8rem; }
+    .course { padding: 18px 16px; }
+    table { font-size: 0.85rem; }
+    th, td { padding: 8px 10px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ==================== HEADER ==================== -->
+<header class="page-header">
+  <div class="wrap">
+    <h1>BSc in Data Science</h1>
+    <div class="subtitle">Department of Finance, Accounting and Management Science · Faculty of Management and Economics · Cyprus University of Technology</div>
+  </div>
+</header>
+
+<!-- ==================== TAB NAV ==================== -->
+<nav class="tabs-nav">
+  <div class="wrap">
+    <button class="active" data-tab="overview">Overview</button>
+    <button data-tab="structure">Programme Structure</button>
+    <button data-tab="courses">Course Descriptions</button>
+    <button data-tab="admission">Admission</button>
+    <button data-tab="learning">How You Will Learn</button>
+    <button data-tab="careers">Recognition &amp; Careers</button>
+    <button data-tab="support">Student Support</button>
+    <button data-tab="contact">Contact</button>
+  </div>
+</nav>
+
+<!-- ==================== TAB 1: OVERVIEW ==================== -->
+<div class="tab-content active" id="overview">
+  <h2>Overview</h2>
+  <p>The BSc in Data Science program provides a comprehensive foundation in statistical, mathematical and computational methodologies for advanced data analysis. Designed to meet the growing global demand for data science professionals and quantitative analysts, the program equips students with cutting-edge techniques in data management, machine learning, and computational statistics. Through multi-departmental collaboration with computing and IT-related disciplines, students receive a robust education that blends rigorous mathematical and computational training with practical skills in data systems, programming, optimization and applied analytics. This integral approach enables graduates to tackle complex data-driven challenges across industries. The program&rsquo;s unique positioning as the first of its kind offered by a public university in Cyprus ensures a wide range of high-demand career opportunities in this evolving field in Cyprus and abroad.</p>
+  <p><strong>GRADUATES&#39; EMPLOYMENT PROSPECTS</strong></p>
+  <p><strong>Data Science:&nbsp;</strong>The emphasis is on developing advanced quantitative skills for data analytics, with a strong foundation in computational statistics and data analysis. The profile is well-suited for roles such as data analyst, data engineer, business intelligence analyst, machine learning engineer, database administrator, market research analyst, as well as support in fields like epidemiology and climate change monitoring.</p>
+
+  <h3>Key Features</h3>
+  <table class="kf-table">
+    <tr><td>Degree Awarded</td><td>Bachelor's Degree (BSc) in Data Science</td></tr>
+    <tr><td>Duration</td><td>4 years (8 semesters), full-time</td></tr>
+    <tr><td>Credits</td><td>240 ECTS</td></tr>
+    <tr><td>Level</td><td>Undergraduate (first-cycle)</td></tr>
+    <tr><td>First Intake</td><td>2025</td></tr>
+    <tr><td>Language</td><td>Greek (the programme includes dedicated English-language courses)</td></tr>
+    <tr><td>Internship</td><td>Optional Internship / Practical Training (DSC_400)</td></tr>
+  </table>
+
+  <h3>Intended Learning Outcomes</h3>
+  <p>The following intended learning outcomes are expressed qualitatively from the programme aims and the body of courses offered. They are organised under Knowledge, Skills, and Competences and should be reviewed and formally approved by the Department.</p>
+
+  <h4>Knowledge</h4>
+  <p>On successful completion of the programme, graduates are expected to:</p>
+  <ul>
+    <li>Understand the core mathematical and statistical foundations of data science, including calculus, linear algebra and matrix computation, probability, inferential statistics and regression.</li>
+    <li>Explain the principles of computer programming and modern data-science tools, including object-oriented programming, SQL, Python, R and version control.</li>
+    <li>Describe the main concepts, techniques and applications of artificial intelligence, machine learning and statistical (multivariate and Bayesian) learning.</li>
+    <li>Understand methods for data management, database design, data and text mining, and data visualisation.</li>
+    <li>Recognise the role of optimisation, econometrics, graph/network theory and game theory in analysing complex quantitative problems.</li>
+  </ul>
+
+  <h4>Skills</h4>
+  <p>On successful completion of the programme, graduates are expected to be able to:</p>
+  <ul>
+    <li>Design, implement and document programs and data pipelines using contemporary languages and tools.</li>
+    <li>Apply statistical and machine-learning methods to model data, evaluate results, and interpret them critically.</li>
+    <li>Build and query databases and process large, unstructured datasets, including text.</li>
+    <li>Formulate and solve optimisation and decision-making problems relevant to business, economics and management.</li>
+    <li>Communicate analytical results effectively through visualisation and technical writing, including in English for a professional data-science audience.</li>
+  </ul>
+
+  <h4>Competences</h4>
+  <p>On successful completion of the programme, graduates are expected to:</p>
+  <ul>
+    <li>Combine technical and business skills to solve modern, real-world problems through data analysis.</li>
+    <li>Work independently on an extended research project (dissertation) and conduct enquiry at an advanced level.</li>
+    <li>Apply data-science methods responsibly, with awareness of ethical considerations in analysis and artificial intelligence.</li>
+    <li>Adapt to emerging techniques and tools and continue learning in a rapidly evolving field.</li>
+    <li>Integrate into the professional labour market and contribute to analytical and quantitative roles across sectors.</li>
+  </ul>
+  <div class="note">Intended Learning Outcomes above are derived qualitatively from the programme's stated aims and course content. They are not quoted verbatim from an approved outcomes list.</div>
+</div>
+
+<!-- ==================== TAB 2: PROGRAMME STRUCTURE ==================== -->
+<div class="tab-content" id="structure">
+  <h2>Programme Structure</h2>
+  <p>The programme is organised over four years (eight semesters). Each year combines compulsory (core) courses with elective courses chosen from Data Science (DSC) and related Computer Engineering and Informatics offerings (CEI, CIS). The final year includes a dissertation and an optional internship.</p>
+
+  <h3>Year 1 — Semester 1</h3>
+  <table>
+    <tr><th>Code</th><th>Course</th><th>ECTS</th></tr>
+    <tr><td>DSC_110</td><td>Calculus and Applications</td><td>[—]</td></tr>
+    <tr><td>DSC_111</td><td>Probability and Statistics</td><td>[—]</td></tr>
+    <tr><td>DSC_112</td><td>Introduction to Programming</td><td>[—]</td></tr>
+    <tr><td>DSC_113</td><td>Programming for Data Science</td><td>[—]</td></tr>
+    <tr><td>LCE_138</td><td>English for Data Science I</td><td>[—]</td></tr>
+  </table>
+
+  <h3>Year 1 — Semester 2</h3>
+  <table>
+    <tr><th>Code</th><th>Course</th><th>ECTS</th></tr>
+    <tr><td>DSC_120</td><td>Algebra and Matrix Computations</td><td>[—]</td></tr>
+    <tr><td>DSC_121</td><td>Inferential Statistics and Regression Analysis</td><td>[—]</td></tr>
+    <tr><td>DSC_122</td><td>Advanced Programming Topics</td><td>[—]</td></tr>
+    <tr><td>DSC_123</td><td>Introduction to Statistics for Data Science</td><td>[—]</td></tr>
+    <tr><td>LCE_139</td><td>English for Data Science II</td><td>[—]</td></tr>
+  </table>
+
+  <h3>Year 2 — Semester 3</h3>
+  <table>
+    <tr><th>Code</th><th>Course</th><th>ECTS</th></tr>
+    <tr><td>DSC_210</td><td>Computational Optimization</td><td>[—]</td></tr>
+    <tr><td>DSC_211</td><td>Introduction to Econometrics</td><td>[—]</td></tr>
+    <tr><td>DSC_212</td><td>Artificial Intelligence and Machine Learning</td><td>[—]</td></tr>
+    <tr><td>DSC_213</td><td>Graph Theory and Networks</td><td>[—]</td></tr>
+    <tr><td>Elective</td><td>One elective course (DSC, CEI or CIS)</td><td>[—]</td></tr>
+  </table>
+
+  <h3>Year 2 — Semester 4</h3>
+  <table>
+    <tr><th>Code</th><th>Course</th><th>ECTS</th></tr>
+    <tr><td>DSC_220</td><td>Management Science</td><td>[—]</td></tr>
+    <tr><td>DSC_221</td><td>Game Theory</td><td>[—]</td></tr>
+    <tr><td>DSC_223</td><td>Data Visualization</td><td>[—]</td></tr>
+    <tr><td>Elective</td><td>Two elective courses (DSC, CEI or CIS)</td><td>[—]</td></tr>
+  </table>
+
+  <h3>Year 3 — Semester 5</h3>
+  <table>
+    <tr><th>Code</th><th>Course</th><th>ECTS</th></tr>
+    <tr><td>DSC_311</td><td>Bayesian Modeling</td><td>[—]</td></tr>
+    <tr><td>DSC_312</td><td>Multivariate Methods and Statistical Learning</td><td>[—]</td></tr>
+    <tr><td>DSC_313</td><td>Databases</td><td>[—]</td></tr>
+    <tr><td>Elective</td><td>Two elective courses (DSC, CEI or CIS)</td><td>[—]</td></tr>
+  </table>
+
+  <h3>Year 3 — Semester 6</h3>
+  <table>
+    <tr><th>Code</th><th>Course</th><th>ECTS</th></tr>
+    <tr><td>DSC_320</td><td>Data and Text Mining</td><td>[—]</td></tr>
+    <tr><td>DSC_332</td><td>Statistical Machine Learning</td><td>[—]</td></tr>
+    <tr><td>Elective</td><td>Two elective courses (DSC, CEI or CIS)</td><td>[—]</td></tr>
+  </table>
+
+  <h3>Year 4 — Semester 7</h3>
+  <table>
+    <tr><th>Code</th><th>Course</th><th>ECTS</th></tr>
+    <tr><td>DSC_410</td><td>Computational Statistics and Econometrics</td><td>[—]</td></tr>
+    <tr><td>DSC_411</td><td>Advanced Topics in Data Science</td><td>[—]</td></tr>
+    <tr><td>DSC_400</td><td>Internship / Practical Training (or two elective courses)</td><td>[—]</td></tr>
+    <tr><td>DSC_450</td><td>Dissertation (Part A)</td><td>[—]</td></tr>
+  </table>
+
+  <h3>Year 4 — Semester 8</h3>
+  <table>
+    <tr><th>Code</th><th>Course</th><th>ECTS</th></tr>
+    <tr><td>DSC_421 / DSC_422</td><td>Advanced Topics in Statistical Data Science <em>or</em> Advanced Topics in Statistics</td><td>[—]</td></tr>
+    <tr><td>DSC_450</td><td>Dissertation (Part B)</td><td>[—]</td></tr>
+    <tr><td>Elective</td><td>Two elective courses (DSC, CEI or CIS)</td><td>[—]</td></tr>
+  </table>
+
+  <h3>Elective Courses</h3>
+  <p>Elective courses are selected from Data Science (DSC) and related Computer Engineering and Informatics (CEI, CIS) offerings. The list below reflects the electives named on the programme page.</p>
+  <table>
+    <tr><th>Code</th><th>Course</th><th>ECTS</th></tr>
+    <tr><td>DSC_440</td><td>Advanced Topics in Linear Modeling and Classification</td><td>[—]</td></tr>
+    <tr><td>DSC_351</td><td>Linear and Generalized Linear Models</td><td>[—]</td></tr>
+    <tr><td>DSC_350</td><td>Stochastic Processes</td><td>[—]</td></tr>
+    <tr><td>CEI_467</td><td>Advanced Topics in Data Processing Systems</td><td>[—]</td></tr>
+    <tr><td>CEI_524</td><td>Network Science</td><td>[—]</td></tr>
+    <tr><td>CIS_306</td><td>Internet and Social Media Research</td><td>[—]</td></tr>
+    <tr><td>CIS_456</td><td>Information Retrieval</td><td>[—]</td></tr>
+    <tr><td>CIS_458</td><td>Internet of Things</td><td>[—]</td></tr>
+    <tr><td>CIS_459</td><td>Natural Language Processing</td><td>[—]</td></tr>
+    <tr><td>CIS_473</td><td>Collective Intelligence</td><td>[—]</td></tr>
+  </table>
+  <div class="note">Elective titles for CEI and CIS courses are translated from the Greek course names on the programme page; official English titles should be confirmed against the relevant department catalogues.</div>
+</div>
+
+<!-- ==================== TAB 3: COURSE DESCRIPTIONS ==================== -->
+<div class="tab-content" id="courses">
+  <h2>Course Descriptions</h2>
+  <p>The descriptions below are the official course descriptions published on the programme page.</p>
+
+  <!-- YEAR 1 -->
+  <div class="course-group-heading">Year 1 — Core Courses</div>
+
+  <div class="course">
+    <h4>DSC_110 — Calculus and Applications</h4>
+    <div class="ects">6 ECTS</div>
+    <p>The course aims to familiarize students to the basic concepts of limit, continuity, differentiation and integral. Furthermore, the course purposes to introduce student to the theory of optimization and help them to understand appropriate mathematical methods that will lead them to study and solve economic, administrative and other problems using mathematical analysis.</p>
+  </div>
+
+  <div class="course">
+    <h4>DSC_111 — Probability and Statistics</h4>
+    <div class="ects">6 ECTS</div>
+    <p>The course aims to introduce students to the basic statistical concepts and the analytical procedures used in quantitative research in economics and business administration. Students should understand basic principles of Probability Theory and Statistics to be able to apply basic statistical methods. By the end of the course the students will be able to process data, prepare tables and charts and present and analyze statistical results.</p>
+  </div>
+
+  <div class="course">
+    <h4>DSC_112 — Introduction to Programming</h4>
+    <div class="ects">6 ECTS</div>
+    <p>The main goal of this module is to familiarize students with the main principles of software development. Using Java which is perhaps the most popular high level programming language, students will be taught about the object-oriented programming practices with particular emphasis placed on coherent software design, code reuse and the exploitation of existing libraries.</p>
+  </div>
+
+  <div class="course">
+    <h4>DSC_113 — Programming for Data Science</h4>
+    <div class="ects">6 ECTS</div>
+    <p>In the last decade the demand for programming skills related to managing and visualizing data has grown remarkably. Python, R and SQL feature consistently in the top skills listed in data science and data analyst jobs. Knowing how to write efficient software code to handle and visualise data is an essential skill for any modern data scientist. This course will cover the main principles of computer programming with a focus on data science applications by following the entire pathway from raw data to databases, data wrangling and visualisation, machine learning frameworks up to software development.</p>
+  </div>
+
+  <div class="course">
+    <h4>LCE_138 — English for Data Science I</h4>
+    <div class="ects">6 ECTS</div>
+    <p>The general objective of this 4-ECTS credit (European Credits Transfer and Accumulation System) required degree level course is to enable students to communicate competently at a Β1-B2 level of the Common European Framework of Reference (CEFR) for Languages. It is particularly designed to meet the needs of university students studying in the field of Data Science. The course is designed to equip students with the necessary language skills and specialized vocabulary required to effectively communicate and work in the field of data science for economics and business. This course focuses on developing proficiency in English language usage, technical writing, and oral presentation skills specifically tailored for data science professionals. Through a combination of interactive lectures, practical exercises, and hands-on projects, students will enhance their ability to comprehend, interpret, and communicate complex data-related concepts in English. The course will cover various aspects of data science, including data analysis, statistical modeling, machine learning, and data visualization, while emphasizing effective communication within interdisciplinary teams and across different stakeholders. Throughout the course, students will have the opportunity to apply their language skills to real-world data science scenarios, work on collaborative projects, receive feedback on their communication abilities, and engage in discussions on ethical and professional practices in the data science industry.</p>
+  </div>
+
+  <div class="course">
+    <h4>DSC_120 — Algebra and Matrix Computations</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Matrix analysis and computations are widely used in many data science fields such as multivariate statistics, econometrics, machine learning, optimization, and many more. They are considered key fundamental tools. The course is designed to provide the students with sufficient knowledge in mathematical and algorithmic tools for matrix problems which is essential to understand advanced topics related to their subject. It also aims to enable students to apply these mathematical techniques, solve various problems using specialised software and to help them develop and enhance their critical thinking. The course includes a laboratory in MATLAB (or Octave), R and Python.</p>
+  </div>
+
+  <div class="course">
+    <h4>DSC_121 — Inferential Statistics and Regression Analysis</h4>
+    <div class="ects">6 ECTS</div>
+    <p>The course is designed to provide the students with sufficient knowledge of statistics which is essential to understand advanced topics related to statistics. It covers topics related to random variables, covariance/correlation, central limit theorem, method of moments, maximum likelihood, distributions, hypothesis testing, regression analysis, etc.</p>
+  </div>
+
+  <div class="course">
+    <h4>DSC_122 — Advanced Programming Topics</h4>
+    <div class="ects">6 ECTS</div>
+    <p>The Internet Applications Programming module enables students to extend their knowledge in Java and object-oriented programming techniques and obtain experience in designing and developing a complete networked system. Of particular interest are concepts such as inheritance and concurrent programming as well as the technologies used to access remote servers and databases. Moreover, students will design and develop a Graphical User Interface utilizing the Java software libraries readily available.</p>
+  </div>
+
+  <div class="course">
+    <h4>DSC_123 — Introduction to Statistics for Data Science</h4>
+    <div class="ects">6 ECTS</div>
+    <p>This module aims to provide training in the basic skills of practical statistics using a statistical software package. Furthermore, provides the foundation for further study of statistics. Upon completion of this module, students are expected to able to: to use the R statistical software package and python for data analysis and simulation; to identify and carry out an appropriate statistical analysis of a simple data set using a computer; to interpret the output from a statistical software package when used for simple statistical analyses.</p>
+  </div>
+
+  <div class="course">
+    <h4>LCE_139 — English for Data Science II</h4>
+    <div class="ects">6 ECTS</div>
+    <p>The course develops B2-level communication ability and focuses specifically on the complex and evolving aspects of data science, exploring advanced statistical models, machine learning, natural language processing, and the ethics of artificial intelligence through lectures, projects and case studies.</p>  </div>
+
+  <!-- YEAR 2 -->
+  <div class="course-group-heading">Year 2 — Core Courses</div>
+
+  <div class="course">
+    <h4>DSC_210 — Computational Optimization</h4>
+    <div class="ects">6 ECTS</div>
+    <p>The main objective of the course is to learn the basic elements of computational optimisation theory, numerical algorithms, and their applications. This course aims to introduce students to linear programming (simplex method, duality theory), numerical methods for solving non-linear optimisation problems, unconstrained optimisation problems (optimality conditions, descent algorithms and convergence theorems), and problems with constraints (Lagrange multipliers, Karush-Kuhn-Tucker conditions, active set, penalty and interior point methods). It also aims to equip students with the ability to determine necessary and sufficient optimisation conditions for different classes of optimisation models and to apply the appropriate numerical methods given the characteristics of the optimisation model. Applications in engineering, economics, statistics, and other fields will be emphasized. Students will also use MATLAB or R to gain hands-on experience with the material.</p>
+  </div>
+
+  <div class="course">
+    <h4>DSC_211 — Introduction to Econometrics</h4>
+    <div class="ects">6 ECTS</div>
+    <p>This is an introductory course in Econometrics. The course is designed to provide the students with sufficient knowledge of statistics and econometrics necessary to understand and be able to evaluate and interpret econometrics researches that use basic linear regression methods. The course begins with a link between statistics and linear regression model and its assumptions. Violations of assumptions and their consequences in estimation process are further examined.</p>
+  </div>
+
+  <div class="course">
+    <h4>DSC_212 — Artificial Intelligence and Machine Learning</h4>
+    <div class="ects">6 ECTS</div>
+    <p>This course offers a comprehensive introduction to the fundamental concepts, techniques, and applications of artificial intelligence and machine learning. Students will explore various machine learning algorithms, neural networks, deep learning, reinforcement learning, and their applications in real-world scenarios. The course includes theoretical foundations, hands-on programming assignments.</p>
+  </div>
+
+  <div class="course">
+    <h4>DSC_213 — Graph Theory and Networks</h4>
+    <div class="ects">6 ECTS</div>
+    <p>The course objective is to provide an introduction to the theory of graphs. The course starts from basic definitions and examples and moves to cover a broad range of topics. Applications of Graph Theory in Computer Science will be discussed throughout. Emphasis will be given to reading, understanding and developing graph theoretical proofs. Topics include: degrees, paths, trees, cycles, Eulerian circuits, bipartite graphs, extremality, matchings, connectivity, network flows, vertex and edge colorings, Hamiltonian cycles and planarity.</p>
+  </div>
+
+  <div class="course">
+    <h4>DSC_220 — Management Science</h4>
+    <div class="ects">6 ECTS</div>
+    <p>The purpose of the course is to study operational research techniques and methodologies aimed at their application for making optimal managerial decisions. Emphasis is placed on problem-solving and the study of models in the fields of finance, management science, economics, and shipping. Assignments and exercises with software will be carried out during lecture and tutorial periods. Some of these topics will be studied and presented during the course. Upon completion of the course, students will be able to identify, use, and analyze the appropriate techniques needed to answer various questions in their areas of specialization. The course is specifically tailored for students who are interested in enriching and deepening their knowledge in decision-making within an operational environment.</p>
+  </div>
+
+  <div class="course">
+    <h4>DSC_221 — Game Theory</h4>
+    <div class="ects">6 ECTS</div>
+    <p>The purpose of the course is the presentation and analysis of the basic tools of GameTheory with the main goal of students' understanding of the importance of game theory for decision-making in various sciences. More specifically, Game Theory deals with decision making by strategically interdependent actors. The course examines and analyzes equilibrium concepts in static and dynamic games under complete and perfect information regimes as well as under incomplete information regimes.</p>
+  </div>
+
+  <div class="course">
+    <h4>DSC_223 — Data Visualization</h4>
+    <div class="ects">6 ECTS</div>
+    <p>This course will familiarize you with the area of data visualization. Students will acquire fundamental knowledge about the visualization of data and models. The primary objective is to understand how to transform data into visual representations for the purpose of describing and investigating data, examining hypotheses and correlations, and presenting evidence. Special emphasis will be placed on visualizing data for policy-makers. Students will gain expertise in visualizing diverse data types and formats by employing industry-standard, open-source software. The aim of the course is to comprehend and utilize the principles of data visualization effectively, to enhance capabilities in collecting and managing data for the purpose of visualization, to apply data visualization techniques to analyze pertinent data sets, to gain knowledge and expertise in assessing visualizations quantitatively and qualitatively. Furthermore to further advance skills in using the ggplot2 package for R and other related packages for data visualization.</p>
+  </div>
+
+  <!-- YEAR 3 -->
+  <div class="course-group-heading">Year 3 — Core Courses</div>
+
+  <div class="course">
+    <h4>DSC_311 — Bayesian Modeling</h4>
+    <div class="ects">6 ECTS</div>
+    <p>The main objective of the course is, to equip students with the skills to perform and interpret Bayesian data analyses. The course intends to provide a thorough introduction to the Bayesian approach to data analysis and modelling as well as an introduction to the computational tools that make the use of Bayesian methods possible in practice.</p>
+  </div>
+
+  <div class="course">
+    <h4>DSC_312 — Multivariate Methods and Statistical Learning</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Multivariate statistical models and methods are essential for analysing complex-structured and possibly high-dimensional data from any areas of science and industry, ranging from biology and medicine, and genetics to finance and sociology. Multivariate statistics also provides the foundation of many machine and statistical learning algorithms. The aim of the course is to familiarise students with the methodology of multivariate statistics and statistical learning for students specializing in data science, as well as with their practical implementation and application using the R statistical programming language. The course includes the presentation and analysis of research work.</p>
+  </div>
+
+  <div class="course">
+    <h4>DSC_313 — Databases</h4>
+    <div class="ects">6 ECTS</div>
+    <p>The aim of the course is to provide students with the necessary knowledge to be able to design databases and database systems and to implement databases using SQL language.</p>
+  </div>
+
+  <div class="course">
+    <h4>DSC_320 — Data and Text Mining</h4>
+    <div class="ects">6 ECTS</div>
+    <p>The aim of a course on text and data mining is to teach students how to extract useful information from large datasets of unstructured text data. This involves learning how to preprocess text data, represent it in a way that can be analyzed by machine learning algorithms, and apply various techniques such as classification, clustering, and association rule mining to extract insights from the data. The course may also cover topics such as sentiment analysis, topic modeling, web scraping, and social media mining.</p>
+  </div>
+
+  <div class="course">
+    <h4>DSC_332 — Statistical Machine Learning</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Statistical machine learning is an increasingly important approach to extracting valuable information from data. In particular, and when used appropriately, it allows for a data-driven approach to solving various problems that cannot be solved from first principles alone. The course is designed to develop theoretically and practically a selection of fundamental machine learning problems and commonly used solutions.</p>
+  </div>
+
+  <!-- YEAR 4 -->
+  <div class="course-group-heading">Year 4 — Core Courses, Dissertation &amp; Internship</div>
+
+  <div class="course">
+    <h4>DSC_410 — Computational Statistics and Econometrics</h4>
+    <div class="ects">6 ECTS</div>
+    <p>The course's purpose is to study linear regression models used in Statistics and Econometrics. Studying these models is particularly important for effectively applying economic theory to real economic challenges. The course is specially tailored for students interested in enriching and deepening their computational statistics and econometrics knowledge. The term computational statistics refers to using computational methodologies to solve problems in statistics and econometrics. The course aims to apply advanced quantitative methods using basic computational methodologies or computational tools. A prerequisite for the course is a good knowledge of quantitative methods. Regression model estimation is now widely applied in the analysis of economic models. Note that methods that provide theoretically efficient estimators and statistical conclusions (inference) for econometric models are at the centre of developments in the statistical community. These methods are a main field of research for the further development of statistical science and econometrics. The statistical methods analyzed in this course have applications in subjects other than Economics and Management, such as Engineering and Technology, Health, Geotechnical Sciences, Multimedia, and the Internet. The course delves into the developed quantitative methods in the field of statistics and econometrics. In addition, emphasis is placed on the statistical estimation of linear regression models and large-scale multivariate models, statistical model selection and robust statistics.</p>
+  </div>
+
+  <div class="course">
+    <h4>DSC_411 — Advanced Topics in Data Science</h4>
+    <div class="ects">6 ECTS</div>
+    <p>This course covers key topics in the are of data science. In Natural Language Processing (NLP), it evaluates strengths and weaknesses of NLP technologies and explores analytical techniques like stylometry and topic modeling. Deep Learning topics include deep reinforcement learning, variational autoencoders for data generation, and meta learning for rapid task adaptation. Foundations of Large Language Models (LLMs) focus on chain-of-thought prompting, specialized NGPU hardware, and GPT architecture. Scientific and Statistical Computing addresses methods for solving non-linear optimization problems and identifying optimality conditions. The MapReduce Programming Model discusses scalable data processing with Hadoop and Spark. Finally, Streaming Algorithms and Coding Theory cover data compression, error detection, and real-time data stream processing using advanced algorithms.</p>
+  </div>
+
+  <div class="course">
+    <h4>DSC_421 — Advanced Topics in Statistical Data Science</h4>
+    <div class="ects">6 ECTS</div>
+    <p>This course is designed for students who have a strong foundation in statistical data analysis and want to advance their skills in statistical data science. The course covers a range of advanced computational and statistical methods for tackling challenging data analytic problems. Emphasis is given to data-driven statistical methodology, algorithms, and software. Topics covered include High-Dimensional Data Analysis, Large-scale data analytics, Combinatorial method in statistics, Optimization, Heuristics in Statistics, Econometrics, Optimization methods in statistics (eg EM-type algorithms) Stochastic optimization and bootstrapping, Simulation Methods, Ridge regression, Complex data structures, Non-standard data (i.e. non-Gaussian or high dimensional data), Kernel methods in Statistics, Advanced Linear Modelling and Classification. Through a combination of lectures, assignments, and projects, students will gain an in-depth understanding of advanced statistical data science techniques and develop the skills to apply these techniques to solve real-world problems. The purpose of this course is to provide students with advanced knowledge and skills in statistical data science, so by the end of the course, students will be able to analyze challenging datasets, identify patterns and trends, and apply advanced statistical models to solve real-world problems.</p>
+  </div>
+
+  <div class="course">
+    <h4>DSC_422 — Advanced Topics in Statistics</h4>
+    <div class="ects">6 ECTS</div>
+    <p>The course is designed for students with a strong foundation in statistics who want to advance their skills in statistical science. In this course, the students will take a guided tour of basic and advanced statistical learning methods and the accompanying analysis tools that enable us to understand them theoretically. Theorems are presented with practical aspects of methodology and intuition to help students develop a broad sense of the rationale (pros and cons) behind choosing a given method/approach in a particular problem setting.</p>
+  </div>
+
+  <div class="course">
+    <h4>DSC_400 — Internship / Practical Training</h4>
+    <div class="ects">6 ECTS</div>
+    <p>The main objective of the Internship is to give students the opportunity to understand the problems and trends in the field of data science by placing them in a work environment with real working conditions. Students can assess whether the environment in question is related to their academic studies and prepare appropriately for their successful integration into the labor market, after completing their studies. By extension, the Department benefits from the combination of strengthened relationships with domestic industry and with other organizations/bodies.</p>
+  </div>
+
+  <div class="course">
+    <h4>DSC_450 — Dissertation</h4>
+    <div class="ects">6 ECTS</div>
+    <p>In this course the student is required to prepare a Thesis under the supervision of a Faculty member of the Department. The student is expected to complete an independent research on a (real-world) business topic using their knowledge and skill-set (with the approval of his / her academic supervisor). This module aims: To provide students with the necessary training to undertake advanced-level research in their field. To provide students with an advanced understanding of the relevance and importance of alternative epistemological positions in the social sciences and the nature of both qualitative and quantitative approaches to research; To develop students’ understanding at an advanced research, by examining the study skills necessary to manage and undertake a research project; To provide students with opportunities to be familiar with the frontier empirical and theoretical research; To provide students with the opportunity to conduct an in-depth investigation at an advanced level of an issue which is applicable in the real world/business environment.</p>
+    <p class="prereq">Delivered across two parts (Part A in Semester 7 and Part B in Semester 8).</p>
+  </div>
+
+  <!-- ELECTIVES -->
+  <div class="course-group-heading">Elective Courses</div>
+
+  <div class="course">
+    <h4>DSC_440 — Advanced Topics in Linear Modeling and Classification</h4>
+    <div class="ects">6 ECTS</div>
+    <p>The unit aims to provide students with an overview of modern regression and classification methods and skills to use relevant R packages to analyse simple datasets.</p>
+  </div>
+
+  <div class="course">
+    <h4>DSC_351 — Linear and Generalized Linear Models</h4>
+    <div class="ects">6 ECTS</div>
+    <p>The course is designed to provide students with the definition of linear models and theoretical treatment of the least squares estimation using QR decomposition for statistical inference and to provide them also with the definition of generalised linear models and theoretical treatment of the maximum likelihood estimation. It also aims to demonstrate the procedure of model fitting including model diagnosis, stepwise model building and interpretation of the results and to enable students to use 'lm', 'glm' and related functions in R to handle the computational aspects of model fitting. In addition, the course offers a brief introduction to penalised least squares methods for handling 'big data'.</p>
+  </div>
+
+  <div class="course">
+    <h4>DSC_350 — Stochastic Processes</h4>
+    <div class="ects">6 ECTS</div>
+    <p>A stochastic or random process is any measurable phenomenon which develops randomly in time. Only the simplest models will be considered in this course, namely those where the process moves by a sequence of jumps in discrete time steps. We will discuss: Markov chains, which use the idea of conditional probability to provide a flexible and widely applicable family of random processes; random walks, which serve as fundamental building blocks for constructing other processes as well as being important in their own right; and renewal theory, which studies processes which occasionally "begin all over again." Such processes are common tools in economics, biology, psychology and operations research, so they are very useful as well as attractive and interesting theories. The aims of this module are to introduce the idea of a stochastic process, and to show how simple probability and matrix theory can be used to build this notion into a beautiful and useful piece of applied mathematics.</p>
+  </div>
+
+  <div class="course">
+    <h4>CEI_467 — Advanced Topics in Data Processing Systems</h4>
+    <div class="ects">6 ECTS</div>
+  </div>
+
+  <div class="course">
+    <h4>CEI_524 — Network Science</h4>
+    <div class="ects">6 ECTS</div>
+  </div>
+
+  <div class="course">
+    <h4>CIS_306 — Internet and Social Media Research</h4>
+    <div class="ects">6 ECTS</div>
+  </div>
+
+  <div class="course">
+    <h4>CIS_456 — Information Retrieval</h4>
+    <div class="ects">6 ECTS</div>
+  </div>
+
+  <div class="course">
+    <h4>CIS_458 — Internet of Things</h4>
+    <div class="ects">6 ECTS</div>
+  </div>
+
+  <div class="course">
+    <h4>CIS_459 — Natural Language Processing</h4>
+    <div class="ects">6 ECTS</div>
+  </div>
+
+  <div class="course">
+    <h4>CIS_473 — Collective Intelligence</h4>
+    <div class="ects">6 ECTS</div>
+  </div>
+</div>
+
+<!-- ==================== TAB 4: ADMISSION ==================== -->
+<div class="tab-content" id="admission">
+  <h2>Admission</h2>
+  <p>Admission to this programme of study is through access framework no. 23.</p>
+</div>
+
+<!-- ==================== TAB 5: TUITION ==================== -->
+
+<!-- ==================== TAB 6: HOW YOU WILL LEARN ==================== -->
+<div class="tab-content" id="learning">
+  <h2>How You Will Learn</h2>
+  <p>The programme combines theoretical foundations with extensive hands-on, computational practice. Students learn through lectures, laboratory and software-based work, projects and case studies, an optional internship, and an individual dissertation in the final year.</p>
+
+  <h3>Tools and Practice</h3>
+  <p>Practical work draws on contemporary data-science tools and languages used throughout the curriculum, including SQL, Python, R, Java and Git, and on statistical software packages for applied statistics and machine learning.</p>
+
+  <h3>Project and Research Work</h3>
+  <p>Beyond coursework, students undertake an individual dissertation (DSC_450), carried out across the final year under academic supervision, and may complete an optional internship / practical training (DSC_400) in a real working environment.</p>
+
+  <h3>Language Support</h3>
+  <p>Dedicated "English for Data Science" courses (LCE_138 and LCE_139) develop the technical writing and specialised vocabulary that data-science professionals need, targeting B1–B2 and B2 CEFR levels.</p>
+</div>
+
+<!-- ==================== TAB 7: RECOGNITION & CAREERS ==================== -->
+<div class="tab-content" id="careers">
+  <h2>Professional Recognition and Career Prospects</h2>
+
+  <h3>Professional Recognition</h3>
+  <p>No professional-body exemptions currently apply to this programme.</p>
+
+  <h3>Career Prospects</h3>
+  <p>The programme prepares graduates for the strong and growing demand for data-science professionals and quantitative analysts. It emphasises a combination of technical and business skills, high earning prospects, and the ability to solve modern, real-world problems through data analysis.</p>
+  <p>Typical job roles for graduates include:</p>
+  <ul>
+    <li>Data analyst</li>
+    <li>Data engineer</li>
+    <li>Business intelligence analyst</li>
+    <li>Machine learning engineer</li>
+    <li>Database administrator</li>
+    <li>Market research analyst</li>
+  </ul>
+  <p>Graduates are also suited to support roles in applied analytical domains such as epidemiology and climate-change monitoring, as well as quantitative and analytical positions across the finance, business, technology and public sectors.</p>
+
+  <h3>Employment Statistics</h3>
+  <p>This programme admitted its first students in 2025. As a newly established degree it has not yet produced graduates, so graduate-employment statistics are not yet available. Graduate-outcome data will be reported as the first cohorts complete their studies.</p>
+</div>
+
+<!-- ==================== TAB 8: STUDENT SUPPORT ==================== -->
+<div class="tab-content" id="support">
+  <h2>Student Support and Resources</h2>
+
+  <h3>Academic Advising</h3>
+  <p>Students are supported by academic staff in the Department of Finance, Accounting and Management Science to guide course selection, academic progress and career planning.</p>
+
+  <h3>Learning Development Network (LDN)</h3>
+  <p>Technical support, study skills, writing support, and digital-literacy training.</p>
+
+  <h3>Library and Databases</h3>
+  <p>Access to the University library's electronic resources, e-journals, scientific databases and citation-management tools to support coursework, projects and the dissertation.</p>
+
+  <h3>Career Services</h3>
+  <p>Career counselling, CV review, interview preparation, and networking events, alongside the optional internship / practical training (DSC_400).</p>
+
+  <h3>Counselling Services</h3>
+  <p>Confidential support available in-person and remotely.</p>
+</div>
+
+<!-- ==================== TAB 9: CONTACT ==================== -->
+<div class="tab-content" id="contact">
+  <h2>Contact</h2>
+
+  <div class="contact-block">
+    <strong>Department</strong>
+    Department of Finance, Accounting and Management Science<br>
+    Faculty of Management and Economics<br>
+    Cyprus University of Technology<br>
+    30 Arch. Kyprianou Street, 3036 Limassol, Cyprus
+  </div>
+
+  <div class="contact-block">
+    <strong>General Enquiries</strong>
+    Tel: +357 2500 2500 · Fax: +357 2500 2750<br>
+    Email: administration@cut.ac.cy
+  </div>
+
+  <div class="contact-block">
+    <strong>Programme Coordinator</strong>
+    Professor Erricos Kontoghiorghes<br>Email: erricos@cut.ac.cy · Tel: +357 25002168
+  </div>
+
+  <a href="https://www.cut.ac.cy" class="cta-button">Visit CUT Website</a>
+</div>
+
+<!-- ==================== JS ==================== -->
+<script>
+  document.querySelectorAll('.tabs-nav button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tabs-nav button').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tab-content').forEach(tc => tc.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById(btn.dataset.tab).classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  });
+</script>
+</body>
+</html>

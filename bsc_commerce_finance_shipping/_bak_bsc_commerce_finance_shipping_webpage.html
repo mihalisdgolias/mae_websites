@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="MG">
+<title>BSc in Commerce, Finance and Shipping — Cyprus University of Technology</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;600;700&family=Source+Serif+4:wght@400;600&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.65;
+    color: #2a2a2a;
+    background: #f5f5f5;
+  }
+
+  /* ---- HEADER ---- */
+  .page-header {
+    background: #1a3a5c;
+    color: #fff;
+    padding: 48px 0 40px;
+  }
+  .page-header .wrap {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+  .page-header h1 {
+    font-family: 'Source Serif 4', serif;
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  .page-header .subtitle {
+    font-size: 0.95rem;
+    font-weight: 300;
+    opacity: 0.85;
+  }
+
+  /* ---- TABS NAV ---- */
+  .tabs-nav {
+    background: #fff;
+    border-bottom: 2px solid #ddd;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .tabs-nav .wrap {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    gap: 0;
+  }
+  .tabs-nav button {
+    background: none;
+    border: none;
+    padding: 14px 18px;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: #666;
+    cursor: pointer;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .tabs-nav button:hover { color: #1a3a5c; }
+  .tabs-nav button.active {
+    color: #1a3a5c;
+    border-bottom-color: #1a3a5c;
+  }
+
+  /* ---- CONTENT ---- */
+  .tab-content {
+    display: none;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+  }
+  .tab-content.active { display: block; }
+
+  h2 {
+    font-family: 'Source Serif 4', serif;
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: #1a3a5c;
+    margin-bottom: 24px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+  }
+  h3 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #1a3a5c;
+    margin: 32px 0 12px;
+  }
+  h4 {
+    font-size: 1.02rem;
+    font-weight: 700;
+    color: #333;
+    margin: 28px 0 8px;
+  }
+  p { margin-bottom: 14px; }
+
+  /* ---- TABLES ---- */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0 24px;
+    font-size: 0.93rem;
+  }
+  th, td {
+    text-align: left;
+    padding: 10px 14px;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  th {
+    background: #f0f3f6;
+    font-weight: 600;
+    color: #1a3a5c;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+  tr:hover td { background: #fafbfc; }
+
+  /* key-features table (2-col, no header) */
+  .kf-table th { display: none; }
+  .kf-table td:first-child {
+    font-weight: 600;
+    width: 160px;
+    color: #1a3a5c;
+  }
+
+  /* ---- LISTS ---- */
+  ul, ol { margin: 10px 0 16px 22px; }
+  li { margin-bottom: 6px; }
+
+  /* ---- COURSE CARD ---- */
+  .course {
+    background: #fff;
+    border: 1px solid #e4e4e4;
+    border-radius: 6px;
+    padding: 24px 28px;
+    margin: 20px 0;
+  }
+  .course h4 {
+    margin: 0 0 4px;
+    color: #1a3a5c;
+  }
+  .course .ects {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: #888;
+    margin-bottom: 14px;
+  }
+  .course p { margin-bottom: 12px; }
+  .course p:last-child { margin-bottom: 0; }
+  .course .prereq {
+    font-size: 0.88rem;
+    color: #777;
+    font-style: italic;
+    margin-top: 10px;
+  }
+
+  .course-group-heading {
+    font-family: 'Source Serif 4', serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1a3a5c;
+    margin: 40px 0 8px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid #e0e0e0;
+  }
+
+  /* ---- MISC ---- */
+  .note {
+    background: #fffbe6;
+    border-left: 4px solid #e6c200;
+    padding: 14px 18px;
+    margin: 18px 0;
+    font-size: 0.93rem;
+    border-radius: 0 4px 4px 0;
+  }
+  .cta-button {
+    display: inline-block;
+    background: #1a3a5c;
+    color: #fff;
+    padding: 12px 28px;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 4px;
+    margin-top: 16px;
+    font-size: 0.95rem;
+    transition: background 0.2s;
+  }
+  .cta-button:hover { background: #264d73; }
+
+  .contact-block { margin-bottom: 24px; }
+  .contact-block strong { display: block; margin-bottom: 2px; }
+
+  /* responsive */
+  @media (max-width: 640px) {
+    .page-header h1 { font-size: 1.5rem; }
+    .tabs-nav button { padding: 12px 12px; font-size: 0.8rem; }
+    .course { padding: 18px 16px; }
+    table { font-size: 0.85rem; }
+    th, td { padding: 8px 10px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ==================== HEADER ==================== -->
+<header class="page-header">
+  <div class="wrap">
+    <h1>BSc in Commerce, Finance and Shipping</h1>
+    <div class="subtitle">Department of Finance, Accounting and Management Science · Faculty of Management and Economics · Cyprus University of Technology</div>
+  </div>
+</header>
+
+<!-- ==================== TAB NAV ==================== -->
+<nav class="tabs-nav">
+  <div class="wrap">
+    <button class="active" data-tab="overview">Overview</button>
+    <button data-tab="structure">Programme Structure</button>
+    <button data-tab="courses">Course Descriptions</button>
+    <button data-tab="admission">Admission</button>
+    <button data-tab="tuition">Tuition &amp; Scholarships</button>
+    <button data-tab="learning">How You Will Learn</button>
+    <button data-tab="careers">Recognition &amp; Careers</button>
+    <button data-tab="support">Student Support</button>
+    <button data-tab="contact">Contact</button>
+  </div>
+</nav>
+
+<!-- ==================== TAB 1: OVERVIEW ==================== -->
+<div class="tab-content active" id="overview">
+  <h2>Overview</h2>
+
+  <div class="note"><strong>Programme status:</strong> This undergraduate programme is being phased out. The last intake of new students was in the 2024–25 academic year. Students admitted in 2024–25 complete their studies in the Finance specialisation only. No new admissions are taking place.</div>
+
+  <p>The BSc in Commerce, Finance and Shipping (Πτυχίο Εμπορίου, Χρηματοοικονομικών και Ναυτιλίας) is a four-year undergraduate degree offered by the Department of Finance, Accounting and Management Science within the Faculty of Management and Economics. The programme is designed to equip graduates with the knowledge and capabilities required for professional positions in financial institutions, auditing firms, investment companies, and business service organisations.</p>
+
+  <p>The programme builds a strong foundation in economics, mathematics, statistics, accounting, and commerce during the first two years, common to all students, and then develops advanced specialist expertise in finance during the final two years. It aims to develop students' ability to analyse, understand and evaluate issues concerning the operation of financial markets, and to understand the fundamental principles of financial operations within modern economic systems.</p>
+
+  <h3>Key Features</h3>
+  <table class="kf-table">
+    <tr><td>Duration</td><td>4 years / 8 semesters</td></tr>
+    <tr><td>Credits</td><td>240 ECTS</td></tr>
+    <tr><td>Level</td><td>Undergraduate (Bachelor's degree)</td></tr>
+    <tr><td>Language</td><td>Greek (most courses) and English (English-for-Finance language courses)</td></tr>
+    <tr><td>Specialisation</td><td>Finance (the specialisation available to the 2024–25 final intake)</td></tr>
+    <tr><td>Department</td><td>Finance, Accounting and Management Science</td></tr>
+  </table>
+
+  <div class="note">Per-year ECTS distribution (from the published curriculum): Years 1–2 carry 28 ECTS per semester (56 ECTS per year); Year 3 carries 30 ECTS per semester (60 ECTS); Year 4 carries 30 ECTS in Semester 7 and 34 ECTS in Semester 8 (64 ECTS). The published per-semester totals sum to 248 ECTS rather than the stated 240 ECTS — [PLACEHOLDER — Department to confirm the exact ECTS reconciliation and any rounding/elective-cap adjustment].</div>
+
+  <h3>Intended Learning Outcomes</h3>
+  <p>The published programme materials present learning objectives at the level of individual courses rather than as an integrated, programme-wide statement. The outcomes below are derived qualitatively from the programme's stated aims and course objectives; the Department should review and confirm them as the official programme-level learning outcomes.</p>
+
+  <h4>Knowledge</h4>
+  <ul>
+    <li>Understand the fundamental principles of financial operations within modern economic systems.</li>
+    <li>Explain core concepts in micro- and macroeconomics, international economics, and the operation of financial markets.</li>
+    <li>Describe the principles of financial and management accounting and the analysis of financial statements.</li>
+    <li>Understand the principles of corporate finance, banking, investment management, financial derivatives, and the financing of shipping.</li>
+  </ul>
+
+  <h4>Skills</h4>
+  <ul>
+    <li>Analyse, understand and evaluate issues concerning the operation of financial markets.</li>
+    <li>Apply mathematical, statistical, and econometric methods to economic and business problems.</li>
+    <li>Use financial-statement information to support investment, financing, and management decisions.</li>
+    <li>Apply quantitative and qualitative research methods to problems in finance.</li>
+  </ul>
+
+  <h4>Competences</h4>
+  <ul>
+    <li>Take on professional positions in financial institutions, auditing firms, investment companies, and business service organisations.</li>
+    <li>Operate effectively in real working environments, as developed through the internship.</li>
+    <li>Pursue further study at master's level and professional accountancy qualifications (e.g. ACA, ACCA).</li>
+    <li>Work towards leadership roles in the private or public sector, or as self-employed entrepreneurs.</li>
+  </ul>
+  <div class="note">[PLACEHOLDER — Department to supply the official, validated programme-level Intended Learning Outcomes (Knowledge / Skills / Competences) as approved in the programme specification.]</div>
+
+  <h3>Programme Coordinator</h3>
+  <div class="note">[PLACEHOLDER — Department to supply the programme coordinator's name, title, email, and telephone. No coordinator was named on the live programme page at the time of writing.]</div>
+</div>
+
+<!-- ==================== TAB 2: PROGRAMME STRUCTURE ==================== -->
+<div class="tab-content" id="structure">
+  <h2>Programme Structure</h2>
+  <p>The programme consists of common courses in Years 1–2 (Semesters 1–4), followed by the Finance specialisation in Years 3–4 (Semesters 5–8). The final intake (2024–25) completes the Finance specialisation. Course codes and ECTS credits below are reproduced from the published curriculum.</p>
+
+  <div class="note">Two courses appear in the published curriculum with a placeholder code "CFS XXX" (Introduction to Programming in Semester 4, and several electives). These are reproduced as published — [PLACEHOLDER — Department to supply the final course codes].</div>
+
+  <h3>Years 1–2 — Common Courses</h3>
+
+  <h4>Semester 1 (28 ECTS)</h4>
+  <table>
+    <tr><th>Code</th><th>Course</th><th>ECTS</th></tr>
+    <tr><td>CFS 101</td><td>Economics I</td><td>6</td></tr>
+    <tr><td>CFS 110</td><td>Mathematical Methods in Economics and Management I</td><td>6</td></tr>
+    <tr><td>HTM 140</td><td>Principles of Financial Accounting</td><td>6</td></tr>
+    <tr><td>LCE 107</td><td>English for Finance I</td><td>4</td></tr>
+    <tr><td>HTM 201</td><td>Business Ethics</td><td>6</td></tr>
+  </table>
+
+  <h4>Semester 2 (28 ECTS)</h4>
+  <table>
+    <tr><th>Code</th><th>Course</th><th>ECTS</th></tr>
+    <tr><td>CFS 102</td><td>Economics II</td><td>6</td></tr>
+    <tr><td>CFS 111</td><td>Statistical Methods in Economics and Management I</td><td>6</td></tr>
+    <tr><td>CFS 141</td><td>Information Technology for Business</td><td>6</td></tr>
+    <tr><td>LCE 108</td><td>English for Finance II</td><td>4</td></tr>
+    <tr><td>HTM 141</td><td>Management Accounting</td><td>6</td></tr>
+  </table>
+
+  <h4>Semester 3 (30 ECTS)</h4>
+  <table>
+    <tr><th>Code</th><th>Course</th><th>ECTS</th></tr>
+    <tr><td>CFS 221</td><td>Finance I</td><td>6</td></tr>
+    <tr><td>CFS 201</td><td>International Economics I</td><td>6</td></tr>
+    <tr><td>SHP 111</td><td>Introduction to Shipping</td><td>6</td></tr>
+    <tr><td>CFS 210</td><td>Mathematical Methods in Economics and Management II</td><td>6</td></tr>
+    <tr><td>CFS 203</td><td>Commerce I</td><td>6</td></tr>
+  </table>
+
+  <h4>Semester 4 (30 ECTS)</h4>
+  <table>
+    <tr><th>Code</th><th>Course</th><th>ECTS</th></tr>
+    <tr><td>CFS 222</td><td>Finance II</td><td>6</td></tr>
+    <tr><td>CFS 202</td><td>International Economics II</td><td>6</td></tr>
+    <tr><td>CFS XXX</td><td>Introduction to Programming</td><td>6</td></tr>
+    <tr><td>CFS 211</td><td>Statistical Methods in Economics and Management II</td><td>6</td></tr>
+    <tr><td>CFS 204</td><td>Commerce II</td><td>6</td></tr>
+  </table>
+
+  <h3>Years 3–4 — Finance Specialisation</h3>
+
+  <h4>Semester 5 (30 ECTS)</h4>
+  <table>
+    <tr><th>Code</th><th>Course</th><th>ECTS</th></tr>
+    <tr><td>CFS 310</td><td>Introduction to Econometrics</td><td>6</td></tr>
+    <tr><td>CFS 320</td><td>Corporate Finance</td><td>6</td></tr>
+    <tr><td>CFS 330</td><td>Shipping Finance</td><td>6</td></tr>
+    <tr><td>CFS 424</td><td>Financial Statement Analysis</td><td>6</td></tr>
+    <tr><td>—</td><td>Elective course</td><td>6</td></tr>
+  </table>
+
+  <h4>Semester 6 (30 ECTS)</h4>
+  <table>
+    <tr><th>Code</th><th>Course</th><th>ECTS</th></tr>
+    <tr><td>CFS 143</td><td>Commercial Law</td><td>6</td></tr>
+    <tr><td>CFS 312</td><td>Financial Econometrics</td><td>6</td></tr>
+    <tr><td>CFS 323</td><td>Financial Derivatives</td><td>6</td></tr>
+    <tr><td>CFS 324</td><td>International Financial Management</td><td>6</td></tr>
+    <tr><td>CFS 420</td><td>Research Methods in Finance</td><td>6</td></tr>
+  </table>
+
+  <h4>Semester 7 (30 ECTS)</h4>
+  <table>
+    <tr><th>Code</th><th>Course</th><th>ECTS</th></tr>
+    <tr><td>CFS 321</td><td>Banking Economics</td><td>6</td></tr>
+    <tr><td>CFS 322</td><td>Valuation of Capital Assets</td><td>6</td></tr>
+    <tr><td>—</td><td>Elective courses</td><td>18</td></tr>
+  </table>
+
+  <h4>Semester 8 (34 ECTS)</h4>
+  <table>
+    <tr><th>Code</th><th>Course</th><th>ECTS</th></tr>
+    <tr><td>CFS 325</td><td>Investment Management</td><td>6</td></tr>
+    <tr><td>CFS 441</td><td>Internship</td><td>12</td></tr>
+    <tr><td>LCE 410</td><td>English for Finance</td><td>4</td></tr>
+    <tr><td>—</td><td>Elective courses</td><td>12</td></tr>
+  </table>
+
+  <h3>Elective Courses (Finance Specialisation)</h3>
+  <p>At least two elective courses must be selected from within the Department. A maximum of 18 ECTS may be taken from other programmes within the Faculty of Management and Economics, and a maximum of 12 ECTS from departments outside the Faculty (subject to departmental approval).</p>
+  <table>
+    <tr><th>Code</th><th>Course</th><th>ECTS</th></tr>
+    <tr><td>CFS 326</td><td>Financial Accounting II</td><td>6</td></tr>
+    <tr><td>CFS 327</td><td>Management Accounting II</td><td>6</td></tr>
+    <tr><td>CFS XXX</td><td>Financial Technology</td><td>6</td></tr>
+    <tr><td>CFS XXX</td><td>Game Theory</td><td>6</td></tr>
+    <tr><td>CFS XXX</td><td>Data Analysis for Finance and Accounting</td><td>6</td></tr>
+    <tr><td>CFS 342</td><td>Corporate Law</td><td>6</td></tr>
+    <tr><td>CFS 423</td><td>Commodity Risk Management</td><td>6</td></tr>
+    <tr><td>CFS 426</td><td>Financial Accounting III</td><td>6</td></tr>
+    <tr><td>CFS 427</td><td>Auditing I</td><td>6</td></tr>
+    <tr><td>CFS 428</td><td>Taxation</td><td>6</td></tr>
+    <tr><td>CFS 440</td><td>Dissertation</td><td>12</td></tr>
+    <tr><td>CFS 452</td><td>Behavioural Finance</td><td>6</td></tr>
+    <tr><td>SHP 354</td><td>Shipping Operations Management</td><td>6</td></tr>
+  </table>
+</div>
+
+<!-- ==================== TAB 3: COURSE DESCRIPTIONS ==================== -->
+<div class="tab-content" id="courses">
+  <h2>Course Descriptions</h2>
+  <p>Descriptions below use the published course text where available. Where the live programme page listed a course by title only, a brief factual description is given where it can be reasonably inferred from the title; otherwise a placeholder marks text the Department must supply.</p>
+
+  <!-- COMMON / YEARS 1-2 -->
+  <div class="course-group-heading">Years 1–2 — Common Courses</div>
+
+  <div class="course">
+    <h4>CFS 101 — Economics I</h4>
+    <div class="ects">6 ECTS</div>
+    <p>An introductory economics course that helps students develop economic thinking and introduces basic microeconomic concepts, including supply-and-demand mechanisms, market effectiveness, elasticity, and producer behaviour across different market structures.</p>
+  </div>
+
+  <div class="course">
+    <h4>CFS 110 — Mathematical Methods in Economics and Management I</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Familiarises students with the concepts of limit, continuity, differentiation, and integration; introduces optimisation theory and methods of mathematical analysis for solving economic and business problems.</p>
+  </div>
+
+  <div class="course">
+    <h4>HTM 140 — Principles of Financial Accounting</h4>
+    <div class="ects">6 ECTS</div>
+    <p>[PLACEHOLDER — course description to be supplied. Title-only listing on the live page; introduces the principles of financial accounting and the preparation of financial statements.]</p>
+  </div>
+
+  <div class="course">
+    <h4>LCE 107 — English for Finance I</h4>
+    <div class="ects">4 ECTS</div>
+    <p>[PLACEHOLDER — course description to be supplied. English-language course developing professional and financial terminology and communication skills.]</p>
+  </div>
+
+  <div class="course">
+    <h4>HTM 201 — Business Ethics</h4>
+    <div class="ects">6 ECTS</div>
+    <p>[PLACEHOLDER — course description to be supplied. Introduces ethical principles and their application to business and professional contexts.]</p>
+  </div>
+
+  <div class="course">
+    <h4>CFS 102 — Economics II</h4>
+    <div class="ects">6 ECTS</div>
+    <p>[PLACEHOLDER — course description to be supplied. Continuation of Economics I, extending into further microeconomic and macroeconomic concepts.]</p>
+  </div>
+
+  <div class="course">
+    <h4>CFS 111 — Statistical Methods in Economics and Management I</h4>
+    <div class="ects">6 ECTS</div>
+    <p>[PLACEHOLDER — course description to be supplied. Introduces statistical methods applied to economic and management problems.]</p>
+  </div>
+
+  <div class="course">
+    <h4>CFS 141 — Information Technology for Business</h4>
+    <div class="ects">6 ECTS</div>
+    <p>[PLACEHOLDER — course description to be supplied. Covers information technology tools and applications relevant to business.]</p>
+  </div>
+
+  <div class="course">
+    <h4>LCE 108 — English for Finance II</h4>
+    <div class="ects">4 ECTS</div>
+    <p>[PLACEHOLDER — course description to be supplied. Continuation of English for Finance I.]</p>
+  </div>
+
+  <div class="course">
+    <h4>HTM 141 — Management Accounting</h4>
+    <div class="ects">6 ECTS</div>
+    <p>[PLACEHOLDER — course description to be supplied. Introduces management accounting principles and their use in planning and control.]</p>
+  </div>
+
+  <div class="course">
+    <h4>CFS 221 — Finance I</h4>
+    <div class="ects">6 ECTS</div>
+    <p>[PLACEHOLDER — course description to be supplied. Introduces the fundamental principles of finance.]</p>
+  </div>
+
+  <div class="course">
+    <h4>CFS 201 — International Economics I</h4>
+    <div class="ects">6 ECTS</div>
+    <p>[PLACEHOLDER — course description to be supplied. Introduces the principles of international trade and economics.]</p>
+  </div>
+
+  <div class="course">
+    <h4>SHP 111 — Introduction to Shipping</h4>
+    <div class="ects">6 ECTS</div>
+    <p>[PLACEHOLDER — course description to be supplied. Introduces the structure and operation of the shipping industry.]</p>
+  </div>
+
+  <div class="course">
+    <h4>CFS 210 — Mathematical Methods in Economics and Management II</h4>
+    <div class="ects">6 ECTS</div>
+    <p>[PLACEHOLDER — course description to be supplied. Continuation of Mathematical Methods I, extending into further methods of mathematical analysis for economics and management.]</p>
+  </div>
+
+  <div class="course">
+    <h4>CFS 203 — Commerce I</h4>
+    <div class="ects">6 ECTS</div>
+    <p>[PLACEHOLDER — course description to be supplied. Introduces the principles and practice of commerce.]</p>
+  </div>
+
+  <div class="course">
+    <h4>CFS 222 — Finance II</h4>
+    <div class="ects">6 ECTS</div>
+    <p>[PLACEHOLDER — course description to be supplied. Continuation of Finance I.]</p>
+  </div>
+
+  <div class="course">
+    <h4>CFS 202 — International Economics II</h4>
+    <div class="ects">6 ECTS</div>
+    <p>[PLACEHOLDER — course description to be supplied. Continuation of International Economics I.]</p>
+  </div>
+
+  <div class="course">
+    <h4>CFS XXX — Introduction to Programming</h4>
+    <div class="ects">6 ECTS</div>
+    <p>[PLACEHOLDER — course description and final course code to be supplied. Introduces programming concepts and their application to financial and economic problems.]</p>
+  </div>
+
+  <div class="course">
+    <h4>CFS 211 — Statistical Methods in Economics and Management II</h4>
+    <div class="ects">6 ECTS</div>
+    <p>[PLACEHOLDER — course description to be supplied. Continuation of Statistical Methods I.]</p>
+  </div>
+
+  <div class="course">
+    <h4>CFS 204 — Commerce II</h4>
+    <div class="ects">6 ECTS</div>
+    <p>[PLACEHOLDER — course description to be supplied. Continuation of Commerce I.]</p>
+  </div>
+
+  <!-- FINANCE SPECIALISATION -->
+  <div class="course-group-heading">Finance Specialisation (Years 3–4)</div>
+
+  <div class="course">
+    <h4>CFS 310 — Introduction to Econometrics</h4>
+    <div class="ects">6 ECTS</div>
+    <p>[PLACEHOLDER — course description to be supplied. Introduces econometric methods for analysing economic and financial data.]</p>
+  </div>
+
+  <div class="course">
+    <h4>CFS 320 — Corporate Finance</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Aims to provide integrated knowledge of corporate finance theory and practice, covering capital-market approaches, sources and methods of financing, and the influence of dividend policy on a firm's financial value.</p>
+  </div>
+
+  <div class="course">
+    <h4>CFS 330 — Shipping Finance</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Introduces the fundamental principles of shipping finance, covering capital-financing theory, the history of shipping finance, sources of financing for ship acquisition, the evaluation of shipping loans, credit analysis, and the principles of risk management.</p>
+  </div>
+
+  <div class="course">
+    <h4>CFS 424 — Financial Statement Analysis</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Develops students' ability to use the information contained in financial statements for investment, financing, and management decision-making.</p>
+  </div>
+
+  <div class="course">
+    <h4>CFS 143 — Commercial Law</h4>
+    <div class="ects">6 ECTS</div>
+    <p>[PLACEHOLDER — course description to be supplied. Introduces the legal framework governing commercial activity.]</p>
+  </div>
+
+  <div class="course">
+    <h4>CFS 312 — Financial Econometrics</h4>
+    <div class="ects">6 ECTS</div>
+    <p>[PLACEHOLDER — course description to be supplied. Applies econometric methods to financial data and markets.]</p>
+  </div>
+
+  <div class="course">
+    <h4>CFS 323 — Financial Derivatives</h4>
+    <div class="ects">6 ECTS</div>
+    <p>[PLACEHOLDER — course description to be supplied. Covers the principles, pricing, and use of financial derivative instruments.]</p>
+  </div>
+
+  <div class="course">
+    <h4>CFS 324 — International Financial Management</h4>
+    <div class="ects">6 ECTS</div>
+    <p>[PLACEHOLDER — course description to be supplied. Covers the financial management of firms operating in an international environment.]</p>
+  </div>
+
+  <div class="course">
+    <h4>CFS 420 — Research Methods in Finance</h4>
+    <div class="ects">6 ECTS</div>
+    <p>[PLACEHOLDER — course description to be supplied. Introduces research methods and their application to problems in finance.]</p>
+  </div>
+
+  <div class="course">
+    <h4>CFS 321 — Banking Economics</h4>
+    <div class="ects">6 ECTS</div>
+    <p>[PLACEHOLDER — course description to be supplied. Covers the economics of banking and financial intermediation.]</p>
+  </div>
+
+  <div class="course">
+    <h4>CFS 322 — Valuation of Capital Assets</h4>
+    <div class="ects">6 ECTS</div>
+    <p>[PLACEHOLDER — course description to be supplied. Covers the theory and methods of valuing capital assets.]</p>
+  </div>
+
+  <div class="course">
+    <h4>CFS 325 — Investment Management</h4>
+    <div class="ects">6 ECTS</div>
+    <p>[PLACEHOLDER — course description to be supplied. Covers the principles and practice of managing investment portfolios.]</p>
+  </div>
+
+  <div class="course">
+    <h4>CFS 441 — Internship</h4>
+    <div class="ects">12 ECTS</div>
+    <p>Provides students with the opportunity to understand the problems and trends of the finance and shipping industries by immersing them in real working environments, evaluating the industry relevance of their academic studies, and preparing them for integration into their chosen sector after graduation.</p>
+  </div>
+
+  <div class="course">
+    <h4>LCE 410 — English for Finance</h4>
+    <div class="ects">4 ECTS</div>
+    <p>[PLACEHOLDER — course description to be supplied. Advanced English-language course in professional and financial communication.]</p>
+  </div>
+
+  <!-- ELECTIVES -->
+  <div class="course-group-heading">Elective Courses (Finance Specialisation)</div>
+
+  <div class="course">
+    <h4>CFS 326 — Financial Accounting II</h4>
+    <div class="ects">6 ECTS</div>
+    <p>[PLACEHOLDER — course description to be supplied. Continuation of financial accounting at an advanced level.]</p>
+  </div>
+
+  <div class="course">
+    <h4>CFS 327 — Management Accounting II</h4>
+    <div class="ects">6 ECTS</div>
+    <p>[PLACEHOLDER — course description to be supplied. Continuation of management accounting at an advanced level.]</p>
+  </div>
+
+  <div class="course">
+    <h4>CFS XXX — Financial Technology</h4>
+    <div class="ects">6 ECTS</div>
+    <p>[PLACEHOLDER — course description and final course code to be supplied. Covers financial technology and its applications.]</p>
+  </div>
+
+  <div class="course">
+    <h4>CFS XXX — Game Theory</h4>
+    <div class="ects">6 ECTS</div>
+    <p>[PLACEHOLDER — course description and final course code to be supplied. Introduces game theory and its economic and financial applications.]</p>
+  </div>
+
+  <div class="course">
+    <h4>CFS XXX — Data Analysis for Finance and Accounting</h4>
+    <div class="ects">6 ECTS</div>
+    <p>[PLACEHOLDER — course description and final course code to be supplied. Covers data-analysis methods for finance and accounting.]</p>
+  </div>
+
+  <div class="course">
+    <h4>CFS 342 — Corporate Law</h4>
+    <div class="ects">6 ECTS</div>
+    <p>[PLACEHOLDER — course description to be supplied. Covers the legal framework governing companies.]</p>
+  </div>
+
+  <div class="course">
+    <h4>CFS 423 — Commodity Risk Management</h4>
+    <div class="ects">6 ECTS</div>
+    <p>[PLACEHOLDER — course description to be supplied. Covers the management of risk in commodity markets.]</p>
+  </div>
+
+  <div class="course">
+    <h4>CFS 426 — Financial Accounting III</h4>
+    <div class="ects">6 ECTS</div>
+    <p>[PLACEHOLDER — course description to be supplied. Advanced financial accounting.]</p>
+  </div>
+
+  <div class="course">
+    <h4>CFS 427 — Auditing I</h4>
+    <div class="ects">6 ECTS</div>
+    <p>[PLACEHOLDER — course description to be supplied. Introduces the principles and practice of auditing.]</p>
+  </div>
+
+  <div class="course">
+    <h4>CFS 428 — Taxation</h4>
+    <div class="ects">6 ECTS</div>
+    <p>[PLACEHOLDER — course description to be supplied. Covers the principles of taxation.]</p>
+  </div>
+
+  <div class="course">
+    <h4>CFS 440 — Dissertation</h4>
+    <div class="ects">12 ECTS</div>
+    <p>[PLACEHOLDER — course description to be supplied. An independent research project on a topic in finance and shipping.]</p>
+  </div>
+
+  <div class="course">
+    <h4>CFS 452 — Behavioural Finance</h4>
+    <div class="ects">6 ECTS</div>
+    <p>[PLACEHOLDER — course description to be supplied. Covers the influence of behavioural factors on financial decision-making and markets.]</p>
+  </div>
+
+  <div class="course">
+    <h4>SHP 354 — Shipping Operations Management</h4>
+    <div class="ects">6 ECTS</div>
+    <p>[PLACEHOLDER — course description to be supplied. Covers the management of shipping operations.]</p>
+  </div>
+</div>
+
+<!-- ==================== TAB 4: ADMISSION ==================== -->
+<div class="tab-content" id="admission">
+  <h2>Admission Requirements</h2>
+
+  <div class="note">This programme is no longer accepting new applications; the last intake was 2024–25. The requirements below describe the admission framework that applied to the final intake, for reference.</div>
+
+  <h3>Pancyprian Examinations — Framework 22 (ΠΛΑΙΣΙΟ 22)</h3>
+  <p>Admission was based on the Pancyprian Examinations under Framework 22, with the following subject requirements.</p>
+
+  <h4>Mandatory subjects (2)</h4>
+  <ul>
+    <li>Modern Greek</li>
+    <li>Mathematics</li>
+  </ul>
+
+  <h4>Elective subjects (2)</h4>
+  <ul>
+    <li>Economics, or Accounting, or Physics</li>
+    <li>English (or an equivalent language qualification), or Computer Science</li>
+  </ul>
+
+  <div class="note">[PLACEHOLDER — Department to supply any additional admission routes (e.g. transfer students, holders of other qualifications, mature/international applicants) and the relevant minimum scores that applied to the final intake.]</div>
+</div>
+
+<!-- ==================== TAB 5: TUITION ==================== -->
+<div class="tab-content" id="tuition">
+  <h2>Tuition and Scholarships</h2>
+
+  <h3>Tuition Fees</h3>
+  <div class="note">No tuition fee figure was published on the live programme page at the time of writing. [PLACEHOLDER — Department to supply the tuition fee that applied to this undergraduate programme, including any fee waiver arrangements for Cypriot/EU students under public-university funding.]</div>
+
+  <h3>Scholarships</h3>
+  <div class="note">[PLACEHOLDER — Department to supply scholarship information: available scholarships, eligibility criteria, amounts, and the application process.]</div>
+</div>
+
+<!-- ==================== TAB 6: HOW YOU WILL LEARN ==================== -->
+<div class="tab-content" id="learning">
+  <h2>How You Will Learn</h2>
+
+  <p>The programme combines lectures, tutorials, and quantitative and applied work across economics, mathematics, statistics, econometrics, accounting, and finance. Specialist finance courses build progressively on the common foundation of Years 1–2, and the curriculum integrates professional terminology and communication in English through the English-for-Finance language courses.</p>
+
+  <h3>Applied and Research Components</h3>
+  <ul>
+    <li><strong>Internship (CFS 441, 12 ECTS):</strong> a structured placement immersing students in real working environments in the finance and shipping industries, helping them evaluate the relevance of their studies and prepare for entry into their chosen sector.</li>
+    <li><strong>Research Methods in Finance (CFS 420):</strong> develops the research skills needed for independent study in finance.</li>
+    <li><strong>Dissertation (CFS 440, 12 ECTS, elective):</strong> an independent research project for students who choose the research route.</li>
+  </ul>
+
+  <h3>Language of Instruction</h3>
+  <p>Most courses are taught in Greek. The English-for-Finance language courses (LCE 107, LCE 108, LCE 410) are delivered in English, and professional terminology in English is emphasised throughout the programme.</p>
+
+  <div class="note">[PLACEHOLDER — Department to supply details of teaching, learning, and assessment methods (e.g. lecture/tutorial hours, coursework vs. examination weighting, group work, use of software and databases) as set out in the programme specification.]</div>
+</div>
+
+<!-- ==================== TAB 7: RECOGNITION & CAREERS ==================== -->
+<div class="tab-content" id="careers">
+  <h2>Professional Recognition and Career Prospects</h2>
+
+  <h3>Professional Recognition and Exemptions</h3>
+  <p>The programme holds professional-body recognition that entitles graduates to exemptions from professional accountancy qualifications.</p>
+
+  <h4>ICAEW — Chartered Accountant (ACA)</h4>
+  <p>Graduates automatically receive exemption from eight modules of the ICAEW ACA qualification. The detailed exemption matrix is published by ICAEW (search by institution ID 492 in the ICAEW academic-credits directory).</p>
+
+  <h4>ACCA — Association of Chartered Certified Accountants</h4>
+  <p>Undergraduate students are entitled to ACCA exemptions; the exact number varies by year of graduation. ACCA provides an automatic exemptions-calculator tool for confirmation.</p>
+
+  <div class="note">[PLACEHOLDER — Department to confirm the current, exact number of ACCA exemptions for the relevant graduation cohorts, and to provide live links to the ICAEW exemption matrix and ACCA exemptions calculator.]</div>
+
+  <h3>Career Prospects</h3>
+  <p>The degree is designed to support immediate employment in management and economics roles. Graduates pursue careers in:</p>
+  <ul>
+    <li>Financial institutions and banking</li>
+    <li>Auditing firms</li>
+    <li>Investment companies</li>
+    <li>Business service organisations</li>
+    <li>Organisations involved in formulating economic policy</li>
+  </ul>
+  <p>The programme also prepares graduates for further study, including master's programmes at recognised universities and professional qualification programmes such as ACA and ACCA. With advanced specialisation, graduates can progress towards leadership positions in the private or public sector, or work as self-employed entrepreneurs.</p>
+
+  <h3>Employment Statistics</h3>
+  <div class="note">[PLACEHOLDER — Department to supply graduate employment statistics (e.g. employment rate within 6–12 months of graduation, sectors of employment, further-study rates). No employment statistics were published on the live programme page at the time of writing.]</div>
+</div>
+
+<!-- ==================== TAB 8: STUDENT SUPPORT ==================== -->
+<div class="tab-content" id="support">
+  <h2>Student Support and Resources</h2>
+
+  <h3>Academic Advisor</h3>
+  <p>Students are assigned an academic advisor to guide course selection, monitor academic progress, and support career planning.</p>
+
+  <h3>Learning Development Network (LDN)</h3>
+  <p>Support with study skills, academic writing, and technical and digital literacy.</p>
+
+  <h3>Library</h3>
+  <p>Access to academic databases, e-journals, and citation-management tools.</p>
+  <div class="note">[PLACEHOLDER — Department/Library to list the specific databases and resources most relevant to finance and shipping students.]</div>
+
+  <h3>Career Services</h3>
+  <p>Career counselling, CV review, interview preparation, and networking events, complementing the structured internship (CFS 441).</p>
+
+  <h3>Counselling Services</h3>
+  <p>Confidential student counselling and wellbeing support.</p>
+  <div class="note">[PLACEHOLDER — Department to confirm the current counselling-service contact details (email and telephone).]</div>
+</div>
+
+<!-- ==================== TAB 9: CONTACT ==================== -->
+<div class="tab-content" id="contact">
+  <h2>Contact</h2>
+
+  <div class="contact-block">
+    <strong>Department</strong>
+    Department of Finance, Accounting and Management Science<br>
+    Faculty of Management and Economics<br>
+    Cyprus University of Technology
+  </div>
+
+  <div class="contact-block">
+    <strong>Department Administration</strong>
+    Dimitra Christodoulidou, Administrative Assistant<br>
+    Email: d.christodoulidou@cut.ac.cy<br>
+    Tel: +357 25 002628
+  </div>
+
+  <div class="contact-block">
+    <strong>General University Enquiries</strong>
+    Cyprus University of Technology<br>
+    Archbishop Kyprianou 30, 3036 Limassol, Cyprus<br>
+    Email: administration@cut.ac.cy<br>
+    Tel: +357 25 002500 · Fax: +357 25 002750
+  </div>
+
+  <div class="note">[PLACEHOLDER — Department to supply the programme coordinator's name, title, email, and telephone. No coordinator was named on the live programme page at the time of writing.]</div>
+</div>
+
+<!-- ==================== JS ==================== -->
+<script>
+  document.querySelectorAll('.tabs-nav button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tabs-nav button').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tab-content').forEach(tc => tc.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById(btn.dataset.tab).classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  });
+</script>
+</body>
+</html>

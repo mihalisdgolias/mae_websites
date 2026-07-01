@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="MG">
+<title>MSc in Financial Management and Investment — Cyprus University of Technology</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;600;700&family=Source+Serif+4:wght@400;600&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.65;
+    color: #2a2a2a;
+    background: #f5f5f5;
+  }
+
+  /* ---- HEADER ---- */
+  .page-header {
+    background: #1a3a5c;
+    color: #fff;
+    padding: 48px 0 40px;
+  }
+  .page-header .wrap {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+  .page-header h1 {
+    font-family: 'Source Serif 4', serif;
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  .page-header .subtitle {
+    font-size: 0.95rem;
+    font-weight: 300;
+    opacity: 0.85;
+  }
+
+  /* ---- TABS NAV ---- */
+  .tabs-nav {
+    background: #fff;
+    border-bottom: 2px solid #ddd;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .tabs-nav .wrap {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    gap: 0;
+  }
+  .tabs-nav button {
+    background: none;
+    border: none;
+    padding: 14px 18px;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: #666;
+    cursor: pointer;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .tabs-nav button:hover { color: #1a3a5c; }
+  .tabs-nav button.active {
+    color: #1a3a5c;
+    border-bottom-color: #1a3a5c;
+  }
+
+  /* ---- CONTENT ---- */
+  .tab-content {
+    display: none;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+  }
+  .tab-content.active { display: block; }
+
+  h2 {
+    font-family: 'Source Serif 4', serif;
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: #1a3a5c;
+    margin-bottom: 24px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+  }
+  h3 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #1a3a5c;
+    margin: 32px 0 12px;
+  }
+  h4 {
+    font-size: 1.02rem;
+    font-weight: 700;
+    color: #333;
+    margin: 28px 0 8px;
+  }
+  p { margin-bottom: 14px; }
+
+  /* ---- TABLES ---- */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0 24px;
+    font-size: 0.93rem;
+  }
+  th, td {
+    text-align: left;
+    padding: 10px 14px;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  th {
+    background: #f0f3f6;
+    font-weight: 600;
+    color: #1a3a5c;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+  tr:hover td { background: #fafbfc; }
+
+  /* key-features table (2-col, no header) */
+  .kf-table th { display: none; }
+  .kf-table td:first-child {
+    font-weight: 600;
+    width: 160px;
+    color: #1a3a5c;
+  }
+
+  /* ---- LISTS ---- */
+  ul, ol { margin: 10px 0 16px 22px; }
+  li { margin-bottom: 6px; }
+
+  /* ---- COURSE CARD ---- */
+  .course {
+    background: #fff;
+    border: 1px solid #e4e4e4;
+    border-radius: 6px;
+    padding: 24px 28px;
+    margin: 20px 0;
+  }
+  .course h4 {
+    margin: 0 0 4px;
+    color: #1a3a5c;
+  }
+  .course .ects {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: #888;
+    margin-bottom: 14px;
+  }
+  .course p { margin-bottom: 12px; }
+  .course p:last-child { margin-bottom: 0; }
+  .course .prereq {
+    font-size: 0.88rem;
+    color: #777;
+    font-style: italic;
+    margin-top: 10px;
+  }
+
+  .course-group-heading {
+    font-family: 'Source Serif 4', serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1a3a5c;
+    margin: 40px 0 8px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid #e0e0e0;
+  }
+
+  /* ---- MISC ---- */
+  .note {
+    background: #fffbe6;
+    border-left: 4px solid #e6c200;
+    padding: 14px 18px;
+    margin: 18px 0;
+    font-size: 0.93rem;
+    border-radius: 0 4px 4px 0;
+  }
+  .cta-button {
+    display: inline-block;
+    background: #1a3a5c;
+    color: #fff;
+    padding: 12px 28px;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 4px;
+    margin-top: 16px;
+    font-size: 0.95rem;
+    transition: background 0.2s;
+  }
+  .cta-button:hover { background: #264d73; }
+
+  .contact-block { margin-bottom: 24px; }
+  .contact-block strong { display: block; margin-bottom: 2px; }
+
+  /* responsive */
+  @media (max-width: 640px) {
+    .page-header h1 { font-size: 1.5rem; }
+    .tabs-nav button { padding: 12px 12px; font-size: 0.8rem; }
+    .course { padding: 18px 16px; }
+    table { font-size: 0.85rem; }
+    th, td { padding: 8px 10px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ==================== HEADER ==================== -->
+<header class="page-header">
+  <div class="wrap">
+    <h1>MSc in Financial Management and Investment</h1>
+    <div class="subtitle">Department of Finance, Accounting and Management Science · Faculty of Management and Economics · Cyprus University of Technology</div>
+  </div>
+</header>
+
+<!-- ==================== TAB NAV ==================== -->
+<nav class="tabs-nav">
+  <div class="wrap">
+    <button class="active" data-tab="overview">Overview</button>
+    <button data-tab="structure">Programme Structure</button>
+    <button data-tab="courses">Course Descriptions</button>
+    <button data-tab="admission">Admission</button>
+    <button data-tab="tuition">Tuition &amp; Scholarships</button>
+    <button data-tab="learning">How You Will Learn</button>
+    <button data-tab="careers">Recognition &amp; Careers</button>
+    <button data-tab="support">Student Support</button>
+    <button data-tab="contact">Contact</button>
+  </div>
+</nav>
+
+<!-- ==================== TAB 1: OVERVIEW ==================== -->
+<div class="tab-content active" id="overview">
+  <h2>Overview</h2>
+  <p>The MSc in Financial Management and Investment is a postgraduate programme designed to equip students with the analytical tools, contemporary financial instruments, and practical knowledge required for careers in financial analysis, investment, business management, and risk management. It combines a strong theoretical foundation with modern analytical tools and applied knowledge of direct professional value.</p>
+  <p>The programme is built around an integrated treatment of financial analysis and valuation, corporate finance, portfolio management, risk management, and alternative and sustainable investments, complemented by data-driven finance (including applications in Python), a professional development seminar, and a practical internship. It is aimed both at recent graduates in economics, finance, management, accounting, mathematics, and the sciences, and at working professionals in banking, audit firms, investment organisations, consulting, accounting, FinTech, and corporate strategy, including those preparing for international professional certifications.</p>
+
+  <h3>Key Features</h3>
+  <table class="kf-table">
+    <tr><td>Duration</td><td>3 semesters plus a summer internship period</td></tr>
+    <tr><td>Credits</td><td>90 ECTS</td></tr>
+    <tr><td>Delivery</td><td>[PLACEHOLDER — Department to supply: mode of delivery (e.g. on-campus / hybrid / online) and attendance policy]</td></tr>
+    <tr><td>Language</td><td>Greek (an English-language option is indicated on the Department site)</td></tr>
+    <tr><td>Tuition</td><td>€5,125 (total programme)</td></tr>
+    <tr><td>Intake</td><td>15 students per academic year</td></tr>
+    <tr><td>Start</td><td>September 2026 (Fall semester)</td></tr>
+    <tr><td>Admission model</td><td>Rolling basis — applications evaluated in order of submission</td></tr>
+  </table>
+  <div class="note">The official University course catalogue lists the language of instruction as Greek, while the Department programme site (cutfams.com) indicates an English-language option is available. The Department should confirm the definitive language(s) of instruction.</div>
+
+  <h3>Intended Learning Outcomes</h3>
+  <p>The following intended learning outcomes are expressed qualitatively, derived from the programme aims published by the Department. They are presented in the Knowledge / Skills / Competences structure for accreditation purposes and should be reviewed and ratified by the Department.</p>
+  <div class="note">[PLACEHOLDER — Department to ratify: the Intended Learning Outcomes below are derived qualitatively from the published programme aims, not quoted from an official ILO statement. The Department should confirm, refine, and formally approve these as the programme's official ILOs.]</div>
+
+  <h4>Knowledge — On successful completion, graduates will be able to:</h4>
+  <ul>
+    <li>Explain the theoretical foundations of financial management, corporate finance, and investment analysis.</li>
+    <li>Describe the structure and functioning of financial markets and the principal financial instruments used by firms and investors.</li>
+    <li>Identify contemporary approaches to portfolio management, financial risk management, and the valuation of assets and companies.</li>
+    <li>Recognise the role of alternative and sustainable (ESG) investments within modern investment practice.</li>
+  </ul>
+
+  <h4>Skills — On successful completion, graduates will be able to:</h4>
+  <ul>
+    <li>Apply quantitative and statistical methods to the analysis of financial data and decision-making.</li>
+    <li>Analyse and interpret financial statements to assess the financial position and performance of an organisation.</li>
+    <li>Value financial assets and companies, and appraise investment opportunities using appropriate techniques.</li>
+    <li>Use modern analytical tools, including programming applications in Python, to support financial analysis.</li>
+    <li>Construct, manage, and evaluate investment portfolios and design risk-management strategies.</li>
+  </ul>
+
+  <h4>Competences — On successful completion, graduates will be able to:</h4>
+  <ul>
+    <li>Exercise analytical thinking and ethical decision-making in professional financial contexts.</li>
+    <li>Operate effectively in professional roles in banking, investment, consulting, audit, and corporate finance.</li>
+    <li>Conduct independent applied research on a financial-analysis problem and communicate findings to a professional audience.</li>
+    <li>Engage in continuing professional development, including preparation for international certifications such as the CFA.</li>
+  </ul>
+
+  <h3>Programme Coordinator</h3>
+  <div class="note">[PLACEHOLDER — Department to supply: name, title, telephone, and email of the Programme Coordinator. No coordinator is named on the official University page or the Department programme site.]</div>
+</div>
+
+<!-- ==================== TAB 2: PROGRAMME STRUCTURE ==================== -->
+<div class="tab-content" id="structure">
+  <h2>Programme Structure</h2>
+  <p>The programme comprises 90 ECTS delivered over three semesters plus a summer internship period. Two preparatory courses are offered on a pass/fail basis with no ECTS credit before the taught semesters begin. Semesters 1 and 2 consist of mandatory courses; the summer period includes a credit-bearing internship and a professional development seminar; the final semester offers elective options.</p>
+  <div class="note">The total credit figure published by the Department is 90 ECTS. The Department should confirm the exact mandatory/elective composition of the final semester, including how the elective options below combine to the stated credit total.</div>
+
+  <h3>Preparatory Courses (Pre-semester — Pass/Fail, no ECTS)</h3>
+  <table>
+    <tr><th>Code</th><th>Course</th><th>ECTS</th></tr>
+    <tr><td>FAMS 501</td><td>Introduction to Finance</td><td>Pass/Fail — 0</td></tr>
+    <tr><td>FAMS 502</td><td>Introduction to Statistics</td><td>Pass/Fail — 0</td></tr>
+  </table>
+
+  <h3>Semester 1 — Mandatory (30 ECTS)</h3>
+  <table>
+    <tr><th>Code</th><th>Course</th><th>ECTS</th></tr>
+    <tr><td>FAMS 507</td><td>Financial Analysis</td><td>7.5</td></tr>
+    <tr><td>FAMS 509</td><td>Quantitative Financial Analysis</td><td>7.5</td></tr>
+    <tr><td>FAMS 544</td><td>Financial Statements Analysis</td><td>7.5</td></tr>
+    <tr><td>FAMS 551</td><td>Asset Valuation and Investing</td><td>7.5</td></tr>
+  </table>
+
+  <h3>Semester 2 — Mandatory (30 ECTS)</h3>
+  <table>
+    <tr><th>Code</th><th>Course</th><th>ECTS</th></tr>
+    <tr><td>FAMS 508</td><td>Corporate Financial Management</td><td>7.5</td></tr>
+    <tr><td>FAMS 563</td><td>Investment and Financial Risk Management</td><td>7.5</td></tr>
+    <tr><td>FAMS 559</td><td>Applied Portfolio Management</td><td>7.5</td></tr>
+    <tr><td>FAMS 560</td><td>Alternative and Sustainable Investments</td><td>7.5</td></tr>
+  </table>
+
+  <h3>Summer Period (15 ECTS)</h3>
+  <table>
+    <tr><th>Code</th><th>Course</th><th>ECTS</th></tr>
+    <tr><td>PLA 500</td><td>Professional Internship and Career Development</td><td>15</td></tr>
+    <tr><td>FAMS 531</td><td>Professional Development Seminar: Applications in Financial Analysis with Python</td><td>0</td></tr>
+  </table>
+
+  <h3>Semester 3 — Elective (15 ECTS)</h3>
+  <table>
+    <tr><th>Code</th><th>Course</th><th>ECTS</th></tr>
+    <tr><td>FAMS 566</td><td>Business Research Project in Financial Analysis</td><td>15</td></tr>
+    <tr><td>FAMS 561</td><td>Business Valuation</td><td>7.5</td></tr>
+    <tr><td>[PLACEHOLDER — code to be supplied by the Department]</td><td>Business Ethics and Governance</td><td>7.5</td></tr>
+  </table>
+  <div class="note">Source discrepancy: the official University catalogue listed the code "FAMS 566" against both "Business Research Project in Financial Analysis" (15 ECTS) and "Business Ethics and Governance" (7.5 ECTS). A single code cannot apply to two distinct courses, so no code has been invented for "Business Ethics and Governance". The Department must supply the correct code for this course and confirm the elective combination rule for the final semester.</div>
+</div>
+
+<!-- ==================== TAB 3: COURSE DESCRIPTIONS ==================== -->
+<div class="tab-content" id="courses">
+  <h2>Course Descriptions</h2>
+  <div class="note">The official University course catalogue and the Department programme site (cutfams.com) publish course titles, codes, and ECTS but do not currently publish individual course descriptions or syllabi. The descriptions below are therefore placeholders to be supplied by the Department. Codes and ECTS shown are taken verbatim from the published sources.</div>
+
+  <!-- PREPARATORY -->
+  <div class="course-group-heading">Preparatory Courses (Pass/Fail, no ECTS)</div>
+
+  <div class="course">
+    <h4>FAMS 501 — Introduction to Finance</h4>
+    <div class="ects">Pass/Fail — no ECTS</div>
+    <p>[PLACEHOLDER — course description to be supplied by the Department]</p>
+  </div>
+
+  <div class="course">
+    <h4>FAMS 502 — Introduction to Statistics</h4>
+    <div class="ects">Pass/Fail — no ECTS</div>
+    <p>[PLACEHOLDER — course description to be supplied by the Department]</p>
+  </div>
+
+  <!-- SEMESTER 1 -->
+  <div class="course-group-heading">Semester 1 — Mandatory</div>
+
+  <div class="course">
+    <h4>FAMS 507 — Financial Analysis</h4>
+    <div class="ects">7.5 ECTS</div>
+    <p>[PLACEHOLDER — course description to be supplied by the Department]</p>
+  </div>
+
+  <div class="course">
+    <h4>FAMS 509 — Quantitative Financial Analysis</h4>
+    <div class="ects">7.5 ECTS</div>
+    <p>[PLACEHOLDER — course description to be supplied by the Department]</p>
+  </div>
+
+  <div class="course">
+    <h4>FAMS 544 — Financial Statements Analysis</h4>
+    <div class="ects">7.5 ECTS</div>
+    <p>[PLACEHOLDER — course description to be supplied by the Department]</p>
+  </div>
+
+  <div class="course">
+    <h4>FAMS 551 — Asset Valuation and Investing</h4>
+    <div class="ects">7.5 ECTS</div>
+    <p>[PLACEHOLDER — course description to be supplied by the Department]</p>
+  </div>
+
+  <!-- SEMESTER 2 -->
+  <div class="course-group-heading">Semester 2 — Mandatory</div>
+
+  <div class="course">
+    <h4>FAMS 508 — Corporate Financial Management</h4>
+    <div class="ects">7.5 ECTS</div>
+    <p>[PLACEHOLDER — course description to be supplied by the Department]</p>
+  </div>
+
+  <div class="course">
+    <h4>FAMS 563 — Investment and Financial Risk Management</h4>
+    <div class="ects">7.5 ECTS</div>
+    <p>[PLACEHOLDER — course description to be supplied by the Department]</p>
+  </div>
+
+  <div class="course">
+    <h4>FAMS 559 — Applied Portfolio Management</h4>
+    <div class="ects">7.5 ECTS</div>
+    <p>[PLACEHOLDER — course description to be supplied by the Department]</p>
+  </div>
+
+  <div class="course">
+    <h4>FAMS 560 — Alternative and Sustainable Investments</h4>
+    <div class="ects">7.5 ECTS</div>
+    <p>[PLACEHOLDER — course description to be supplied by the Department]</p>
+  </div>
+
+  <!-- SUMMER -->
+  <div class="course-group-heading">Summer Period</div>
+
+  <div class="course">
+    <h4>PLA 500 — Professional Internship and Career Development</h4>
+    <div class="ects">15 ECTS</div>
+    <p>[PLACEHOLDER — course description to be supplied by the Department]</p>
+  </div>
+
+  <div class="course">
+    <h4>FAMS 531 — Professional Development Seminar: Applications in Financial Analysis with Python</h4>
+    <div class="ects">0 ECTS</div>
+    <p>[PLACEHOLDER — course description to be supplied by the Department]</p>
+  </div>
+
+  <!-- SEMESTER 3 -->
+  <div class="course-group-heading">Semester 3 — Elective</div>
+
+  <div class="course">
+    <h4>FAMS 566 — Business Research Project in Financial Analysis</h4>
+    <div class="ects">15 ECTS</div>
+    <p>[PLACEHOLDER — course description to be supplied by the Department]</p>
+  </div>
+
+  <div class="course">
+    <h4>FAMS 561 — Business Valuation</h4>
+    <div class="ects">7.5 ECTS</div>
+    <p>[PLACEHOLDER — course description to be supplied by the Department]</p>
+  </div>
+
+  <div class="course">
+    <h4>Business Ethics and Governance</h4>
+    <div class="ects">7.5 ECTS · [PLACEHOLDER — course code to be supplied by the Department]</div>
+    <p>[PLACEHOLDER — course description to be supplied by the Department]</p>
+  </div>
+</div>
+
+<!-- ==================== TAB 4: ADMISSION ==================== -->
+<div class="tab-content" id="admission">
+  <h2>Admission Requirements</h2>
+
+  <h3>Who the Programme Is For</h3>
+  <p>The programme targets recent graduates in economics, finance, management, accounting, mathematics, or the sciences, as well as working professionals in banking, audit firms, investment organisations, consulting, accounting, FinTech, and corporate strategy, including those preparing for international certifications such as the CFA.</p>
+
+  <h3>Eligibility</h3>
+  <div class="note">[PLACEHOLDER — Department to supply: formal eligibility criteria (e.g. recognised bachelor's degree, KY.S.A.T.S. equivalence for non-Cypriot/non-Greek qualifications, minimum grade requirements). The published sources describe the target audience but do not state formal admission prerequisites.]</div>
+
+  <h3>Admission Model</h3>
+  <p>Applications are evaluated on a rolling basis, in order of submission. There are 15 places available per academic year, with intake commencing in September 2026.</p>
+
+  <h3>Required Documents</h3>
+  <div class="note">[PLACEHOLDER — Department to supply: the list of documents applicants must submit (e.g. identity document, CV, degree certificate(s), academic transcript(s), personal statement, referees, language certification). This list is not published on the sources reviewed.]</div>
+
+  <h3>Language Requirements</h3>
+  <div class="note">[PLACEHOLDER — Department to supply: language-proficiency requirements consistent with the confirmed language(s) of instruction.]</div>
+
+  <h3>How to Apply</h3>
+  <p>Applications and supporting documents are submitted online through the University's portal.</p>
+  <a href="#" class="cta-button">Apply Online</a>
+  <p style="margin-top:8px; font-size:0.88rem; color:#888;">[Application link — TBC]</p>
+</div>
+
+<!-- ==================== TAB 5: TUITION ==================== -->
+<div class="tab-content" id="tuition">
+  <h2>Tuition and Scholarships</h2>
+
+  <h3>Tuition Fees</h3>
+  <p>Total programme cost: <strong>€5,125</strong> for the entire programme.</p>
+
+  <h3>Scholarships</h3>
+  <p>Full and partial scholarships are available for academically distinguished students or those meeting specific criteria.</p>
+  <div class="note">[PLACEHOLDER — Department to supply: scholarship amounts, eligibility criteria, application process, and deadlines.]</div>
+</div>
+
+<!-- ==================== TAB 6: HOW YOU WILL LEARN ==================== -->
+<div class="tab-content" id="learning">
+  <h2>How You Will Learn</h2>
+  <p>The programme combines strong theoretical training with modern analytical tools and applied, professionally relevant knowledge. Learning is reinforced through data-driven finance, including programming applications in Python, a professional development seminar, and a credit-bearing internship that places study in a real professional setting.</p>
+
+  <h3>Applied and Data-Driven Learning</h3>
+  <p>Students develop hands-on competence with contemporary analytical tools. The Professional Development Seminar (FAMS 531) focuses on applications in financial analysis using Python, and quantitative methods are embedded across the taught courses.</p>
+
+  <h3>Professional Internship</h3>
+  <p>The Professional Internship and Career Development course (PLA 500, 15 ECTS) gives students structured workplace experience and career-development support as a formal, credit-bearing component of the programme.</p>
+
+  <h3>Applied Research</h3>
+  <p>Students may undertake the Business Research Project in Financial Analysis (FAMS 566, 15 ECTS), conducting an independent applied investigation of a financial-analysis problem.</p>
+
+  <h3>Delivery Mode and Attendance</h3>
+  <div class="note">[PLACEHOLDER — Department to supply: mode of delivery (on-campus / hybrid / online), attendance policy, weekly structure, learning platforms used, and expected study commitment.]</div>
+</div>
+
+<!-- ==================== TAB 7: RECOGNITION & CAREERS ==================== -->
+<div class="tab-content" id="careers">
+  <h2>Professional Recognition and Career Prospects</h2>
+
+  <h3>Professional Recognition</h3>
+  <p>The programme content aligns with the Chartered Financial Analyst (CFA®) examination frameworks; the programme is not, however, an official CFA-endorsed programme.</p>
+  <p>No professional-body exemptions are stated on the sources reviewed. Beyond the CFA framework alignment noted above, no formal professional-body exemptions or accreditations currently apply, unless the Department confirms otherwise.</p>
+  <div class="note">[PLACEHOLDER — Department to confirm: any formal professional-body recognition, accreditation, or examination exemptions, if applicable.]</div>
+
+  <h3>Career Prospects</h3>
+  <p>Graduates develop analytical thinking, technical expertise, practical experience, and ethical decision-making, and pursue careers across the following sectors and roles:</p>
+
+  <h4>Banking and Financial Institutions</h4>
+  <ul>
+    <li>Financial analysis</li>
+    <li>Credit risk assessment</li>
+    <li>Investment product design</li>
+    <li>Portfolio management</li>
+    <li>Treasury operations</li>
+  </ul>
+
+  <h4>Investment and Asset Management Firms</h4>
+  <ul>
+    <li>Investment analysis</li>
+    <li>Portfolio management</li>
+    <li>Investment strategy roles</li>
+  </ul>
+
+  <h4>Consulting and Audit Firms</h4>
+  <ul>
+    <li>Financial analysis</li>
+    <li>Business valuation</li>
+    <li>Due diligence</li>
+    <li>Mergers and acquisitions (M&amp;A) advisory</li>
+    <li>Financial planning</li>
+    <li>Risk management</li>
+  </ul>
+
+  <h4>Forex and Foreign Exchange Companies</h4>
+  <ul>
+    <li>FX analysis</li>
+    <li>Currency trading</li>
+    <li>Risk hedging</li>
+  </ul>
+
+  <h4>Wealth Management Firms and Family Offices</h4>
+  <ul>
+    <li>Financial planning</li>
+    <li>Investment advisory</li>
+    <li>Portfolio strategy development</li>
+  </ul>
+
+  <h4>Alternative and Sustainable Investment Organisations</h4>
+  <ul>
+    <li>ESG investing</li>
+    <li>Impact funds</li>
+    <li>Green bonds</li>
+    <li>Sustainable finance</li>
+  </ul>
+
+  <h4>Corporations and Multinational Organisations</h4>
+  <ul>
+    <li>Corporate finance</li>
+    <li>Treasury management</li>
+    <li>Strategic financial decision-making</li>
+  </ul>
+
+  <h3>Employment Statistics</h3>
+  <div class="note">[PLACEHOLDER — Department to supply: employment rate, time-to-employment, and any graduate-outcome statistics. No employment statistics or graduation rates are published on the sources reviewed.]</div>
+</div>
+
+<!-- ==================== TAB 8: STUDENT SUPPORT ==================== -->
+<div class="tab-content" id="support">
+  <h2>Student Support and Resources</h2>
+
+  <h3>Academic Advisor</h3>
+  <p>Assigned at enrolment to guide course selection, academic progress, and career planning.</p>
+
+  <h3>Learning Development Network (LDN)</h3>
+  <p>Technical support, study skills, writing support, and AI literacy training.</p>
+
+  <h3>Career Services</h3>
+  <p>Career counselling, CV review, interview preparation, and networking events. The programme's Professional Internship and Career Development course (PLA 500) provides additional structured career-development support.</p>
+
+  <h3>Library</h3>
+  <p>Access to academic databases, e-journals, and citation management tools (EndNote, Zotero).</p>
+  <div class="note">[PLACEHOLDER — Department to supply: any specialised financial databases or software available to students (e.g. Bloomberg, Refinitiv/Datastream), if applicable.]</div>
+
+  <h3>Counselling Services</h3>
+  <p>Confidential support available in-person and remotely.<br>
+  Email: counseling@cut.ac.cy · Tel: +357 25 002 500 (24/7)</p>
+</div>
+
+<!-- ==================== TAB 9: CONTACT ==================== -->
+<div class="tab-content" id="contact">
+  <h2>Contact</h2>
+
+  <div class="contact-block">
+    <strong>Programme Coordinator</strong>
+    [PLACEHOLDER — Department to supply: name, title, email, and telephone of the Programme Coordinator]
+  </div>
+
+  <div class="contact-block">
+    <strong>Department</strong>
+    Department of Finance, Accounting and Management Science<br>
+    Faculty of Management and Economics<br>
+    Cyprus University of Technology<br>
+    Arch. Kyprianou 30, 3036 Limassol, Cyprus<br>
+    Tel: +357 2500 2500<br>
+    Email: administration@cut.ac.cy
+  </div>
+
+  <div class="contact-block">
+    <strong>General Enquiries</strong>
+    Student Services and Information Centre<br>
+    Email: kep@cut.ac.cy<br>
+    Tel: +357 25 002710/11
+  </div>
+
+  <div class="note">[PLACEHOLDER — Department to supply: dedicated programme/Department contact email and the programme's web address.]</div>
+
+  <a href="#" class="cta-button">Apply Online</a>
+  <p style="margin-top:8px; font-size:0.88rem; color:#888;">[Application link — TBC]</p>
+</div>
+
+<!-- ==================== JS ==================== -->
+<script>
+  document.querySelectorAll('.tabs-nav button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tabs-nav button').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tab-content').forEach(tc => tc.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById(btn.dataset.tab).classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  });
+</script>
+</body>
+</html>

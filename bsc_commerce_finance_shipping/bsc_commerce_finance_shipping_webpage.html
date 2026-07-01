@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="MG">
+<title>BSc in Commerce, Finance and Shipping — Cyprus University of Technology</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;600;700&family=Source+Serif+4:wght@400;600&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.65;
+    color: #2a2a2a;
+    background: #f5f5f5;
+  }
+
+  /* ---- HEADER ---- */
+  .page-header {
+    background: #1a3a5c;
+    color: #fff;
+    padding: 48px 0 40px;
+  }
+  .page-header .wrap {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+  .page-header h1 {
+    font-family: 'Source Serif 4', serif;
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  .page-header .subtitle {
+    font-size: 0.95rem;
+    font-weight: 300;
+    opacity: 0.85;
+  }
+
+  /* ---- TABS NAV ---- */
+  .tabs-nav {
+    background: #fff;
+    border-bottom: 2px solid #ddd;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .tabs-nav .wrap {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    gap: 0;
+  }
+  .tabs-nav button {
+    background: none;
+    border: none;
+    padding: 14px 18px;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: #666;
+    cursor: pointer;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .tabs-nav button:hover { color: #1a3a5c; }
+  .tabs-nav button.active {
+    color: #1a3a5c;
+    border-bottom-color: #1a3a5c;
+  }
+
+  /* ---- CONTENT ---- */
+  .tab-content {
+    display: none;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+  }
+  .tab-content.active { display: block; }
+
+  h2 {
+    font-family: 'Source Serif 4', serif;
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: #1a3a5c;
+    margin-bottom: 24px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+  }
+  h3 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #1a3a5c;
+    margin: 32px 0 12px;
+  }
+  h4 {
+    font-size: 1.02rem;
+    font-weight: 700;
+    color: #333;
+    margin: 28px 0 8px;
+  }
+  p { margin-bottom: 14px; }
+
+  /* ---- TABLES ---- */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0 24px;
+    font-size: 0.93rem;
+  }
+  th, td {
+    text-align: left;
+    padding: 10px 14px;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  th {
+    background: #f0f3f6;
+    font-weight: 600;
+    color: #1a3a5c;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+  tr:hover td { background: #fafbfc; }
+
+  /* key-features table (2-col, no header) */
+  .kf-table th { display: none; }
+  .kf-table td:first-child {
+    font-weight: 600;
+    width: 160px;
+    color: #1a3a5c;
+  }
+
+  /* ---- LISTS ---- */
+  ul, ol { margin: 10px 0 16px 22px; }
+  li { margin-bottom: 6px; }
+
+  /* ---- COURSE CARD ---- */
+  .course {
+    background: #fff;
+    border: 1px solid #e4e4e4;
+    border-radius: 6px;
+    padding: 24px 28px;
+    margin: 20px 0;
+  }
+  .course h4 {
+    margin: 0 0 4px;
+    color: #1a3a5c;
+  }
+  .course .ects {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: #888;
+    margin-bottom: 14px;
+  }
+  .course p { margin-bottom: 12px; }
+  .course p:last-child { margin-bottom: 0; }
+  .course .prereq {
+    font-size: 0.88rem;
+    color: #777;
+    font-style: italic;
+    margin-top: 10px;
+  }
+
+  .course-group-heading {
+    font-family: 'Source Serif 4', serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1a3a5c;
+    margin: 40px 0 8px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid #e0e0e0;
+  }
+
+  /* ---- MISC ---- */
+  .note {
+    background: #fffbe6;
+    border-left: 4px solid #e6c200;
+    padding: 14px 18px;
+    margin: 18px 0;
+    font-size: 0.93rem;
+    border-radius: 0 4px 4px 0;
+  }
+  .cta-button {
+    display: inline-block;
+    background: #1a3a5c;
+    color: #fff;
+    padding: 12px 28px;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 4px;
+    margin-top: 16px;
+    font-size: 0.95rem;
+    transition: background 0.2s;
+  }
+  .cta-button:hover { background: #264d73; }
+
+  .contact-block { margin-bottom: 24px; }
+  .contact-block strong { display: block; margin-bottom: 2px; }
+
+  /* responsive */
+  @media (max-width: 640px) {
+    .page-header h1 { font-size: 1.5rem; }
+    .tabs-nav button { padding: 12px 12px; font-size: 0.8rem; }
+    .course { padding: 18px 16px; }
+    table { font-size: 0.85rem; }
+    th, td { padding: 8px 10px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ==================== HEADER ==================== -->
+<header class="page-header">
+  <div class="wrap">
+    <h1>BSc in Commerce, Finance and Shipping</h1>
+    <div class="subtitle">Department of Finance, Accounting and Management Science · Faculty of Management and Economics · Cyprus University of Technology</div>
+  </div>
+</header>
+
+<!-- ==================== TAB NAV ==================== -->
+<nav class="tabs-nav">
+  <div class="wrap">
+    <button class="active" data-tab="overview">Overview</button>
+    <button data-tab="structure">Programme Structure</button>
+    <button data-tab="courses">Course Descriptions</button>
+    <button data-tab="admission">Admission</button>
+    <button data-tab="learning">How You Will Learn</button>
+    <button data-tab="careers">Recognition &amp; Careers</button>
+    <button data-tab="support">Student Support</button>
+    <button data-tab="contact">Contact</button>
+  </div>
+</nav>
+
+<!-- ==================== TAB 1: OVERVIEW ==================== -->
+<div class="tab-content active" id="overview">
+  <h2>Overview</h2>
+
+<table border="1" cellpadding="1" cellspacing="1" style="width:300px">
+	<tbody>
+		<tr>
+			<td>
+			<p><strong>Students admitted by the Pancyprian examinations of the academic&nbsp;</strong><strong>year 2024-25 will complete their studies only with finance direction.</strong></p>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<p style="text-align: justify;">In the globalized economy, the financial services sector is prominent in terms of its contribution to growth. In general, finance focuses on the management of economic resources and risks and on methods of raising finance for the economic activities on which much of the world&#39;s economic activity depends. Also, the shipping sector is one of the major components of the national economy. The Department&#39;s undergraduate curriculum focuses on these two areas. In the first two years the programme offers general education aimed at understanding theory and analysis. In the third and fourth years, students will be taught specialised courses to gain in-depth knowledge of Finance.</p>
+
+<p style="text-align: justify;">The aim of the programme is to provide an understanding of the fundamental principles of finance in a modern and rapidly evolving economic system.</p>
+
+<p style="text-align: justify;">The primary objective of the programme is to equip graduates with the necessary knowledge and skills and to provide them with a strong academic and professional background to enable them to apply for professional positions in financial institutions, accounting and audit firms, investment firms, agencies and general business services companies.</p>
+
+<p style="text-align: justify;">The programme aims to develop students&#39; ability to analyse, understand and evaluate various issues related to the functioning of financial markets, fund management, asset valuation, investment appraisal, financial risk management and financial information analysis.</p>
+
+<p style="text-align: justify;">Students admitted by the Pancyprian examinations in the academic year 2024-25 will complete their studies only with finance direction. The following applies to these students:</p>
+
+<p style="text-align: justify;">In the first two years, offered courses provide students with the necessary theoretical knowledge and quantitative tools used in modern finance. During the first two years, the curriculum follows a core curriculum that equips students with a strong foundation in quantitative and analytical critical thinking. Courses offered include Economics, Accounting, Statistical Analysis, Finance, shipping and transportation and then (from fifth semester) specialization/concentration courses in contemporary finance.</p>
+
+<p style="text-align: justify;">Thereafter (from fifth semester onwards) the curriculum includes specialised and targeted courses in finance. Students choose advanced level courses in finance in order to deepen their knowledge, providing a strong academic and professional background. This specialisation gives students the opportunity to focus their studies, laying a solid foundation for future careers as leaders in either the private or public sector or as self-employed entrepreneurs. The curriculum includes, among others, financial statement analysis, econometrics, international financial markets, investment and risk management, market and banking.</p>
+
+<p><strong>Certifications and Exceptions</strong></p>
+
+<p style="text-align: justify;">The FAMS Department collaborates with internationally recognized professional bodies. The Department&#39;s study programme has received accreditation by the ACA (&Iota;CAEW Chartered Accountant), ACCA (Association of Chartered Certified Accountants) leading to exemptions from professional examinations for our graduates.</p>
+
+<p><strong>ICAEW Chartered Accountant qualification (ACA)</strong></p>
+
+<p style="text-align: justify;">Graduates of the Department receive automatic exemptions from eight (8) Units. The interested parties can find the detailed table on the organization&#39;s website&nbsp;<a href="https://translate.google.com/translate?hl=en&amp;prev=_t&amp;sl=el&amp;tl=en&amp;u=https://apps.icaew.com/cpldirectory/Search/AcademicCreditsAvailable%3Fid%3D492%26cplName%3DAll%2520Undergraduate%2520Degrees" target="_blank"><strong>here</strong></a><strong>.</strong>&nbsp;&nbsp;</p>
+
+<p>The cooperation between CUT and ICAEW can be found&nbsp;<a href="https://www.cut.ac.cy/digitalAssets/84/84570_1certificate.pdf">here</a>.</p>
+
+<p><strong>Association of Chartered Certified Accountants (ACCA)</strong></p>
+
+<p style="text-align: justify;">Undergraduate students of the Department are also entitled to exceptions from the Association of Chartered Certified Accountants (ACCA), currently nine (9).</p>
+
+<p style="text-align: justify;"><strong>Exemptions vary, depending on the year of graduation.</strong>&nbsp;Interested parties can use the automated calculation tool for calculating the eligible exemptions provided by the Association by visiting&nbsp;<a href="https://translate.google.com/translate?hl=en&amp;prev=_t&amp;sl=el&amp;tl=en&amp;u=https://www.accaglobal.com/gb/en/help/exemptions-calculator.html" target="_blank">this website</a>.&nbsp;</p>
+
+  <h3>Key Features</h3>
+  <table class="kf-table">
+    <tr><td>Duration</td><td>4 years / 8 semesters</td></tr>
+    <tr><td>Credits</td><td>240 ECTS</td></tr>
+    <tr><td>Level</td><td>Undergraduate (Bachelor's degree)</td></tr>
+    <tr><td>Language</td><td>Greek (most courses) and English (English-for-Finance language courses)</td></tr>
+    <tr><td>Specialisation</td><td>Finance (the specialisation available to the 2024–25 final intake)</td></tr>
+    <tr><td>Department</td><td>Finance, Accounting and Management Science</td></tr>
+  </table>
+
+  <div class="note">Per-year ECTS distribution (from the published curriculum): Years 1–2 carry 28 ECTS per semester (56 ECTS per year); Year 3 carries 30 ECTS per semester (60 ECTS); Year 4 carries 30 ECTS in Semester 7 and 34 ECTS in Semester 8 (64 ECTS). The published per-semester totals sum to 248 ECTS rather than the stated 240 ECTS —.</div>
+
+  <h3>Intended Learning Outcomes</h3>
+  <p>The published programme materials present learning objectives at the level of individual courses rather than as an integrated, programme-wide statement. The outcomes below are derived qualitatively from the programme's stated aims and course objectives; the Department should review and confirm them as the official programme-level learning outcomes.</p>
+
+  <h4>Knowledge</h4>
+  <ul>
+    <li>Understand the fundamental principles of financial operations within modern economic systems.</li>
+    <li>Explain core concepts in micro- and macroeconomics, international economics, and the operation of financial markets.</li>
+    <li>Describe the principles of financial and management accounting and the analysis of financial statements.</li>
+    <li>Understand the principles of corporate finance, banking, investment management, financial derivatives, and the financing of shipping.</li>
+  </ul>
+
+  <h4>Skills</h4>
+  <ul>
+    <li>Analyse, understand and evaluate issues concerning the operation of financial markets.</li>
+    <li>Apply mathematical, statistical, and econometric methods to economic and business problems.</li>
+    <li>Use financial-statement information to support investment, financing, and management decisions.</li>
+    <li>Apply quantitative and qualitative research methods to problems in finance.</li>
+  </ul>
+
+  <h4>Competences</h4>
+  <ul>
+    <li>Take on professional positions in financial institutions, auditing firms, investment companies, and business service organisations.</li>
+    <li>Operate effectively in real working environments, as developed through the internship.</li>
+    <li>Pursue further study at master's level and professional accountancy qualifications (e.g. ACA, ACCA).</li>
+    <li>Work towards leadership roles in the private or public sector, or as self-employed entrepreneurs.</li>
+  </ul>
+
+  <h3>Programme Coordinator</h3>
+  <p>Programme co-coordinators: <strong>Professor Christos Savva</strong> — <a href="mailto:christos.savva@cut.ac.cy">christos.savva@cut.ac.cy</a>, +357 25002349; and <strong>Associate Professor Eleni Kalotychou</strong> — <a href="mailto:eleni.kalotychou@cut.ac.cy">eleni.kalotychou@cut.ac.cy</a>, +357 25002167.</p>
+</div>
+
+<!-- ==================== TAB 2: PROGRAMME STRUCTURE ==================== -->
+<div class="tab-content" id="structure">
+  <h2>Programme Structure</h2>
+  <p>The programme consists of common courses in Years 1–2 (Semesters 1–4), followed by the Finance specialisation in Years 3–4 (Semesters 5–8). The final intake (2024–25) completes the Finance specialisation. Course codes and ECTS credits below are reproduced from the published curriculum.</p>
+
+  <div class="note">Two courses appear in the published curriculum with a generic code "CFS XXX" (Introduction to Programming in Semester 4, and several electives). These are reproduced as published —.</div>
+
+  <h3>Years 1–2 — Common Courses</h3>
+
+  <h4>Semester 1 (28 ECTS)</h4>
+  <table>
+    <tr><th>Code</th><th>Course</th><th>ECTS</th></tr>
+    <tr><td>CFS 101</td><td>Economics I</td><td>6</td></tr>
+    <tr><td>CFS 110</td><td>Mathematical Methods in Economics and Management I</td><td>6</td></tr>
+    <tr><td>HTM 140</td><td>Principles of Financial Accounting</td><td>6</td></tr>
+    <tr><td>LCE 107</td><td>English for Finance I</td><td>4</td></tr>
+    <tr><td>HTM 201</td><td>Business Ethics</td><td>6</td></tr>
+  </table>
+
+  <h4>Semester 2 (28 ECTS)</h4>
+  <table>
+    <tr><th>Code</th><th>Course</th><th>ECTS</th></tr>
+    <tr><td>CFS 102</td><td>Economics II</td><td>6</td></tr>
+    <tr><td>CFS 111</td><td>Statistical Methods in Economics and Management I</td><td>6</td></tr>
+    <tr><td>CFS 141</td><td>Information Technology for Business</td><td>6</td></tr>
+    <tr><td>LCE 108</td><td>English for Finance II</td><td>4</td></tr>
+    <tr><td>HTM 141</td><td>Management Accounting</td><td>6</td></tr>
+  </table>
+
+  <h4>Semester 3 (30 ECTS)</h4>
+  <table>
+    <tr><th>Code</th><th>Course</th><th>ECTS</th></tr>
+    <tr><td>CFS 221</td><td>Finance I</td><td>6</td></tr>
+    <tr><td>CFS 201</td><td>International Economics I</td><td>6</td></tr>
+    <tr><td>SHP 111</td><td>Introduction to Shipping</td><td>6</td></tr>
+    <tr><td>CFS 210</td><td>Mathematical Methods in Economics and Management II</td><td>6</td></tr>
+    <tr><td>CFS 203</td><td>Commerce I</td><td>6</td></tr>
+  </table>
+
+  <h4>Semester 4 (30 ECTS)</h4>
+  <table>
+    <tr><th>Code</th><th>Course</th><th>ECTS</th></tr>
+    <tr><td>CFS 222</td><td>Finance II</td><td>6</td></tr>
+    <tr><td>CFS 202</td><td>International Economics II</td><td>6</td></tr>
+    <tr><td>CFS XXX</td><td>Introduction to Programming</td><td>6</td></tr>
+    <tr><td>CFS 211</td><td>Statistical Methods in Economics and Management II</td><td>6</td></tr>
+    <tr><td>CFS 204</td><td>Commerce II</td><td>6</td></tr>
+  </table>
+
+  <h3>Years 3–4 — Finance Specialisation</h3>
+
+  <h4>Semester 5 (30 ECTS)</h4>
+  <table>
+    <tr><th>Code</th><th>Course</th><th>ECTS</th></tr>
+    <tr><td>CFS 310</td><td>Introduction to Econometrics</td><td>6</td></tr>
+    <tr><td>CFS 320</td><td>Corporate Finance</td><td>6</td></tr>
+    <tr><td>CFS 330</td><td>Shipping Finance</td><td>6</td></tr>
+    <tr><td>CFS 424</td><td>Financial Statement Analysis</td><td>6</td></tr>
+    <tr><td></td><td>Elective course</td><td>6</td></tr>
+  </table>
+
+  <h4>Semester 6 (30 ECTS)</h4>
+  <table>
+    <tr><th>Code</th><th>Course</th><th>ECTS</th></tr>
+    <tr><td>CFS 143</td><td>Commercial Law</td><td>6</td></tr>
+    <tr><td>CFS 312</td><td>Financial Econometrics</td><td>6</td></tr>
+    <tr><td>CFS 323</td><td>Financial Derivatives</td><td>6</td></tr>
+    <tr><td>CFS 324</td><td>International Financial Management</td><td>6</td></tr>
+    <tr><td>CFS 420</td><td>Research Methods in Finance</td><td>6</td></tr>
+  </table>
+
+  <h4>Semester 7 (30 ECTS)</h4>
+  <table>
+    <tr><th>Code</th><th>Course</th><th>ECTS</th></tr>
+    <tr><td>CFS 321</td><td>Banking Economics</td><td>6</td></tr>
+    <tr><td>CFS 322</td><td>Valuation of Capital Assets</td><td>6</td></tr>
+    <tr><td></td><td>Elective courses</td><td>18</td></tr>
+  </table>
+
+  <h4>Semester 8 (34 ECTS)</h4>
+  <table>
+    <tr><th>Code</th><th>Course</th><th>ECTS</th></tr>
+    <tr><td>CFS 325</td><td>Investment Management</td><td>6</td></tr>
+    <tr><td>CFS 441</td><td>Internship</td><td>12</td></tr>
+    <tr><td>LCE 410</td><td>English for Finance</td><td>4</td></tr>
+    <tr><td></td><td>Elective courses</td><td>12</td></tr>
+  </table>
+
+  <h3>Elective Courses (Finance Specialisation)</h3>
+  <p>At least two elective courses must be selected from within the Department. A maximum of 18 ECTS may be taken from other programmes within the Faculty of Management and Economics, and a maximum of 12 ECTS from departments outside the Faculty (subject to departmental approval).</p>
+  <table>
+    <tr><th>Code</th><th>Course</th><th>ECTS</th></tr>
+    <tr><td>CFS 326</td><td>Financial Accounting II</td><td>6</td></tr>
+    <tr><td>CFS 327</td><td>Management Accounting II</td><td>6</td></tr>
+    <tr><td>CFS XXX</td><td>Financial Technology</td><td>6</td></tr>
+    <tr><td>CFS XXX</td><td>Game Theory</td><td>6</td></tr>
+    <tr><td>CFS XXX</td><td>Data Analysis for Finance and Accounting</td><td>6</td></tr>
+    <tr><td>CFS 342</td><td>Corporate Law</td><td>6</td></tr>
+    <tr><td>CFS 423</td><td>Commodity Risk Management</td><td>6</td></tr>
+    <tr><td>CFS 426</td><td>Financial Accounting III</td><td>6</td></tr>
+    <tr><td>CFS 427</td><td>Auditing I</td><td>6</td></tr>
+    <tr><td>CFS 428</td><td>Taxation</td><td>6</td></tr>
+    <tr><td>CFS 440</td><td>Dissertation</td><td>12</td></tr>
+    <tr><td>CFS 452</td><td>Behavioural Finance</td><td>6</td></tr>
+    <tr><td>SHP 354</td><td>Shipping Operations Management</td><td>6</td></tr>
+  </table>
+</div>
+
+<!-- ==================== TAB 3: COURSE DESCRIPTIONS ==================== -->
+<div class="tab-content" id="courses">
+  <h2>Course Descriptions</h2>
+  <p>Descriptions below use the published course text where available.</p>
+
+  <!-- COMMON / YEARS 1-2 -->
+  <div class="course-group-heading">Years 1–2 — Common Courses</div>
+
+  <div class="course">
+    <h4>CFS 101 — Economics I</h4>
+    <div class="ects">6 ECTS</div>
+    <p>This is an introductory course in economics aiming to help students to start thinking as economists and introduce them to the basic concepts of micro-economics. Initially, the lectures focus on the basic principles of economics. Next, the lectures focus on analysing the mechanism through which the forces of demand and supply determine the prices in the markets and the efficiency of the markets. The course is also interested to examine the efficiency of the markets and the effects of various public policies on the markets and the efficiency of the markets. Finally, the course examines the cost of production and how produces make their decisions under different market structures.</p>
+  </div>
+
+  <div class="course">
+    <h4>CFS 110 — Mathematical Methods in Economics and Management I</h4>
+    <div class="ects">6 ECTS</div>
+    <p>The course aims to familiarize students to the basic concepts of limit, continuity, differentiation and integral. Furthermore the course purposes to introduce student to the theory of optimization and help them to understand appropriate mathematical methods that will lead them to study and solve economic, administrative and other problems using mathematical analysis</p>
+  </div>
+
+  <div class="course">
+    <h4>HTM 140 — Principles of Financial Accounting</h4>
+    <div class="ects">6 ECTS</div>
+    <p>The objective of the course is to enable the students to develop knowledge and understanding of the underlying principles and concepts relating to financial accounting and technical proficiency in the use of double-entry accounting techniques including the preparation of basic financial statements. In addition students will cover topics in conceptual and regulatory frameworks, annual reporting, and interpretation of accounts, international accounting and creative accounting such as fraud and internal controls.</p>
+  </div>
+
+  <div class="course">
+    <h4>LCE 107 — English for Finance I</h4>
+    <div class="ects">6 ECTS</div>
+    <p>The general objective of this three-hour per week, 4-ECTS credit (European Credits Transfer and Accumulation System) required degree level course is to enable students to communicate competently at a Β1-B2 level of the Common European Framework of Reference (CEFR) for Languages on issues related to students’ social and academic life (university, curriculum, field of study), as well as on issues related to their future professional careers (occupations, types of companies, international marketing mistakes, leadership, etc.). Computer Assisted Language Learning (CALL) and culture learning are done through communicative situations deriving from authentic-like communication situations students may experience in their lives during their studies and professional careers. Language competence is acquired through the use of text types, scenarios, and roles which promote the production and understanding of spoken and written language related to the topics covered. The course is based on current learning theories, such as constructivism and social constructivism and on student-centered teaching methods. It develops both language as well transferable 21st century skills, such as communication, use of new information and communication technologies (ICT), collaboration, creativity, innovation, critical thinking, intercultural awareness as well as autonomy and lifelong learning. In relation to Commerce, Finance and Shipping, this course particularly aims at developing students’ ability to understand lectures and seminars, which are delivered by guest speakers in their Department or webinar or video speakers. The course also aims at developing students’ writing and speaking skills on topics related to the field of their studies and their competence in the management of bibliography in English.</p>
+  </div>
+
+  <div class="course">
+    <h4>HTM 201 — Business Ethics</h4>
+    <div class="ects">6 ECTS</div>
+    <p>A theoretical lesson which aims to students a general idea of what is ethical in business, a general development issues of interest to modern businessmen with several references to case studies, dilemmas and discussion of recent issues such as transparency, meritocracy, ethical values.</p>
+  </div>
+
+  <div class="course">
+    <h4>CFS 102 — Economics II</h4>
+    <div class="ects">6 ECTS</div>
+    <p>The purpose of this course is to understand basic macroeconomic principles. It starts with the introduction of the basic measures of macroeconomic performance such as CPI index, GDP and GDP deflator. Then it investigates what factors induce growth and low inflation in the long run and concludes with the factors that lead to deviations from an economy’s long run trend. Learning Outcomes To be able to use common measures of macroeconomic performance and understand their limitations. Also, to be able to understand what are good measures that promote long run growth and what are the short term policy measures that can limit fluctuations around the long run trend.</p>
+  </div>
+
+  <div class="course">
+    <h4>CFS 111 — Statistical Methods in Economics and Management I</h4>
+    <div class="ects">6 ECTS</div>
+    <p>The course aims to introduce students to the basic statistical concepts and the analytical procedures used in quantitative research in economics and business administration. Students should understand basic principles of Probability Theory and Statistics to be able to apply basic statistical methods. By the end of the course the students will be able to process data, prepare tables and charts and present and analyze statistical results.</p>
+  </div>
+
+  <div class="course">
+    <h4>CFS 141 — Information Technology for Business</h4>
+    <div class="ects">6 ECTS</div>
+    <p>This course gives students the opportunity to make full use of Information Technology (IT) in their future studies and careers. The course starts with examining the contribution of information systems to businesses, and the prospects offered by IT development. It, then, covers basic topics related to information technology, its applications in the business environment, modern methods of development and administration of information systems. The students will then become advance users of the MS-EXCEL program for data management and analysis. The course also prepares students to be able to use statistical packages, such as the EVIEWS and SPSS, that they may need to use in their final years of study.</p>
+  </div>
+
+  <div class="course">
+    <h4>LCE 108 — English for Finance II</h4>
+    <div class="ects">6 ECTS</div>
+    <p>The general objective of this course is to enable students to communicate competently at a B2 level of the Common European Framework of Reference (CEFR) for Languages on academic issues as well as on issues related to their future professional careers (strategy, marketing, outsourcing, markets, communication, etc.). Computer Assisted Language Learning (CALL) and culture learning are done through communicative situations deriving from authentic-like communication situations students may experience in their lives during their studies and professional careers. Language competence is acquired through the use of text types, scenarios, and roles which promote the production and understanding of spoken and written language related to the topics covered. The course is based on current learning theories, such as constructivism and social constructivism and on student-centered teaching methods. It develops both language as well as transferable 21st century skills, such as communication, use of new information and communication technologies (ICT), collaboration, creativity, innovation, critical thinking, intercultural awareness as well as autonomy and lifelong learning. In relation to Commerce, Finance and Shipping, this course particularly aims at developing students’ competence in understanding lectures and seminars, which are delivered by guest speakers in their Department or webinar or video speakers. The course also aims at developing students’ writing and speaking skills on topics related to the field of their studies.</p>
+  </div>
+
+  <div class="course">
+    <h4>HTM 141 — Management Accounting</h4>
+    <div class="ects">6 ECTS</div>
+    <p>The course aims to enable students to develop knowledge and understanding of how to prepare and process basic cost and quantitative information to support management in planning and decision making. Management Accounting covers both cost and decision making. In the former the topics of costing and planning control and performance are covered whilst in the latter, both short term and long term decisions are considered.</p>
+  </div>
+
+  <div class="course">
+    <h4>CFS 221 — Finance I</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Presentation of the basic concepts and tools used by businesses and investors in financial decision making. The course consists of lectures and problems related to Financial institutions, markets and debt instruments issued by the government of Cyprus, loanable funds theory, determinants of interest rates, yield curves, spot and forward rates, Greek and Cypriot financial crisis, time value of money with applications, private and business loan financing, types and pricing of bonds, evaluation and pricing of stocks, measurement of investment risk, Capital Asset Pricing Model, capital budgeting and cash-flow computation.</p>
+  </div>
+
+  <div class="course">
+    <h4>CFS 201 — International Economics I</h4>
+    <div class="ects">6 ECTS</div>
+    <p>The main objective of this course is to introduce students to international trade that is economic exchanges between nations. The course examines exchanges between nations in the form of goods and services. The first part of the course presents an overview of the global economy and the nature and significance of exchanges between nations. The course continues with an introduction into the economic theories of international trade. It also examines the costs and benefits to a nation from its participation in international exchanges. The course then takes up the nature and forms of barriers to trade that different nations impose on the flow of international trade and the reasons for their imposition. The course emphasizes the application of theories to current issues in world trade and illustrates the arguments with specific examples drawn mostly from the experience of the European Union in world trade</p>
+  </div>
+
+  <div class="course">
+    <h4>SHP 111 — Introduction to Shipping</h4>
+    <div class="ects">6 ECTS</div>
+  </div>
+
+  <div class="course">
+    <h4>CFS 210 — Mathematical Methods in Economics and Management II</h4>
+    <div class="ects">6 ECTS</div>
+    <p>The course is designed to provide the students with sufficient knowledge of mathematics which is essential to understand advanced topics related to quantitative methods. It also aims to enable students to apply these mathematical techniques, solve various problems using specialised software and to help them develop and enhance their critical thinking. The course includes a laboratory in MATLAB (or Octave) and LINDO or (solver) Excel.</p>
+  </div>
+
+  <div class="course">
+    <h4>CFS 203 — Commerce I</h4>
+    <div class="ects">6 ECTS</div>
+    <p>The purpose of this course is to understand how different economic agents such as households, firms and governments make decisions and how those interact together to determine prices and quantities in an economy. The course starts by introducing consumption given preferences and other factors which gives rise to the demand curve both with and without uncertainty. Then the course moves to how firms choose prices and quantities under different market regimes such as perfect competition, monopoly, oligopoly etc. Finally the course makes an introduction to game theory and Nash equilibrium.</p>
+  </div>
+
+  <div class="course">
+    <h4>CFS 222 — Finance II</h4>
+    <div class="ects">6 ECTS</div>
+    <p>The main objective of the course is to introduce students to the fundamentals of financial management. The course aims to provide students with a thorough understanding of the main approaches used by corporations and financial institutions to manage working capital, inventory, and accounts, appraise investments and manage risk. The educational objectives are: Ø Introduce students to the fundamentals of financial management. Ø Develop a good understanding of the importance of corporate strategy, the risks involved in financial decisions and these can be managed. Ø Acquire a good knowledge of the main approaches used to manage working capital, inventory, accounts receivables, accountas payables and cash. Ø Accustom students with invesment appraisal techniques in the presence of taxation, inflation and risk. Ø Introduce students to risk management and apply risk management strategies for hedging interest rate risk and foreign exchange risk using futures and options.</p>
+  </div>
+
+  <div class="course">
+    <h4>CFS 202 — International Economics II</h4>
+    <div class="ects">6 ECTS</div>
+    <p>The course is an introduction to international finance, that is financial exchanges between nations. The first part is a general overview of international financial exchanges and introduces the various concepts of a nation’s balance of payments. Subsequently the course presents a general overview of the foreign exchange market and the parity conditions determined by the market. The course then discusses the basic balance of payments theories and theories of the determination of the exchange rate. Throughout the course emphasis is given on the applications of international finance to contemporary inter country financial relations and examples are provided to illustrate the theories drawn from the experience of the European Union and the role of the euro in the global financial system.</p>
+  </div>
+
+  <div class="course">
+    <h4>CFS XXX — Introduction to Programming</h4>
+    <div class="ects">6 ECTS</div>
+  </div>
+
+  <div class="course">
+    <h4>CFS 211 — Statistical Methods in Economics and Management II</h4>
+    <div class="ects">6 ECTS</div>
+    <p>The course is designed to provide the students with sufficient knowledge of statistics which is essential to understand advanced topics related to statistics. It covers topics related to random variables, covariance/correlation, central limit theorem, method of moments, maximum likelihood, distributions, hypothesis testing, regression analysis, etc.</p>
+  </div>
+
+  <div class="course">
+    <h4>CFS 204 — Commerce II</h4>
+    <div class="ects">6 ECTS</div>
+    <p>The course’s purpose is to teach students to be able to answer macroeconomic questions using simple theoretical models. It presents how theoretical models are constructed and the way they are validated using empirical evidence. Initially the course investigates the long run period and specifically how economic growth and inflation are generated in the long run. Then it moves to the short run and explains why the economy may deviate from its long run trend creating unemployment and/or inflation. Last, the course refers to Central banks and how monetary policy affects the short-term equilibrium using its tools of monetary policy.</p>
+  </div>
+
+  <!-- FINANCE SPECIALISATION -->
+  <div class="course-group-heading">Finance Specialisation (Years 3–4)</div>
+
+  <div class="course">
+    <h4>CFS 310 — Introduction to Econometrics</h4>
+    <div class="ects">6 ECTS</div>
+    <p>This is an introductory course in Econometrics. The course is designed to provide the students with sufficient knowledge of statistics and econometrics necessary to understand and be able to evaluate and interpret econometrics researches that use basic linear regression methods. The course begins with a link between statistics and linear regression model and its assumptions. Violations of assumptions and their consequences in estimation process are further examined.</p>
+  </div>
+
+  <div class="course">
+    <h4>CFS 320 — Corporate Finance</h4>
+    <div class="ects">6 ECTS</div>
+    <p>The aim of this module is to develop a comprehensive picture of Corporate Financial Management Business at a theoretical and practical level. The topics covered include theories of capital markets, evaluation and selection of sources of financing, and the relation between firm financial value and dividend policy. An additional advantage of the module is the parallel use of the English language which helps students familiarize with the international English terminology.</p>
+  </div>
+
+  <div class="course">
+    <h4>CFS 330 — Shipping Finance</h4>
+    <div class="ects">6 ECTS</div>
+    <p>The main objective of the course is to introduce students to the fundamental principles of shipping finance. Issues covered include, the theory of capital financing, the history of shipping finance, ship financing sources, shipping appraisal assessments, credit analysis and risk management principles.</p>
+  </div>
+
+  <div class="course">
+    <h4>CFS 424 — Financial Statement Analysis</h4>
+    <div class="ects">6 ECTS</div>
+    <p>The main objectives of this course are to develop the ability of students to use the information in the financial statements for investment, financing and management decision-making. In particular, the emphasis will be on assessing the economic data of an enterprise, such as industry characteristics, competitive strategy, past performance, risk and quality of financial information, and future performance forecasts that help assess the fundamental value of the holding of a business using different valuation frameworks.</p>
+  </div>
+
+  <div class="course">
+    <h4>CFS 143 — Commercial Law</h4>
+    <div class="ects">6 ECTS</div>
+    <p>The objectives of the course are the following: To develop students’ knowledge of the legal framework in Cyprus by introducing them to the sources of Cyprus law and the court structure. To familiarise students with the broader context in which law operates, such as the principles of statutory interpretation, human rights law and the way this applies to legal application and analysis To provide students with an understanding of specific key legal areas relating to a variety of business aspects. To give students a strong and adequate background to the relevant case law and legislative framework that affects the operation of business.</p>
+  </div>
+
+  <div class="course">
+    <h4>CFS 312 — Financial Econometrics</h4>
+    <div class="ects">6 ECTS</div>
+    <p>The course offers an introduction to financial econometrics for second-cycle studies. It covers the main parts of the spectrum of quantitative financial economics, discusses important results in the empirical finance literature, and provides a comprehensive knowledge to do empirical work in financial practice.</p>
+  </div>
+
+  <div class="course">
+    <h4>CFS 323 — Financial Derivatives</h4>
+    <div class="ects">6 ECTS</div>
+    <p>The course describes the nature, features, and markets for derivative products like options and futures contracts. It analyzes the factors that determine their value and the basic valuation techniques, as well as their applications in the financial activities of the company and in the investment decisions. It also looks specifically at their role in hedging in reducing financial risk.</p>
+  </div>
+
+  <div class="course">
+    <h4>CFS 324 — International Financial Management</h4>
+    <div class="ects">6 ECTS</div>
+    <p>The course examines issues facing multinational corporations and global investors in international financial markets. The course analyzes the different challenges and opportunities facing participants in global financial markets as well as the theories that underlie transactions by global investors. The course examines equilibrium conditions in international financial markets. Subsequently a brief introduction into instruments of hedging foreign exchange risk is presented. The main component of the course analyses the exposure of the operations of multinational corporations to global financial conditions. The following topic is the capital availability in global markets. The different methods of corporations raising capital globally (debt or equity capital) are presented. Summing up the international diversification of investors’ portfolios is analyzed. Throughout emphasis is placed on the operations of multinational operations in the European Union.</p>
+  </div>
+
+  <div class="course">
+    <h4>CFS 420 — Research Methods in Finance</h4>
+    <div class="ects">6 ECTS</div>
+    <p>The aim of the course is the development of advanced quantitative, statistical and software skills and their use for the analysis of empirical problems (data analysis) and decision making. The course includes the presentation and analysis of research work.</p>
+  </div>
+
+  <div class="course">
+    <h4>CFS 321 — Banking Economics</h4>
+    <div class="ects">6 ECTS</div>
+    <p>The course aims to help the student to understand the theory and practice of modern banking financial institutions. The student will be able to understand the special nature of banking operations, the structure of the banking industry, diversification of banking, insurance and banking, international banking and multinational banks. Specific topics covered include the regulation of the banking sector, the banking sector in emerging markets, banking reforms, the banking sector in Cyprus. Moreover, the course refers to central banking monetary policy and how it affects banks, interest rates and the economy.</p>
+  </div>
+
+  <div class="course">
+    <h4>CFS 322 — Valuation of Capital Assets</h4>
+    <div class="ects">6 ECTS</div>
+    <p>The aim of this module is to provide a comprehensive overview of asset pricing and portfolio management in theory and practice. This module provides students those financial tools to be prepared for real financial markets scenarios. Specific case studies (coursework) help students to understand better various topics in capital markets.</p>
+  </div>
+
+  <div class="course">
+    <h4>CFS 325 — Investment Management</h4>
+    <div class="ects">6 ECTS</div>
+    <p>The main objectives of the course are the following: To develop students’ knowledge and understanding of key issues in asset allocation and portfolio composition and management. To provide students with the opportunity to develop the ability to critically understand current theoretical and empirical research in the field of portfolio theories and their implications on alternative portfolio composition and management strategies.</p>
+  </div>
+
+  <div class="course">
+    <h4>CFS 441 — Internship</h4>
+    <div class="ects">6 ECTS</div>
+    <p>The main objective of the Practical Training is to help students understand the professional side of the Financial and Shipping sector, by providing them with employability in real working conditions. Students can obtain a comprehensive picture of the environment related to their academic studies and enhance their readiness to face the challenges as well as the opportunities relevant to their area of interest. The Department of Commerce, Finance and Shipping of the Cyprus University of Technology highly benefits from the strong links created with industry.</p>
+  </div>
+
+  <div class="course">
+    <h4>LCE 410 — English for Finance</h4>
+    <div class="ects">6 ECTS</div>
+    <p>LCE 410 is a three-hour per week, 4-credit (ECTS), required degree level course that concentrates on the learning of English for Specific Academic Purposes (ESAP). LCE 410 is particularly designed to meet the needs of university students studying in the field of Finance and to develop their English language to an academic level equivalent to Common European Framework of Reference (CEFR) for languages level B2 – C1. The course aims to enable students to understand spoken and written English in a number of realistic contexts of the kind Commerce and Finance practitioners are likely to encounter in their daily working lives. Spoken texts include presentations, lectures, news broadcasts, discussions and interviews on finance-related issues, while written texts include texts such as e-mails, faxes, journal articles, business letters, financial reports, memos, and others.</p>
+  </div>
+
+  <!-- ELECTIVES -->
+  <div class="course-group-heading">Elective Courses (Finance Specialisation)</div>
+
+  <div class="course">
+    <h4>CFS 326 — Financial Accounting II</h4>
+    <div class="ects">6 ECTS</div>
+    <p>The aim of this course is to advance the students’ knowledge and understanding of the application of a variety of International Accounting Standards (IAS) and concepts for the presentation and preparation of financial statements.</p>
+  </div>
+
+  <div class="course">
+    <h4>CFS 327 — Management Accounting II</h4>
+    <div class="ects">6 ECTS</div>
+    <p>To advance the students' knowledge and understanding of key issues in more specialised management accounting topics and to have a broader background in management accounting techniques. Management Accounting II focuses on building competencies in the evaluation, assessment and interpretation of management accounting information with the aim of improving decision making and performance evaluation.</p>
+  </div>
+
+  <div class="course">
+    <h4>CFS XXX — Financial Technology</h4>
+    <div class="ects">6 ECTS</div>
+  </div>
+
+  <div class="course">
+    <h4>CFS XXX — Game Theory</h4>
+    <div class="ects">6 ECTS</div>
+  </div>
+
+  <div class="course">
+    <h4>CFS XXX — Data Analysis for Finance and Accounting</h4>
+    <div class="ects">6 ECTS</div>
+  </div>
+
+  <div class="course">
+    <h4>CFS 342 — Corporate Law</h4>
+    <div class="ects">6 ECTS</div>
+    <p>The objectives of the course are the following: To familiarise students with the legal rules, statutes and regulations relating to companies and other business formations. To familiarise students with the legal framework within whicha company is registered, administered, operates and may potentially be liquidated or dissolved. Provide students with the knowledge relating to anti-money laundering and compliance regimes, and protection of personal data legislation and rules. Offer students all the knowledge concerning company case law.</p>
+  </div>
+
+  <div class="course">
+    <h4>CFS 423 — Commodity Risk Management</h4>
+    <div class="ects">6 ECTS</div>
+    <p>The main objective of the course is to introduce students to the approaches of managing risks in international commodity markets. The course aims to provide students with a thorough understanding of the main characteristics of international commodity markets, the risks involved to market participants and the mechanics of trading and hedging through commodity derivatives with emphasis on energy and shipping risk management. The educational objectives are: Ø Introduce students to the theoretical background for the application of trading and hedging strategies in international commodity markets. Ø Develop a good understanding of commodity market characteristics, the risks involved and how derivative instruments can be used to manage risks. Ø Acquire a good knowledge of the main option trading strategies in commodity markets with emphasis on shipping and freight markets. Ø Accustom students with applying risk management strategies for hedging price risk using futures and options contracts as well as for speculating.</p>
+  </div>
+
+  <div class="course">
+    <h4>CFS 426 — Financial Accounting III</h4>
+    <div class="ects">6 ECTS</div>
+    <p>To develop knowledge and skills in understanding and applying accounting standards and the theoretical framework in the preparation of financial statements of entities, including groups and how to analyze and interpret those financial statements.</p>
+  </div>
+
+  <div class="course">
+    <h4>CFS 427 — Auditing I</h4>
+    <div class="ects">6 ECTS</div>
+    <p>The Audit and Assurance syllabus is essentially divided into five areas. The syllabus starts with the nature, purpose and scope of assurance engagements both internal and external, including the statutory audit, its regulatory environment, and introduces governance and professional ethics relating to audit and assurance. It then leads into planning and risk assessment audit. The syllabus then covers a range of areas relating to an audit of financial statements including the scope of internal control. These include, evaluating internal controls, audit evidence, and a review of the financial statements. In addition to final review procedures, the final section concentrates on reporting, including the form and content of the independent auditor’s report.</p>
+  </div>
+
+  <div class="course">
+    <h4>CFS 428 — Taxation</h4>
+    <div class="ects">6 ECTS</div>
+    <p>This syllabus introduces candidates to the subject of taxation and provides the core knowledge of the underlying principles and major technical areas of taxation, as they affect the activities of individuals and businesses. In this syllabus, candidates are introduced to the rationale behind and the functions of the tax system. The syllabus then considers the separate taxes that an accountant would need to have a detailed knowledge of, such as income tax from self-employment, employment and investments; the corporation tax liability of individual companies and groups of companies; special contribution for the defence liabilities and capital gains tax liabilities of individuals and companies; the social insurance contribution liabilities of both employed and self-employed persons; and the value added tax liability of businesses. Having covered the core areas of the basic taxes, the candidate should be able to compute tax liabilities, explain the basis of their calculations, apply tax planning techniques for individuals and companies and identify the compliance issues for each major tax through a variety of business and personal scenarios and situations.</p>
+  </div>
+
+  <div class="course">
+    <h4>CFS 440 — Dissertation</h4>
+    <div class="ects">6 ECTS</div>
+    <p>In this course the student is required to prepare a Thesis under the supervision of a professor of the Department. The student is expected to complete an independent research on a (real-world) business topic using their knowledge and skill-set (with the approval of his / her academic supervisor). This module aims: To provide students with the necessary training to undertake advanced-level research in Finance / Shipping / Economics / Accounting; To provide students with an advanced understanding of the relevance and importance of alternative epistemological positions in the social sciences and the nature of both qualitative and quantitative approaches to research; To develop students’ understanding at an advanced level of the nature of research in the social sciences, by examining the study skills necessary to manage and undertake a research project; To provide students with opportunities to be familiar with the frontier empirical and theoretical research; To provide students with the opportunity to conduct an in-depth investigation at an advanced level of an issue which is applicable in the real world. The positioning of the thesis at the end of the programme is intended to promote integration of material covered in the core and optional modules.</p>
+  </div>
+
+  <div class="course">
+    <h4>CFS 452 — Behavioural Finance</h4>
+    <div class="ects">6 ECTS</div>
+  </div>
+
+  <div class="course">
+    <h4>SHP 354 — Shipping Operations Management</h4>
+    <div class="ects">6 ECTS</div>
+  </div>
+</div>
+
+<!-- ==================== TAB 4: ADMISSION ==================== -->
+<div class="tab-content" id="admission">
+  <h2>Admission</h2>
+  <p>Admission to this programme of study is through access framework no. 22.</p>
+</div>
+
+<!-- ==================== TAB 5: TUITION ==================== -->
+
+
+<!-- ==================== TAB 6: HOW YOU WILL LEARN ==================== -->
+<div class="tab-content" id="learning">
+  <h2>How You Will Learn</h2>
+
+  <p>The programme combines lectures, tutorials, and quantitative and applied work across economics, mathematics, statistics, econometrics, accounting, and finance. Specialist finance courses build progressively on the common foundation of Years 1–2, and the curriculum integrates professional terminology and communication in English through the English-for-Finance language courses.</p>
+
+  <h3>Applied and Research Components</h3>
+  <ul>
+    <li><strong>Internship (CFS 441, 12 ECTS):</strong> a structured placement immersing students in real working environments in the finance and shipping industries, helping them evaluate the relevance of their studies and prepare for entry into their chosen sector.</li>
+    <li><strong>Research Methods in Finance (CFS 420):</strong> develops the research skills needed for independent study in finance.</li>
+    <li><strong>Dissertation (CFS 440, 12 ECTS, elective):</strong> an independent research project for students who choose the research route.</li>
+  </ul>
+
+  <h3>Language of Instruction</h3>
+  <p>Most courses are taught in Greek. The English-for-Finance language courses (LCE 107, LCE 108, LCE 410) are delivered in English, and professional terminology in English is emphasised throughout the programme.</p>
+</div>
+
+<!-- ==================== TAB 7: RECOGNITION & CAREERS ==================== -->
+<div class="tab-content" id="careers">
+  <h2>Professional Recognition and Career Prospects</h2>
+
+  <h3>Professional Recognition and Exemptions</h3>
+  <p>The programme holds professional-body recognition that entitles graduates to exemptions from professional accountancy qualifications.</p>
+
+  <h4>ICAEW — Chartered Accountant (ACA)</h4>
+  <p>Graduates automatically receive exemption from eight modules of the ICAEW ACA qualification. The detailed exemption matrix is published by ICAEW (search by institution ID 492 in the ICAEW academic-credits directory).</p>
+
+  <h4>ACCA — Association of Chartered Certified Accountants</h4>
+  <p>Undergraduate students are entitled to ACCA exemptions; the exact number varies by year of graduation. ACCA provides an automatic exemptions-calculator tool for confirmation.</p>
+
+  <h3>Career Prospects</h3>
+  <p>The degree is designed to support immediate employment in management and economics roles. Graduates pursue careers in:</p>
+  <ul>
+    <li>Financial institutions and banking</li>
+    <li>Auditing firms</li>
+    <li>Investment companies</li>
+    <li>Business service organisations</li>
+    <li>Organisations involved in formulating economic policy</li>
+  </ul>
+  <p>The programme also prepares graduates for further study, including master's programmes at recognised universities and professional qualification programmes such as ACA and ACCA. With advanced specialisation, graduates can progress towards leadership positions in the private or public sector, or work as self-employed entrepreneurs.</p>
+
+  <h3>Employment Statistics</h3>
+</div>
+
+<!-- ==================== TAB 8: STUDENT SUPPORT ==================== -->
+<div class="tab-content" id="support">
+  <h2>Student Support and Resources</h2>
+
+  <h3>Academic Advisor</h3>
+  <p>Students are assigned an academic advisor to guide course selection, monitor academic progress, and support career planning.</p>
+
+  <h3>Learning Development Network (LDN)</h3>
+  <p>Support with study skills, academic writing, and technical and digital literacy.</p>
+
+  <h3>Library</h3>
+  <p>Access to academic databases, e-journals, and citation-management tools.</p>
+
+  <h3>Career Services</h3>
+  <p>Career counselling, CV review, interview preparation, and networking events, complementing the structured internship (CFS 441).</p>
+
+  <h3>Counselling Services</h3>
+  <p>Confidential student counselling and wellbeing support.</p>
+</div>
+
+<!-- ==================== TAB 9: CONTACT ==================== -->
+<div class="tab-content" id="contact">
+  <h2>Contact</h2>
+
+  <div class="contact-block">
+    <strong>Department</strong>
+    Department of Finance, Accounting and Management Science<br>
+    Faculty of Management and Economics<br>
+    Cyprus University of Technology
+  </div>
+
+  <div class="contact-block">
+    <strong>Department Administration</strong>
+    Dimitra Christodoulidou, Administrative Assistant<br>
+    Email: d.christodoulidou@cut.ac.cy<br>
+    Tel: +357 25 002628
+  </div>
+
+  <div class="contact-block">
+    <strong>General University Enquiries</strong>
+    Cyprus University of Technology<br>
+    Archbishop Kyprianou 30, 3036 Limassol, Cyprus<br>
+    Email: administration@cut.ac.cy<br>
+    Tel: +357 25 002500 · Fax: +357 25 002750
+  </div>
+</div>
+
+<!-- ==================== JS ==================== -->
+<script>
+  document.querySelectorAll('.tabs-nav button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tabs-nav button').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tab-content').forEach(tc => tc.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById(btn.dataset.tab).classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  });
+</script>
+</body>
+</html>

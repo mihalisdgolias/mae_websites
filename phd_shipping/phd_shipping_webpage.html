@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="MG">
+<title>Doctoral Studies in Shipping (PhD) — Cyprus University of Technology</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;600;700&family=Source+Serif+4:wght@400;600&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.65;
+    color: #2a2a2a;
+    background: #f5f5f5;
+  }
+
+  /* ---- HEADER ---- */
+  .page-header {
+    background: #1a3a5c;
+    color: #fff;
+    padding: 48px 0 40px;
+  }
+  .page-header .wrap {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+  .page-header h1 {
+    font-family: 'Source Serif 4', serif;
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  .page-header .subtitle {
+    font-size: 0.95rem;
+    font-weight: 300;
+    opacity: 0.85;
+  }
+
+  /* ---- TABS NAV ---- */
+  .tabs-nav {
+    background: #fff;
+    border-bottom: 2px solid #ddd;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .tabs-nav .wrap {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    gap: 0;
+  }
+  .tabs-nav button {
+    background: none;
+    border: none;
+    padding: 14px 18px;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: #666;
+    cursor: pointer;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .tabs-nav button:hover { color: #1a3a5c; }
+  .tabs-nav button.active {
+    color: #1a3a5c;
+    border-bottom-color: #1a3a5c;
+  }
+
+  /* ---- CONTENT ---- */
+  .tab-content {
+    display: none;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+  }
+  .tab-content.active { display: block; }
+
+  h2 {
+    font-family: 'Source Serif 4', serif;
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: #1a3a5c;
+    margin-bottom: 24px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+  }
+  h3 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #1a3a5c;
+    margin: 32px 0 12px;
+  }
+  h4 {
+    font-size: 1.02rem;
+    font-weight: 700;
+    color: #333;
+    margin: 28px 0 8px;
+  }
+  p { margin-bottom: 14px; }
+
+  /* ---- TABLES ---- */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0 24px;
+    font-size: 0.93rem;
+  }
+  th, td {
+    text-align: left;
+    padding: 10px 14px;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  th {
+    background: #f0f3f6;
+    font-weight: 600;
+    color: #1a3a5c;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+  tr:hover td { background: #fafbfc; }
+
+  /* key-features table (2-col, no header) */
+  .kf-table th { display: none; }
+  .kf-table td:first-child {
+    font-weight: 600;
+    width: 160px;
+    color: #1a3a5c;
+  }
+
+  /* ---- LISTS ---- */
+  ul, ol { margin: 10px 0 16px 22px; }
+  li { margin-bottom: 6px; }
+
+  /* ---- COURSE CARD ---- */
+  .course {
+    background: #fff;
+    border: 1px solid #e4e4e4;
+    border-radius: 6px;
+    padding: 24px 28px;
+    margin: 20px 0;
+  }
+  .course h4 {
+    margin: 0 0 4px;
+    color: #1a3a5c;
+  }
+  .course .ects {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: #888;
+    margin-bottom: 14px;
+  }
+  .course p { margin-bottom: 12px; }
+  .course p:last-child { margin-bottom: 0; }
+  .course .prereq {
+    font-size: 0.88rem;
+    color: #777;
+    font-style: italic;
+    margin-top: 10px;
+  }
+
+  .course-group-heading {
+    font-family: 'Source Serif 4', serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1a3a5c;
+    margin: 40px 0 8px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid #e0e0e0;
+  }
+
+  /* ---- MISC ---- */
+  .note {
+    background: #fffbe6;
+    border-left: 4px solid #e6c200;
+    padding: 14px 18px;
+    margin: 18px 0;
+    font-size: 0.93rem;
+    border-radius: 0 4px 4px 0;
+  }
+  .cta-button {
+    display: inline-block;
+    background: #1a3a5c;
+    color: #fff;
+    padding: 12px 28px;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 4px;
+    margin-top: 16px;
+    font-size: 0.95rem;
+    transition: background 0.2s;
+  }
+  .cta-button:hover { background: #264d73; }
+
+  .contact-block { margin-bottom: 24px; }
+  .contact-block strong { display: block; margin-bottom: 2px; }
+
+  /* responsive */
+  @media (max-width: 640px) {
+    .page-header h1 { font-size: 1.5rem; }
+    .tabs-nav button { padding: 12px 12px; font-size: 0.8rem; }
+    .course { padding: 18px 16px; }
+    table { font-size: 0.85rem; }
+    th, td { padding: 8px 10px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ==================== HEADER ==================== -->
+<header class="page-header">
+  <div class="wrap">
+    <h1>Doctoral Studies in Shipping (PhD)</h1>
+    <div class="subtitle">Department of Shipping · Faculty of Management and Economics · Cyprus University of Technology</div>
+  </div>
+</header>
+
+<!-- ==================== TAB NAV ==================== -->
+<nav class="tabs-nav">
+  <div class="wrap">
+    <button class="active" data-tab="overview">Overview</button>
+    <button data-tab="structure">Programme Structure</button>
+    <button data-tab="admission">Admission</button>
+    <button data-tab="research">Research Areas</button>
+    <button data-tab="learning">How You Will Learn</button>
+    <button data-tab="careers">Recognition &amp; Careers</button>
+    <button data-tab="support">Student Support</button>
+    <button data-tab="contact">Contact</button>
+  </div>
+</nav>
+
+<!-- ==================== TAB 1: OVERVIEW ==================== -->
+<div class="tab-content active" id="overview">
+  <h2>Overview</h2>
+  <p><strong><em><a href="https://www.dipae.ac.cy/index.php/en/">The first accredited doctoral-level program in Shipping in Cyprus, in a Public University</a>&nbsp;</em></strong></p>
+
+  <p>The PhD in Shipping offered by the Department of Shipping at the Faculty of Management and Economics of the Cyprus University of Technology (CUT) is the first accredited doctoral level program in the areas of shipping and maritime studies in Cyprus.</p>
+
+  <p>The duration of study ranges from three (3) to eight (8) years, and includes both a taught and a research component.</p>
+
+  <p>The aims and objectives of the doctoral program of the Department of Shipping is to equip students with all the necessary skills and competencies to conduct high-quality research on topics that fall within the research interests and/or academic fields of the Department. The doctoral program seeks, on the one hand, to produce original, high-level scientific research comparable to that of leading academic institutions abroad and publishable in reputable international scientific journals and conferences, and on the other hand, to cultivate scientists capable of contributing to the advancement of science, education, and society.</p>
+
+  <p>This third-cycle study program is the only one offered by a Greek-speaking public university in Cyprus. It has been carefully designed to be innovative, with the aim of promoting and advancing in-depth academic research on issues related to shipping&mdash;one of the largest and continuously evolving sectors of both the Cypriot and global economy.</p>
+
+  <p>The ultimate goal of the program is to prepare the next generation of researchers for a promising academic or entrepreneurial career.</p>
+
+  <p>Indicative research areas and topics of interest to the faculty members of the Department for supervision within the framework of the doctoral program include the following:</p>
+
+  <ul>
+    <li>Maritime Economics</li>
+    <li>Shipping Finance</li>
+    <li>Freight Transport</li>
+    <li>Supply Chain Management and Logistics</li>
+    <li>Environmental Issues in Shipping</li>
+    <li>Maritime Policy</li>
+    <li>Chartering</li>
+    <li>Port Operations</li>
+    <li>Optimization in Transport</li>
+    <li>Sustainable Transport</li>
+    <li>Pollution Control and Environmental Management in Shipping</li>
+  </ul>
+
+  <p>Interested prospective students may also contact <a href="https://www.cut.ac.cy/faculties/fme/Department+of+Shipping/Staff/?languageId=1">faculty members</a> of the Department for further information.</p>
+
+  <h3>Key Features</h3>
+  <table class="kf-table">
+    <tr><td>Qualification</td><td>Doctor of Philosophy (PhD) in Shipping</td></tr>
+    <tr><td>Duration</td><td>Three (3) to eight (8) years</td></tr>
+    <tr><td>Credits</td><td>240 ECTS</td></tr>
+    <tr><td>Structure</td><td>Taught courses (Stage 1) followed by comprehensive examination, research proposal, original research, and thesis defence (Stages 2–4)</td></tr>
+    <tr><td>Language</td><td>English primarily; thesis may be written in Greek or English (English encouraged)</td></tr>
+    <tr><td>Intake</td><td>Twice yearly — September and January — when positions are advertised</td></tr>
+    <tr><td>Tuition</td><td><span style="color:#888;"></span></td></tr>
+  </table>
+
+  <h3>Why Choose This Programme</h3>
+  <p>The Doctoral Studies in Shipping (PhD) is the only doctoral-level programme of its kind offered by a public university in Cyprus — a purely research-oriented degree focused exclusively on shipping, maritime studies, and logistics, rather than a general doctorate with a shipping component. Its curriculum was developed by the Department's faculty in consultation with world-renowned international academics and key stakeholders in the local and international shipping industry, and is designed to meet the needs of students and employers across both academia and the maritime sector.</p>
+  <p>The Department is based in Limassol, one of Europe's most significant maritime clusters: over 250 shipping companies are based or maintain offices on the island, and the wider shipping industry employs around 3% of the national workforce. Candidates work alongside faculty whose research is ranked among the most-cited worldwide in the Logistics and Transportation field (Stanford/Elsevier citation rankings, including top-1% placements), with access to specialised maritime databases such as Lloyd's List Intelligence, Clarksons Research, Marine Money, and ISL shipping statistics, and to a regular programme of guest lectures delivered by senior industry figures.</p>
+  <p>Doctoral candidates are supported through a range of funding routes — including a scholarship covering PhD tuition for each new faculty member's first doctoral student, start-up research grants, teaching-assistant opportunities, and participation in funded research projects. Graduates are prepared for careers in academia and for senior roles across the maritime and transport sectors; departmental graduate surveys report an overall employment absorption rate of over 90% across the Department's graduates.</p>
+
+  <h3>Vision</h3>
+  <p>To be a leading centre of educational and applied research excellence in shipping, maritime studies, supply chain, logistics, and transport, with a national and international orientation.</p>
+
+  <h3>Mission</h3>
+  <p>To provide high-quality academic and professional education and applied research in the field of shipping and maritime studies, creating continuous value for the local and international maritime community and giving graduates the tools for a successful career in the demanding maritime sector. The mission focuses on creating added value through action in three areas</p>
+  <ul>
+    <li><strong>Education</strong> To become a national, regional, and international centre of higher education, offering high-quality and competitive academic programmes at undergraduate and postgraduate level in maritime studies, programmes that reflect technological, industrial, and environmental developments and the needs of the shipping sector.</li>
+    <li><strong>Research &amp; Innovation</strong> To become a pioneer in applied research and achieve excellence in the local and international research community, promoting research outputs and transferring expertise to society and the maritime industry to generate innovative solutions with significant economic, operational, and environmental impact.</li>
+    <li><strong>Social Contribution</strong> To become a key partner in the shipping sector, building constructive dialogue through a strong network of collaborating organisations and established industry actors in the local maritime cluster.</li>
+  </ul>
+
+  <h3>Our Values</h3>
+  <table>
+    <tr><th>Value</th><th>Commitment</th></tr>
+    <tr><td><strong>Leadership</strong></td><td>To operate as a pioneering Department in undergraduate and postgraduate maritime studies, research, and industry engagement.</td></tr>
+    <tr><td><strong>Integrity</strong></td><td>To act equitably, impartially, and fairly in all our actions.</td></tr>
+    <tr><td><strong>Respect</strong></td><td>To behave professionally and earn the respect of all partners and stakeholders, inside and outside the University.</td></tr>
+    <tr><td><strong>Accountability</strong></td><td>To ensure transparency and accountability in all actions and outcomes.</td></tr>
+    <tr><td><strong>Collaboration</strong></td><td>To develop and maintain effective working relationships and strong industry links at local, national, and international level.</td></tr>
+    <tr><td><strong>Innovation</strong></td><td>To continuously explore new interdisciplinary areas, making use of new technologies.</td></tr>
+    <tr><td><strong>Transparency</strong></td><td>To encourage open communication and dialogue with all stakeholders on how mutual added value can be created in shipping.</td></tr>
+    <tr><td><strong>Effectiveness</strong></td><td>To deliver well-designed courses fully aligned with technological, industrial, and environmental developments, and to produce high-quality academic and applied research.</td></tr>
+    <tr><td><strong>Sustainability</strong></td><td>To continuously support sustainable development goals and actions relevant to the shipping sector.</td></tr>
+  </table>
+
+  <h3>Intended Learning Outcomes</h3>
+  <p>The following outcomes are framed qualitatively from the programme's stated aims and structure. They are intended for accreditation purposes and should be reviewed and confirmed by the Department.</p>
+
+  <h4>Knowledge</h4>
+  <ul>
+    <li>Demonstrate a systematic and comprehensive understanding of a specialised field within shipping (for example shipping economics, finance, policy, logistics, port operations, or environmental management).</li>
+    <li>Command advanced research methods and the scholarly literature relevant to the chosen field of study.</li>
+    <li>Understand the standards and conventions of high-quality academic research and scholarly publication in shipping and maritime studies.</li>
+  </ul>
+
+  <h4>Skills</h4>
+  <ul>
+    <li>Design, plan, and conduct an original, independent research project that makes a substantial contribution to knowledge.</li>
+    <li>Apply appropriate qualitative and quantitative research methods to formulate and investigate research questions in shipping.</li>
+    <li>Critically analyse and interpret complex data and present findings to academic and professional audiences in writing and orally.</li>
+    <li>Produce original scientific research of a standard suitable for publication in international peer-reviewed journals.</li>
+  </ul>
+
+  <h4>Competences</h4>
+  <ul>
+    <li>Operate autonomously as an independent researcher, managing a long-term research project from proposal through to thesis defence.</li>
+    <li>Contribute to scientific progress and to the wider community through the dissemination of new knowledge.</li>
+    <li>Uphold research ethics and academic integrity throughout the research process.</li>
+    <li>Engage with the international research community and pursue careers in academia, research, or advanced professional practice in the maritime sector.</li>
+  </ul>
+
+  <h3>Academic Coordinator</h3>
+  <p>Dr. Thalis Zis, Academic Coordinator<br>
+  Tel: +357 25002566 · Email: thalis.zis@cut.ac.cy</p>
+</div>
+
+<!-- ==================== TAB 2: PROGRAMME STRUCTURE ==================== -->
+<div class="tab-content" id="structure">
+  <h2>Programme Structure</h2>
+  <p>The doctoral programme comprises 240 ECTS organised across four stages: an advanced taught component, a comprehensive examination and research proposal, the main research and thesis-development phase, and the writing, submission, and defence of the thesis.</p>
+
+  <h3>Stage 1 — Advanced Postgraduate / Doctoral-Level Courses (60 ECTS)</h3>
+  <p><strong>Four mandatory core courses:</strong></p>
+  <table>
+    <tr><th>Code</th><th>Course</th><th>ECTS</th></tr>
+    <tr><td>SHP810</td><td>Introduction to Academic Research</td><td><span style="color:#888;">7.5 ECTS</span></td></tr>
+    <tr><td>SHP820</td><td>Research Methods</td><td><span style="color:#888;">7.5 ECTS</span></td></tr>
+    <tr><td>SHP830</td><td>Topics in Shipping</td><td><span style="color:#888;">7.5 ECTS</span></td></tr>
+    <tr><td>SHP850</td><td>Research Seminars in Shipping</td><td><span style="color:#888;">7.5 ECTS</span></td></tr>
+  </table>
+  <p>In addition, candidates take <strong>four elective courses</strong> drawn from the MSc in Shipping programme.</p>
+
+  <h3>Stage 2 — Comprehensive Examination and Research Proposal (30 ECTS)</h3>
+  <p>Candidates sit a comprehensive examination and prepare and defend a research proposal that sets out the aims, methodology, and contribution of the intended doctoral research.</p>
+
+  <h3>Stage 3 — Research and Thesis Development (120 ECTS)</h3>
+  <p>The principal phase of the programme, during which the candidate conducts original, supervised research leading towards the doctoral thesis.</p>
+
+  <h3>Stage 4 — Thesis Writing, Submission, Presentation, and Defence (30 ECTS)</h3>
+  <p>The candidate completes the writing of the thesis and presents and defends it before an examination committee.</p>
+
+  <h3>Credit Summary</h3>
+  <table>
+    <tr><th>Stage</th><th>Component</th><th>ECTS</th></tr>
+    <tr><td>Stage 1</td><td>Advanced postgraduate / doctoral-level courses</td><td>60</td></tr>
+    <tr><td>Stage 2</td><td>Comprehensive examination and research proposal</td><td>30</td></tr>
+    <tr><td>Stage 3</td><td>Research and thesis development</td><td>120</td></tr>
+    <tr><td>Stage 4</td><td>Thesis writing, submission, presentation, and defence</td><td>30</td></tr>
+    <tr><td><strong>Total</strong></td><td></td><td><strong>240</strong></td></tr>
+  </table>
+</div>
+
+<!-- ==================== TAB 3: ADMISSION ==================== -->
+<div class="tab-content" id="admission">
+  <h2>Admission Requirements</h2>
+
+  <h3>Eligibility</h3>
+  <p>Applicants must hold undergraduate and postgraduate degrees in related subjects, with high grades, from recognised universities in Cyprus and/or abroad.</p>
+
+  <h3>English Language Proficiency</h3>
+  <p>Applicants must demonstrate very good knowledge of the English language, evidenced by one of the following:</p>
+  <ul>
+    <li>A C1-level English proficiency certificate</li>
+    <li>An IELTS score above 7.0</li>
+    <li>Completion of a university programme taught in English</li>
+  </ul>
+
+  <h3>Required Documents and Criteria</h3>
+  <ul>
+    <li>Undergraduate and postgraduate degree certificates and transcripts</li>
+    <li>Two recommendation letters from independent referees</li>
+    <li>Evidence of English language proficiency (see above)</li>
+  </ul>
+  <p>Relevant work experience is valued positively in the assessment of applications.</p>
+
+  <h3>Admission Schedule and Process</h3>
+  <p>Admission occurs twice yearly — in September and January — when positions are advertised. Applications are considered when positions are open. Prospective candidates are encouraged to contact the programme coordinator or a faculty member with similar research interests prior to applying.</p>
+
+  <h3>Tuition and Scholarships</h3>
+
+  <h3>How to Apply</h3>
+  <p>Applications and supporting documents are submitted online through the University's portal when positions are advertised.</p>
+</div>
+
+<!-- ==================== TAB 4: RESEARCH AREAS ==================== -->
+<div class="tab-content" id="research">
+  <h2>Research Areas</h2>
+  <p>Doctoral research in the Department of Shipping spans the economic, financial, operational, policy, and environmental dimensions of the maritime and transport sectors. Candidates pursue original research in one of the following fields, in alignment with the expertise of the supervising faculty.</p>
+
+  <h3>Fields of Research</h3>
+  <ul>
+    <li>Shipping Economics</li>
+    <li>Shipping Finance</li>
+    <li>Freight Transport</li>
+    <li>Supply Chain Management &amp; Logistics</li>
+    <li>Environmental Issues in Shipping</li>
+    <li>Shipping Policy</li>
+    <li>Ship Chartering</li>
+    <li>Port Operations</li>
+    <li>Transport Optimization</li>
+    <li>Sustainable Transport</li>
+    <li>Pollution Control &amp; Environmental Management in Shipping</li>
+  </ul>
+
+  <h3>Supervisory Faculty</h3>
+  <p>Doctoral candidates are supervised by members of the Department of Shipping faculty. Prospective applicants are encouraged to identify and contact a faculty member whose research interests align with their own.</p>
+  <ul>
+    <li>Thalis Zis</li>
+    <li>Marina Philippou</li>
+    <li>Nicolas Assimenos</li>
+    <li>Olympia Nisiforou</li>
+    <li>Petros Vasilopoulos</li>
+    <li>Stelios Alexandrou</li>
+    <li>Filippos Filis</li>
+    <li>Photis Panayides</li>
+    <li>Christoforos Andreou</li>
+    <li>Andreas Kouspos</li>
+    <li>Aristoklis Patounas</li>
+    <li>Michail Gkolias</li>
+    <li>Dimitra Kalaitzi</li>
+  </ul>
+</div>
+
+<!-- ==================== TAB 5: HOW YOU WILL LEARN ==================== -->
+<div class="tab-content" id="learning">
+  <h2>How You Will Learn — Supervision &amp; Research Training</h2>
+  <p>The doctoral programme combines a structured taught component with an extended period of independent, supervised research. Candidates progress through clearly defined stages, each building the skills required to complete an original doctoral thesis.</p>
+
+  <h3>Structured Research Training</h3>
+  <p>In Stage 1, candidates complete advanced doctoral-level courses — Introduction to Academic Research (SHP810), Research Methods (SHP820), Topics in Shipping (SHP830), and Research Seminars in Shipping (SHP850) — together with elective courses from the MSc in Shipping. This phase establishes a strong foundation in research design, methodology, and the scholarly literature of the field.</p>
+
+  <h3>Comprehensive Examination and Research Proposal</h3>
+  <p>In Stage 2, candidates demonstrate mastery of their field through a comprehensive examination and develop and defend a research proposal that frames their doctoral investigation.</p>
+
+  <h3>Supervised Independent Research</h3>
+  <p>The main research phase (Stage 3) is conducted under the guidance of a faculty supervisor whose interests align with the candidate's topic. Candidates work towards producing original scientific research of a standard suitable for publication in international journals.</p>
+
+  <h3>Thesis Defence</h3>
+  <p>In Stage 4, candidates complete, submit, present, and defend their thesis before an examination committee.</p>
+
+  <h3>Mobility and Internships</h3>
+  <p>Mobility programmes and internship opportunities are available to doctoral candidates, supporting engagement with the international research community and the wider maritime sector.</p>
+
+  <h3>Language of Study and Thesis</h3>
+  <p>Instruction is primarily in English. The thesis may be written in either Greek or English; the Department encourages PhD candidates to write in English to ensure the broad dissemination of their findings.</p>
+</div>
+
+<!-- ==================== TAB 6: RECOGNITION & CAREERS ==================== -->
+<div class="tab-content" id="careers">
+  <h2>Recognition and Career Prospects</h2>
+
+  <h3>Professional Recognition</h3>
+  <p>The PhD in Shipping is the first certified doctoral-level programme in shipping offered at a public university in Cyprus. It is an academic research degree rather than a professional qualification.</p>
+  <div class="note">No professional-body exemptions apply to this doctoral programme. (Professional-body exemptions — such as Institute of Chartered Shipbrokers exemptions — relate to the Department's taught programmes, not to the PhD.)</div>
+
+  <h3>Career Destinations</h3>
+  <p>Graduates of the programme are prepared for successful academic careers in leading universities and research centres, as well as for advanced roles across the maritime and transport sectors. Typical destinations include:</p>
+  <ul>
+    <li><strong>Academia and research</strong> — university teaching and research posts, and positions in research centres and institutes.</li>
+    <li><strong>International organisations</strong> — policy, analysis, and advisory roles in maritime and transport bodies.</li>
+    <li><strong>Industry and management</strong> — analyst, strategy, and management roles in shipping companies, logistics firms, ports, and other transport-focused businesses.</li>
+  </ul>
+
+  <h3>Employment Outcomes</h3>
+</div>
+
+<!-- ==================== TAB 7: STUDENT SUPPORT ==================== -->
+<div class="tab-content" id="support">
+  <h2>Student Support and Resources</h2>
+
+  <h3>Research Supervisor</h3>
+  <p>Each doctoral candidate is guided by a faculty supervisor who oversees the development of the research project, from proposal through to thesis defence.</p>
+
+  <h3>Learning Development Network (LDN)</h3>
+  <p>Technical support, study skills, writing support, and AI literacy training.</p>
+
+  <h3>Specialised Databases</h3>
+  <p>Clarksons Research, Bloomberg Terminal, Lloyd's List Intelligence, Marine Money, Datastream, ISL Shipping Statistics.</p>
+
+  <h3>Library</h3>
+  <p>Access to JSTOR, ScienceDirect, e-journals, and citation management tools (EndNote, Zotero).</p>
+
+  <h3>Mobility and Internships</h3>
+  <p>Mobility programmes and internship opportunities support doctoral candidates in building international research networks and professional experience.</p>
+
+  <h3>Career Services</h3>
+  <p>Career counselling, CV review, interview preparation, and networking events.</p>
+
+  <h3>Counselling Services</h3>
+  <p>Confidential support available in-person and remotely.<br>
+  Email: counseling@cut.ac.cy · Tel: +357 25 002 500 (24/7)</p>
+</div>
+
+<!-- ==================== TAB 8: CONTACT ==================== -->
+<div class="tab-content" id="contact">
+  <h2>Contact</h2>
+
+  <div class="contact-block">
+    <strong>Academic Coordinator</strong>
+    Dr. Thalis Zis<br>
+    Email: thalis.zis@cut.ac.cy<br>
+    Tel: +357 25002566
+  </div>
+
+  <div class="contact-block">
+    <strong>Departmental Administration</strong>
+    Marianna Loizidou, Department Secretary (administrative matters)<br>
+    Department of Shipping, Faculty of Management and Economics<br>
+    <span style="color:#888;"></span>
+  </div>
+
+  <div class="contact-block">
+    <strong>General Enquiries</strong>
+    Student Services and Information Centre<br>
+    Email: kep@cut.ac.cy<br>
+    Tel: +357 25 002710/11
+  </div>
+</div>
+
+<!-- ==================== JS ==================== -->
+<script>
+  document.querySelectorAll('.tabs-nav button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tabs-nav button').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tab-content').forEach(tc => tc.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById(btn.dataset.tab).classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  });
+</script>
+</body>
+</html>

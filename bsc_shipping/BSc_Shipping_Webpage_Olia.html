@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="MG">
+<title>BSc in Shipping, Cyprus University of Technology</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;600;700&family=Source+Serif+4:wght@400;600&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.65;
+    color: #2a2a2a;
+    background: #f5f5f5;
+  }
+
+  /* ---- HEADER ---- */
+  .page-header {
+    background: #1a3a5c;
+    color: #fff;
+    padding: 48px 0 40px;
+  }
+  .page-header .wrap {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+  .page-header h1 {
+    font-family: 'Source Serif 4', serif;
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  .page-header .subtitle {
+    font-size: 0.95rem;
+    font-weight: 300;
+    opacity: 0.85;
+  }
+
+  /* ---- TABS NAV ---- */
+  .tabs-nav {
+    background: #fff;
+    border-bottom: 2px solid #ddd;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .tabs-nav .wrap {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    gap: 0;
+  }
+  .tabs-nav button {
+    background: none;
+    border: none;
+    padding: 14px 18px;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: #666;
+    cursor: pointer;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .tabs-nav button:hover { color: #1a3a5c; }
+  .tabs-nav button.active {
+    color: #1a3a5c;
+    border-bottom-color: #1a3a5c;
+  }
+
+  /* ---- CONTENT ---- */
+  .tab-content {
+    display: none;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+  }
+  .tab-content.active { display: block; }
+
+  h2 {
+    font-family: 'Source Serif 4', serif;
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: #1a3a5c;
+    margin-bottom: 24px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+  }
+  h3 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #1a3a5c;
+    margin: 32px 0 12px;
+  }
+  h4 {
+    font-size: 1.02rem;
+    font-weight: 700;
+    color: #333;
+    margin: 28px 0 8px;
+  }
+  p { margin-bottom: 14px; }
+
+  /* ---- TABLES ---- */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0 24px;
+    font-size: 0.93rem;
+  }
+  th, td {
+    text-align: left;
+    padding: 10px 14px;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  th {
+    background: #f0f3f6;
+    font-weight: 600;
+    color: #1a3a5c;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+  tr:hover td { background: #fafbfc; }
+
+  /* key-features table (2-col, no header) */
+  .kf-table th { display: none; }
+  .kf-table td:first-child {
+    font-weight: 600;
+    width: 160px;
+    color: #1a3a5c;
+  }
+
+  /* ---- LISTS ---- */
+  ul, ol { margin: 10px 0 16px 22px; }
+  li { margin-bottom: 6px; }
+
+  /* ---- COURSE CARD ---- */
+  .course {
+    background: #fff;
+    border: 1px solid #e4e4e4;
+    border-radius: 6px;
+    padding: 24px 28px;
+    margin: 20px 0;
+  }
+  .course h4 {
+    margin: 0 0 4px;
+    color: #1a3a5c;
+  }
+  .course .ects {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: #888;
+    margin-bottom: 14px;
+  }
+  .course p { margin-bottom: 12px; }
+  .course p:last-child { margin-bottom: 0; }
+  .course .prereq {
+    font-size: 0.88rem;
+    color: #777;
+    font-style: italic;
+    margin-top: 10px;
+  }
+
+  .course-group-heading {
+    font-family: 'Source Serif 4', serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1a3a5c;
+    margin: 40px 0 8px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid #e0e0e0;
+  }
+
+  /* ---- MISC ---- */
+  .note {
+    background: #fffbe6;
+    border-left: 4px solid #e6c200;
+    padding: 14px 18px;
+    margin: 18px 0;
+    font-size: 0.93rem;
+    border-radius: 0 4px 4px 0;
+  }
+  .cta-button {
+    display: inline-block;
+    background: #1a3a5c;
+    color: #fff;
+    padding: 12px 28px;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 4px;
+    margin-top: 16px;
+    font-size: 0.95rem;
+    transition: background 0.2s;
+  }
+  .cta-button:hover { background: #264d73; }
+
+  .contact-block { margin-bottom: 24px; }
+  .contact-block strong { display: block; margin-bottom: 2px; }
+
+  /* responsive */
+  @media (max-width: 640px) {
+    .page-header h1 { font-size: 1.5rem; }
+    .tabs-nav button { padding: 12px 12px; font-size: 0.8rem; }
+    .course { padding: 18px 16px; }
+    table { font-size: 0.85rem; }
+    th, td { padding: 8px 10px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ==================== HEADER ==================== -->
+<header class="page-header">
+  <div class="wrap">
+    <h1>BSc in Shipping</h1>
+    <div class="subtitle">Department of Shipping · Faculty of Management and Economics · Cyprus University of Technology</div>
+  </div>
+</header>
+
+<!-- ==================== TAB NAV ==================== -->
+<nav class="tabs-nav">
+  <div class="wrap">
+    <button class="active" data-tab="overview">Overview</button>
+    <button data-tab="structure">Programme Structure</button>
+    <button data-tab="courses">Course Descriptions</button>
+    <button data-tab="admission">Admission</button>
+    <button data-tab="learning">How You Will Learn</button>
+    <button data-tab="careers">Recognition &amp; Careers</button>
+    <button data-tab="support">Student Support</button>
+    <button data-tab="contact">Contact</button>
+  </div>
+</nav>
+
+<!-- ==================== TAB 1: OVERVIEW ==================== -->
+<div class="tab-content active" id="overview">
+  <h2>Overview</h2>
+  <p><strong>Σκοπός του προγράμματος</strong></p>
+  <p>Το πρόγραμμα σπουδών του Τμήματος Ναυτιλιακών εστιάζει ειδικά στον τομέα της Ναυτιλίας, προσφέροντας ένα καθαρά προσανατολισμένο στη Ναυτιλία πτυχίο.</p>
+  <p>Το εν λόγω πρόγραμμα σπουδών είναι μοναδικό, καινοτόμο από άποψη σχεδιασμού, υψηλής ποιότητας και το μοναδικό σε δημόσιο Πανεπιστήμιο, δίνοντας την ευκαιρία σε Κύπριους ή Ελλαδίτες φοιτητές να σπουδάσουν σε ένα από τον μεγαλύτερο και συνεχώς εξελισσόμενο τομέα της κυπριακής οικονομίας. Το πρόγραμμα είναι μοναδικό στον Τομέα του και πιθανώς και σε ευρωπαϊκό επίπεδο, καθώς έχει σχεδιαστεί για να καλύψει τις ανάγκες των φοιτητών, αλλά και των εργοδοτών της εγχώριας και ξένης ναυτιλιακής βιομηχανίας, μέσω προσφοράς καινοτόμων και κατάλληλα σχεδιασμένων μαθημάτων που αφορούν αποκλειστικά τη ναυτιλία.</p>
+  <p><strong>Προσδοκώμενα αποτελέσματα</strong></p>
+  <p>Το πρόγραμμα αποσκοπεί στο να αναπτύξει την ικανότητα των φοιτητών να αναλύουν, να κατανοούν και να αξιολογούν διάφορα θέματα που σχετίζονται με τη λειτουργία του διεθνούς θαλάσσιου εμπορίου και των ναυτιλιακών αγορών, τη διαχείριση κεφαλαίων, τη διαχείριση ναυτιλιακών κινδύνων και τη διαχείριση μεταφορών και εφοδιαστικής αλυσίδας.</p>
+  <p>Το νέο Πρόγραμμα Σπουδών συνδυάζει τις απαραίτητες αναλυτικές και συνθετικές ικανότητες με άρτια επιστημονική εξειδίκευση. Επιπλέον, οι φοιτητές αποκτούν τις θεωρητικές και πρακτικές γνώσεις που αποτελούν εφόδια για μια επιτυχημένη επαγγελματική σταδιοδρομία στον δυναμικά ανερχόμενο ναυτιλιακό τομέα ή ακόμα και για σπουδές σε ανώτερο επίπεδο και έρευνα, αποκτώντας ταυτόχρονα μέσα από αυτές τις μαθησιακές διαδικασίες, κριτική θεώρηση και αντίληψη, αλλά και διοικητική ικανότητα. Επιπλέον, στο σημερινό ταχέως μεταβαλλόμενο, τεχνολογικά εξελιγμένο περιβάλλον, το οποίο πρέπει να στηρίζεται στις αρχές της βιώσιμης ανάπτυξης, μέσα από το πρόγραμμα οι απόφοιτοι θα έχουν τα εφόδια και την περιβαλλοντική συνείδηση να κατανοούν και να αναγνωρίζουν ευκαιρίες βελτίωσης και να εισηγούνται ενέργειες για αειφορική ανάπτυξη του κλάδου και για αντιμετώπιση των προκλήσεων που αντιμετωπίζει ο τομέας της ναυτιλίας.</p>
+  <p>Μέσα στα πλαίσια των μαθησιακών αποτελεσμάτων του εν λόγω Προγράμματος Σπουδών εντάσσεται και η αναγνώριση των μαθημάτων του κλάδου από το Institute of Chartered Shipbrokers (ICS). Συγκεκριμένα, το <strong>Institute of Chartered Shipbrokers (ICS)</strong>, παρέχει το μέγιστο αριθμό απαλλαγών (τρεις απαλλαγές) από μαθήματα σε φοιτητές του τμήματος Ναυτιλιακών που επιλέγουν να συνεχίσουν με απόκτηση επιπλέον επαγγελματικών προσόντων από μέρος των εξετάσεων του επαγγελματικού προγράμματος πιστοποίησης (Professional Qualifying Examinations) του Institute of Chartered Shipbrokers (ICS):</p>
+  <ul>
+    <li>Εξαίρεση από το μάθημα ‘Introduction to Shipping’</li>
+    <li>Εξαίρεση από το μάθημα ‘Economics of Sea Transport and International Trade’</li>
+    <li>Εξαίρεση από το μάθημα ‘Shipping Finance’ ή ‘Ship Operations and Management’ ή ‘Port and Terminal Management’</li>
+  </ul>
+  <p>*Οι εξαιρέσεις (μέχρι σήμερα) ισχύουν για κάτοχους τίτλου: BSc Commerce, Finance and Shipping, MSc Shipping and Business και MSc Shipping and Finance. Για το νέο προπτυχιακό Πρόγραμμα Σπουδών του Τμήματος, καθώς και για τα μεταπτυχιακά MSc Shipping και MSc Shipping and Finance (διατμηματικό), οι τρεις εξαιρέσεις θα ισχύουν από το 2024.</p>
+  <p>Περισσότερες πληροφορίες στην ιστοσελίδα του Ινστιτούτου: <a href="https://www.ics.org.uk/">https://www.ics.org.uk/</a></p>
+
+  <h3>Key Features</h3>
+  <table class="kf-table">
+    <tr><td>Degree</td><td>Bachelor of Science (BSc) in Shipping</td></tr>
+    <tr><td>Duration</td><td>4 years (8 semesters)</td></tr>
+    <tr><td>Credits</td><td>240 ECTS</td></tr>
+    <tr><td>Language</td><td>Greek</td></tr>
+    <tr><td>Faculty</td><td>Faculty of Management and Economics</td></tr>
+    <tr><td>Department</td><td>Department of Shipping</td></tr>
+    <tr><td>Composition</td><td>216 ECTS mandatory · 12 ECTS specialisation electives · 12 ECTS general/free electives · optional thesis (12 ECTS) · optional internship (6 ECTS)</td></tr>
+  </table>
+
+  <h3>Why Choose This Programme</h3>
+  <p>The BSc in Shipping was first offered through the 2024–25 Pancyprian Examinations and ranked among the most sought-after new degree programmes in its first year. The curriculum was developed in close consultation with the local maritime industry and sector partners, reflecting the needs of a sector that contributes around 7% of Cyprus GDP and employs over 9,000 people directly. It is the only shipping-specialist degree offered by a public university in Cyprus, entirely focused on maritime studies, not a general business programme with a shipping elective.</p>
+  <p>Limassol is home to virtually all major shipping companies operating in Cyprus, making it one of the most significant maritime clusters in Europe. Studying here means proximity to employers, internship opportunities, and professional networks from the first year. Faculty members are ranked among the top 2% globally in their fields, combining research excellence with applied maritime expertise. Graduates receive the maximum three exemptions from the Institute of Chartered Shipbrokers Professional Qualifying Examinations (<a href="https://icscy.com/" target="_blank">icscy.com</a>), and approximately 96% find employment within six months of graduation. Tuition is free for Cypriot and EU citizens admitted through the national admissions system.</p>
+
+
+  <p>To be a leading centre of educational and applied research excellence in shipping, maritime studies, supply chain, logistics, and transport, with a national and international orientation.</p>
+
+  <h3>Mission</h3>
+  <p>To provide high-quality academic and professional education and applied research in the field of shipping and maritime studies, creating continuous value for the local and international maritime community and giving graduates the tools for a successful career in the demanding maritime sector. The mission focuses on creating added value through action in four areas</p>
+  <ul>
+    <li><strong>Education</strong> To become a national, regional, and international centre of higher education, offering high-quality and competitive academic programmes at undergraduate and postgraduate level in maritime studies, programmes that reflect technological, industrial, and environmental developments and the needs of the shipping sector.</li>
+    <li><strong>Research &amp; Innovation</strong> To become a pioneer in applied research and achieve excellence in the local and international research community, promoting research outputs and transferring expertise to society and the maritime industry to generate innovative solutions with significant economic, operational, and environmental impact.</li>
+    <li><strong>Social Contribution</strong> To become a key partner in the shipping sector, building constructive dialogue through a strong network of collaborating organisations and established industry actors in the local maritime cluster.</li>
+  </ul>
+
+  <h3>Our Values</h3>
+  <table>
+    <tr><th>Value</th><th>Commitment</th></tr>
+    <tr><td><strong>Leadership</strong></td><td>To operate as a pioneering Department in undergraduate and postgraduate maritime studies, research, and industry engagement.</td></tr>
+    <tr><td><strong>Integrity</strong></td><td>To act equitably, impartially, and fairly in all our actions.</td></tr>
+    <tr><td><strong>Respect</strong></td><td>To behave professionally and earn the respect of all partners and stakeholders, inside and outside the University.</td></tr>
+    <tr><td><strong>Accountability</strong></td><td>To ensure transparency and accountability in all actions and outcomes.</td></tr>
+    <tr><td><strong>Collaboration</strong></td><td>To develop and maintain effective working relationships and strong industry links at local, national, and international level.</td></tr>
+    <tr><td><strong>Innovation</strong></td><td>To continuously explore new interdisciplinary areas, making use of new technologies.</td></tr>
+    <tr><td><strong>Transparency</strong></td><td>To encourage open communication and dialogue with all stakeholders on how mutual added value can be created in shipping.</td></tr>
+    <tr><td><strong>Effectiveness</strong></td><td>To deliver well-designed courses fully aligned with technological, industrial, and environmental developments, and to produce high-quality academic and applied research.</td></tr>
+    <tr><td><strong>Sustainability</strong></td><td>To continuously support sustainable development goals and actions relevant to the shipping sector.</td></tr>
+  </table>
+
+  <h3>Intended Learning Outcomes</h3>
+  <p>The programme develops students' capacity to analyse, understand, and evaluate matters related to international seaborne trade, maritime markets, capital management, shipping risk management, and transport and supply chain management. Learning outcomes are organised under three dimensions</p>
+
+  <h4>Knowledge</h4>
+  <ul>
+    <li>Understand the fundamental principles, structures, and players of the international shipping industry, including cargo types, vessel classifications, seaborne trade routes, and supply chain integration.</li>
+    <li>Explain the economics of maritime markets, including the four shipping markets, supply and demand forces, freight rate cyclicality, and ship price volatility.</li>
+    <li>Describe the international legal and regulatory framework governing shipping, including UNCLOS, IMO and ILO conventions (SOLAS, MARPOL, STCW, MLC, ISPS) and their connection to sustainable development.</li>
+    <li>Understand the principles of shipping finance, shipping investment, marine insurance, chartering, port operations, and transport and supply chain management.</li>
+    <li>Understand sustainability principles and environmental management as they apply to the maritime sector.</li>
+  </ul>
+
+  <h4>Skills</h4>
+  <ul>
+    <li>Apply quantitative methods, mathematics, statistics, mathematical programming, optimisation, and data analysis, to maritime problems.</li>
+    <li>Evaluate shipping investments using discounted cash flow, payback period, internal rate of return, and real options analysis.</li>
+    <li>Assess and manage market, credit, and financial risks using statistical methods and shipping derivatives.</li>
+    <li>Communicate effectively in specialised shipping English, including correspondence, safety reports, and chartering documents.</li>
+  </ul>
+
+  <h4>Competences</h4>
+  <ul>
+    <li>Manage capital and maritime risks in a professional shipping context.</li>
+    <li>Demonstrate critical thinking and administrative capability in addressing maritime challenges.</li>
+    <li>Conduct independent research applying appropriate qualitative and quantitative methodologies.</li>
+    <li>Act with environmental awareness and commitment to the sustainable development of the maritime sector.</li>
+  </ul>
+
+  <h3>Programme Contact</h3>
+  <p>Prof. Photis Panayides, Professor<br>
+  Tel: +357 25002449 · Email: photis.panayides@cut.ac.cy</p>
+</div>
+
+<!-- ==================== TAB 2: PROGRAMME STRUCTURE ==================== -->
+<div class="tab-content" id="structure">
+  <h2>Programme Structure</h2>
+  <p>The programme comprises 240 ECTS over eight semesters. Of these, 216 ECTS are mandatory courses, 12 ECTS are specialisation (restricted-choice) electives, and 12 ECTS are general/free electives. In the final year students may also undertake an optional dissertation (12 ECTS) and/or an optional internship (6 ECTS).</p>
+
+  <h3>Credit Composition</h3>
+  <table>
+    <tr><th>Component</th><th>ECTS</th></tr>
+    <tr><td>Mandatory courses</td><td>216</td></tr>
+    <tr><td>Elective courses (specialisation)</td><td>12</td></tr>
+    <tr><td>Elective courses (general / free)</td><td>12</td></tr>
+    <tr><td>Thesis / Dissertation (optional)</td><td>12</td></tr>
+    <tr><td>Internship (optional)</td><td>6</td></tr>
+    <tr><td><strong>Total minimum</strong></td><td><strong>240</strong></td></tr>
+  </table>
+
+  <h3>Year 1</h3>
+
+  <h4>Semester 1 (30 ECTS)</h4>
+  <table>
+    <tr><th>Code</th><th>Course</th><th>ECTS</th></tr>
+    <tr><td>SHP111</td><td>Introduction to Shipping</td><td>6</td></tr>
+    <tr><td>SHP112</td><td>Economics</td><td>6</td></tr>
+    <tr><td>SHP113</td><td>Mathematics</td><td>6</td></tr>
+    <tr><td>SHP114</td><td>Statistics</td><td>6</td></tr>
+    <tr><td>LCE103</td><td>English for Shipping I</td><td>6</td></tr>
+  </table>
+
+  <h4>Semester 2 (30 ECTS)</h4>
+  <table>
+    <tr><th>Code</th><th>Course</th><th>ECTS</th></tr>
+    <tr><td>SHP121</td><td>Ship Technology</td><td>6</td></tr>
+    <tr><td>SHP122</td><td>Maritime Economics</td><td>6</td></tr>
+    <tr><td>SHP123</td><td>Mathematics for Shipping</td><td>6</td></tr>
+    <tr><td>SHP124</td><td>Statistics for Shipping</td><td>6</td></tr>
+    <tr><td>LCE104</td><td>English for Shipping II</td><td>6</td></tr>
+  </table>
+
+  <h3>Year 2</h3>
+
+  <h4>Semester 3 (30 ECTS)</h4>
+  <table>
+    <tr><th>Code</th><th>Course</th><th>ECTS</th></tr>
+    <tr><td>SHP231</td><td>International Trade</td><td>6</td></tr>
+    <tr><td>SHP232</td><td>International Maritime Conventions and Regulations</td><td>6</td></tr>
+    <tr><td>SHP233</td><td>Port Economics</td><td>6</td></tr>
+    <tr><td>SHP234</td><td>Maritime Accounting</td><td>6</td></tr>
+    <tr><td>SHP235</td><td>Business Logistics</td><td>6</td></tr>
+  </table>
+
+  <h4>Semester 4 (30 ECTS)</h4>
+  <table>
+    <tr><th>Code</th><th>Course</th><th>ECTS</th></tr>
+    <tr><td>SHP241</td><td>Ship Management</td><td>6</td></tr>
+    <tr><td>SHP242</td><td>Marine Insurance, General Average and Claims</td><td>6</td></tr>
+    <tr><td>SHP243</td><td>Supply Chain Management</td><td>6</td></tr>
+    <tr><td>SHP244</td><td>Freight Transport Planning</td><td>6</td></tr>
+    <tr><td>SHP245</td><td>Sustainability and Green Shipping Management</td><td>6</td></tr>
+  </table>
+
+  <h3>Year 3</h3>
+
+  <h4>Semester 5 (30 ECTS)</h4>
+  <table>
+    <tr><th>Code</th><th>Course</th><th>ECTS</th></tr>
+    <tr><td>SHP351</td><td>State Maritime Policy and Strategy</td><td>6</td></tr>
+    <tr><td>SHP352</td><td>Mathematical Programming for Shipping</td><td>6</td></tr>
+    <tr><td>SHP353</td><td>Carriage of Goods by Sea</td><td>6</td></tr>
+    <tr><td>SHP354</td><td>Shipping Operations Management</td><td>6</td></tr>
+    <tr><td>SHP355</td><td>Research Methods in Shipping I</td><td>6</td></tr>
+  </table>
+
+  <h4>Semester 6 (30 ECTS)</h4>
+  <table>
+    <tr><th>Code</th><th>Course</th><th>ECTS</th></tr>
+    <tr><td>SHP361</td><td>Shipping Finance</td><td>6</td></tr>
+    <tr><td>SHP362</td><td>Dry Cargo Chartering</td><td>6</td></tr>
+    <tr><td>SHP363</td><td>Optimization in Shipping and Logistics</td><td>6</td></tr>
+    <tr><td>SHP364</td><td>Maritime Law</td><td>6</td></tr>
+    <tr><td>SHP365</td><td>Research Methods in Shipping II</td><td>6</td></tr>
+  </table>
+
+  <h3>Year 4</h3>
+
+  <h4>Semester 7 (30 ECTS)</h4>
+  <table>
+    <tr><th>Code</th><th>Course</th><th>ECTS</th></tr>
+    <tr><td>SHP471</td><td>Shipping Investments</td><td>6</td></tr>
+    <tr><td>SHP472</td><td>Tanker Chartering</td><td>6</td></tr>
+    <tr><td>SHP473</td><td>Shipping Financial and Market Risk</td><td>6</td></tr>
+    <tr><td>SHP474</td><td>Port Operations Management</td><td>6</td></tr>
+    <tr><td>SHP475</td><td>Data Analytics for Shipping (elective)</td><td>6</td></tr>
+    <tr><td>-</td><td>Elective: restricted-choice or free-choice course</td><td>6</td></tr>
+  </table>
+
+  <h4>Semester 8 (30 ECTS)</h4>
+  <table>
+    <tr><th>Code</th><th>Course</th><th>ECTS</th></tr>
+    <tr><td>SHP481</td><td>Operational and Corporate Risk Assessment in Shipping</td><td>6</td></tr>
+    <tr><td>SHP482</td><td>Supply Chain Network Design (elective)</td><td>6</td></tr>
+    <tr><td>SHP483</td><td>Shipping Derivatives (elective)</td><td>6</td></tr>
+    <tr><td>SHP484</td><td>Topics in Shipping</td><td>6</td></tr>
+    <tr><td>SHP485</td><td>Internship (elective)</td><td>6</td></tr>
+    <tr><td>SHP486</td><td>Thesis (elective)</td><td>12</td></tr>
+  </table>
+  <div class="note">Semester 8 lists more than 30 ECTS because some courses are electives. Students combine mandatory and elective courses to reach the 30 ECTS required for the semester, in line with the overall credit composition above (specialisation electives, free electives, optional dissertation, and optional internship).</div>
+</div>
+
+<!-- ==================== TAB 3: COURSE DESCRIPTIONS ==================== -->
+<div class="tab-content" id="courses">
+  <h2>Course Descriptions</h2>
+
+  <!-- YEAR 1 -->
+  <div class="course-group-heading">Year 1, Semester 1</div>
+
+  <div class="course">
+    <h4>SHP111 - Introduction to Shipping</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Introduces fundamental maritime principles, examining cargo types, vessel classifications, industry players, global shipping geography, seaborne trade routes, and supply chain integration.</p>
+  </div>
+
+  <div class="course">
+    <h4>SHP112 - Economics</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Covers micro- and macroeconomic fundamentals, enabling students to analyse economies critically using descriptive and graphical analytical methods.</p>
+  </div>
+
+  <div class="course">
+    <h4>SHP113 - Mathematics</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Provides foundational knowledge in linear algebra, functions, equations, matrix algebra, derivatives, and integrals.</p>
+  </div>
+
+  <div class="course">
+    <h4>SHP114 - Statistics</h4>
+    <div class="ects">6 ECTS</div>
+    <p>The course provides a comprehensive introduction to statistical concepts and methodologies, with a specific focus on applications in the shipping industry. Students learn to apply statistical techniques using SPSS software, covering the fundamentals of data collection, descriptive and inferential statistics, probability, hypothesis testing, and more, equipping them with the skills to analyse and interpret data effectively. Practical laboratory sessions using SPSS reinforce theoretical knowledge and provide hands-on experience with the software.</p>
+  </div>
+
+  <div class="course">
+    <h4>LCE103 - English for Shipping I</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Develops communication at the B1–B2 level of the Common European Framework through specialised shipping materials, listening, note-taking, and collaborative group work on industry-relevant topics.</p>
+  </div>
+
+  <!-- YEAR 1 - SEM 2 -->
+  <div class="course-group-heading">Year 1, Semester 2</div>
+
+  <div class="course">
+    <h4>SHP121 - Ship Technology</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Explains technical characteristics, construction materials, vessel design, basic shipbuilding markets, ship equipment, hydrodynamics, and hull construction.</p>
+  </div>
+
+  <div class="course">
+    <h4>SHP122 - Maritime Economics</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Analyses economic structures, dry bulk and liner economics, supply and demand forces, freight rate cyclicality, ship price volatility, and the four maritime markets.</p>
+  </div>
+
+  <div class="course">
+    <h4>SHP123 - Mathematics for Shipping</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Reinforces mathematical knowledge with applications to shipping, covering linear algebra, partial derivatives, integration, differential equations, and function approximation.</p>
+  </div>
+
+  <div class="course">
+    <h4>SHP124 - Statistics for Shipping</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Strengthens statistical competence with advanced tools for shipping applications, including time series analysis and statistical software packages.</p>
+  </div>
+
+  <div class="course">
+    <h4>LCE104 - English for Shipping II</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Advances communication to the B2 level, emphasising the production of specialised texts (correspondence, safety reports, chartering documents) and developing 21st-century transferable skills.</p>
+  </div>
+
+  <!-- YEAR 2 - SEM 3 -->
+  <div class="course-group-heading">Year 2, Semester 3</div>
+
+  <div class="course">
+    <h4>SHP231 - International Trade</h4>
+    <div class="ects">6 ECTS</div>
+    <p>This module provides students with a thorough understanding of the theory and the empirics of international trade with focus on shipping industry. You will study the theory of trade, incoterms, freight forwarding, functions of Bill of Lading and procedures needed to make an order for transportation in liner shipping market.  The module also differentiates road than maritime transport and explains the contracts used in each market.</p>
+  </div>
+
+  <div class="course">
+    <h4>SHP232 - International Maritime Conventions and Regulations</h4>
+    <div class="ects">6 ECTS</div>
+    <p>This course provides a comprehensive overview of the international legal and institutional framework of shipping, within the broader context of global sustainability governance. It starts with UNCLOS (1982) as the legal foundation for maritime jurisdiction, resource management, and environmental protection, then examines the principal conventions of the IMO, ILO, and other UN bodies governing safety, security, labour, and environmental compliance in international shipping, with particular attention to SOLAS, MARPOL, STCW, MLC, and ISPS, as well as environmental instruments covering marine pollution, ballast water, antifouling systems, oil spill preparedness, hazardous substances, and ship recycling. These conventions are placed within the evolution of global sustainability policy, from the 1972 Stockholm Conference and the 1987 Brundtland Report to the Rio Earth Summits and the 2015 UN SDGs. The course highlights the interconnected character of all seventeen Goals as reflected in maritime activity and regulation, and builds a systemic understanding of how maritime governance supports the transition to a resilient, circular, and inclusive blue economy.</p>
+  </div>
+
+  <div class="course">
+    <h4>SHP233 - Port Economics</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Covers port economics, port governance, supply and demand, and port financing methods.</p>
+  </div>
+
+  <div class="course">
+    <h4>SHP234 - Maritime Accounting</h4>
+    <div class="ects">6 ECTS</div>
+    <p>The module aims to assist students to understand the general principles of accounting which are applied to the shipping industry. Modern principles of accounting are to be applied for understanding the double entry bookkeeping function in the recording of shipping transactions. The application of accounting equation in shipping transactions is of outmost importance in ensuring that financial transactions are correctly recorded. Importance is given on the right preparation of financial statements (balance sheet, income statement, cash flow statement, etc). Also, students are to be helped in learning the types of costs, assets and liabilities identified in the shipping industry, to know how to record a debit and credit transaction. Using important financial information from the financial statements, students would be able to compute financial ratios for assessing operational and financial risk, profitability, liquidity, growth prospects, solvency, and other important financial metrics. This enables students to assess the financial viability of investing in a shipping company.</p>
+  </div>
+
+  <div class="course">
+    <h4>SHP235 - Business Logistics</h4>
+    <div class="ects">6 ECTS</div>
+    <p>This course is an introduction to Logistics, and familiarizes the students with the main stakeholders involved. It analyzes their role, and the main challenges they overcome in the storing, transportation, and distribution of materials and goods. Innovation aspects in Logistics of the last decades are presented. It considers different types of logistics, categorized into upstream and downstream, challenges on warehouse management, and examines different requirements based on products. Topics from real world case studies on perishables, cold chains, emergency relief, medical supplies, and reverse logistics will be presented.
+Topics covered include Understand the importance and role of each stakeholder in Logistics
+Upstream and Downstream Logistics
+Warehousing challenges
+Analysis of logistics based on type of cargo carried</p>
+  </div>
+
+  <!-- YEAR 2 - SEM 4 -->
+  <div class="course-group-heading">Year 2, Semester 4</div>
+
+  <div class="course">
+    <h4>SHP241 - Ship Management</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Covers shipping management, with focus on core management functions in the commercial maritime industry and the relationships between the stakeholders involved in ship operations.</p>
+  </div>
+
+  <div class="course">
+    <h4>SHP242 - Marine Insurance, General Average and Claims</h4>
+    <div class="ects">6 ECTS</div>
+    <p>This module deals with the principles of marine insurance. The aim of this module is to provide the essential fundamental knowledge of the law and principles of marine insurance and to introduce students to marine insurance practice. This module will examine in depth the Marine Insurance Act, 1906 and the main differences with the Insurance Act of 2015 (with regards to avoidance and warranties). It also examines important issues related the formation of a marine insurance contract (including utmost good faith, the duty of disclosure and insurable interest), the main contractual parties, the various risks covered and excluded perils, the Mechanisms and the Operation of the Institute's Time Clauses (Hulls) Institute Cargo Clauses and the P &amp; I Clubs. The module also covers such as the rule of proximate cause, assignment, the various forms of loss that a shipowner or cargo owner might suffer (including partial and total loss, constructive total loss and the effect of abandonment), salvage, sue and labour charges, subrogation and contribution, 3rd party liability and general average.</p>
+  </div>
+
+  <div class="course">
+    <h4>SHP243 - Supply Chain Management</h4>
+    <div class="ects">6 ECTS</div>
+    <p>This course deals with various issues that are included in the management of an effective supply chain. It considers the meaning and definition of supply chain management, distribution networks, inventory management, as well as intermodal transportation, global locistics, material flow management, and warehouse location. At the end of the course, students are expected to understand how a supply chain works, and to be able to analyze and compare decision strategies that optimize a chain.
+Topics covered include Understand the differences between Logistics and Supply Chain Management
+Decision levels (strategic, tactical, operational) in SCM
+New trends in SCM, and role of integration
+What are lean and agile logistics
+Basics of inventory management
+Capacity management
+Warehousing
+Intermodal logistics</p>
+  </div>
+
+  <div class="course">
+    <h4>SHP244 - Freight Transport Planning</h4>
+    <div class="ects">6 ECTS</div>
+    <p>This module provides an overview of freight transport operations and the design and management of modern supply chains. It reviews optimization and modeling tools used by practitioners in freight transportation planning. 
+
+Topics covered include Understand fundamental concepts and principles of freight transport and logistics
+Knowing technical aspects of route planning, vehicle routing and transport allocation problems
+To optimize the trade-offs encountered in logistics systems and to develop necessary analytical methods to establish a minimum cost highest quality of service
+To demonstrate the ability to use management science, probability and statistics knowledge to make long, medium and short term decisions regarding logistic system design, inventory management, warehouse design and operations, facility locations and freight transport</p>
+  </div>
+
+  <div class="course">
+    <h4>SHP245 - Sustainability and Green Shipping Management</h4>
+    <div class="ects">6 ECTS</div>
+    <p>This module explores current environmental issues in maritime transport. It presents the regulatory challenges that the sector is facing, and the main avenues to achieve the targets set by the IMO, the EU, and other regional regulators. The main technological, operational, and market-based measures to reduce emissions from shipping are thoroughly presented.
+Topics covered include Understand in detail existing and upcoming environmental regulations
+Effects of different environmental regulations on the different shipping markets
+The role of port operations, and green port management
+Presentation of low/zero carbon emission fuels, and their challenges in bunkering and supply chains</p>
+  </div>
+
+  <!-- YEAR 3 - SEM 5 -->
+  <div class="course-group-heading">Year 3, Semester 5</div>
+
+  <div class="course">
+    <h4>SHP351 - State Maritime Policy and Strategy</h4>
+    <div class="ects">6 ECTS</div>
+    <p>This module covers state maritime strategy and policy at international, European, and national levels. It covers the role of the IMO, National Maritime Transport Policies and their alignment with the UN SDGs, and Port State Control enforcement through the Paris and Tokyo MoUs. At the EU level, the course addresses the Integrated Maritime Policy, Blue Growth, Maritime Spatial Planning, sea basin strategies, and marine data governance. Climate governance frameworks, market-based mechanisms, and ESG reporting obligations under the CSRD and EU Taxonomy are covered as policy instruments shaping flag state competition and access to capital. Cyprus maritime strategy is also covered, including the ship registry, parallel registration, the tonnage tax system, attracting shipping companies and ancillary services, and the Limassol maritime cluster within the blue economy.</p>
+  </div>
+
+  <div class="course">
+    <h4>SHP352 - Mathematical Programming for Shipping</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Introduce concepts, modeling and solution methods of (un)constrained optimization. Topics include building a mathematical model, linear programing, solution with graphic method, the simplex method, duality theory, and decomposition principles.</p>
+  </div>
+
+  <div class="course">
+    <h4>SHP353 - Carriage of Goods by Sea</h4>
+    <div class="ects">6 ECTS</div>
+    <p>This module deals with the basic principles of maritime law and emphasizes on the carriage of goods by sea and the different types of charterparties, the law surrounding that and the obligations and responsibilities of the chain of parties relating to the carriage of goods by sea.  Students gain an understanding of how carriage of goods works in practice and the legal characteristics of carriage contracts.</p>
+  </div>
+
+  <div class="course">
+    <h4>SHP354 - Shipping Operations Management</h4>
+    <div class="ects">6 ECTS</div>
+    <p>This module focuses on the management functions pertaining to the operation of ships and the activities/inter-relationships of the various stakeholders associated with it. The aim of this course is to familiarize students with the concepts and techniques for effective ship operations management.</p>
+  </div>
+
+  <div class="course">
+    <h4>SHP355 - Research Methods in Shipping I</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Covers research methodology, including core concepts in quantitative and qualitative methods.</p>
+  </div>
+
+  <!-- YEAR 3 - SEM 6 -->
+  <div class="course-group-heading">Year 3, Semester 6</div>
+
+  <div class="course">
+    <h4>SHP361 - Shipping Finance</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Covers shipping finance in both its theoretical and practical dimensions. Examines financing sources, the impact of capital structure on shipping companies, and how to evaluate different financial sources effectively.</p>
+  </div>
+
+  <div class="course">
+    <h4>SHP362 - Dry Cargo Chartering</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Chartering is at the core of the business of shipowning and ship operation and represents a fundamental service provided to cargo owners. Over the last years chartering in the dry bulk markets has developed and evolved into a more formalized activity requiring conformance to commercial, financial, managerial and legal aspects that will in turn determine success in successfully negotiating fixtures, agreeing charter party contracts and concluding chartering business including undertaking post-fixture work.
+
+This course aims at providing a good understanding of chartering practice including the process in the negotiations and chartering of merchant ships, the analysis of various voyage and time charter party forms, calculation of laytime and demurrage, the estimation of profit and loss related to specific fixtures (voyage estimating) and the analysis of important charter party clauses in the dry bulk chartering markets. Overall the course provides the context and information required to initiate, negotiate, assess, agree and execute a successful charter party contract in the dry bulk markets.</p>
+  </div>
+
+  <div class="course">
+    <h4>SHP363 - Optimization in Shipping and Logistics</h4>
+    <div class="ects">6 ECTS</div>
+    <p>This module explores optimization problems in shipping and port operations. A solid background in operations research is required, and particularly in building mathematical models that represent the real-world problem to be solved. The course will present the main types of optimization problems in shipping. As most are related to cost minimization or profit maximization, and thus depend on fuel costs, most problems are non-linear. 
+Topics covered include Formulating the objective function of the problem at hand
+Understanding the importance of constraints
+Linearization of non-linear and convex functions
+Solving a mathematical model in a commercial solver (Excel Solver, GAMS, CPLEX)</p>
+  </div>
+
+  <div class="course">
+    <h4>SHP364 - Maritime Law</h4>
+    <div class="ects">6 ECTS</div>
+    <p>This module deals with the basic principles of maritime law and emphasizes on how the law operates in relation to specific maritime issues, such as shipping contracts, ship registration, insurance, admiralty practice, ship arrest and commercial arbitration. It also covers further concepts of shipping law such as maritime liens, mortgages, general average, salvage, and collisions. Students develop legal reasoning skills applied to maritime disputes and claims.</p>
+  </div>
+
+  <div class="course">
+    <h4>SHP365 - Research Methods in Shipping II</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Covers multivariate data analysis techniques used in quantitative and qualitative research.</p>
+  </div>
+
+  <!-- YEAR 4 - SEM 7 -->
+  <div class="course-group-heading">Year 4, Semester 7</div>
+
+  <div class="course">
+    <h4>SHP471 - Shipping Investments</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Introduces investment fundamentals and their unique characteristics in shipping. Teaches evaluation using discounted cash flow methods, payback period, internal rate of return, and real options analysis. Covers the market analysis essential for making informed investment decisions.</p>
+  </div>
+
+  <div class="course">
+    <h4>SHP472 - Tanker Chartering</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Tanker Chartering is central to the business of shipowning and ship operation. Tanker shipping companies offer comprehensive transportation services to oil majors and energy trading companies. Over the last years tanker chartering has developed and evolved into a more formalized activity requiring conformance to commercial, financial, managerial and legal aspects that will in turn determine success in successfully negotiating fixtures, agreeing charter party contracts and concluding chartering business including undertaking post-fixture work. 
+This course aims at providing a good understanding of tanker chartering practice including the process in the negotiations and chartering of tanker ships, the analysis of various voyage and time charter party forms, calculation of laytime and demurrage, the estimation of profit and loss related to specific fixtures (voyage estimating) and the analysis of important tanker charter party clauses. Overall, the course provides the context and information required to initiate, negotiate, assess, agree and execute a successful charter party contract in the tanker markets.</p>
+  </div>
+
+  <div class="course">
+    <h4>SHP473 - Shipping Financial and Market Risk</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Covers the fundamental principles of shipping risk. Covers market risk assessment using statistical methods (Value-at-Risk, Expected Shortfall), credit risk identification and management, and mitigation strategies.</p>
+  </div>
+
+  <div class="course">
+    <h4>SHP474 - Port Operations Management</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Covers port operations and management, including internal organisation and relationships with port users.</p>
+  </div>
+
+  <div class="course">
+    <h4>SHP475 - Data Analytics for Shipping</h4>
+    <div class="ects">6 ECTS</div>
+    <p>This course prepares students to gather, describe, and analyze data, and use advanced statistical tools to make decisions on operations, risk management, finance, marketing, etc. Analysis is done targeting economic and financial decisions in maritime transport that involve multiple stakeholders. Topics include statistics, regression, clustering, forecasting, databases, and visualization/programing software overview.</p>
+  </div>
+
+  <!-- YEAR 4 - SEM 8 -->
+  <div class="course-group-heading">Year 4, Semester 8</div>
+
+  <div class="course">
+    <h4>SHP481 - Operational and Corporate Risk Assessment in Shipping</h4>
+    <div class="ects">6 ECTS</div>
+    <p>This course looks at aspects of Operational and Corporate Risk Assessment in Shipping from the following perspectives:
+Part 1 - What are the issues and risks that need to be investigated?
+Part 2 - How do you investigate those risks?
+Part 3 - What do you do with the results of your investigations? How do you use the information to make good decisions?</p>
+  </div>
+
+  <div class="course">
+    <h4>SHP482 - Supply Chain Network Design</h4>
+    <div class="ects">6 ECTS</div>
+    <p>This course introduces more advanced topics in Supply Chain Management, and focuses primarily on quantitative aspects such as Network Design, Network Optimization, Depot Location Problems, and Resilience of Supply Chains.
+It analyzes their role, and the main challenges they overcome in the storing, transportation, and distribution of materials and goods. Innovation aspects in Logistics of the last decades are presented. It considers different types of logistics, categorized into upstream and downstream, challenges on warehouse management, and examines different requirements based on products. Topics from real world case studies on perishables, cold chains, emergency relief, medical supplies, and reverse logistics will be presented.
+Topics covered include Understand the steps in designing a supply chain network
+Understand the basics of graph theory
+Principles of Network Optimization, and formulation of a mathematical model
+Formulation of a Depot Location Problem and solution approaches 
+Definition of resilience in networks and recovery</p>
+  </div>
+
+  <div class="course">
+    <h4>SHP483 - Shipping Derivatives</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Provides theoretical and practical knowledge for managing risk via shipping and financial derivatives. Explores freight forward contracts, freight options, and fuel derivatives for effective risk mitigation.</p>
+  </div>
+
+  <div class="course">
+    <h4>SHP484 - Topics in Shipping</h4>
+    <div class="ects">6 ECTS</div>
+    <p>This module covers current and emerging issues facing the shipping industry.  Lectures and practical sessions focus on real-world shipping industry applications to prepare students for professional practice.</p>
+  </div>
+
+  <div class="course">
+    <h4>SHP485 - Internship</h4>
+    <div class="ects">6 ECTS</div>
+    <p>The internship places students in real maritime sector working environments, connecting academic study with professional practice and helping them connect academic study with professional practice in the shipping sector.</p>
+  </div>
+
+  <div class="course">
+    <h4>SHP486 - Thesis</h4>
+    <div class="ects">6 ECTS</div>
+    <p>The thesis is an optional research project undertaken in the final year of the programme. Students conduct independent research on a topic relevant to the shipping industry, under the supervision of a faculty member. The thesis develops advanced research, analytical, and academic writing skills, and may draw on quantitative or qualitative methodologies developed in the Research Methods courses.</p>
+  </div>
+</div>
+
+<!-- ==================== TAB 4: ADMISSION ==================== -->
+<div class="tab-content" id="admission">
+  <h2>Admission</h2>
+  <p>Admission to this programme of study is through access framework no. 22.</p>
+</div>
+
+<!-- ==================== TAB 5: TUITION ==================== -->
+
+<!-- ==================== TAB 6: HOW YOU WILL LEARN ==================== -->
+<div class="tab-content" id="learning">
+  <h2>How You Will Learn</h2>
+  <p>The programme combines analytical and synthetic training with specialised scientific knowledge of the maritime sector. Across the four years, students progress from foundational courses in economics, mathematics, statistics, and English for shipping, through to applied and specialised maritime subjects, supported by research-methods training in the third year.</p>
+
+  <h3>Contact Hours and Semester Structure</h3>
+  <p>Each 6-ECTS course runs for <strong>13 weeks per semester</strong>, with <strong>two sessions of 1.5 hours per week</strong> (3 contact hours per week, 39 contact hours per semester). Laboratory or tutorial sessions are held once per week for one hour in courses that include a practical component. The academic year is divided into two semesters, a fall semester (Semester 1, 3, 5, 7) and a spring semester (Semester 2, 4, 6, 8).</p>
+
+  <h3>Teaching and Learning Approach</h3>
+  <ul>
+    <li><strong>Lectures and tutorials</strong> Core content is delivered through formal lectures supplemented by tutorials, case studies, and problem-solving exercises that connect theory to maritime practice.</li>
+    <li><strong>Active and collaborative learning</strong> Many courses use practical exercises, role plays, group assignments, guest speakers, and external visits to enhance engagement with industry realities.</li>
+    <li><strong>Quantitative training</strong> Mathematics, statistics, mathematical programming, optimisation, and data analytics courses build analytical capability using software tools including SPSS.</li>
+    <li><strong>Research training</strong> Research Methods in Shipping I and II (Years 3–4) develop independent research skills in quantitative and qualitative methods, with the option to complete a dissertation in the final year.</li>
+    <li><strong>Language development</strong> Specialised English-for-Shipping courses (Years 1–2) develop professional communication at B1–B2 and B2 CEFR levels, covering correspondence, safety reports, and chartering documents.</li>
+    <li><strong>Work-based learning</strong> An optional internship in Year 4 provides supervised exposure to real maritime sector working conditions.</li>
+  </ul>
+
+  <h3>Assessment</h3>
+  <p>Assessment varies by course and covers both theoretical understanding and applied competence. Methods used across the programme include written examinations, mid-term assessments, individual and group assignments, case study analysis, oral presentations, and practical reports. The optional internship is assessed through a logbook and a practical training report, and the optional thesis through an original independent research project submitted under faculty supervision. Individual course assessment breakdowns are available in the syllabus documents provided by the Department.</p>
+  <p>The programme is accredited by the <strong>Cyprus Agency of Quality Assurance and Accreditation in Higher Education (DIPAE)</strong>, the body responsible for quality assurance of all higher education programmes in Cyprus. DIPAE evaluates programmes against national and European standards, ensuring that learning outcomes, teaching quality, and student support meet the requirements of the Cyprus Qualifications Framework (CyQF) and the European Higher Education Area (EHEA).</p>
+</div>
+
+<!-- ==================== TAB 7: RECOGNITION & CAREERS ==================== -->
+<div class="tab-content" id="careers">
+  <h2>Professional Recognition and Career Prospects</h2>
+
+  <h3>ICS Professional Recognition</h3>
+  <p>Recognition by the professional body is a core learning outcome of the programme. The <strong>Institute of Chartered Shipbrokers (ICS)</strong> grants students of the Department of Shipping the maximum number of exemptions, <strong>three exemptions</strong>, from its Professional Qualifying Examinations (PQE), for students who choose to pursue additional professional qualifications:</p>
+  <ul>
+    <li>Exemption from <em>Introduction to Shipping</em></li>
+    <li>Exemption from <em>Economics of Sea Transport and International Trade</em></li>
+    <li>Exemption from <em>Shipping Finance</em> OR <em>Ship Operations and Management</em> OR <em>Port and Terminal Management</em> (student's choice)</li>
+  </ul>
+  <p>These exemptions previously applied to holders of the BSc Commerce, Finance and Shipping, MSc Shipping and Business, and MSc Shipping and Finance. For the current BSc in Shipping programme, as well as for the new MSc in Shipping and the interdepartmental MSc in Shipping and Finance, all three exemptions apply from 2024 onward.</p>
+  <p>Further information is available on the ICS website: <a href="https://icscy.com/" target="_blank">icscy.com</a></p>
+
+  <h3>Career Prospects and Graduate Outcomes</h3>
+  <p>The programme prepares graduates for careers across the full spectrum of the maritime sector in Cyprus and internationally. Cyprus is home to more than 300 shipping companies covering every segment of maritime activity, providing an exceptional local employment market for graduates, with Limassol as the hub of virtually all major shipping operations in the country.</p>
+  <p>Graduates are in high demand. Approximately <strong>96% of graduates are employed within six months of graduation</strong>, reflecting the programme's strong alignment with industry needs and the Department's sustained relationships with maritime employers, organisations, and institutional partners. Networking, industry guest lectures, and the optional internship provide further direct pathways into employment.</p>
+
+  <h3>Typical Job Roles and Sectors</h3>
+  <p>The programme equips graduates with the theoretical and practical knowledge required for successful careers in the dynamic maritime sector, or for advanced study and research. Graduates are prepared for roles across international seaborne trade, maritime markets, capital and risk management, and transport and supply chain management.</p>
+  <p>Sectors and roles include shipowning, ship management, chartering, broking, shipping finance, investment analysis, marine insurance, port and terminal operations, supply chain and logistics, maritime law and compliance, data analytics, bunkering, ship supplies, ESG and sustainability, decarbonisation, and maritime policy and research.</p>
+
+  <h3>Employment Statistics</h3>
+  <p>Under its current four-year structure the programme admitted its first students in 2024 and has not yet produced its own graduates, so programme-specific outcome data are not yet available. The figures below are the Department of Shipping's reported outcomes for its shipping graduates more broadly:</p>
+  <ul>
+    <li>Approximately <strong>96%</strong> of graduates are employed within 6 months of graduation.</li>
+    <li><strong>29%</strong> gain immediate employment upon graduation.</li>
+    <li><strong>50%</strong> are employed within 1–6 months.</li>
+    <li><strong>50%</strong> of undergraduate alumni have pursued postgraduate studies.</li>
+  </ul>
+</div>
+
+<!-- ==================== TAB 8: STUDENT SUPPORT ==================== -->
+<div class="tab-content" id="support">
+  <h2>Student Support and Resources</h2>
+
+  <h3>Academic Advisor</h3>
+  <p>Assigned at enrolment to guide course selection, academic progress, and career planning.</p>
+
+  <h3>Learning Development Network (LDN)</h3>
+  <p>Technical support, study skills, writing support, and AI literacy training.</p>
+
+  <h3>Library</h3>
+  <p>Access to JSTOR, ScienceDirect, e-journals, and citation management tools (EndNote, Zotero).</p>
+
+  <h3>Career Services</h3>
+  <p>Career counselling, CV review, interview preparation, and networking events.</p>
+
+  <h3>Counselling Services</h3>
+  <p>Confidential support available in-person and remotely.<br>
+  Email: counseling@cut.ac.cy · Tel: +357 25 002 500 (24/7)</p>
+</div>
+
+<!-- ==================== TAB 9: CONTACT ==================== -->
+<div class="tab-content" id="contact">
+  <h2>Contact</h2>
+
+  <div class="contact-block">
+    <strong>Programme Contact</strong>
+    Professor Photis Panayides, Professor<br>
+    Email: photis.panayides@cut.ac.cy<br>
+    Tel: +357 25002449
+  </div>
+
+  <div class="contact-block">
+    <strong>Department of Shipping</strong>
+    Faculty of Management and Economics<br>
+    Cyprus University of Technology<br>
+    Archiepiskopou Kyprianou 30, 3036 Limassol, Cyprus<br>
+    Tel: +357 2500 2500 · Email: administration@cut.ac.cy
+  </div>
+</div>
+
+<!-- ==================== JS ==================== -->
+<script>
+  document.querySelectorAll('.tabs-nav button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tabs-nav button').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tab-content').forEach(tc => tc.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById(btn.dataset.tab).classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  });
+</script>
+</body>
+</html>

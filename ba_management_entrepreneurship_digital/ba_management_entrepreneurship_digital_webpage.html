@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="MG">
+<title>Bachelor in Management: Entrepreneurship and Digital Enterprise — Cyprus University of Technology</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;600;700&family=Source+Serif+4:wght@400;600&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.65;
+    color: #2a2a2a;
+    background: #f5f5f5;
+  }
+
+  /* ---- HEADER ---- */
+  .page-header {
+    background: #1a3a5c;
+    color: #fff;
+    padding: 48px 0 40px;
+  }
+  .page-header .wrap {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+  .page-header h1 {
+    font-family: 'Source Serif 4', serif;
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  .page-header .subtitle {
+    font-size: 0.95rem;
+    font-weight: 300;
+    opacity: 0.85;
+  }
+
+  /* ---- TABS NAV ---- */
+  .tabs-nav {
+    background: #fff;
+    border-bottom: 2px solid #ddd;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .tabs-nav .wrap {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    gap: 0;
+  }
+  .tabs-nav button {
+    background: none;
+    border: none;
+    padding: 14px 18px;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: #666;
+    cursor: pointer;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .tabs-nav button:hover { color: #1a3a5c; }
+  .tabs-nav button.active {
+    color: #1a3a5c;
+    border-bottom-color: #1a3a5c;
+  }
+
+  /* ---- CONTENT ---- */
+  .tab-content {
+    display: none;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+  }
+  .tab-content.active { display: block; }
+
+  h2 {
+    font-family: 'Source Serif 4', serif;
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: #1a3a5c;
+    margin-bottom: 24px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+  }
+  h3 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #1a3a5c;
+    margin: 32px 0 12px;
+  }
+  h4 {
+    font-size: 1.02rem;
+    font-weight: 700;
+    color: #333;
+    margin: 28px 0 8px;
+  }
+  p { margin-bottom: 14px; }
+
+  /* ---- TABLES ---- */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0 24px;
+    font-size: 0.93rem;
+  }
+  th, td {
+    text-align: left;
+    padding: 10px 14px;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  th {
+    background: #f0f3f6;
+    font-weight: 600;
+    color: #1a3a5c;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+  tr:hover td { background: #fafbfc; }
+
+  /* key-features table (2-col, no header) */
+  .kf-table th { display: none; }
+  .kf-table td:first-child {
+    font-weight: 600;
+    width: 160px;
+    color: #1a3a5c;
+  }
+
+  /* ---- LISTS ---- */
+  ul, ol { margin: 10px 0 16px 22px; }
+  li { margin-bottom: 6px; }
+
+  /* ---- COURSE CARD ---- */
+  .course {
+    background: #fff;
+    border: 1px solid #e4e4e4;
+    border-radius: 6px;
+    padding: 24px 28px;
+    margin: 20px 0;
+  }
+  .course h4 {
+    margin: 0 0 4px;
+    color: #1a3a5c;
+  }
+  .course .ects {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: #888;
+    margin-bottom: 14px;
+  }
+  .course p { margin-bottom: 12px; }
+  .course p:last-child { margin-bottom: 0; }
+  .course .prereq {
+    font-size: 0.88rem;
+    color: #777;
+    font-style: italic;
+    margin-top: 10px;
+  }
+
+  .course-group-heading {
+    font-family: 'Source Serif 4', serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1a3a5c;
+    margin: 40px 0 8px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid #e0e0e0;
+  }
+
+  /* ---- MISC ---- */
+  .note {
+    background: #fffbe6;
+    border-left: 4px solid #e6c200;
+    padding: 14px 18px;
+    margin: 18px 0;
+    font-size: 0.93rem;
+    border-radius: 0 4px 4px 0;
+  }
+  .cta-button {
+    display: inline-block;
+    background: #1a3a5c;
+    color: #fff;
+    padding: 12px 28px;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 4px;
+    margin-top: 16px;
+    font-size: 0.95rem;
+    transition: background 0.2s;
+  }
+  .cta-button:hover { background: #264d73; }
+
+  .contact-block { margin-bottom: 24px; }
+  .contact-block strong { display: block; margin-bottom: 2px; }
+
+  /* responsive */
+  @media (max-width: 640px) {
+    .page-header h1 { font-size: 1.5rem; }
+    .tabs-nav button { padding: 12px 12px; font-size: 0.8rem; }
+    .course { padding: 18px 16px; }
+    table { font-size: 0.85rem; }
+    th, td { padding: 8px 10px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ==================== HEADER ==================== -->
+<header class="page-header">
+  <div class="wrap">
+    <h1>Bachelor in Management: Entrepreneurship and Digital Enterprise</h1>
+    <div class="subtitle">Department of Management, Entrepreneurship and Digital Enterprise · School of Tourism Management, Hospitality and Entrepreneurship · Cyprus University of Technology</div>
+  </div>
+</header>
+
+<!-- ==================== TAB NAV ==================== -->
+<nav class="tabs-nav">
+  <div class="wrap">
+    <button class="active" data-tab="overview">Overview</button>
+    <button data-tab="structure">Programme Structure</button>
+    <button data-tab="courses">Course Descriptions</button>
+    <button data-tab="admission">Admission</button>
+    <button data-tab="tuition">Tuition &amp; Scholarships</button>
+    <button data-tab="learning">How You Will Learn</button>
+    <button data-tab="careers">Recognition &amp; Careers</button>
+    <button data-tab="support">Student Support</button>
+    <button data-tab="contact">Contact</button>
+  </div>
+</nav>
+
+<!-- ==================== TAB 1: OVERVIEW ==================== -->
+<div class="tab-content active" id="overview">
+  <h2>Overview</h2>
+  <p>The Bachelor in Management: Entrepreneurship and Digital Enterprise is a four-year undergraduate programme that gives students a solid academic foundation in business administration, marketing, accounting, human resources, and financial management, combined with specialised study in entrepreneurship, innovation, and digital business. The programme prepares graduates to create and grow new ventures, to lead the digital transformation of established organisations, and to operate effectively in both domestic and international environments while balancing corporate objectives with contemporary social and environmental needs.</p>
+  <p>The programme is built around a strong common core of general business education, complemented by two specialisation tracks. Students choose a track that aligns with their career goals while benefiting from shared foundations in economics, accounting, finance, marketing, operations, and management.</p>
+
+  <h3>Key Features</h3>
+  <table class="kf-table">
+    <tr><td>Level</td><td>Undergraduate (Bachelor's degree)</td></tr>
+    <tr><td>Duration</td><td>4 years (8 semesters)</td></tr>
+    <tr><td>Credits</td><td>240 ECTS</td></tr>
+    <tr><td>Campus</td><td>Paphos</td></tr>
+    <tr><td>Established</td><td>2015</td></tr>
+    <tr><td>Specialisations</td><td>Entrepreneurship and Innovation · Digital Enterprise</td></tr>
+    <tr><td>Language of instruction</td><td>Greek (with dedicated English-for-academic-purposes courses)</td></tr>
+    <tr><td>Professional recognition</td><td>ICAEW and ACCA exemptions (see Recognition &amp; Careers)</td></tr>
+  </table>
+  <div class="note">Programme title: the live Departmental page presents this degree as "Πτυχίο στη Διοίκηση: Επιχειρηματικότητα και Ψηφιακό Επιχειρείν" (Bachelor's Degree in Management: Entrepreneurship and Innovation; Digital Enterprise). This differs slightly from the AACSB Table A.1 name "Bachelor of Management, Entrepreneurship and Digital Business." The header above follows the brief's requested English title; the Department should confirm the single authoritative English title for publication.</div>
+
+  <h3>Specialisations</h3>
+  <p><strong>1. Entrepreneurship and Innovation</strong> — Focused on inventing and implementing innovative ideas, designing new business models, creating and financing new ventures, and growing startups and SMEs in domestic and international markets. Courses cover innovation management, new business model and new business creation, entrepreneurial finance, startup and SME development, international entrepreneurship, and social entrepreneurship. Prepares graduates for roles in venture creation, innovation management, and enterprise development.</p>
+  <p><strong>2. Digital Enterprise</strong> — Focused on leveraging digital technologies to transform existing businesses and to build digital ventures. Courses cover business systems in the digital age, consumer behaviour in the digital age, basic programming principles, digital marketing and analytics, artificial intelligence and business analytics, the design and digitisation of business processes, and digital product development. Prepares graduates for digital transformation, digital marketing, and data-driven decision-making roles.</p>
+
+  <h3>Intended Learning Outcomes</h3>
+  <p>The following intended learning outcomes are derived qualitatively from the programme aims and learning outcomes published on the Departmental page, and are organised under Knowledge, Skills, and Competences.</p>
+
+  <h4>Knowledge</h4>
+  <ul>
+    <li>Demonstrate foundational knowledge across the core business disciplines — management, economics, financial and management accounting, finance, marketing, operations, and human resources.</li>
+    <li>Explain the principles of entrepreneurship, innovation, and new business model creation, and the processes for turning innovative ideas into viable ventures.</li>
+    <li>Understand how digital technologies (including cloud, blockchain, e-commerce, AI, and business analytics) reshape business models, processes, and value creation.</li>
+    <li>Recognise corporate objectives alongside contemporary social, ethical, and environmental responsibilities, including corporate governance and business ethics.</li>
+  </ul>
+
+  <h4>Skills</h4>
+  <ul>
+    <li>Develop strategic and operational business plans and design innovative solutions that address consumer needs efficiently.</li>
+    <li>Apply quantitative and analytical methods — mathematics, statistics, quantitative research methods, and business analytics — to business problems.</li>
+    <li>Market innovative products and services effectively, including through digital marketing, web analytics, and customer-journey approaches.</li>
+    <li>Communicate professionally in academic and business English, including presentations, reports, and correspondence.</li>
+  </ul>
+
+  <h4>Competences</h4>
+  <ul>
+    <li>Create startups and lead the digital transformation of existing businesses, leveraging new technologies for promising digital ventures.</li>
+    <li>Manage business operations competitively within changing domestic and international markets.</li>
+    <li>Work effectively in teams to address real social and business problems, exercising leadership, negotiation, and conflict-management skills.</li>
+    <li>Act with professional and ethical judgement, integrating social and environmental considerations into business decisions.</li>
+  </ul>
+
+  <h3>Programme Coordinator / Contact</h3>
+  <p>Dora Kousoulou, Department of Management, Entrepreneurship and Digital Enterprise<br>
+  Email: dora.kousoulou@cut.ac.cy</p>
+</div>
+
+<!-- ==================== TAB 2: PROGRAMME STRUCTURE ==================== -->
+<div class="tab-content" id="structure">
+  <h2>Programme Structure</h2>
+  <p>The programme comprises 240 ECTS over four years (eight semesters). It combines a broad core of general business education courses, three English-language courses, a chosen specialisation track (Entrepreneurship and Innovation or Digital Enterprise), and a limited set of elective courses. Specialisation courses are introduced from Year 2 (Semester 4) onward and intensify in Years 3 and 4. Students may take an internship (MGT 390) or a thesis (MGT 391) in place of certain electives, subject to a minimum GPA requirement.</p>
+
+  <h3>Year 1 — Semester 1 (28 ECTS)</h3>
+  <table>
+    <tr><th>Code</th><th>Course</th><th>ECTS</th></tr>
+    <tr><td>LCE 129</td><td>English for Academic Purposes</td><td>4</td></tr>
+    <tr><td>MGT 140</td><td>Principles of Financial Accounting</td><td>6</td></tr>
+    <tr><td>MGT 101</td><td>Economics I</td><td>6</td></tr>
+    <tr><td>MGT 110</td><td>Mathematical Methods in Economics and Management I</td><td>6</td></tr>
+    <tr><td>MGT 201</td><td>Business Ethics</td><td>6</td></tr>
+  </table>
+
+  <h3>Year 1 — Semester 2 (28 ECTS)</h3>
+  <table>
+    <tr><th>Code</th><th>Course</th><th>ECTS</th></tr>
+    <tr><td>LCE 130</td><td>English for Management</td><td>4</td></tr>
+    <tr><td>MGT 100</td><td>Introduction to Management</td><td>6</td></tr>
+    <tr><td>MGT 141</td><td>Management Accounting</td><td>6</td></tr>
+    <tr><td>MGT 111</td><td>Statistical Methods in Economics and Management I</td><td>6</td></tr>
+    <tr><td>MGT 102</td><td>Economics II</td><td>6</td></tr>
+  </table>
+
+  <h3>Year 2 — Semester 3 (28 ECTS)</h3>
+  <table>
+    <tr><th>Code</th><th>Course</th><th>ECTS</th></tr>
+    <tr><td>LCE 207</td><td>English for Business Communication</td><td>4</td></tr>
+    <tr><td>MGT 221</td><td>Finance I</td><td>6</td></tr>
+    <tr><td>MGT 203</td><td>Commerce</td><td>6</td></tr>
+    <tr><td>MGT 260</td><td>Principles of Marketing</td><td>6</td></tr>
+    <tr><td>MGT 241</td><td>Operations Management</td><td>6</td></tr>
+  </table>
+
+  <h3>Year 2 — Semester 4 (30 ECTS)</h3>
+  <table>
+    <tr><th>Code</th><th>Course</th><th>ECTS</th></tr>
+    <tr><td>MGT 202</td><td>Corporate Law</td><td>6</td></tr>
+    <tr><td>MGT 222</td><td>Finance II</td><td>6</td></tr>
+    <tr><td>MGT 142</td><td>Information Technology for Business</td><td>6</td></tr>
+    <tr><td>MGT 220</td><td>Introduction to Entrepreneurship</td><td>6</td></tr>
+    <tr><td>MGT 230</td><td>Introduction to Digital Transformation</td><td>6</td></tr>
+  </table>
+
+  <h3>Year 3 — Semester 5 (36 ECTS)</h3>
+  <table>
+    <tr><th>Code</th><th>Course</th><th>ECTS</th></tr>
+    <tr><td>MGT 350</td><td>Human Resources Management</td><td>6</td></tr>
+    <tr><td>MGT 361</td><td>Consumer Behavior</td><td>6</td></tr>
+    <tr><td>MGT 370</td><td>E-Commerce</td><td>6</td></tr>
+    <tr><td>MGT 380</td><td>Quantitative Research Methods</td><td>6</td></tr>
+    <tr><td>—</td><td>Two specialisation courses (chosen track)</td><td>12</td></tr>
+  </table>
+
+  <h3>Year 3 — Semester 6 (30 ECTS)</h3>
+  <table>
+    <tr><th>Code</th><th>Course</th><th>ECTS</th></tr>
+    <tr><td>MGT 351</td><td>Organizational Behavior</td><td>6</td></tr>
+    <tr><td>MGT 302</td><td>Negotiation Techniques and Conflict Management</td><td>6</td></tr>
+    <tr><td>—</td><td>Two specialisation courses (chosen track)</td><td>12</td></tr>
+    <tr><td>—</td><td>One elective course</td><td>6</td></tr>
+  </table>
+
+  <h3>Year 4 — Semester 7 (30 ECTS)</h3>
+  <table>
+    <tr><th>Code</th><th>Course</th><th>ECTS</th></tr>
+    <tr><td>MGT 453</td><td>Leadership Capabilities</td><td>6</td></tr>
+    <tr><td>MGT 462</td><td>Strategic Marketing</td><td>6</td></tr>
+    <tr><td>—</td><td>Two specialisation courses (chosen track)</td><td>12</td></tr>
+    <tr><td>—</td><td>One elective course</td><td>6</td></tr>
+  </table>
+
+  <h3>Year 4 — Semester 8 (30 ECTS)</h3>
+  <table>
+    <tr><th>Code</th><th>Course</th><th>ECTS</th></tr>
+    <tr><td>MGT 426</td><td>Strategic Management</td><td>6</td></tr>
+    <tr><td>MGT 402</td><td>Corporate Governance</td><td>6</td></tr>
+    <tr><td>—</td><td>One specialisation course (chosen track)</td><td>6</td></tr>
+    <tr><td>—</td><td>Two elective courses</td><td>12</td></tr>
+  </table>
+
+  <h3>Specialisation Track Courses</h3>
+  <p>Across Years 3 and 4, students complete the specialisation courses of their chosen track (seven specialisation courses are listed per track on the Departmental page).</p>
+
+  <h4>Track A — Entrepreneurship and Innovation</h4>
+  <table>
+    <tr><th>Code</th><th>Course</th><th>ECTS</th></tr>
+    <tr><td>MGT 321</td><td>Innovation Management</td><td>6</td></tr>
+    <tr><td>MGT 322</td><td>Principles of New Business Models</td><td>6</td></tr>
+    <tr><td>MGT 323</td><td>Principles of New Business Creation</td><td>6</td></tr>
+    <tr><td>MGT 324</td><td>Finance and Entrepreneurship</td><td>6</td></tr>
+    <tr><td>MGT 425</td><td>Development of Startups and SMEs</td><td>6</td></tr>
+    <tr><td>MGT 427</td><td>International Entrepreneurship</td><td>6</td></tr>
+    <tr><td>MGT 428</td><td>Social Entrepreneurship</td><td>6</td></tr>
+  </table>
+
+  <h4>Track B — Digital Enterprise</h4>
+  <table>
+    <tr><th>Code</th><th>Course</th><th>ECTS</th></tr>
+    <tr><td>MGT 341</td><td>Business Systems in the Digital Age</td><td>6</td></tr>
+    <tr><td>MGT 342</td><td>Consumer Behavior in the Digital Age</td><td>6</td></tr>
+    <tr><td>MGT 343</td><td>Basic Programming Principles</td><td>6</td></tr>
+    <tr><td>MGT 344</td><td>Digital Marketing and Analytics</td><td>6</td></tr>
+    <tr><td>MGT 445</td><td>Artificial Intelligence and Business Analytics</td><td>6</td></tr>
+    <tr><td>MGT 446</td><td>Design and Digitization of Business Processes</td><td>6</td></tr>
+    <tr><td>MGT 447</td><td>Digital Product</td><td>6</td></tr>
+  </table>
+
+  <h3>Elective Courses (Limited Choice)</h3>
+  <p>Students select elective courses from a limited list, which includes courses from the other specialisation track and from other departments (subject to departmental approval).</p>
+  <table>
+    <tr><th>Code</th><th>Course</th><th>ECTS</th></tr>
+    <tr><td>HTM 324</td><td>Service Quality and Total Quality Management</td><td>6</td></tr>
+    <tr><td>HTM 428</td><td>Risk and Crisis Management in Hospitality</td><td>6</td></tr>
+    <tr><td>MGT 390</td><td>Internship (400 hours)</td><td>6</td></tr>
+    <tr><td>MGT 391</td><td>Thesis</td><td>12</td></tr>
+    <tr><td>—</td><td>Specialisation courses from the other track, and approved courses from other departments</td><td>6 each</td></tr>
+  </table>
+  <div class="note">The Departmental page also references specialisation course codes (e.g. "MGT 321, 323, 327") as elective options depending on the chosen track. Course MGT 327 is referenced as an elective but does not appear in the listed specialisation course tables — the Department should confirm its title and ECTS.</div>
+
+  <h3>Internship and Thesis</h3>
+  <p><strong>MGT 390 — Internship (6 ECTS, 400 hours):</strong> typically undertaken in the summer between Years 3 and 4. Requires a minimum GPA of 7.0.</p>
+  <p><strong>MGT 391 — Thesis (12 ECTS):</strong> may be completed in place of certain electives. Requires a minimum GPA of 7.0.</p>
+
+  <div class="note">Semester ECTS as published sum to 240 across the eight semesters (28 + 28 + 28 + 30 + 36 + 30 + 30 + 30). The Department should confirm the exact distribution of specialisation versus elective ECTS per semester, as the totals depend on track and elective choices.</div>
+</div>
+
+<!-- ==================== TAB 3: COURSE DESCRIPTIONS ==================== -->
+<div class="tab-content" id="courses">
+  <h2>Course Descriptions</h2>
+
+  <!-- ENGLISH LANGUAGE -->
+  <div class="course-group-heading">English Language Courses</div>
+
+  <div class="course">
+    <h4>LCE 129 — English for Academic Purposes</h4>
+    <div class="ects">4 ECTS</div>
+    <p>A three-hour weekly course providing academic English instruction at B1–B2 CEFR level. It uses authentic materials covering general topics (student profiles, language learning, intercultural communication), academic topics (study skills, learning modes, bibliography review), and field-specific topics (innovation, entrepreneurship, social entrepreneurship, investments, fundraising).</p>
+  </div>
+
+  <div class="course">
+    <h4>LCE 130 — English for Management</h4>
+    <div class="ects">4 ECTS</div>
+    <p>A three-hour weekly course providing specialised academic English at B2 CEFR level. It covers management-specific topics such as leadership, business meetings, workplace technology, renewable energy management, and customer service, and teaches various text types and writing approaches.</p>
+  </div>
+
+  <div class="course">
+    <h4>LCE 207 — English for Business Communication</h4>
+    <div class="ects">4 ECTS</div>
+    <p>A three-hour weekly course developing business communication English at B2–C1 CEFR level. It focuses on written and oral skills: public presentations, workplace communication, professional correspondence, email writing, memos, formal reports, and the role of technology in communication.</p>
+  </div>
+
+  <!-- CORE MANAGEMENT -->
+  <div class="course-group-heading">Core Management Courses</div>
+
+  <div class="course">
+    <h4>MGT 100 — Introduction to Management</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Covers basic management principles and functions, managerial roles, and how changes in the business environment affect decision-making. Analyses internal and external environmental factors.</p>
+  </div>
+
+  <div class="course">
+    <h4>MGT 101 — Economics I</h4>
+    <div class="ects">6 ECTS</div>
+    <p>An introductory microeconomics course covering economic thinking, basic concepts, supply and demand mechanisms, market price determination, elasticity, market efficiency, and production costs under different market structures.</p>
+  </div>
+
+  <div class="course">
+    <h4>MGT 102 — Economics II</h4>
+    <div class="ects">6 ECTS</div>
+    <p>An introduction to macroeconomic theory, addressing national income, inflation, unemployment, economic growth, productivity, financial systems, central banking, and open-economy concepts.</p>
+  </div>
+
+  <div class="course">
+    <h4>MGT 110 — Mathematical Methods in Economics and Management I</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Covers limits, continuity, derivatives, integrals, and optimisation theory, focusing on mathematical analysis applicable to economic and business problem-solving.</p>
+  </div>
+
+  <div class="course">
+    <h4>MGT 111 — Statistical Methods in Economics and Management I</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Introduces probability theory and statistical concepts for quantitative research in economics and business management.</p>
+  </div>
+
+  <div class="course">
+    <h4>MGT 140 — Principles of Financial Accounting</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Examines fundamental accounting principles, conventional measurement and reporting, double-entry bookkeeping, income statements, balance sheets, financial statement preparation, and ratios.</p>
+  </div>
+
+  <div class="course">
+    <h4>MGT 141 — Management Accounting</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Covers cost accounting, strategic pricing, budgeting, standard costing, decision-making, capital investment evaluation, working capital management, and responsibility accounting.</p>
+  </div>
+
+  <div class="course">
+    <h4>MGT 142 — Information Technology for Business</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Provides IT fundamentals for business applications, system development methods, MS-Excel proficiency, and an introduction to statistical packages (EViews, SPSS).</p>
+  </div>
+
+  <div class="course">
+    <h4>MGT 201 — Business Ethics</h4>
+    <div class="ects">6 ECTS</div>
+    <p>A theoretical course examining ethics in business, including contemporary issues such as transparency, meritocracy, and ethical values, with case-study analysis.</p>
+  </div>
+
+  <div class="course">
+    <h4>MGT 202 — Corporate Law</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Provides knowledge of the Cypriot legal system, sources of law, court structure, interpretation principles, human rights, and company law affecting business operations.</p>
+  </div>
+
+  <div class="course">
+    <h4>MGT 203 — Commerce</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Examines international business dimensions through international business management, analysing complex problems arising from global expansion, including cultural, political, economic, and technological considerations.</p>
+  </div>
+
+  <div class="course">
+    <h4>MGT 220 — Introduction to Entrepreneurship</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Introduces entrepreneurship concepts, the characteristics of business owners, and the implementation stages required for creating new enterprises.</p>
+  </div>
+
+  <div class="course">
+    <h4>MGT 221 — Finance I</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Covers financial concepts and tools: financial institutions, markets, securities, loan capital models, interest rates, yield curves, the time value of money, SME financing, bond and stock valuation, investment risk measurement, the CAPM model, and capital investment evaluation.</p>
+  </div>
+
+  <div class="course">
+    <h4>MGT 222 — Finance II</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Introduces the basics of corporate financial management: working capital management, inventory, accounts management, investment evaluation techniques, and risk management strategies for interest-rate and currency-risk hedging.</p>
+  </div>
+
+  <div class="course">
+    <h4>MGT 230 — Introduction to Digital Transformation</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Develops understanding of how digital technologies drive business model changes, process transformation, value creation, and strategic development. Covers digital tools (blockchain, cloud technologies) and the characteristics of platform-dependent businesses.</p>
+  </div>
+
+  <div class="course">
+    <h4>MGT 241 — Operations Management</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Provides a broad understanding of operational management concepts: strategy, process design, inventory management, scheduling, and quality management, with business applications.</p>
+  </div>
+
+  <div class="course">
+    <h4>MGT 260 — Principles of Marketing</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Helps students understand marketing's contribution to business strategy and how marketing plans are developed, implemented, and evaluated.</p>
+  </div>
+
+  <div class="course">
+    <h4>MGT 302 — Negotiation Techniques and Conflict Management</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Teaches negotiation principles, strategy development, process management, and skills for handling difficult negotiations and personnel/customer conflicts.</p>
+  </div>
+
+  <div class="course">
+    <h4>MGT 350 — Human Resources Management</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Examines HR and development practices from a strategic perspective: departmental roles and functions, job analysis, staffing, training, evaluation, labour relations, compensation systems, and current challenges.</p>
+  </div>
+
+  <div class="course">
+    <h4>MGT 351 — Organizational Behavior</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Addresses organisational behaviour principles: theory, individual and group behaviour, motivation, leadership, group dynamics, organisational culture, decision-making, and change management.</p>
+  </div>
+
+  <div class="course">
+    <h4>MGT 361 — Consumer Behavior</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Analyses consumer behaviour principles and applications: purchase decision processes, motivation, personality, lifestyle, attitudes, market segmentation, and social and cultural context.</p>
+  </div>
+
+  <div class="course">
+    <h4>MGT 370 — E-Commerce</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Provides knowledge of e-commerce and its role in business: e-commerce strategy, electronic marketing, electronic information, related applications, and internet technologies.</p>
+  </div>
+
+  <div class="course">
+    <h4>MGT 380 — Quantitative Research Methods</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Introduces quantitative research methods and techniques: problem definition, data analysis, sampling, research design, descriptive and inferential statistics, regression models, and special topics such as factor analysis.</p>
+  </div>
+
+  <div class="course">
+    <h4>MGT 402 — Corporate Governance</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Familiarises students with corporate governance — the policies and procedures for organisational management, board functioning, relationships with managers, and the influence of various organisational stakeholders.</p>
+  </div>
+
+  <div class="course">
+    <h4>MGT 426 — Strategic Management</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Covers understanding, application, and evaluation of organisational strategy: appropriate strategy development, implementation, evaluation, and identification of success factors.</p>
+  </div>
+
+  <div class="course">
+    <h4>MGT 453 — Leadership Capabilities</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Addresses leadership theory, styles, and development in industry. Examines motivation, the relationship between management and leadership, change and crisis management, team dynamics, conflict resolution, business ethics, and emotional intelligence.</p>
+  </div>
+
+  <div class="course">
+    <h4>MGT 462 — Strategic Marketing</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Develops understanding of strategic marketing management across different environments. Students learn the organisational role of strategic marketing; how to analyse customers, competitors, the environment, and partners; and how to develop, implement, and regularly evaluate marketing plans.</p>
+  </div>
+
+  <!-- TRACK A -->
+  <div class="course-group-heading">Specialisation — Entrepreneurship and Innovation</div>
+
+  <div class="course">
+    <h4>MGT 321 — Innovation Management</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Familiarises students with innovation management concepts at strategic and operational levels. Covers idea evaluation, stakeholder engagement, and partnership creation for product implementation.</p>
+  </div>
+
+  <div class="course">
+    <h4>MGT 322 — Principles of New Business Models</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Introduces innovative business model concepts and their creation. Guides students through identifying structural elements, understanding the importance of innovation, and developing a methodology for new models.</p>
+  </div>
+
+  <div class="course">
+    <h4>MGT 323 — Principles of New Business Creation</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Teaches the knowledge needed to convert innovative ideas into businesses successfully: identifying and evaluating opportunities, developing ideas, conducting feasibility studies, and creating business plans.</p>
+  </div>
+
+  <div class="course">
+    <h4>MGT 324 — Finance and Entrepreneurship</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Covers basic financing sources, business valuation techniques, and financial management for startup companies, including venture capital, business angels, and startup financing processes.</p>
+  </div>
+
+  <div class="course">
+    <h4>MGT 425 — Development of Startups and SMEs</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Teaches entrepreneurial processes and business practices that lead to the development of existing businesses, emphasising startups and SMEs facing sustainability challenges. Covers identifying opportunities, creating business environments, and development strategies.</p>
+  </div>
+
+  <div class="course">
+    <h4>MGT 427 — International Entrepreneurship</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Examines companies that internationalise immediately after creation through the discovery and exploitation of opportunities in foreign markets — known as born globals or international new ventures.</p>
+  </div>
+
+  <div class="course">
+    <h4>MGT 428 — Social Entrepreneurship</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Teaches the basics of social design, innovation, and entrepreneurship through interdisciplinary collaborative learning. Students address real social problems in small teams and complete semester projects using crowdfunding.</p>
+  </div>
+
+  <!-- TRACK B -->
+  <div class="course-group-heading">Specialisation — Digital Enterprise</div>
+
+  <div class="course">
+    <h4>MGT 341 — Business Systems in the Digital Age</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Addresses the software and hardware requirements for digital-age management: cloud systems, security systems, e-commerce systems, and internet/wireless technologies.</p>
+  </div>
+
+  <div class="course">
+    <h4>MGT 342 — Consumer Behavior in the Digital Age</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Helps students understand how modern business success depends on managers' comprehension of digital-age consumer behaviour. Examines internal mental processes and digital marketing strategy applications using web analytics and customer-journey mapping.</p>
+  </div>
+
+  <div class="course">
+    <h4>MGT 343 — Basic Programming Principles</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Teaches fundamental programming-language principles and the learning of a higher-level language. Guides students through basic algorithm concepts, problem-solving via programming, object-oriented principles, and debugging.</p>
+  </div>
+
+  <div class="course">
+    <h4>MGT 344 — Digital Marketing and Analytics</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Examines the digital marketing shift in business approaches: viral marketing, search optimisation, social media, conversion rates, and mobile marketing technologies. Covers both theoretical and practical digital marketing knowledge.</p>
+  </div>
+
+  <div class="course">
+    <h4>MGT 445 — Artificial Intelligence and Business Analytics</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Introduces the application of AI and data analytics to business problems. Covers predictive analytics, supervised and unsupervised machine learning algorithms, data modelling, and risk management applications.</p>
+  </div>
+
+  <div class="course">
+    <h4>MGT 446 — Design and Digitization of Business Processes</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Examines the effects of digitisation on business operations: business model upgrades, operational model impacts, and process redesign requirements, emphasising the process-improvement opportunities created by new technologies.</p>
+  </div>
+
+  <div class="course">
+    <h4>MGT 447 — Digital Product</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Provides knowledge on developing digital products and services in line with modern consumer needs and technological trends. Covers the stages of the business process: identifying opportunities, idea evaluation, R&amp;D, commercialisation, and business models.</p>
+  </div>
+
+  <!-- ELECTIVES / INTERNSHIP / THESIS -->
+  <div class="course-group-heading">Electives, Internship, and Thesis</div>
+
+  <div class="course">
+    <h4>HTM 324 — Service Quality and Total Quality Management</h4>
+    <div class="ects">6 ECTS · Elective</div>
+    <p>[PLACEHOLDER — course description to be supplied by the Department. The title indicates coverage of service quality and total quality management (TQM) principles.]</p>
+  </div>
+
+  <div class="course">
+    <h4>HTM 428 — Risk and Crisis Management in Hospitality</h4>
+    <div class="ects">6 ECTS · Elective</div>
+    <p>[PLACEHOLDER — course description to be supplied by the Department. The title indicates coverage of risk and crisis management in the hospitality sector.]</p>
+  </div>
+
+  <div class="course">
+    <h4>MGT 390 — Internship</h4>
+    <div class="ects">6 ECTS · 400 hours</div>
+    <p>A practical internship, typically undertaken in the summer between Years 3 and 4, that develops leadership skills in real business environments and facilitates the transition from academic to professional contexts. Close departmental–business partnerships enable internships across most sectors of the Cypriot and global economy. Prerequisite: minimum GPA of 7.0.</p>
+  </div>
+
+  <div class="course">
+    <h4>MGT 391 — Thesis</h4>
+    <div class="ects">12 ECTS</div>
+    <p>An independent research thesis that may be undertaken in place of certain elective courses. Prerequisite: minimum GPA of 7.0.</p>
+    <p class="prereq">[PLACEHOLDER — full thesis description (scope, supervision, assessment) to be supplied by the Department.]</p>
+  </div>
+
+  <div class="note">Course MGT 327 is referenced on the Departmental page as an elective option but does not appear among the listed specialisation courses; its title, ECTS, and description should be supplied by the Department.</div>
+</div>
+
+<!-- ==================== TAB 4: ADMISSION ==================== -->
+<div class="tab-content" id="admission">
+  <h2>Admission Requirements</h2>
+
+  <h3>Entry via the Pancyprian Examinations</h3>
+  <p>Admission is based on the Pancyprian Examinations. Applicants are examined in mandatory subjects together with elective subjects chosen from the lists below.</p>
+
+  <h4>Mandatory subjects (2)</h4>
+  <ul>
+    <li>Modern Greek</li>
+    <li>Mathematics</li>
+  </ul>
+
+  <h4>Elective subjects (2) — chosen from:</h4>
+  <ul>
+    <li>Economics, or Accounting, or Physics</li>
+    <li>English, or English (4-hour), or French, or another foreign language (German, Italian, Spanish, Russian, Turkish)</li>
+    <li>Computer Science</li>
+  </ul>
+  <div class="note">Exact subject-combination rules, minimum marks, and any additional admission routes (e.g. transfers, international applicants, mature students) — to be confirmed by the Department and the University Admissions Office.</div>
+
+  <h3>How to Apply</h3>
+  <p>Applications are submitted through the University's admissions process. Prospective students should consult the University Admissions Office for deadlines and the current application procedure.</p>
+  <a href="#" class="cta-button">Apply Online</a>
+  <p style="margin-top:8px; font-size:0.88rem; color:#888;">[Application link — TBC]</p>
+</div>
+
+<!-- ==================== TAB 5: TUITION ==================== -->
+<div class="tab-content" id="tuition">
+  <h2>Tuition and Scholarships</h2>
+
+  <h3>Tuition Fees</h3>
+  <div class="note">Tuition fees — to be confirmed by the Department. (Undergraduate tuition for Cyprus/EU students at Cyprus public universities is commonly covered under national arrangements; the Department should state the applicable fee, any annual amount, and the policy for non-EU students.)</div>
+
+  <h3>Scholarships</h3>
+  <div class="note">Scholarship details — availability, amounts, eligibility criteria, and application process — to be confirmed by the Department and the University.</div>
+</div>
+
+<!-- ==================== TAB 6: HOW YOU WILL LEARN ==================== -->
+<div class="tab-content" id="learning">
+  <h2>How You Will Learn</h2>
+  <p>The programme combines lectures, tutorials, project work, and applied assignments across the core, specialisation, and language courses. Quantitative and digital courses make use of software tools (for example MS-Excel, statistical packages such as EViews and SPSS, and programming and analytics environments), while entrepreneurship courses emphasise hands-on venture creation, business planning, and team-based projects.</p>
+
+  <h3>Applied and Experiential Learning</h3>
+  <ul>
+    <li>Project-based learning in entrepreneurship and innovation courses, including new business creation, business modelling, and (in Social Entrepreneurship) real social problems addressed in small teams with crowdfunding-based projects.</li>
+    <li>Digital and analytics courses with practical work in programming, digital marketing and analytics, AI and business analytics, and business process digitisation.</li>
+    <li>An optional 400-hour internship (MGT 390) in real business environments, and an optional research thesis (MGT 391).</li>
+  </ul>
+
+  <h3>Language of Instruction</h3>
+  <p>Courses are delivered primarily in Greek, with three dedicated English-language courses (LCE 129, LCE 130, LCE 207) developing academic and business English at B1–C1 CEFR levels.</p>
+
+  <div class="note">Detailed teaching, learning, and assessment methods per course (lecture/tutorial hours, coursework vs. examination weightings, attendance policy) — to be confirmed by the Department.</div>
+</div>
+
+<!-- ==================== TAB 7: RECOGNITION & CAREERS ==================== -->
+<div class="tab-content" id="careers">
+  <h2>Professional Recognition and Career Prospects</h2>
+
+  <h3>Professional Recognition and Exemptions</h3>
+  <p>The programme has received recognition from professional accountancy bodies, providing exemptions toward professional certification:</p>
+  <ul>
+    <li><strong>ICAEW</strong> (Institute of Chartered Accountants in England and Wales) — exemptions toward the ACA (Chartered Accountant) qualification.</li>
+    <li><strong>ACCA</strong> (Association of Chartered Certified Accountants) — exemptions toward the ACCA qualification.</li>
+  </ul>
+  <p>Through their degree, graduates achieve exemptions from a number of the units required for professional accountant certification.</p>
+  <div class="note">The exact number of ICAEW/ACCA paper exemptions granted — to be confirmed by the Department.</div>
+
+  <h3>Career Prospects</h3>
+  <p>With the competencies and knowledge acquired, graduates can apply for positions in the private or public sector, domestically or internationally, across relevant fields. The programme prepares graduates for:</p>
+  <ul>
+    <li>Strategic and operational roles in business management</li>
+    <li>Innovation and entrepreneurship positions, including founding and developing new ventures, startups, and SMEs</li>
+    <li>Digital transformation leadership roles</li>
+    <li>Marketing and financial management positions</li>
+    <li>International business roles</li>
+  </ul>
+  <p>Close partnerships between the Department and the business world support internships and employment across most sectors of the Cypriot and global economy.</p>
+
+  <h3>Employment Statistics</h3>
+  <div class="note">Graduate employment statistics (e.g. employment rate within 6–12 months of graduation) — to be supplied by the Department; no figure is published on the source page.</div>
+</div>
+
+<!-- ==================== TAB 8: STUDENT SUPPORT ==================== -->
+<div class="tab-content" id="support">
+  <h2>Student Support and Resources</h2>
+
+  <h3>Academic Advisor</h3>
+  <p>Assigned at enrolment to guide course selection, academic progress, specialisation-track choice, and career planning.</p>
+
+  <h3>Learning Development Network (LDN)</h3>
+  <p>Technical support, study skills, writing support, and AI literacy training.</p>
+
+  <h3>Library</h3>
+  <p>Access to academic databases, e-journals (such as JSTOR and ScienceDirect), and citation management tools (EndNote, Zotero).</p>
+
+  <h3>Career Services</h3>
+  <p>Career counselling, CV review, interview preparation, internship placement support, and networking events.</p>
+
+  <h3>Counselling Services</h3>
+  <p>Confidential support available in-person and remotely.<br>
+  Email: counseling@cut.ac.cy · Tel: +357 25 002 500</p>
+
+  <div class="note">Programme-specific support contacts and any specialised software/lab resources (e.g. analytics and programming environments) — to be confirmed by the Department.</div>
+</div>
+
+<!-- ==================== TAB 9: CONTACT ==================== -->
+<div class="tab-content" id="contact">
+  <h2>Contact</h2>
+
+  <div class="contact-block">
+    <strong>Programme / Department Contact</strong>
+    Dora Kousoulou, Department of Management, Entrepreneurship and Digital Enterprise<br>
+    Email: dora.kousoulou@cut.ac.cy<br>
+    Tel: [PLACEHOLDER — Department to supply]
+  </div>
+
+  <div class="contact-block">
+    <strong>Department of Management, Entrepreneurship and Digital Enterprise</strong>
+    School of Tourism Management, Hospitality and Entrepreneurship<br>
+    Cyprus University of Technology<br>
+    Campus: Paphos
+  </div>
+
+  <div class="contact-block">
+    <strong>General Enquiries</strong>
+    Student Services and Information Centre<br>
+    Email: kep@cut.ac.cy<br>
+    Tel: +357 25 002710/11
+  </div>
+
+  <div class="note">The Departmental page lists the School postal address as Arch. Kyprianou 30, 3036 Limassol, Cyprus, while AACSB Table A.1 records the programme campus as Paphos. The Department should confirm the correct teaching campus and the correspondence address for this programme.</div>
+
+  <a href="#" class="cta-button">Apply Online</a>
+  <p style="margin-top:8px; font-size:0.88rem; color:#888;">[Application link — TBC]</p>
+</div>
+
+<!-- ==================== JS ==================== -->
+<script>
+  document.querySelectorAll('.tabs-nav button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tabs-nav button').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tab-content').forEach(tc => tc.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById(btn.dataset.tab).classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  });
+</script>
+</body>
+</html>

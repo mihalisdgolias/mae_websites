@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="MG">
+<title>BSc in Data Science for Economics and Business — Cyprus University of Technology</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;600;700&family=Source+Serif+4:wght@400;600&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.65;
+    color: #2a2a2a;
+    background: #f5f5f5;
+  }
+
+  /* ---- HEADER ---- */
+  .page-header {
+    background: #1a3a5c;
+    color: #fff;
+    padding: 48px 0 40px;
+  }
+  .page-header .wrap {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+  .page-header h1 {
+    font-family: 'Source Serif 4', serif;
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  .page-header .subtitle {
+    font-size: 0.95rem;
+    font-weight: 300;
+    opacity: 0.85;
+  }
+
+  /* ---- TABS NAV ---- */
+  .tabs-nav {
+    background: #fff;
+    border-bottom: 2px solid #ddd;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .tabs-nav .wrap {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    gap: 0;
+  }
+  .tabs-nav button {
+    background: none;
+    border: none;
+    padding: 14px 18px;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: #666;
+    cursor: pointer;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .tabs-nav button:hover { color: #1a3a5c; }
+  .tabs-nav button.active {
+    color: #1a3a5c;
+    border-bottom-color: #1a3a5c;
+  }
+
+  /* ---- CONTENT ---- */
+  .tab-content {
+    display: none;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+  }
+  .tab-content.active { display: block; }
+
+  h2 {
+    font-family: 'Source Serif 4', serif;
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: #1a3a5c;
+    margin-bottom: 24px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+  }
+  h3 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #1a3a5c;
+    margin: 32px 0 12px;
+  }
+  h4 {
+    font-size: 1.02rem;
+    font-weight: 700;
+    color: #333;
+    margin: 28px 0 8px;
+  }
+  p { margin-bottom: 14px; }
+
+  /* ---- TABLES ---- */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0 24px;
+    font-size: 0.93rem;
+  }
+  th, td {
+    text-align: left;
+    padding: 10px 14px;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  th {
+    background: #f0f3f6;
+    font-weight: 600;
+    color: #1a3a5c;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+  tr:hover td { background: #fafbfc; }
+
+  /* key-features table (2-col, no header) */
+  .kf-table th { display: none; }
+  .kf-table td:first-child {
+    font-weight: 600;
+    width: 160px;
+    color: #1a3a5c;
+  }
+
+  /* ---- LISTS ---- */
+  ul, ol { margin: 10px 0 16px 22px; }
+  li { margin-bottom: 6px; }
+
+  /* ---- COURSE CARD ---- */
+  .course {
+    background: #fff;
+    border: 1px solid #e4e4e4;
+    border-radius: 6px;
+    padding: 24px 28px;
+    margin: 20px 0;
+  }
+  .course h4 {
+    margin: 0 0 4px;
+    color: #1a3a5c;
+  }
+  .course .ects {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: #888;
+    margin-bottom: 14px;
+  }
+  .course p { margin-bottom: 12px; }
+  .course p:last-child { margin-bottom: 0; }
+  .course .prereq {
+    font-size: 0.88rem;
+    color: #777;
+    font-style: italic;
+    margin-top: 10px;
+  }
+
+  .course-group-heading {
+    font-family: 'Source Serif 4', serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1a3a5c;
+    margin: 40px 0 8px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid #e0e0e0;
+  }
+
+  /* ---- MISC ---- */
+  .note {
+    background: #fffbe6;
+    border-left: 4px solid #e6c200;
+    padding: 14px 18px;
+    margin: 18px 0;
+    font-size: 0.93rem;
+    border-radius: 0 4px 4px 0;
+  }
+  .cta-button {
+    display: inline-block;
+    background: #1a3a5c;
+    color: #fff;
+    padding: 12px 28px;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 4px;
+    margin-top: 16px;
+    font-size: 0.95rem;
+    transition: background 0.2s;
+  }
+  .cta-button:hover { background: #264d73; }
+
+  .contact-block { margin-bottom: 24px; }
+  .contact-block strong { display: block; margin-bottom: 2px; }
+
+  /* responsive */
+  @media (max-width: 640px) {
+    .page-header h1 { font-size: 1.5rem; }
+    .tabs-nav button { padding: 12px 12px; font-size: 0.8rem; }
+    .course { padding: 18px 16px; }
+    table { font-size: 0.85rem; }
+    th, td { padding: 8px 10px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ==================== HEADER ==================== -->
+<header class="page-header">
+  <div class="wrap">
+    <h1>BSc in Data Science for Economics and Business</h1>
+    <div class="subtitle">Department of Finance, Accounting and Management Science · Faculty of Management and Economics · Cyprus University of Technology</div>
+  </div>
+</header>
+
+<!-- ==================== TAB NAV ==================== -->
+<nav class="tabs-nav">
+  <div class="wrap">
+    <button class="active" data-tab="overview">Overview</button>
+    <button data-tab="structure">Programme Structure</button>
+    <button data-tab="courses">Course Descriptions</button>
+    <button data-tab="admission">Admission</button>
+    <button data-tab="learning">How You Will Learn</button>
+    <button data-tab="careers">Recognition &amp; Careers</button>
+    <button data-tab="support">Student Support</button>
+    <button data-tab="contact">Contact</button>
+  </div>
+</nav>
+
+<!-- ==================== TAB 1: OVERVIEW ==================== -->
+<div class="tab-content active" id="overview">
+  <h2>Overview</h2>
+  <p>The BSc in Data Science in Economics and Business is designed to bridge the gap between data science and the business world, focusing on the application of data analytics in economics and business contexts. This interdisciplinary program combines key areas such as economics, business analytics, management science, and data management with advanced courses in statistics, machine learning, artificial intelligence, optimization, and data visualization. Students gain hands-on experience with industry-standard software and tools for analyzing large datasets in dynamic business environments. Graduates of this program are well-prepared to implement data-driven strategies, enhance decision-making processes, and improve business operations in today's fast-paced, data-centric economy. The curriculum offers an ideal blend of theory and practice, tailored to the challenges and opportunities in the business and economic sectors.</p>
+  <p>GRADUATES' EMPLOYMENT PROSPECTS</p>
+  <p><strong>Data Science in Economics and Business:&nbsp;</strong>The emphasis is on business analytics in economics. The profile is suited for roles in advisory services, risk management, policymaking, economic forecasting, policy analysis, market analysis, financial modelling, social media analysis, and financial data analysis. Graduates are economists with specialized expertise in data science.</p>
+
+  <h3>Key Features</h3>
+  <table class="kf-table">
+    <tr><td>Level</td><td>Undergraduate (Bachelor of Science)</td></tr>
+    <tr><td>Duration</td><td>4 years / 8 semesters (full-time)</td></tr>
+    <tr><td>Credits</td><td>240 ECTS</td></tr>
+    <tr><td>Structure</td><td>Compulsory core courses plus elective courses, an internship/practical training option, and a final-year dissertation</td></tr>
+    <tr><td>Language</td><td>Greek (the programme includes dedicated English-language courses)</td></tr>
+    
+    <tr><td>Admission</td><td>Minimum access framework score: 22 (Cyprus Pancyprian Examinations)</td></tr>
+    <tr><td>First intake</td><td>2025</td></tr>
+  </table>
+
+  <div class="note">The official programme page is published in Greek and does not currently list per-course ECTS, the language of instruction, or a named programme coordinator.</div>
+
+  <!-- ===== ADDED: INTENDED LEARNING OUTCOMES ===== -->
+  <h3>Intended Learning Outcomes</h3>
+  <p>The outcomes below are derived qualitatively from the programme's stated aims and curriculum.</p>
+
+  <h4>Knowledge</h4>
+  <ul>
+    <li>Explain core principles of economics (micro- and macroeconomics), finance, accounting and management science, and how they frame business and policy questions.</li>
+    <li>Describe the foundations of data science — probability and statistics, programming, optimization, machine learning and artificial intelligence — and how they apply to economic and business data.</li>
+    <li>Identify appropriate statistical, econometric and computational methods for a given economic or business analytics problem.</li>
+  </ul>
+
+  <h4>Skills</h4>
+  <ul>
+    <li>Collect, clean, manage and analyse structured and unstructured data using modern tools such as Python, R, SQL and Git.</li>
+    <li>Build and interpret statistical, econometric and machine-learning models, including regression, multivariate methods, text/data mining and forecasting.</li>
+    <li>Apply optimization and management-science techniques to support managerial and economic decision-making.</li>
+    <li>Communicate findings effectively through data visualization and clear technical writing.</li>
+  </ul>
+
+  <h4>Competences</h4>
+  <ul>
+    <li>Frame real-world economic and business problems as data problems and select defensible analytical approaches.</li>
+    <li>Work independently on an applied research project (dissertation) and, through the internship option, in a professional working environment.</li>
+    <li>Exercise critical and ethical judgement when interpreting data and advising on economic forecasting, risk management, policy and market analysis.</li>
+  </ul>
+
+  <h3>Programme Coordinator</h3>
+  <p>Professor Christos Savva<br>Email: christos.savva@cut.ac.cy · Tel: +357 25002349</p>
+</div>
+
+<!-- ==================== TAB 2: PROGRAMME STRUCTURE ==================== -->
+<div class="tab-content" id="structure">
+  <h2>Programme Structure</h2>
+  <p>The programme runs over four years (eight semesters). Each year combines compulsory data-science courses (DSC) with compulsory economics, finance and business courses (DSE) and English-for-data-science language courses (LCE). The final year includes an internship/practical-training option and a two-part dissertation, together with a selection of elective courses.</p>
+
+  <h3>Year 1</h3>
+  <h4>Semester 1</h4>
+  <table>
+    <tr><th>Code</th><th>Course</th><th>ECTS</th></tr>
+    <tr><td>DSC_110</td><td>Applied Calculus</td><td>[—]</td></tr>
+    <tr><td>DSC_111</td><td>Probability and Statistics</td><td>[—]</td></tr>
+    <tr><td>DSC_112</td><td>Introduction to Programming</td><td>[—]</td></tr>
+    <tr><td>DSC_113</td><td>Programming for Data Science</td><td>[—]</td></tr>
+    <tr><td>LCE_138</td><td>English for Data Science I</td><td>[—]</td></tr>
+  </table>
+
+  <h4>Semester 2</h4>
+  <table>
+    <tr><th>Code</th><th>Course</th><th>ECTS</th></tr>
+    <tr><td>DSC_120</td><td>Algebra and Matrix Computations</td><td>[—]</td></tr>
+    <tr><td>DSC_121</td><td>Inferential Statistics and Regression Analysis</td><td>[—]</td></tr>
+    <tr><td>DSC_122</td><td>Advanced Programming Topics</td><td>[—]</td></tr>
+    <tr><td>DSC_123</td><td>Introduction to Statistics for Data Science</td><td>[—]</td></tr>
+    <tr><td>LCE_139</td><td>English for Data Science II</td><td>[—]</td></tr>
+  </table>
+
+  <h3>Year 2</h3>
+  <h4>Semester 3</h4>
+  <table>
+    <tr><th>Code</th><th>Course</th><th>ECTS</th></tr>
+    <tr><td>DSC_210</td><td>Computational Optimization</td><td>[—]</td></tr>
+    <tr><td>DSC_211</td><td>Introduction to Econometrics</td><td>[—]</td></tr>
+    <tr><td>DSC_212</td><td>Artificial Intelligence and Machine Learning</td><td>[—]</td></tr>
+    <tr><td>DSE_131</td><td>Principles of Microeconomics</td><td>[—]</td></tr>
+    <tr><td>DSE_141</td><td>Principles of Accounting</td><td>[—]</td></tr>
+  </table>
+
+  <h4>Semester 4</h4>
+  <table>
+    <tr><th>Code</th><th>Course</th><th>ECTS</th></tr>
+    <tr><td>DSC_220</td><td>Management Science</td><td>[—]</td></tr>
+    <tr><td>DSC_221</td><td>Game Theory</td><td>[—]</td></tr>
+    <tr><td>DSC_223</td><td>Data Visualization</td><td>[—]</td></tr>
+    <tr><td>DSE_132</td><td>Principles of Macroeconomics</td><td>[—]</td></tr>
+    <tr><td>DSE_214</td><td>Principles of Finance</td><td>[—]</td></tr>
+  </table>
+
+  <h3>Year 3</h3>
+  <h4>Semester 5</h4>
+  <table>
+    <tr><th>Code</th><th>Course</th><th>ECTS</th></tr>
+    <tr><td>DSC_312</td><td>Multivariate Methods and Statistical Learning</td><td>[—]</td></tr>
+    <tr><td>DSE_231</td><td>Microeconomics</td><td>[—]</td></tr>
+    <tr><td>DSE_310</td><td>Financial Econometrics</td><td>[—]</td></tr>
+    <tr><td>DSE_330</td><td>Business Economics</td><td>[—]</td></tr>
+    <tr><td>DSE_333</td><td>International Money Markets</td><td>[—]</td></tr>
+  </table>
+
+  <h4>Semester 6</h4>
+  <table>
+    <tr><th>Code</th><th>Course</th><th>ECTS</th></tr>
+    <tr><td>DSC_320</td><td>Data and Text Mining</td><td>[—]</td></tr>
+    <tr><td>DSE_230</td><td>International Economics</td><td>[—]</td></tr>
+    <tr><td>DSE_232</td><td>Macroeconomics</td><td>[—]</td></tr>
+    <tr><td>DSE_322</td><td>Financial Risk Management</td><td>[—]</td></tr>
+    <tr><td>DSE_334</td><td>Banking Economics</td><td>[—]</td></tr>
+  </table>
+
+  <h3>Year 4</h3>
+  <h4>Semester 7</h4>
+  <table>
+    <tr><th>Code</th><th>Course</th><th>ECTS</th></tr>
+    <tr><td>DSE_331</td><td>Public Economics and Welfare Economics</td><td>[—]</td></tr>
+    <tr><td>DSE_400</td><td>Internship / Practical Training (or two elective courses)</td><td>[—]</td></tr>
+    <tr><td>DSE_450</td><td>Dissertation (Part A)</td><td>[—]</td></tr>
+    <tr><td></td><td>Elective course (from DSC)</td><td>[—]</td></tr>
+  </table>
+
+  <h4>Semester 8</h4>
+  <table>
+    <tr><th>Code</th><th>Course</th><th>ECTS</th></tr>
+    <tr><td>DSE_430</td><td>Economics of Labour</td><td>[—]</td></tr>
+    <tr><td>DSE_439</td><td>Health Economics</td><td>[—]</td></tr>
+    <tr><td>DSE_450</td><td>Dissertation (Part B)</td><td>[—]</td></tr>
+    <tr><td></td><td>Elective course(s) (from DSC)</td><td>[—]</td></tr>
+  </table>
+
+  <h3>Elective Courses</h3>
+  <p>Students may select from elective courses including those listed below, as well as courses from the Finance, Accounting and Data Science directions and computing courses offered by other departments.</p>
+  <table>
+    <tr><th>Code</th><th>Course</th></tr>
+    <tr><td>DSE_335</td><td>Introduction to Marketing</td></tr>
+    <tr><td>DSE_431</td><td>Economics of Risk and Uncertainty</td></tr>
+    <tr><td>DSE_432</td><td>Economic Growth and Development</td></tr>
+    <tr><td>DSE_433</td><td>Political Economy</td></tr>
+  </table>
+</div>
+
+<!-- ==================== TAB 3: COURSE DESCRIPTIONS ==================== -->
+<div class="tab-content" id="courses">
+  <h2>Course Descriptions</h2>
+  <p>Descriptions below are translated faithfully from the programme's course-descriptions section (published in Greek). Courses for which the programme page does not yet provide a description are marked accordingly.</p>
+
+  <!-- YEAR 1 -->
+  <div class="course-group-heading">Year 1</div>
+
+  <div class="course">
+    <h4>DSC_110 — Applied Calculus</h4>
+    <div class="ects">6 ECTS</div>
+    <p>The course aims to familiarize students to the basic concepts of limit, continuity, differentiation and integral. Furthermore, the course purposes to introduce student to the theory of optimization and help them to understand appropriate mathematical methods that will lead them to study and solve economic, administrative and other problems using mathematical analysis.</p>
+  </div>
+
+  <div class="course">
+    <h4>DSC_111 — Probability and Statistics</h4>
+    <div class="ects">6 ECTS</div>
+    <p>The course aims to introduce students to the basic statistical concepts and the analytical procedures used in quantitative research in economics and business administration. Students should understand basic principles of Probability Theory and Statistics to be able to apply basic statistical methods. By the end of the course the students will be able to process data, prepare tables and charts and present and analyze statistical results.</p>
+  </div>
+
+  <div class="course">
+    <h4>DSC_112 — Introduction to Programming</h4>
+    <div class="ects">6 ECTS</div>
+    <p>The main goal of this module is to familiarize students with the main principles of software development. Using Java which is perhaps the most popular high level programming language, students will be taught about the object-oriented programming practices with particular emphasis placed on coherent software design, code reuse and the exploitation of existing libraries.</p>
+  </div>
+
+  <div class="course">
+    <h4>DSC_113 — Programming for Data Science</h4>
+    <div class="ects">6 ECTS</div>
+    <p>In the last decade the demand for programming skills related to managing and visualizing data has grown remarkably. Python, R and SQL feature consistently in the top skills listed in data science and data analyst jobs. Knowing how to write efficient software code to handle and visualise data is an essential skill for any modern data scientist. This course will cover the main principles of computer programming with a focus on data science applications by following the entire pathway from raw data to databases, data wrangling and visualisation, machine learning frameworks up to software development.</p>
+  </div>
+
+  <div class="course">
+    <h4>DSC_120 — Algebra and Matrix Computations</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Matrix analysis and computations are widely used in many data science fields such as multivariate statistics, econometrics, machine learning, optimization, and many more. They are considered key fundamental tools. The course is designed to provide the students with sufficient knowledge in mathematical and algorithmic tools for matrix problems which is essential to understand advanced topics related to their subject. It also aims to enable students to apply these mathematical techniques, solve various problems using specialised software and to help them develop and enhance their critical thinking. The course includes a laboratory in MATLAB (or Octave), R and Python.</p>
+  </div>
+
+  <div class="course">
+    <h4>DSC_121 — Inferential Statistics and Regression Analysis</h4>
+    <div class="ects">6 ECTS</div>
+    <p>The course is designed to provide the students with sufficient knowledge of statistics which is essential to understand advanced topics related to statistics. It covers topics related to random variables, covariance/correlation, central limit theorem, method of moments, maximum likelihood, distributions, hypothesis testing, regression analysis, etc.</p>
+  </div>
+
+  <div class="course">
+    <h4>DSC_122 — Advanced Programming Topics</h4>
+    <div class="ects">6 ECTS</div>
+    <p>The Internet Applications Programming module enables students to extend their knowledge in Java and object-oriented programming techniques and obtain experience in designing and developing a complete networked system. Of particular interest are concepts such as inheritance and concurrent programming as well as the technologies used to access remote servers and databases. Moreover, students will design and develop a Graphical User Interface utilizing the Java software libraries readily available.</p>
+  </div>
+
+  <div class="course">
+    <h4>DSC_123 — Introduction to Statistics for Data Science</h4>
+    <div class="ects">6 ECTS</div>
+    <p>This module aims to provide training in the basic skills of practical statistics using a statistical software package. Furthermore, provides the foundation for further study of statistics. Upon completion of this module, students are expected to able to: to use the R statistical software package and python for data analysis and simulation; to identify and carry out an appropriate statistical analysis of a simple data set using a computer; to interpret the output from a statistical software package when used for simple statistical analyses.</p>
+  </div>
+
+  <div class="course">
+    <h4>LCE_138 — English for Data Science I</h4>
+    <div class="ects">6 ECTS</div>
+    <p>The general objective of this 4-ECTS credit (European Credits Transfer and Accumulation System) required degree level course is to enable students to communicate competently at a Β1-B2 level of the Common European Framework of Reference (CEFR) for Languages. It is particularly designed to meet the needs of university students studying in the field of Data Science. The course is designed to equip students with the necessary language skills and specialized vocabulary required to effectively communicate and work in the field of data science for economics and business. This course focuses on developing proficiency in English language usage, technical writing, and oral presentation skills specifically tailored for data science professionals. Through a combination of interactive lectures, practical exercises, and hands-on projects, students will enhance their ability to comprehend, interpret, and communicate complex data-related concepts in English. The course will cover various aspects of data science, including data analysis, statistical modeling, machine learning, and data visualization, while emphasizing effective communication within interdisciplinary teams and across different stakeholders. Throughout the course, students will have the opportunity to apply their language skills to real-world data science scenarios, work on collaborative projects, receive feedback on their communication abilities, and engage in discussions on ethical and professional practices in the data science industry.</p>
+  </div>
+
+  <div class="course">
+    <h4>LCE_139 — English for Data Science II</h4>
+    <div class="ects">6 ECTS</div>
+  </div>
+
+  <!-- YEAR 2 -->
+  <div class="course-group-heading">Year 2</div>
+
+  <div class="course">
+    <h4>DSC_210 — Computational Optimization</h4>
+    <div class="ects">6 ECTS</div>
+    <p>The main objective of the course is to learn the basic elements of computational optimisation theory, numerical algorithms, and their applications. This course aims to introduce students to linear programming (simplex method, duality theory), numerical methods for solving non-linear optimisation problems, unconstrained optimisation problems (optimality conditions, descent algorithms and convergence theorems), and problems with constraints (Lagrange multipliers, Karush-Kuhn-Tucker conditions, active set, penalty and interior point methods). It also aims to equip students with the ability to determine necessary and sufficient optimisation conditions for different classes of optimisation models and to apply the appropriate numerical methods given the characteristics of the optimisation model. Applications in engineering, economics, statistics, and other fields will be emphasized. Students will also use MATLAB or R to gain hands-on experience with the material.</p>
+  </div>
+
+  <div class="course">
+    <h4>DSC_211 — Introduction to Econometrics</h4>
+    <div class="ects">6 ECTS</div>
+    <p>This is an introductory course in Econometrics. The course is designed to provide the students with sufficient knowledge of statistics and econometrics necessary to understand and be able to evaluate and interpret econometrics researches that use basic linear regression methods. The course begins with a link between statistics and linear regression model and its assumptions. Violations of assumptions and their consequences in estimation process are further examined.</p>
+  </div>
+
+  <div class="course">
+    <h4>DSC_212 — Artificial Intelligence and Machine Learning</h4>
+    <div class="ects">6 ECTS</div>
+    <p>This course offers a comprehensive introduction to the fundamental concepts, techniques, and applications of artificial intelligence and machine learning. Students will explore various machine learning algorithms, neural networks, deep learning, reinforcement learning, and their applications in real-world scenarios. The course includes theoretical foundations, hands-on programming assignments.</p>
+  </div>
+
+  <div class="course">
+    <h4>DSE_131 — Principles of Microeconomics</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Microeconomics is a key pillar of Economics and therefore the scientific training of every economist. In particular, this course presents and analyzes the elementary tools of economics in order to better understand and apply the economic theory. Students will develop economic thinking and will be able to use basic economic principles and tools to analyze markets and evaluate economic policies.</p>
+  </div>
+
+  <div class="course">
+    <h4>DSE_141 — Principles of Accounting</h4>
+    <div class="ects">6 ECTS</div>
+    <p>The aim of the course is to acquaint the students at an introductory level with the subjects dealt with by the science of accounting. Specifically, the course will give students a general idea of what financial accounting is with a general development of the concepts of assets, liabilities, double-entry method and the regulatory and conceptual framework regarding accounting. Students will learn to prepare and interpret a balance sheet, account reconciliation statement, income statement, cash flow statement and interpret numeral ratios. The ultimate goal is to provide an overview of key financial statements, their content and their usefulness in decision making process.</p>
+  </div>
+
+  <div class="course">
+    <h4>DSC_220 — Management Science</h4>
+    <div class="ects">6 ECTS</div>
+    <p>The purpose of the course is to study operational research techniques and methodologies aimed at their application for making optimal managerial decisions. Emphasis is placed on problem-solving and the study of models in the fields of finance, management science, economics, and shipping. Assignments and exercises with software will be carried out during lecture and tutorial periods. Some of these topics will be studied and presented during the course. Upon completion of the course, students will be able to identify, use, and analyze the appropriate techniques needed to answer various questions in their areas of specialization. The course is specifically tailored for students who are interested in enriching and deepening their knowledge in decision-making within an operational environment.</p>
+  </div>
+
+  <div class="course">
+    <h4>DSC_221 — Game Theory</h4>
+    <div class="ects">6 ECTS</div>
+    <p>The purpose of the course is the presentation and analysis of the basic tools of GameTheory with the main goal of students' understanding of the importance of game theory for decision-making in various sciences. More specifically, Game Theory deals with decision making by strategically interdependent actors. The course examines and analyzes equilibrium concepts in static and dynamic games under complete and perfect information regimes as well as under incomplete information regimes.</p>
+  </div>
+
+  <div class="course">
+    <h4>DSC_223 — Data Visualization</h4>
+    <div class="ects">6 ECTS</div>
+    <p>This course will familiarize you with the area of data visualization. Students will acquire fundamental knowledge about the visualization of data and models. The primary objective is to understand how to transform data into visual representations for the purpose of describing and investigating data, examining hypotheses and correlations, and presenting evidence. Special emphasis will be placed on visualizing data for policy-makers. Students will gain expertise in visualizing diverse data types and formats by employing industry-standard, open-source software. The aim of the course is to comprehend and utilize the principles of data visualization effectively, to enhance capabilities in collecting and managing data for the purpose of visualization, to apply data visualization techniques to analyze pertinent data sets, to gain knowledge and expertise in assessing visualizations quantitatively and qualitatively. Furthermore to further advance skills in using the ggplot2 package for R and other related packages for data visualization.</p>
+  </div>
+
+  <div class="course">
+    <h4>DSE_132 — Principles of Macroeconomics</h4>
+    <div class="ects">6 ECTS</div>
+    <p>The aim of the course “Principles of Macroeconomics” is to provide an extensive introduction to macroeconomic theory as well as answers to questions concerning the economy as a whole. More specifically, the initial objective of the course is to understand basic macroeconomic concepts such as national income, inflation and unemployment as well as to understand the determinants of economic growth and productivity. An additional and equally important objective of the course is to help students understand the functioning of the financial system as well as the role of the central bank in the exercise of monetary policies. Finally, the course aims to introduce students to basic concepts of the open economy including that of the exchange rate as well as the investigation of short-term fluctuations in the economy. After completing the course, students will be able to understand and recognize the macroeconomic problems that concern an economy, as well as understand how the economy works at a macro-level, in the short-term and int the medium-term.</p>
+  </div>
+
+  <div class="course">
+    <h4>DSE_214 — Principles of Finance</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Presentation of the basic concepts and tools used by businesses and investors in financial decision making. The course consists of lectures and problems related to Financial institutions, markets and debt instruments issued by the government of Cyprus, loanable funds theory, determinants of interest rates, yield curves, spot and forward rates, Greek and Cypriot financial crisis, time value of money with applications, private and business loan financing, types and pricing of bonds, evaluation and pricing of stocks, measurement of investment risk, Capital Asset Pricing Model, capital budgeting and cash-flow computation.</p>
+  </div>
+
+  <!-- YEAR 3 -->
+  <div class="course-group-heading">Year 3</div>
+
+  <div class="course">
+    <h4>DSC_312 — Multivariate Methods and Statistical Learning</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Multivariate statistical models and methods are essential for analysing complex-structured and possibly high-dimensional data from any areas of science and industry, ranging from biology and medicine, and genetics to finance and sociology. Multivariate statistics also provides the foundation of many machine and statistical learning algorithms. The aim of the course is to familiarise students with the methodology of multivariate statistics and statistical learning for students specializing in data science, as well as with their practical implementation and application using the R statistical programming language. The course includes the presentation and analysis of research work.</p>
+  </div>
+
+  <div class="course">
+    <h4>DSE_231 — Microeconomics</h4>
+    <div class="ects">6 ECTS</div>
+    <p>The purpose of this course is to understand how different economic agents such as households, firms and governments make decisions and how those interact together to determine prices and quantities in an economy. The course starts by introducing consumption given preferences and other factors which gives rise to the demand curve both with and without uncertainty. Then the course moves to how firms choose prices and quantities under different market regimes such as perfect competition, monopoly, oligopoly etc. Finally, the course makes an introduction to game theory and Nash equilibrium.</p>
+  </div>
+
+  <div class="course">
+    <h4>DSE_310 — Financial Econometrics</h4>
+    <div class="ects">6 ECTS</div>
+    <p>The course offers an introduction to financial econometrics for second-cycle studies. It covers the main parts of the spectrum of quantitative financial economics, discusses important results in the empirical finance literature, and provides a comprehensive knowledge to do empirical work in financial practice.</p>
+  </div>
+
+  <div class="course">
+    <h4>DSE_330 — Business Economics</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Business economics is a course that applies microeconomic principles to the study of business decisions and strategy. The course will cover topics such as market structures, pricing strategies, production and cost analysis, and market demand. It will also explore the role of government policies on businesses, as well as international trade and globalization. The course will use a combination of theoretical models and real-world case studies to understand these issues.</p>
+  </div>
+
+  <div class="course">
+    <h4>DSE_333 — International Money Markets</h4>
+    <div class="ects">6 ECTS</div>
+    <p>The course examines various issues faced by multinational corporations and international investors from their interaction with international money markets. The different problems and challenges faced by participants in international money markets are analyzed, as well as various theories that govern transactions between participants. The emphasis of the course is on the application of the theories with special mention and examples from the European Union and the role of the euro in international financial transactions. The course begins with a short overview of the basic concepts of the balance of payments and the foreign exchange market. The course then examines international parity condition in money markets. This is followed by an introduction to the tools available to market participants to hedge foreign exchange risk. The second part to the course analyses the nature of the exposure faced by corporations in their operations within international money markets. The cost and availability of capital in international markets is the next topic. The course examines the means through which corporations can fund their operations, that is through equity capital or debt. To conclude, the course examines the international management of portfolios by investors.</p>
+  </div>
+
+  <div class="course">
+    <h4>DSC_320 — Data and Text Mining</h4>
+    <div class="ects">6 ECTS</div>
+    <p>The aim of a course on text and data mining is to teach students how to extract useful information from large datasets of unstructured text data. This involves learning how to preprocess text data, represent it in a way that can be analyzed by machine learning algorithms, and apply various techniques such as classification, clustering, and association rule mining to extract insights from the data. The course may also cover topics such as sentiment analysis, topic modeling, web scraping, and social media mining.</p>
+  </div>
+
+  <div class="course">
+    <h4>DSE_230 — International Economics</h4>
+    <div class="ects">6 ECTS</div>
+    <p>The course is an introduction to the workings of the international economic system and the economic forces that govern contemporary economic and financial relations between nations. The course consists of two major components. The first component examines international trade, that is the exchange of goods and services between nations. This part of the course does not examine financial exchanges between nations, a topic that is covered in the second part of the course. The first part of the course presents a general overview of international commercial exchanges and an introduction to economic theories that purport to explain these. This part emphasizes the costs and benefits to a nation from participating in international markets. Moreover, it presents a general introduction to protectionism and examines the different types of barriers to trade that nations impose on the flow of international trade and the reasons for the imposition of these barriers. The second part of the course is an introduction to international finance and the role of money and different currencies in financial exchanges between nations. It presents an overview of international financial transactions and introduces a nation’s balance of payments. This is followed by an examination of the foreign exchange market and international parity conditions in the foreign exchange market. Subsequently the course examines the basic theories of the balance of payments and the determination of exchange rates.Throughout the course emphasis is given to the applied dimensions of international trade and finance and the course uses examples from different economies with special mention of the external trade to the European Union and the role of the euro in international financial transactions.</p>
+  </div>
+
+  <div class="course">
+    <h4>DSE_232 — Macroeconomics</h4>
+    <div class="ects">6 ECTS</div>
+    <p>The course’s purpose is to teach students to be able to answer macroeconomic questions using simple theoretical models. It presents how theoretical models are constructed and the way they are validated using empirical evidence. Initially the course investigates the long run period and specifically how economic growth and inflation are generated in the long run. Then it moves to the short run and explains why the economy may deviate from its long run trend creating unemployment and/or inflation. Last, the course refers to Central banks and how monetary policy affects the short-term equilibrium using its tools of monetary policy.</p>
+  </div>
+
+  <div class="course">
+    <h4>DSE_322 — Financial Risk Management</h4>
+    <div class="ects">6 ECTS</div>
+    <p>This course helps to explore the theory and practice of financial risk management in a variety of common settings, including business, financial markets, the casino, sports betting. It is also useful for the competitive world of global finance, in fields such as asset management, hedge funds, investment analysis or risk management.</p>
+  </div>
+
+  <div class="course">
+    <h4>DSE_334 — Banking Economics</h4>
+    <div class="ects">6 ECTS</div>
+    <p>The course aims to help the student to understand the theory and practice of modern banking financial institutions. The student will be able to understand the special nature of banking operations, the structure of the banking industry, diversification of banking, insurance and banking, international banking and multinational banks. Specific topics covered include the regulation of the banking sector, the banking sector in emerging markets, banking reforms, the banking sector in Cyprus. Moreover, the course refers to central banking monetary policy and how it affects banks, interest rates and the economy.</p>
+  </div>
+
+  <!-- YEAR 4 -->
+  <div class="course-group-heading">Year 4</div>
+
+  <div class="course">
+    <h4>DSE_331 — Public Economics and Welfare Economics</h4>
+    <div class="ects">6 ECTS</div>
+    <p>The aim of the course "Public and Welfare Economics" is to understand the role of the state in the economy and how government intervention in markets affects the efficiency of resource allocation and the equality of income distribution.Upon successful completion of the course, students will have proven knowledge and understanding of all the issues that make up public finance and welfare economics. They will be able to explain why government intervention is needed, how it affects the behavior of the private sector, and what the effects of that intervention are on economic well-being. In addition, by using the existing databases related to public finances and in combination with the tools of Statistics and Econometrics they will be able to provide sufficient objective documentation of the issues they are asked to analyze.</p>
+  </div>
+
+  <div class="course">
+    <h4>DSE_400 — Internship / Practical Training</h4>
+    <div class="ects">6 ECTS</div>
+    <p>The main objective of the Internship is to give students the opportunity to understand the problems and trends in the field of data science by placing them in a work environment with real working conditions. Students can assess whether the environment in question is related to their academic studies and prepare appropriately for their successful integration into the labor market, after completing their studies. By extension, the Department benefits from the combination of strengthened relationships with domestic industry and with other organizations/bodies.</p>
+  </div>
+
+  <div class="course">
+    <h4>DSE_450 — Dissertation</h4>
+    <div class="ects">6 ECTS</div>
+    <p>In this course the student is required to prepare a Thesis under the supervision of a Faculty member of the Department. The student is expected to complete an independent research on a (real-world) business topic using their knowledge and skill-set (with the approval of his / her academic supervisor). This module aims: To provide students with the necessary training to undertake advanced-level research in their field. To provide students with an advanced understanding of the relevance and importance of alternative epistemological positions in the social sciences and the nature of both qualitative and quantitative approaches to research; To develop students’ understanding at an advanced research, by examining the study skills necessary to manage and undertake a research project; To provide students with opportunities to be familiar with the frontier empirical and theoretical research; To provide students with the opportunity to conduct an in-depth investigation at an advanced level of an issue which is applicable in the real world/business environment.</p>
+  </div>
+
+  <div class="course">
+    <h4>DSE_430 — Economics of Labour</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Labour economics is a course that examines the interactions between workers, employers, and labour markets. This course will cover topics such as labour demand and supply, wage determination, discrimination, labour unions, and unemployment. It will also explore the role of government policies in labour markets, such as minimum wage laws and unemployment insurance. The course will use a combination of theoretical models and empirical evidence to understand these issues.</p>
+  </div>
+
+  <div class="course">
+    <h4>DSE_439 — Health Economics</h4>
+    <div class="ects">6 ECTS</div>
+    <p>The course aims to introduce students to the fundamental principles of Health Economics and to examine the application of economic analysis to health, healthcare services, and healthcare systems. The course familiarizes students with the distinctive characteristics of healthcare markets, the demand for and supply of healthcare services, health insurance and healthcare financing, as well as the role of public policy. In addition, the course introduces basic methods used in the economic evaluation of health programmes, interventions, and technologies, including cost-effectiveness, cost-utility, and cost-benefit analysis, and helps students understand how economic tools are used to support decision-making in health policy.</p>
+  </div>
+
+  <!-- ELECTIVES -->
+  <div class="course-group-heading">Elective Courses</div>
+
+  <div class="course">
+    <h4>DSE_335 — Introduction to Marketing</h4>
+    <div class="ects">6 ECTS</div>
+    <p>The "Introduction to Marketing" course examines the basic principles governing contemporary marketing thought and practice. The purpose of the course is to provide the introductory knowledge around the basic philosophy, theories and concepts of marketing in order to help students to develop skills and critical thinking necessary to diagnose, analyze and solve marketing problems. In addition, the course aims to familiarize students with Marketing processes, methods and techniques such as Strategic Business Planning, Marketing Planning and Process, Market Research and Consumer Behavior, Segmentation, Targeting, Positioning, Product Strategies, Pricing, Distribution and Promotion-communication.</p>
+  </div>
+
+  <div class="course">
+    <h4>DSE_431 — Economics of Risk and Uncertainty</h4>
+    <div class="ects">6 ECTS</div>
+    <p>The Economics of Risk and Uncertainty is a course that explores how individuals and firms make decisions in the face of uncertainty. The course will cover topics such as decision making under uncertainty, risk management, behavioural economics and decision making, the role of information in decision making, and the economics of information. The course Introduces the expected utility model for this task. The course will use a combination of theoretical models and empirical evidence to understand these issues and develop tools to analyse and manage risk.</p>
+  </div>
+
+  <div class="course">
+    <h4>DSE_432 — Economic Growth and Development</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Economic Growth and Development is a course that explores the economic, political, and social factors that influence the growth and development of countries around the world. The course will cover various theories and models of economic growth and development, as well as case studies of different countries and their experiences with economic growth.</p>
+  </div>
+
+  <div class="course">
+    <h4>DSE_433 — Political Economy</h4>
+    <div class="ects">6 ECTS</div>
+    <p>This course aims at providing students with an introduction to the economic approach to politics, also known as positive political theory or rational choice theory.</p>
+  </div>
+
+  <div class="course">
+    <h4>LCE_140 — English for Data Science I</h4>
+    <div class="ects">6 ECTS</div>
+    <p>The general objective of this 4-ECTS credit (European Credits Transfer and Accumulation System) required degree level course is to enable students to communicate competently at a Β1-B2 level of the Common European Framework of Reference (CEFR) for Languages. It is particularly designed to meet the needs of university students studying in the field of Data Science. The course is designed to equip students with the necessary language skills and specialized vocabulary required to effectively communicate and work in the field of data science for economics and business. This course focuses on developing proficiency in English language usage, technical writing, and oral presentation skills specifically tailored for data science professionals. Through a combination of interactive lectures, practical exercises, and hands-on projects, students will enhance their ability to comprehend, interpret, and communicate complex data-related concepts in English. The course will cover various aspects of data science, including data analysis, statistical modeling, machine learning, and data visualization, while emphasizing effective communication within interdisciplinary teams and across different stakeholders. Throughout the course, students will have the opportunity to apply their language skills to real-world data science scenarios, work on collaborative projects, receive feedback on their communication abilities, and engage in discussions on ethical and professional practices in the data science industry.</p>
+  </div>
+</div>
+
+<!-- ==================== TAB 4: ADMISSION ==================== -->
+<div class="tab-content" id="admission">
+  <h2>Admission</h2>
+  <p>Admission to this programme of study is through access framework no. 22.</p>
+</div>
+
+<!-- ==================== TAB 5: TUITION ==================== -->
+
+<!-- ==================== TAB 6: HOW YOU WILL LEARN ==================== -->
+<div class="tab-content" id="learning">
+  <h2>How You Will Learn</h2>
+  <p>The programme blends economics and business education with hands-on data-science practice. Across the four years, students move from mathematical and programming foundations to applied statistics, econometrics, machine learning, optimization and data visualization, applying each to real economic and business questions.</p>
+
+  <h3>Teaching Approach</h3>
+  <ul>
+    <li>Lectures and tutorials in economics, finance, accounting and management science.</li>
+    <li>Practical, software-based work using tools such as Python, R, SQL, Git, MATLAB and statistical packages.</li>
+    <li>Projects and exercises that apply analytical methods to economic and business data.</li>
+    <li>An internship / practical-training option that places students in a real working environment.</li>
+    <li>A two-part final-year dissertation developing independent applied-research skills.</li>
+  </ul>
+</div>
+
+<!-- ==================== TAB 7: RECOGNITION & CAREERS ==================== -->
+<div class="tab-content" id="careers">
+  <h2>Professional Recognition and Career Prospects</h2>
+
+  <h3>Professional Recognition</h3>
+  <p>No professional-body exemptions currently apply to this programme.</p>
+
+  <h3>Career Prospects</h3>
+  <p>Graduates emerge as economists with specialised knowledge in data science. The graduate profile is suited to roles in consulting services, risk management, policy development, economic forecasting, policy analysis, market analysis, financial modelling, social-media analysis and financial-data analysis.</p>
+  <p>Graduates can work in a wide range of positions and sectors, including management, economic analysis, information technology, finance, telecommunications and healthcare.</p>
+
+  <h3>Typical Roles and Sectors</h3>
+  <ul>
+    <li>Data analyst / business analyst in consulting, finance, telecommunications or healthcare organisations</li>
+    <li>Economic analyst, forecaster or policy analyst in public bodies and private firms</li>
+    <li>Risk-management and financial-modelling roles in banks and financial institutions</li>
+    <li>Market-analysis and marketing-analytics roles, including social-media analysis</li>
+    <li>Quantitative and IT-adjacent roles applying machine learning and optimization to business problems</li>
+  </ul>
+
+  <h3>Employment Statistics</h3>
+  <p>This programme admitted its first students in 2025. As a newly established degree it has not yet produced graduates, so graduate-employment statistics are not yet available. Graduate-outcome data will be reported as the first cohorts complete their studies.</p>
+</div>
+
+<!-- ==================== TAB 8: STUDENT SUPPORT ==================== -->
+<div class="tab-content" id="support">
+  <h2>Student Support and Resources</h2>
+
+  <h3>Academic Advisor</h3>
+  <p>Assigned at enrolment to guide course selection, academic progress and career planning.</p>
+
+  <h3>Learning Development Network (LDN)</h3>
+  <p>Technical support, study skills, writing support, and AI literacy training.</p>
+
+  <h3>Library and Digital Resources</h3>
+  <p>Access to academic databases, e-journals and citation-management tools (e.g. EndNote, Zotero), supporting study and research across economics, finance and data science.</p>
+
+  <h3>Career Services</h3>
+  <p>Career counselling, CV review, interview preparation, and networking events.</p>
+
+  <h3>Counselling Services</h3>
+  <p>Confidential support available in-person and remotely.<br>
+  Email: counseling@cut.ac.cy · Tel: +357 25 002 500</p>
+</div>
+
+<!-- ==================== TAB 9: CONTACT ==================== -->
+<div class="tab-content" id="contact">
+  <h2>Contact</h2>
+
+  <div class="contact-block">
+    <strong>Programme Coordinator</strong>
+    Professor Christos Savva<br>Email: christos.savva@cut.ac.cy · Tel: +357 25002349
+  </div>
+
+  <div class="contact-block">
+    <strong>Department</strong>
+    Department of Finance, Accounting and Management Science<br>
+    Faculty of Management and Economics, Cyprus University of Technology<br>
+  </div>
+
+  <div class="contact-block">
+    <strong>General Enquiries</strong>
+    Student Services and Information Centre<br>
+    Email: kep@cut.ac.cy<br>
+    Tel: +357 25 002710/11
+  </div>
+
+  <a href="https://www.cut.ac.cy/studies/bachelor/" class="cta-button">Undergraduate Admissions</a>
+</div>
+
+<!-- ==================== JS ==================== -->
+<script>
+  document.querySelectorAll('.tabs-nav button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tabs-nav button').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tab-content').forEach(tc => tc.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById(btn.dataset.tab).classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="MG">
+<title>Doctoral Programme (PhD) in Finance, Accounting and Management Science — Cyprus University of Technology</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;600;700&family=Source+Serif+4:wght@400;600&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.65;
+    color: #2a2a2a;
+    background: #f5f5f5;
+  }
+
+  /* ---- HEADER ---- */
+  .page-header {
+    background: #1a3a5c;
+    color: #fff;
+    padding: 48px 0 40px;
+  }
+  .page-header .wrap {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+  .page-header h1 {
+    font-family: 'Source Serif 4', serif;
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  .page-header .subtitle {
+    font-size: 0.95rem;
+    font-weight: 300;
+    opacity: 0.85;
+  }
+
+  /* ---- TABS NAV ---- */
+  .tabs-nav {
+    background: #fff;
+    border-bottom: 2px solid #ddd;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .tabs-nav .wrap {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    gap: 0;
+  }
+  .tabs-nav button {
+    background: none;
+    border: none;
+    padding: 14px 18px;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: #666;
+    cursor: pointer;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .tabs-nav button:hover { color: #1a3a5c; }
+  .tabs-nav button.active {
+    color: #1a3a5c;
+    border-bottom-color: #1a3a5c;
+  }
+
+  /* ---- CONTENT ---- */
+  .tab-content {
+    display: none;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+  }
+  .tab-content.active { display: block; }
+
+  h2 {
+    font-family: 'Source Serif 4', serif;
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: #1a3a5c;
+    margin-bottom: 24px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+  }
+  h3 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #1a3a5c;
+    margin: 32px 0 12px;
+  }
+  h4 {
+    font-size: 1.02rem;
+    font-weight: 700;
+    color: #333;
+    margin: 28px 0 8px;
+  }
+  p { margin-bottom: 14px; }
+
+  /* ---- TABLES ---- */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0 24px;
+    font-size: 0.93rem;
+  }
+  th, td {
+    text-align: left;
+    padding: 10px 14px;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  th {
+    background: #f0f3f6;
+    font-weight: 600;
+    color: #1a3a5c;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+  tr:hover td { background: #fafbfc; }
+
+  /* key-features table (2-col, no header) */
+  .kf-table th { display: none; }
+  .kf-table td:first-child {
+    font-weight: 600;
+    width: 160px;
+    color: #1a3a5c;
+  }
+
+  /* ---- LISTS ---- */
+  ul, ol { margin: 10px 0 16px 22px; }
+  li { margin-bottom: 6px; }
+
+  /* ---- COURSE CARD ---- */
+  .course {
+    background: #fff;
+    border: 1px solid #e4e4e4;
+    border-radius: 6px;
+    padding: 24px 28px;
+    margin: 20px 0;
+  }
+  .course h4 {
+    margin: 0 0 4px;
+    color: #1a3a5c;
+  }
+  .course .ects {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: #888;
+    margin-bottom: 14px;
+  }
+  .course p { margin-bottom: 12px; }
+  .course p:last-child { margin-bottom: 0; }
+  .course .prereq {
+    font-size: 0.88rem;
+    color: #777;
+    font-style: italic;
+    margin-top: 10px;
+  }
+
+  .course-group-heading {
+    font-family: 'Source Serif 4', serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1a3a5c;
+    margin: 40px 0 8px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid #e0e0e0;
+  }
+
+  /* ---- MISC ---- */
+  .note {
+    background: #fffbe6;
+    border-left: 4px solid #e6c200;
+    padding: 14px 18px;
+    margin: 18px 0;
+    font-size: 0.93rem;
+    border-radius: 0 4px 4px 0;
+  }
+  .cta-button {
+    display: inline-block;
+    background: #1a3a5c;
+    color: #fff;
+    padding: 12px 28px;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 4px;
+    margin-top: 16px;
+    font-size: 0.95rem;
+    transition: background 0.2s;
+  }
+  .cta-button:hover { background: #264d73; }
+
+  .contact-block { margin-bottom: 24px; }
+  .contact-block strong { display: block; margin-bottom: 2px; }
+
+  /* responsive */
+  @media (max-width: 640px) {
+    .page-header h1 { font-size: 1.5rem; }
+    .tabs-nav button { padding: 12px 12px; font-size: 0.8rem; }
+    .course { padding: 18px 16px; }
+    table { font-size: 0.85rem; }
+    th, td { padding: 8px 10px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ==================== HEADER ==================== -->
+<header class="page-header">
+  <div class="wrap">
+    <h1>Doctoral Programme (PhD) in Finance, Accounting and Management Science</h1>
+    <div class="subtitle">Department of Finance, Accounting and Management Science · Faculty of Management and Economics · Cyprus University of Technology</div>
+  </div>
+</header>
+
+<!-- ==================== TAB NAV ==================== -->
+<nav class="tabs-nav">
+  <div class="wrap">
+    <button class="active" data-tab="overview">Overview</button>
+    <button data-tab="structure">Programme Structure</button>
+    <button data-tab="courses">Course Descriptions</button>
+    <button data-tab="admission">Admission</button>
+    <button data-tab="research">Research Areas</button>
+    <button data-tab="learning">How You Will Learn</button>
+    <button data-tab="careers">Recognition &amp; Careers</button>
+    <button data-tab="support">Student Support</button>
+    <button data-tab="contact">Contact</button>
+  </div>
+</nav>
+
+<!-- ==================== TAB 1: OVERVIEW ==================== -->
+<div class="tab-content active" id="overview">
+  <h2>Overview</h2>
+  <p style="text-align:justify">The aim of the PhD program of the <strong>Department of Finance, Accounting and Management Science</strong> is to train PhD candidates to produce advanced research that is internationally competitive.</p>
+  <p style="text-align:justify">Based on the offered topics announced every semester, the opportunity for research is provided in the fields of Financial, Accounting, or Management Science, as well as a combination of these topics. For more information, students can contact the directors of the Doctoral Program through the Department's Secretary.</p>
+  <p><strong>General</strong> <strong>Information</strong><strong> </strong></p>
+  <p style="text-align:justify">The typical duration of the curriculum is four (4) years of full-time attendance with 240 ECTS.&nbsp; To obtain the PhD degree, students are expected to complete 48 ECTS of courses, pass the Comprehensive Examination (32 ECTS), prepare the PhD Dissertation Proposal (32 ECTS), and successfully complete the Research Part and the Public presentation and Defense (4x32 = 128 ECTS).</p>
+  <p style="text-align:justify">The total time of study for obtaining a doctoral degree may not exceed eight (8) academic years with a minimum of three (3) academic years.</p>
+
+  <h3>Key Features</h3>
+  <table class="kf-table">
+    <tr><td>Degree</td><td>Doctor of Philosophy (PhD)</td></tr>
+    <tr><td>Duration</td><td>Standard 4 years (full-time); minimum 3 academic years; maximum 8 academic years</td></tr>
+    <tr><td>Credits</td><td>240 ECTS in total (48 ECTS taught courses + 32 ECTS comprehensive examination + 32 ECTS research proposal + 128 ECTS thesis research and public defence)</td></tr>
+  </table>
+
+  <h3>Intended Learning Outcomes</h3>
+  <p>On successful completion of the programme, graduates are expected to demonstrate the following doctoral-level competences. These outcomes are derived qualitatively from the programme's stated aim of educating candidates to produce internationally competitive, high-level research; the Department should review and formally ratify them.</p>
+
+  <h4>Knowledge</h4>
+  <ul>
+    <li>Command a comprehensive, systematic understanding of the research literature in their chosen field of finance, accounting, or management science, and of the frontier of knowledge within it.</li>
+    <li>Understand advanced research methods, econometric and quantitative techniques, and theoretical frameworks relevant to capital markets, corporate finance, and related disciplines.</li>
+    <li>Identify open research questions and articulate how new work can contribute to the relevant body of knowledge.</li>
+  </ul>
+
+  <h4>Skills</h4>
+  <ul>
+    <li>Design and execute an original, substantial programme of research that meets standards of international scholarly quality.</li>
+    <li>Apply appropriate empirical and econometric methods to financial and economic data, including the analysis of large-scale and text-based datasets.</li>
+    <li>Critically synthesise existing literature toward the formulation of new, defensible research questions and hypotheses.</li>
+    <li>Communicate research findings clearly and persuasively in writing and through public presentation and defence to expert audiences.</li>
+  </ul>
+
+  <h4>Competences</h4>
+  <ul>
+    <li>Conduct research independently and with the scholarly integrity, autonomy, and rigour expected of an academic researcher.</li>
+    <li>Make sound, evidence-based judgements in complex and incomplete-information settings and defend them before peers and examiners.</li>
+    <li>Contribute original knowledge to the discipline of a quality suitable for publication in peer-reviewed outlets and for an academic or advanced research career.</li>
+  </ul>
+  <div class="note">The Intended Learning Outcomes above are an editorial draft inferred from the programme's published aim. The Department should review, adjust, and formally adopt the Knowledge / Skills / Competences statements.</div>
+</div>
+
+<!-- ==================== TAB 2: PROGRAMME STRUCTURE ==================== -->
+<div class="tab-content" id="structure">
+  <h2>Programme Structure</h2>
+  <p>The programme comprises 240 ECTS over a standard duration of four years. It begins with two semesters of taught doctoral courses (theory), followed by a comprehensive examination, the submission of a research proposal, and the development, writing, public presentation, and defence of the doctoral thesis (research stages).</p>
+
+  <h3>ECTS Allocation</h3>
+  <table>
+    <tr><th>Component</th><th>ECTS</th></tr>
+    <tr><td>Taught courses (mandatory 36 ECTS — FAMS 850, 852, 853, 854, 855 — plus 12 ECTS electives)</td><td>48</td></tr>
+    <tr><td>FAMS 800 — Comprehensive Examination</td><td>32</td></tr>
+    <tr><td>FAMS 801 — Research Proposal Submission</td><td>32</td></tr>
+    <tr><td>Thesis research and public presentation (FAMS 802–805, 4 × 32 ECTS)</td><td>128</td></tr>
+    <tr><td><strong>Total</strong></td><td><strong>240</strong></td></tr>
+  </table>
+  <div class="note">The published programme states component totals (taught 48 ECTS, comprehensive examination 32 ECTS, research proposal 32 ECTS, thesis research 128 ECTS) but does not break ECTS down per individual taught course. The 36 ECTS of mandatory courses and 12 ECTS of electives are the figures given.</div>
+
+  <h3>Taught Phase — Semester Plan</h3>
+
+  <h4>First Semester (Theory)</h4>
+  <table>
+    <tr><th>Code</th><th>Course</th><th>Type</th><th>ECTS</th></tr>
+    <tr><td>FAMS 850</td><td>Research Methods</td><td>Mandatory · Theory</td><td>7.5</td></tr>
+    <tr><td>FAMS 852</td><td>Capital Markets Topics I</td><td>Mandatory · Theory</td><td>7.5</td></tr>
+    <tr><td></td><td>One elective course (see below)</td><td>Elective · Theory</td><td>7.5</td></tr>
+  </table>
+
+  <h4>Second Semester (Theory)</h4>
+  <table>
+    <tr><th>Code</th><th>Course</th><th>Type</th><th>ECTS</th></tr>
+    <tr><td>FAMS 853</td><td>Capital Markets Topics II</td><td>Mandatory · Theory</td><td>7.5</td></tr>
+    <tr><td>FAMS 854</td><td>Empirical Corporate Finance / Empirical Financial Business Management</td><td>Mandatory · Theory</td><td>7.5</td></tr>
+    <tr><td>FAMS 855</td><td>Econometric Methods</td><td>Mandatory · Theory</td><td>7.5</td></tr>
+    <tr><td></td><td>One elective course (see below)</td><td>Elective · Theory</td><td>7.5</td></tr>
+  </table>
+
+  <h4>Elective Courses</h4>
+  <p>Students select electives totalling 12 ECTS. The published elective options are organised by semester as follows.</p>
+  <table>
+    <tr><th>Semester</th><th>Code</th><th>Course</th><th>ECTS</th></tr>
+    <tr><td>First</td><td>FAMS 860</td><td>Shipping Economics</td><td>7.5</td></tr>
+    <tr><td>First</td><td>FAMS 856</td><td>Asset Valuation and Investments</td><td>7.5</td></tr>
+    <tr><td>Second</td><td>FAMS 859</td><td>Shipping Finance</td><td>7.5</td></tr>
+    <tr><td>Second</td><td>FAMS 857</td><td>Financial Business Management</td><td>7.5</td></tr>
+    <tr><td>Second</td><td>FAMS 858</td><td>Financial Models</td><td>7.5</td></tr>
+  </table>
+  <div class="note">Elective courses may be modified due to ongoing departmental transformation. Students may also enrol in additional courses related to their thesis specialisation upon the recommendation of their supervisor.</div>
+
+  <h3>Research Stages — Semester Plan</h3>
+  <table>
+    <tr><th>Semester</th><th>Code</th><th>Stage</th><th>ECTS</th></tr>
+    <tr><td>Third</td><td>FAMS 800</td><td>Comprehensive Examination</td><td>32</td></tr>
+    <tr><td>Fourth</td><td>FAMS 801</td><td>Research Proposal Submission</td><td>32</td></tr>
+    <tr><td>Fifth</td><td>FAMS 802</td><td>Thesis Development</td><td>32</td></tr>
+    <tr><td>Sixth</td><td>FAMS 803</td><td>Thesis Development</td><td>32</td></tr>
+    <tr><td>Seventh</td><td>FAMS 804</td><td>Thesis Development</td><td>32</td></tr>
+    <tr><td>Eighth</td><td>FAMS 805</td><td>Writing, submission, public presentation and defence of the thesis</td><td>32</td></tr>
+  </table>
+  <div class="note">FAMS 802–805 together account for the 128 ECTS of thesis research and public presentation (4 × 32 ECTS). The comprehensive examination and research proposal are each worth 32 ECTS, as published.</div>
+</div>
+
+<!-- ==================== TAB 3: COURSE DESCRIPTIONS ==================== -->
+<div class="tab-content" id="courses">
+  <h2>Course Descriptions</h2>
+
+  <!-- MANDATORY TAUGHT COURSES -->
+  <div class="course-group-heading">Mandatory Taught Courses (Theory)</div>
+
+  <div class="course">
+    <h4>FAMS 850 — Research Methods</h4>
+    <div class="ects">7.5 ECTS · Mandatory · Theory</div>
+    <p>Title-inferable note: foundational training in research design and methodology for doctoral research in finance, accounting, and management science.</p>
+  </div>
+
+  <div class="course">
+    <h4>FAMS 852 — Capital Markets Topics I</h4>
+    <div class="ects">7.5 ECTS · Mandatory · Theory</div>
+    <p>Title-inferable note: advanced topics in capital markets (first part of a two-course sequence).</p>
+  </div>
+
+  <div class="course">
+    <h4>FAMS 853 — Capital Markets Topics II</h4>
+    <div class="ects">7.5 ECTS · Mandatory · Theory</div>
+    <p>Title-inferable note: advanced topics in capital markets (second part of a two-course sequence, continuing from FAMS 852).</p>
+  </div>
+
+  <div class="course">
+    <h4>FAMS 854 — Empirical Corporate Finance (Empirical Financial Business Management)</h4>
+    <div class="ects">7.5 ECTS · Mandatory · Theory</div>
+    <p>Title-inferable note: empirical methods applied to corporate finance and financial management of firms.</p>
+  </div>
+
+  <div class="course">
+    <h4>FAMS 855 — Econometric Methods</h4>
+    <div class="ects">7.5 ECTS · Mandatory · Theory</div>
+    <p>Title-inferable note: econometric techniques for empirical research in finance and economics.</p>
+  </div>
+
+  <!-- ELECTIVE TAUGHT COURSES -->
+  <div class="course-group-heading">Elective Taught Courses (Theory)</div>
+
+  <div class="course">
+    <h4>FAMS 856 — Asset Valuation and Investments</h4>
+    <div class="ects">7.5 ECTS · Elective · Theory · First Semester option</div>
+    <p>Title-inferable note: valuation of assets and investment analysis.</p>
+  </div>
+
+  <div class="course">
+    <h4>FAMS 857 — Financial Business Management</h4>
+    <div class="ects">7.5 ECTS · Elective · Theory · Second Semester option</div>
+    <p>Title-inferable note: financial management of business enterprises.</p>
+  </div>
+
+  <div class="course">
+    <h4>FAMS 858 — Financial Models</h4>
+    <div class="ects">7.5 ECTS · Elective · Theory · Second Semester option</div>
+    <p>Title-inferable note: financial modelling techniques.</p>
+  </div>
+
+  <div class="course">
+    <h4>FAMS 859 — Shipping Finance</h4>
+    <div class="ects">7.5 ECTS · Elective · Theory · Second Semester option</div>
+    <p>Title-inferable note: finance applied to the shipping sector.</p>
+  </div>
+
+  <div class="course">
+    <h4>FAMS 860 — Shipping Economics</h4>
+    <div class="ects">7.5 ECTS · Elective · Theory · First Semester option</div>
+    <p>Title-inferable note: economics of the shipping sector.</p>
+  </div>
+
+  <!-- RESEARCH STAGES -->
+  <div class="course-group-heading">Research Stages</div>
+
+  <div class="course">
+    <h4>FAMS 800 — Comprehensive Examination</h4>
+    <div class="ects">32 ECTS · Research</div>
+    <p>The comprehensive examination assesses the candidate's specialised knowledge in their field of study on the basis of the research literature, and their ability to synthesise this knowledge toward new research questions. Written examinations are coordinated by the programme coordinators together with the supervising professor.</p>
+  </div>
+
+  <div class="course">
+    <h4>FAMS 801 — Research Proposal Submission</h4>
+    <div class="ects">32 ECTS · Research</div>
+    <p>Preparation and submission of the doctoral research proposal, setting out the research idea or question, its significance, and the expected contribution to the relevant literature.</p>
+  </div>
+
+  <div class="course">
+    <h4>FAMS 802 — Thesis Development</h4>
+    <div class="ects">32 ECTS · Research</div>
+    <p>Supervised development of the doctoral thesis.</p>
+  </div>
+
+  <div class="course">
+    <h4>FAMS 803 — Thesis Development</h4>
+    <div class="ects">32 ECTS · Research</div>
+    <p>Continued supervised development of the doctoral thesis.</p>
+  </div>
+
+  <div class="course">
+    <h4>FAMS 804 — Thesis Development</h4>
+    <div class="ects">32 ECTS · Research</div>
+    <p>Continued supervised development of the doctoral thesis.</p>
+  </div>
+
+  <div class="course">
+    <h4>FAMS 805 — Writing, Submission, Public Presentation and Defence of the Thesis</h4>
+    <div class="ects">32 ECTS · Research</div>
+    <p>Final writing and submission of the doctoral thesis, followed by its public presentation and defence.</p>
+  </div>
+</div>
+
+<!-- ==================== TAB 4: ADMISSION ==================== -->
+<div class="tab-content" id="admission">
+  <h2>Admission Requirements</h2>
+
+  <h3>Eligibility — Academic Excellence</h3>
+  <p>Applicants must hold a recognised university (bachelor's) degree and a postgraduate degree in Shipping, Finance, Economics, Business Administration, or in the Sciences / Applied Sciences. Applicants should have achieved very good or excellent grades in their previous programmes, and must demonstrate adequate English language proficiency.</p>
+
+  <h3>English Language Requirements</h3>
+  <p>Acceptable evidence of English language competence includes:</p>
+  <ul>
+    <li>GCE / IGCSE O Level grade C or higher;</li>
+    <li>ELTS / IELTS 6.5 or higher;</li>
+    <li>TOEFL 580 (paper-based) / 82 (internet-based).</li>
+  </ul>
+  <p>Graduates of English-language university programmes are exempt from providing an English language certificate. Greek language competence is shown via a secondary school diploma or a certificate from a higher education institution.</p>
+
+  <h3>Innovative Research Proposal</h3>
+  <p>Candidates must submit a research proposal that clearly presents a research idea or question, explains its significance, and demonstrates the expected contribution to the relevant literature.</p>
+
+  <h3>Reference Letters</h3>
+  <p>A minimum of two reference letters is required, from individuals who know the applicant academically or professionally.</p>
+
+  <h3>Other Supporting Material</h3>
+  <p>Applicants may be asked to provide additional certificates and documents, including relevant academic or professional work samples (publications, articles, research, and similar material).</p>
+
+  <h3>Personal Interview</h3>
+  <p>A personal interview is required as part of the selection process.</p>
+
+  <h3>How to Apply</h3>
+  <p>Applications and supporting documents are submitted online through the University's portal.</p>
+  <div class="note">Application deadlines and intake periods are not stated on the source page —.</div>
+</div>
+
+<!-- ==================== TAB 5: RESEARCH AREAS ==================== -->
+<div class="tab-content" id="research">
+  <h2>Research Areas and Supervisors</h2>
+  <p>The Department offers doctoral supervision across the following research areas. (Areas and supervisor assignments as published, dated September 2023; the Department should confirm these remain current.)</p>
+
+  <table>
+    <tr><th>Research Area</th><th>Supervisor(s)</th><th>Contact</th></tr>
+    <tr>
+      <td>Finance</td>
+      <td>Neofytos Lambertides; Panayiotis Andreou</td>
+      <td>n.lambertides@cut.ac.cy; panayiotis.andreou@cut.ac.cy</td>
+    </tr>
+    <tr>
+      <td>Finance / Corporate Governance</td>
+      <td>Elena Kalotychou</td>
+      <td>eleni.kalotychou@cut.ac.cy</td>
+    </tr>
+    <tr>
+      <td>Banking or Financial Technology</td>
+      <td>Demetris Koursaros</td>
+      <td>demetris.koursaros@cut.ac.cy</td>
+    </tr>
+    <tr>
+      <td>Big Data, Artificial Intelligence and Finance</td>
+      <td>Christodoulos Louca</td>
+      <td>christodoulos.louca@cut.ac.cy</td>
+    </tr>
+    <tr>
+      <td>Financial Literacy</td>
+      <td>Panayiotis Andreou</td>
+      <td>panayiotis.andreou@cut.ac.cy</td>
+    </tr>
+    <tr>
+      <td>Digital and Green Finance for Microentrepreneurs</td>
+      <td>Panayiotis Andreou</td>
+      <td>panayiotis.andreou@cut.ac.cy</td>
+    </tr>
+    <tr>
+      <td>Applied Econometrics (Financial Econometrics or Macro-econometrics)</td>
+      <td>Christos S. Savva</td>
+      <td>christos.savva@cut.ac.cy</td>
+    </tr>
+    <tr>
+      <td>Computational Econometrics</td>
+      <td>Erricos Kontogiorgis</td>
+      <td>erricos.k@cut.ac.cy</td>
+    </tr>
+    <tr>
+      <td>Computational Methods for Large-Scale Data Analysis</td>
+      <td>Erricos Kontogiorgis</td>
+      <td>erricos.k@cut.ac.cy</td>
+    </tr>
+    <tr>
+      <td>Statistics for Text Analysis</td>
+      <td>Erricos Kontogiorgis</td>
+      <td>erricos.k@cut.ac.cy</td>
+    </tr>
+  </table>
+  <div class="note">Prospective applicants are encouraged to contact a potential supervisor in their area of interest before applying, to discuss the fit between their research idea and the supervisor's expertise.</div>
+</div>
+
+<!-- ==================== TAB 6: HOW YOU WILL LEARN ==================== -->
+<div class="tab-content" id="learning">
+  <h2>How You Will Learn — Research Training and Supervision</h2>
+  <p>The doctoral programme is research-led. After an initial taught phase, the great majority of the degree is conducted as supervised, independent research culminating in an original thesis.</p>
+
+  <h3>Taught Phase</h3>
+  <p>During the first two semesters, candidates complete taught doctoral courses (theory) in research methods, capital markets, empirical corporate finance, and econometric methods, plus electives totalling 12 ECTS. This phase equips candidates with the methodological and theoretical foundations needed to design and execute high-quality research.</p>
+
+  <h3>Comprehensive Examination</h3>
+  <p>In the third semester, candidates sit the comprehensive examination (FAMS 800, 32 ECTS), which assesses specialised knowledge of the research literature in the candidate's field and the ability to synthesise that knowledge toward new research questions. The written examinations are coordinated by the programme coordinators together with the supervising professor.</p>
+
+  <h3>Research Proposal</h3>
+  <p>In the fourth semester, candidates prepare and submit a research proposal (FAMS 801, 32 ECTS) that defines the research question, establishes its significance, and sets out the intended contribution to the literature.</p>
+
+  <h3>Supervised Thesis Research</h3>
+  <p>From the fifth semester onward, candidates work under the guidance of their supervisor to develop the doctoral thesis (FAMS 802–805, 128 ECTS in total), culminating in the writing, submission, public presentation, and defence of the thesis.</p>
+
+  <h3>Supervision</h3>
+  <p>Each candidate is supervised within one of the Department's research areas (see the Research Areas tab). Candidates may, on the recommendation of their supervisor, enrol in additional courses relevant to their thesis specialisation.</p>
+</div>
+
+<!-- ==================== TAB 7: RECOGNITION & CAREERS ==================== -->
+<div class="tab-content" id="careers">
+  <h2>Recognition and Career Prospects</h2>
+
+  <h3>Professional-Body Exemptions</h3>
+  <p>No professional-body exemptions apply to this doctoral programme. As a research degree (PhD), it does not carry exemptions from the examinations of professional bodies.</p>
+
+  <h3>Career Destinations</h3>
+  <p>A PhD in Finance, Accounting and Management Science prepares graduates principally for research-intensive and advanced analytical careers. Typical destinations for doctoral graduates in this field include, in general terms:</p>
+  <ul>
+    <li>Academia — university teaching and research positions (post-doctoral research, lectureships, and academic careers);</li>
+    <li>Central banks, financial regulators, and policy institutions;</li>
+    <li>Research roles in financial institutions, think tanks, and international organisations;</li>
+    <li>Advanced analytics, quantitative research, and data science roles in industry, including banking, asset management, and financial technology.</li>
+  </ul>
+  <p>These destinations are presented in general terms as typical of doctoral graduates in finance, accounting, and management science; they are not specific placement claims for this programme.</p>
+
+  <div class="note">Employment statistics for graduates of this programme are not published on the source page —.</div>
+</div>
+
+<!-- ==================== TAB 8: STUDENT SUPPORT ==================== -->
+<div class="tab-content" id="support">
+  <h2>Student Support and Resources</h2>
+
+  <h3>Supervisor and Academic Guidance</h3>
+  <p>Each doctoral candidate is guided by an academic supervisor within their research area, who oversees the comprehensive examination, the research proposal, and the development and defence of the thesis. Candidates may enrol in additional courses related to their thesis specialisation on their supervisor's recommendation.</p>
+
+  <h3>Learning Development Network (LDN)</h3>
+  <p>Technical support, study skills, writing support, and AI literacy training.</p>
+
+  <h3>Library and Databases</h3>
+  <p>Access to academic e-journals and databases, citation management tools (such as EndNote and Zotero), and research data resources supporting empirical work in finance and economics.</p>
+
+  <h3>Career Services</h3>
+  <p>Career counselling, support with academic job applications, and networking opportunities.</p>
+
+  <h3>Counselling Services</h3>
+  <p>Confidential support available in-person and remotely.<br>
+  Email: counseling@cut.ac.cy · Tel: +357 25 002 500 (24/7)</p>
+</div>
+
+<!-- ==================== TAB 9: CONTACT ==================== -->
+<div class="tab-content" id="contact">
+  <h2>Contact</h2>
+
+  <div class="contact-block">
+    <strong>Programme Coordinators</strong>
+    Anastasia Kopita — anastasia.kopita@cut.ac.cy<br>
+    Demetris Koursaros — demetris.koursaros@cut.ac.cy
+  </div>
+
+  <div class="contact-block">
+    <strong>Administrative Support</strong>
+    Dimitra Christodoulidou — d.christodoulidou@cut.ac.cy
+  </div>
+
+  <div class="contact-block">
+    <strong>Department</strong>
+    Department of Finance, Accounting and Management Science<br>
+    Faculty of Management and Economics<br>
+    Cyprus University of Technology
+  </div>
+
+  <div class="contact-block">
+    <strong>General Enquiries</strong>
+    Student Services and Information Centre<br>
+    Email: kep@cut.ac.cy<br>
+    Tel: +357 25 002710/11
+  </div>
+</div>
+
+<!-- ==================== JS ==================== -->
+<script>
+  document.querySelectorAll('.tabs-nav button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tabs-nav button').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tab-content').forEach(tc => tc.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById(btn.dataset.tab).classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  });
+</script>
+</body>
+</html>

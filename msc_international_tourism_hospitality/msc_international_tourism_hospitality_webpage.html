@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="MG">
+<title>MSc in International Tourism and Hospitality Management — Cyprus University of Technology</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;600;700&family=Source+Serif+4:wght@400;600&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.65;
+    color: #2a2a2a;
+    background: #f5f5f5;
+  }
+
+  /* ---- HEADER ---- */
+  .page-header {
+    background: #1a3a5c;
+    color: #fff;
+    padding: 48px 0 40px;
+  }
+  .page-header .wrap {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+  .page-header h1 {
+    font-family: 'Source Serif 4', serif;
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  .page-header .subtitle {
+    font-size: 0.95rem;
+    font-weight: 300;
+    opacity: 0.85;
+  }
+
+  /* ---- TABS NAV ---- */
+  .tabs-nav {
+    background: #fff;
+    border-bottom: 2px solid #ddd;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .tabs-nav .wrap {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    gap: 0;
+  }
+  .tabs-nav button {
+    background: none;
+    border: none;
+    padding: 14px 18px;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: #666;
+    cursor: pointer;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .tabs-nav button:hover { color: #1a3a5c; }
+  .tabs-nav button.active {
+    color: #1a3a5c;
+    border-bottom-color: #1a3a5c;
+  }
+
+  /* ---- CONTENT ---- */
+  .tab-content {
+    display: none;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+  }
+  .tab-content.active { display: block; }
+
+  h2 {
+    font-family: 'Source Serif 4', serif;
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: #1a3a5c;
+    margin-bottom: 24px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+  }
+  h3 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #1a3a5c;
+    margin: 32px 0 12px;
+  }
+  h4 {
+    font-size: 1.02rem;
+    font-weight: 700;
+    color: #333;
+    margin: 28px 0 8px;
+  }
+  p { margin-bottom: 14px; }
+
+  /* ---- TABLES ---- */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0 24px;
+    font-size: 0.93rem;
+  }
+  th, td {
+    text-align: left;
+    padding: 10px 14px;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  th {
+    background: #f0f3f6;
+    font-weight: 600;
+    color: #1a3a5c;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+  tr:hover td { background: #fafbfc; }
+
+  /* key-features table (2-col, no header) */
+  .kf-table th { display: none; }
+  .kf-table td:first-child {
+    font-weight: 600;
+    width: 160px;
+    color: #1a3a5c;
+  }
+
+  /* ---- LISTS ---- */
+  ul, ol { margin: 10px 0 16px 22px; }
+  li { margin-bottom: 6px; }
+
+  /* ---- COURSE CARD ---- */
+  .course {
+    background: #fff;
+    border: 1px solid #e4e4e4;
+    border-radius: 6px;
+    padding: 24px 28px;
+    margin: 20px 0;
+  }
+  .course h4 {
+    margin: 0 0 4px;
+    color: #1a3a5c;
+  }
+  .course .ects {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: #888;
+    margin-bottom: 14px;
+  }
+  .course p { margin-bottom: 12px; }
+  .course p:last-child { margin-bottom: 0; }
+  .course .prereq {
+    font-size: 0.88rem;
+    color: #777;
+    font-style: italic;
+    margin-top: 10px;
+  }
+
+  .course-group-heading {
+    font-family: 'Source Serif 4', serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1a3a5c;
+    margin: 40px 0 8px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid #e0e0e0;
+  }
+
+  /* ---- MISC ---- */
+  .note {
+    background: #fffbe6;
+    border-left: 4px solid #e6c200;
+    padding: 14px 18px;
+    margin: 18px 0;
+    font-size: 0.93rem;
+    border-radius: 0 4px 4px 0;
+  }
+  .cta-button {
+    display: inline-block;
+    background: #1a3a5c;
+    color: #fff;
+    padding: 12px 28px;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 4px;
+    margin-top: 16px;
+    font-size: 0.95rem;
+    transition: background 0.2s;
+  }
+  .cta-button:hover { background: #264d73; }
+
+  .contact-block { margin-bottom: 24px; }
+  .contact-block strong { display: block; margin-bottom: 2px; }
+
+  /* responsive */
+  @media (max-width: 640px) {
+    .page-header h1 { font-size: 1.5rem; }
+    .tabs-nav button { padding: 12px 12px; font-size: 0.8rem; }
+    .course { padding: 18px 16px; }
+    table { font-size: 0.85rem; }
+    th, td { padding: 8px 10px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ==================== HEADER ==================== -->
+<header class="page-header">
+  <div class="wrap">
+    <h1>MSc in International Tourism and Hospitality Management</h1>
+    <div class="subtitle">Department of Tourism, Hospitality and Entrepreneurship · School of Tourism Management, Hospitality and Entrepreneurship · Cyprus University of Technology</div>
+  </div>
+</header>
+
+<!-- ==================== TAB NAV ==================== -->
+<nav class="tabs-nav">
+  <div class="wrap">
+    <button class="active" data-tab="overview">Overview</button>
+    <button data-tab="structure">Programme Structure</button>
+    <button data-tab="courses">Course Descriptions</button>
+    <button data-tab="admission">Admission</button>
+    <button data-tab="tuition">Tuition &amp; Scholarships</button>
+    <button data-tab="learning">How You Will Learn</button>
+    <button data-tab="careers">Recognition &amp; Careers</button>
+    <button data-tab="support">Student Support</button>
+    <button data-tab="contact">Contact</button>
+  </div>
+</nav>
+
+<!-- ==================== TAB 1: OVERVIEW ==================== -->
+<div class="tab-content active" id="overview">
+  <h2>Overview</h2>
+  <p>The MSc in International Tourism and Hospitality Management is a postgraduate programme of the Cyprus University of Technology, offered by the Department of Tourism, Hospitality and Entrepreneurship at the Limassol campus. As its title indicates, the programme is concerned with the management of tourism on an international scale and with the operation of hospitality businesses, bringing together the strategic, organisational and commercial dimensions of these closely related sectors.</p>
+  <p>The programme is intended for graduates who wish to deepen their understanding of the international tourism and hospitality industries and to prepare for management and specialist roles within them. It addresses tourism as a global activity — spanning destinations, markets and the businesses that serve travellers — alongside the management of hospitality enterprises.</p>
+
+  <h3>Key Features</h3>
+  <table class="kf-table">
+    <tr><td>Level</td><td>Postgraduate (Master of Science)</td></tr>
+    <tr><td>Credits</td><td>90 ECTS</td></tr>
+    <tr><td>Duration</td><td>2.5 years</td></tr>
+    <tr><td>Campus</td><td>Limassol, Cyprus</td></tr>
+    <tr><td>Established</td><td>2011</td></tr>
+    <tr><td>Department</td><td>Tourism, Hospitality and Entrepreneurship</td></tr>
+  </table>
+  <p style="font-size:0.85rem; color:#888;">Verified key facts are drawn from the University's institutional records (AACSB Table A.1).</p>
+
+  <div class="note">Detailed programme information (full aims, course list and descriptions) is not currently published online; the content below the verified key facts is to be supplied by the Department.</div>
+
+  <h3>Intended Learning Outcomes</h3>
+  <p>The outcomes below are <strong>indicative</strong> only. They are derived qualitatively from the programme title — international tourism management and hospitality business — to illustrate the kinds of knowledge, skills and competences a programme of this nature would typically develop. They are not the official, validated learning outcomes of the programme.</p>
+
+  <div class="note">These Intended Learning Outcomes are indicative and must be reviewed, finalised and ratified by the Department. The official ILOs are not currently published online. <strong>This is a priority gap to be addressed.</strong></div>
+
+  <h3>Knowledge</h3>
+  <p>On the basis of the programme title, a graduate would be expected to demonstrate:</p>
+  <ul>
+    <li>Understanding of the structure and dynamics of the international tourism industry, including destinations, markets and travel flows.</li>
+    <li>Knowledge of the principles and practices of hospitality business management.</li>
+    <li>Awareness of the economic, social and environmental context in which tourism and hospitality enterprises operate internationally.</li>
+    <li>Familiarity with management theory as applied to service-based and experience-based industries.</li>
+  </ul>
+
+  <h3>Skills</h3>
+  <ul>
+    <li>Apply management concepts and analytical methods to problems in tourism and hospitality organisations.</li>
+    <li>Evaluate strategic and operational decisions within an international and cross-cultural setting.</li>
+    <li>Interpret market and industry information to support planning and decision-making.</li>
+    <li>Communicate analysis and recommendations clearly to professional audiences.</li>
+  </ul>
+
+  <h3>Competences</h3>
+  <ul>
+    <li>Take responsibility for managing functions or projects within tourism and hospitality enterprises.</li>
+    <li>Work effectively in diverse, international teams and service environments.</li>
+    <li>Adapt to change and exercise informed, ethical professional judgement.</li>
+    <li>Pursue continued professional learning within the tourism and hospitality sectors.</li>
+  </ul>
+
+  <h3>Programme Coordinator</h3>
+  <p>Christina Mazaraki<br>
+  Tel: [PLACEHOLDER — to be supplied by the Department] · Email: [PLACEHOLDER — to be supplied by the Department]</p>
+  <p style="font-size:0.85rem; color:#888;">The coordinator name is taken from the Department's published contact listing for this programme. Contact phone and email are not presented here as they are not confirmed online.</p>
+</div>
+
+<!-- ==================== TAB 2: PROGRAMME STRUCTURE ==================== -->
+<div class="tab-content" id="structure">
+  <h2>Programme Structure</h2>
+  <p>The programme leads to a Master of Science and carries a total of <strong>90 ECTS</strong>, with a typical duration of <strong>2.5 years</strong>. The detailed structure — the list of courses, their codes, titles and individual ECTS allocations — is not currently published online.</p>
+
+  <div class="note">[PLACEHOLDER — full course list with codes, titles and ECTS to be supplied by the Department]</div>
+
+  <p>Only the total credit volume (90 ECTS) and the programme duration (2.5 years) are stated above; these are verified facts. No individual course codes, titles or ECTS values are presented, as they are not available online.</p>
+</div>
+
+<!-- ==================== TAB 4: COURSE DESCRIPTIONS ==================== -->
+<div class="tab-content" id="courses">
+  <h2>Course Descriptions</h2>
+  <p>Per-course descriptions are not currently published online and are not reproduced here.</p>
+  <div class="note">[PLACEHOLDER — per-course descriptions to be supplied by the Department]</div>
+</div>
+
+<!-- ==================== TAB 5: ADMISSION ==================== -->
+<div class="tab-content" id="admission">
+  <h2>Admission Requirements</h2>
+
+  <h3>Eligibility</h3>
+  <p>As a postgraduate programme of the Cyprus University of Technology, admission is normally open to holders of a bachelor's degree from a recognised university, or holders of a qualification recognised as equivalent by the relevant Cypriot authority. The specific admission criteria for this programme are not currently published online.</p>
+
+  <div class="note">[PLACEHOLDER — specific eligibility criteria, required academic background, language requirements and any additional admission conditions to be supplied by the Department]</div>
+
+  <h3>Required Documents</h3>
+  <p>Applications to University postgraduate programmes are normally submitted electronically through the University's online portal, together with supporting documents.</p>
+  <div class="note">[PLACEHOLDER — exact list of required documents to be supplied by the Department]</div>
+
+  <h3>Application Deadlines</h3>
+  <div class="note">[PLACEHOLDER — application periods and deadlines to be supplied by the Department; no dates are presented here as none are confirmed online]</div>
+
+  <h3>How to Apply</h3>
+  <p>Applications are submitted online through the University's portal.</p>
+  <a href="#" class="cta-button">Apply Online</a>
+  <p style="margin-top:8px; font-size:0.88rem; color:#888;">[Application link — TBC]</p>
+</div>
+
+<!-- ==================== TAB 6: TUITION ==================== -->
+<div class="tab-content" id="tuition">
+  <h2>Tuition and Scholarships</h2>
+
+  <h3>Tuition Fees</h3>
+  <p>Tuition for the programme is set by the University. The fee figure for this programme is not currently published online.</p>
+  <div class="note">[PLACEHOLDER — total tuition fee and payment schedule to be supplied by the Department; no fee amount is presented here as none is confirmed online]</div>
+
+  <h3>Scholarships</h3>
+  <p>The Cyprus University of Technology offers scholarships and financial-support schemes to postgraduate students; availability and criteria vary.</p>
+  <div class="note">[PLACEHOLDER — scholarship amounts, eligibility criteria and application process to be supplied by the Department]</div>
+</div>
+
+<!-- ==================== TAB 7: HOW YOU WILL LEARN ==================== -->
+<div class="tab-content" id="learning">
+  <h2>How You Will Learn</h2>
+  <p>The programme is delivered at the University's Limassol campus. The specific mode of delivery, teaching and assessment methods, and weekly study commitment for this programme are not currently published online.</p>
+  <div class="note">[PLACEHOLDER — teaching and learning methods, delivery mode, assessment approach and study workload to be supplied by the Department]</div>
+</div>
+
+<!-- ==================== TAB 8: RECOGNITION & CAREERS ==================== -->
+<div class="tab-content" id="careers">
+  <h2>Professional Recognition and Career Prospects</h2>
+
+  <h3>Professional Recognition</h3>
+  <p>No professional-body exemptions currently apply to this programme.</p>
+  <div class="note">If the Department later establishes recognition arrangements or exemptions with a professional body, those details should be added here. None are presented as fact at this time.</div>
+
+  <h3>Career Directions</h3>
+  <p>Drawing qualitatively on the programme title, graduates of a programme in international tourism and hospitality management would typically pursue careers in areas such as:</p>
+  <ul>
+    <li>International tourism organisations and tour operators</li>
+    <li>Hospitality management (hotels, resorts and related enterprises)</li>
+    <li>Destination management and tourism development bodies</li>
+    <li>Event and conference management</li>
+    <li>Travel, leisure and related service businesses</li>
+  </ul>
+  <p>These directions are indicative and follow from the nature of the field; they are not a statement of guaranteed outcomes.</p>
+
+  <h3>Employment Outcomes</h3>
+  <div class="note">[PLACEHOLDER — graduate employment statistics and outcome data to be supplied by the Department; no figures are presented here as none are confirmed]</div>
+</div>
+
+<!-- ==================== TAB 8: STUDENT SUPPORT ==================== -->
+<div class="tab-content" id="support">
+  <h2>Student Support and Resources</h2>
+
+  <h3>Academic Advisor</h3>
+  <p>Postgraduate students are normally supported by academic staff who guide course selection, academic progress and career planning.</p>
+
+  <h3>Learning Development Network (LDN)</h3>
+  <p>Technical support, study skills, writing support, and AI literacy training.</p>
+
+  <h3>Library</h3>
+  <p>Access to academic databases, e-journals, and citation management tools.</p>
+
+  <h3>Career Services</h3>
+  <p>Career counselling, CV review, interview preparation, and networking events.</p>
+
+  <h3>Counselling Services</h3>
+  <p>Confidential support available in-person and remotely.<br>
+  Email: counseling@cut.ac.cy · Tel: +357 25 002 500 (24/7)</p>
+</div>
+
+<!-- ==================== TAB 9: CONTACT ==================== -->
+<div class="tab-content" id="contact">
+  <h2>Contact</h2>
+
+  <div class="contact-block">
+    <strong>Programme Coordinator</strong>
+    Christina Mazaraki<br>
+    Email: [PLACEHOLDER — to be supplied by the Department]<br>
+    Tel: [PLACEHOLDER — to be supplied by the Department]
+  </div>
+
+  <div class="contact-block">
+    <strong>General Enquiries</strong>
+    Student Services and Information Centre<br>
+    Email: kep@cut.ac.cy<br>
+    Tel: +357 25 002710/11
+  </div>
+
+  <div class="note">Programme/Department contact email and phone — to be supplied by the Department. The coordinator name is taken from the Department's published contact listing; no direct phone or email is presented as fact.</div>
+
+  <a href="#" class="cta-button">Apply Online</a>
+  <p style="margin-top:8px; font-size:0.88rem; color:#888;">[Application link — TBC]</p>
+</div>
+
+<!-- ==================== JS ==================== -->
+<script>
+  document.querySelectorAll('.tabs-nav button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tabs-nav button').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tab-content').forEach(tc => tc.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById(btn.dataset.tab).classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  });
+</script>
+</body>
+</html>

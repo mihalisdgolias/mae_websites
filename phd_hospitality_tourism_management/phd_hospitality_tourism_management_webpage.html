@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="MG">
+<title>PhD in Hospitality and Tourism Management — Cyprus University of Technology</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;600;700&family=Source+Serif+4:wght@400;600&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.65;
+    color: #2a2a2a;
+    background: #f5f5f5;
+  }
+
+  /* ---- HEADER ---- */
+  .page-header {
+    background: #1a3a5c;
+    color: #fff;
+    padding: 48px 0 40px;
+  }
+  .page-header .wrap {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+  .page-header h1 {
+    font-family: 'Source Serif 4', serif;
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  .page-header .subtitle {
+    font-size: 0.95rem;
+    font-weight: 300;
+    opacity: 0.85;
+  }
+
+  /* ---- TABS NAV ---- */
+  .tabs-nav {
+    background: #fff;
+    border-bottom: 2px solid #ddd;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .tabs-nav .wrap {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    gap: 0;
+  }
+  .tabs-nav button {
+    background: none;
+    border: none;
+    padding: 14px 18px;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: #666;
+    cursor: pointer;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .tabs-nav button:hover { color: #1a3a5c; }
+  .tabs-nav button.active {
+    color: #1a3a5c;
+    border-bottom-color: #1a3a5c;
+  }
+
+  /* ---- CONTENT ---- */
+  .tab-content {
+    display: none;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+  }
+  .tab-content.active { display: block; }
+
+  h2 {
+    font-family: 'Source Serif 4', serif;
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: #1a3a5c;
+    margin-bottom: 24px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+  }
+  h3 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #1a3a5c;
+    margin: 32px 0 12px;
+  }
+  h4 {
+    font-size: 1.02rem;
+    font-weight: 700;
+    color: #333;
+    margin: 28px 0 8px;
+  }
+  p { margin-bottom: 14px; }
+
+  /* ---- TABLES ---- */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0 24px;
+    font-size: 0.93rem;
+  }
+  th, td {
+    text-align: left;
+    padding: 10px 14px;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  th {
+    background: #f0f3f6;
+    font-weight: 600;
+    color: #1a3a5c;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+  tr:hover td { background: #fafbfc; }
+
+  /* key-features table (2-col, no header) */
+  .kf-table th { display: none; }
+  .kf-table td:first-child {
+    font-weight: 600;
+    width: 160px;
+    color: #1a3a5c;
+  }
+
+  /* ---- LISTS ---- */
+  ul, ol { margin: 10px 0 16px 22px; }
+  li { margin-bottom: 6px; }
+
+  /* ---- COURSE CARD ---- */
+  .course {
+    background: #fff;
+    border: 1px solid #e4e4e4;
+    border-radius: 6px;
+    padding: 24px 28px;
+    margin: 20px 0;
+  }
+  .course h4 {
+    margin: 0 0 4px;
+    color: #1a3a5c;
+  }
+  .course .ects {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: #888;
+    margin-bottom: 14px;
+  }
+  .course p { margin-bottom: 12px; }
+  .course p:last-child { margin-bottom: 0; }
+  .course .prereq {
+    font-size: 0.88rem;
+    color: #777;
+    font-style: italic;
+    margin-top: 10px;
+  }
+
+  .course-group-heading {
+    font-family: 'Source Serif 4', serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1a3a5c;
+    margin: 40px 0 8px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid #e0e0e0;
+  }
+
+  /* ---- MISC ---- */
+  .note {
+    background: #fffbe6;
+    border-left: 4px solid #e6c200;
+    padding: 14px 18px;
+    margin: 18px 0;
+    font-size: 0.93rem;
+    border-radius: 0 4px 4px 0;
+  }
+  .cta-button {
+    display: inline-block;
+    background: #1a3a5c;
+    color: #fff;
+    padding: 12px 28px;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 4px;
+    margin-top: 16px;
+    font-size: 0.95rem;
+    transition: background 0.2s;
+  }
+  .cta-button:hover { background: #264d73; }
+
+  .contact-block { margin-bottom: 24px; }
+  .contact-block strong { display: block; margin-bottom: 2px; }
+
+  /* responsive */
+  @media (max-width: 640px) {
+    .page-header h1 { font-size: 1.5rem; }
+    .tabs-nav button { padding: 12px 12px; font-size: 0.8rem; }
+    .course { padding: 18px 16px; }
+    table { font-size: 0.85rem; }
+    th, td { padding: 8px 10px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ==================== HEADER ==================== -->
+<header class="page-header">
+  <div class="wrap">
+    <h1>PhD in Hospitality and Tourism Management</h1>
+    <div class="subtitle">Department of Tourism and Hospitality Management · School of Tourism Management, Hospitality and Entrepreneurship · Cyprus University of Technology</div>
+  </div>
+</header>
+
+<!-- ==================== TAB NAV ==================== -->
+<nav class="tabs-nav">
+  <div class="wrap">
+    <button class="active" data-tab="overview">Overview</button>
+    <button data-tab="structure">Programme Structure</button>
+    <button data-tab="admission">Admission</button>
+    <button data-tab="research">Research Areas</button>
+    <button data-tab="learning">How You Will Learn</button>
+    <button data-tab="careers">Recognition &amp; Careers</button>
+    <button data-tab="support">Student Support</button>
+    <button data-tab="contact">Contact</button>
+  </div>
+</nav>
+
+<!-- ==================== TAB 1: OVERVIEW ==================== -->
+<div class="tab-content active" id="overview">
+  <h2>Overview</h2>
+  <p>The PhD in Hospitality and Tourism Management is the doctoral programme of the Department of Tourism and Hospitality Management at the Cyprus University of Technology. It is a research degree, awarded for an original and substantive contribution to knowledge in the study of tourism and hospitality. The programme was established in 2009 and renamed in 2022 from "PhD in Hotel and Tourism Management" to its current title.</p>
+  <p>Doctoral candidates undertake an extended, independent research project under the supervision of a faculty member, working at the frontier of a field that the Department regards as an economic, social and cultural activity central to development and quality of life. Tourism is a defining sector of the Cypriot economy, providing a rich applied context for doctoral research. [PLACEHOLDER — Department to supply any sector statistics (e.g. tourism share of GDP, employment) if desired.]</p>
+
+  <h3>Key Features</h3>
+  <table class="kf-table">
+    <tr><td>Level</td><td>Doctoral (PhD)</td></tr>
+    <tr><td>Credits</td><td>240 ECTS</td></tr>
+    <tr><td>Typical duration</td><td>5 years</td></tr>
+    <tr><td>Campuses</td><td>Limassol / Paphos</td></tr>
+    <tr><td>Language</td><td>English (the dissertation is written and defended in English)</td></tr>
+    <tr><td>Established</td><td>2009 (renamed 2022)</td></tr>
+    <tr><td>Mode</td><td>Full-time</td></tr>
+  </table>
+  <div class="note">Minimum and maximum permitted durations, the part-time option (if any), and the start date(s) for the doctoral programme are governed by the University's general doctoral regulations — [PLACEHOLDER — Department/Graduate School to confirm the exact figures that apply to this programme].</div>
+
+  <!-- ===== INTENDED LEARNING OUTCOMES ===== -->
+  <h3>Intended Learning Outcomes</h3>
+  <p>The outcomes below are expressed qualitatively as the doctoral-level research competences the programme is designed to develop, derived from the Department's research aims. They are framed as Knowledge, Skills and Competences and should be read as indicative; formally approved learning outcomes are maintained by the Department.</p>
+
+  <h4>Knowledge</h4>
+  <ul>
+    <li>Command of the theoretical foundations, key debates and current research frontiers of tourism and hospitality management at the level required to extend the field.</li>
+    <li>Critical understanding of advanced research design and of qualitative and quantitative methodologies as applied to tourism and hospitality phenomena.</li>
+    <li>Awareness of the social, environmental and economic dimensions and externalities of tourism, and of the policy and development context within which the sector operates.</li>
+  </ul>
+
+  <h4>Skills</h4>
+  <ul>
+    <li>Ability to formulate original, significant research questions and to design and execute a substantive, methodologically sound research project independently.</li>
+    <li>Ability to collect, analyse and interpret data using appropriate quantitative and qualitative techniques and research software.</li>
+    <li>Ability to communicate research findings to academic and professional audiences in writing and orally, including through peer-reviewed publication and conference presentation, in English.</li>
+  </ul>
+
+  <h4>Competences</h4>
+  <ul>
+    <li>Capacity to operate as an autonomous, ethically responsible researcher, managing a complex, long-term project to completion.</li>
+    <li>Capacity to make an original contribution to knowledge that withstands the scrutiny of expert peer review and a public defence.</li>
+    <li>Readiness to take on leadership and expert advisory roles in academia, research, policy and the tourism and hospitality industry.</li>
+  </ul>
+  <div class="note">[PLACEHOLDER — Department to supply the formally approved Intended Learning Outcomes for the PhD, if a ratified set exists, to replace or confirm the indicative outcomes above.]</div>
+
+  <h3>Programme Coordinator</h3>
+  <div class="note">[PLACEHOLDER — Department to supply the name, title, email and telephone of the doctoral programme coordinator / director of doctoral studies.]</div>
+</div>
+
+<!-- ==================== TAB 2: PROGRAMME STRUCTURE ==================== -->
+<div class="tab-content" id="structure">
+  <h2>Programme Structure</h2>
+  <p>The PhD is a research degree carrying a total of 240 ECTS over a typical duration of five years, completed predominantly through independent supervised research culminating in a doctoral dissertation. The programme does not follow the taught-course-plus-thesis structure of a master's degree; the credit load reflects the full doctoral research undertaking rather than a fixed catalogue of taught courses.</p>
+
+  <div class="note">[PLACEHOLDER — programme structure to be supplied by the Department.] The live programme page does not publish a course/research-stage list with codes and ECTS for the doctoral programme. The Department should supply the formal stage breakdown — for example any required doctoral coursework or training credits, the comprehensive/qualifying examination, the research proposal stage, the research and dissertation-writing stage, and the dissertation defence — together with the ECTS attached to each stage. No codes or ECTS values have been invented here.</div>
+
+  <h3>Indicative Doctoral Milestones</h3>
+  <p>The stages below describe the general shape of a doctoral degree and are provided for orientation only; the authoritative sequence, timing and credit allocation are set by the University's doctoral regulations and the Department.</p>
+  <ul>
+    <li><strong>Admission and supervision</strong> — appointment of a research advisor / supervisor and agreement of the research topic.</li>
+    <li><strong>Research proposal</strong> — development and approval of a detailed proposal setting out research questions, literature review and methodology.</li>
+    <li><strong>Comprehensive / qualifying examination</strong> — assessment confirming the candidate's readiness to proceed to full research (where required by regulation).</li>
+    <li><strong>Research and dissertation</strong> — execution of the research programme and writing of the dissertation, with periodic progress review.</li>
+    <li><strong>Dissertation defence</strong> — public defence of the completed dissertation before an examination committee.</li>
+  </ul>
+  <div class="note">[PLACEHOLDER — Department/Graduate School to confirm which of the above milestones are formally required, their ordering, deadlines and ECTS, for this specific programme.]</div>
+</div>
+
+<!-- ==================== TAB 3: ADMISSION ==================== -->
+<div class="tab-content" id="admission">
+  <h2>Admission Requirements</h2>
+  <p>Admission to the PhD is competitive and is normally organised around specific doctoral research topics advertised by the Department, each linked to a supervising faculty member. The requirements below combine the general expectations of the programme with the criteria published for recent doctoral positions; applicants should always check the current call for the topic they wish to pursue.</p>
+
+  <h3>Eligibility</h3>
+  <p>Applicants are normally expected to hold both a bachelor's degree and a master's-level qualification (MSc, MA or MBA) from a recognised university, in a field relevant to the chosen research topic — for example tourism management, hotel management, marketing, economics, political economy or a closely related discipline. Holders of qualifications deemed equivalent by the Cyprus Council for the Recognition of Higher Education Qualifications (KY.S.A.T.S.) are also considered.</p>
+  <p>Additional expectations published for recent doctoral positions include:</p>
+  <ul>
+    <li>A strong academic record and demonstrated analytical and research aptitude.</li>
+    <li>Excellent / advanced English-language proficiency (with recognised certification where required), since the dissertation is completed and defended in English.</li>
+    <li>Computer literacy and, for research-intensive topics, skills in quantitative and/or qualitative research design and in analysis software such as SPSS, STATA, R or NVivo.</li>
+    <li>For some topics, documented research experience such as publications, conference presentations or participation in research programmes.</li>
+    <li>Full-time enrolment and commitment to the doctoral programme.</li>
+  </ul>
+
+  <h3>Required Application Materials</h3>
+  <p>Recent doctoral calls required applicants to submit:</p>
+  <ul>
+    <li>A motivation statement (approximately 500 words) explaining the applicant's research interests and career goals.</li>
+    <li>A research proposal (approximately 1,000 words) setting out the proposed research questions, a literature review and the intended methodology.</li>
+    <li>A detailed curriculum vitae (CV) highlighting the applicant's academic, professional and research background.</li>
+  </ul>
+  <p>Applications and supporting documents are submitted online through the University's admissions portal, where applicants create an account, complete their profile and submit their programme preferences and documentation.</p>
+
+  <h3>Tuition Fees</h3>
+  <div class="note">[PLACEHOLDER — Department/Graduate School to supply doctoral tuition fees and the payment schedule.] No tuition figure is published on the live programme page. Funding may be available for some research topics — recent calls indicated that successful candidates could secure teaching-assistant positions, research fellowships, or participate in funded research programmes — but this varies by topic and is not guaranteed; the Department should confirm current funding arrangements.</div>
+
+  <h3>How to Apply</h3>
+  <p>Applications are submitted online through the Cyprus University of Technology doctoral admissions portal.</p>
+  <a href="https://www.cut.ac.cy/studies/phd/applying/" class="cta-button">Apply Online</a>
+  <p style="margin-top:8px; font-size:0.88rem; color:#888;">Application deadlines are set per call — [PLACEHOLDER — Department to confirm the current application deadline].</p>
+</div>
+
+<!-- ==================== TAB 4: RESEARCH AREAS ==================== -->
+<div class="tab-content" id="research">
+  <h2>Research Areas</h2>
+  <p>Doctoral research in the Department spans the management, economics, policy and social dimensions of tourism and hospitality. The themes below are drawn from recently advertised doctoral positions and are presented as <em>illustrative current research areas</em> rather than a permanent or exhaustive list of topics. Prospective candidates are encouraged to discuss their own research interests with potential supervisors, since available topics and supervisors change from one admission cycle to the next.</p>
+
+  <div class="course-group-heading">Illustrative Current Research Themes</div>
+
+  <div class="course">
+    <h4>Airlines, Tourism and Regional Development</h4>
+    <p>Academic research on the relationship between air transport and tourism, with the aim of highlighting the regional impact and development of destinations.</p>
+    <p class="prereq">Research advisor (recent call): Sotiroula Liasidou [rank — Department to confirm] · sotiroula.liasidou@cut.ac.cy</p>
+  </div>
+
+  <div class="course">
+    <h4>Political Economy and Tourism</h4>
+    <p>Research addressing gaps in the analysis of tourism's social, environmental and economic externalities through critical research frameworks that move beyond conventional neoclassical approaches.</p>
+    <p class="prereq">Research advisor (recent call): Dr Petros Kosmas, Lecturer · petros.kosmas@cut.ac.cy</p>
+  </div>
+
+  <div class="note">The two themes above reflect specific doctoral positions advertised by the Department for a recent intake; they are illustrative of the kind of research supervised and do not constitute the programme's permanent structure. [PLACEHOLDER — Department to supply the full, current list of research areas and associated supervisors for the active admission cycle.]</div>
+
+  <h3>Supervising Faculty</h3>
+  <p>The Department of Tourism and Hospitality Management comprises the following faculty members, who supervise and contribute to doctoral research across the field. Individual research specialisations are maintained on each member's University profile.</p>
+  <ul>
+    <li>Anna Farmaki</li>
+    <li>Alexis Saveriades</li>
+    <li>Anastasios Zopiatis</li>
+    <li>Antonis Theocharous</li>
+    <li>Katerina Perikleous</li>
+    <li>Konstantinos Papadopoulos</li>
+    <li>Petros Kosmas</li>
+    <li>Prokopis Christou</li>
+    <li>Savvas Sakkadas</li>
+    <li>Stelios Marneros</li>
+    <li>Sotiroula Liasidou</li>  </ul>
+  <div class="note">Faculty names are transliterated from the Department's staff listing. [PLACEHOLDER — Department to confirm preferred English spellings, titles and individual research specialisations / supervision areas for each member.]</div>
+</div>
+
+<!-- ==================== TAB 5: HOW YOU WILL LEARN ==================== -->
+<div class="tab-content" id="learning">
+  <h2>How You Will Learn</h2>
+  <p>As a doctoral programme, the PhD is learned principally through supervised independent research rather than taught classes. The candidate's development is driven by a sustained research project, structured supervision and progressive milestones, with formal training provided where it supports the research.</p>
+
+  <h3>Research Supervision</h3>
+  <p>Each candidate works under the guidance of a research advisor / supervisor, who is a faculty member of the Department with expertise relevant to the research topic. Supervision covers the framing of research questions, research design, the conduct and analysis of the research, and the writing and defence of the dissertation. Recent doctoral positions were each tied to a named supervisor and a defined research theme.</p>
+
+  <h3>Research Training</h3>
+  <p>Candidates develop and apply advanced research methods — including quantitative and qualitative design and the use of analysis software (for example SPSS, STATA, R and NVivo) — to a standard appropriate to original doctoral research. Research training, methodology development and any required doctoral coursework support the candidate's progression toward an independent contribution to knowledge.</p>
+  <div class="note">[PLACEHOLDER — Department/Graduate School to supply the formal research-training and coursework requirements for the doctoral programme, including any taught methodology modules, transferable-skills training, seminar or progress-review obligations, and their ECTS.]</div>
+
+  <h3>Progress and Assessment</h3>
+  <p>Doctoral progress is assessed through the programme's milestones — typically an approved research proposal, periodic progress review, and the final dissertation and its public defence before an examination committee — in accordance with the University's doctoral regulations. The dissertation is written and defended in English.</p>
+</div>
+
+<!-- ==================== TAB 6: RECOGNITION & CAREERS ==================== -->
+<div class="tab-content" id="careers">
+  <h2>Recognition and Career Prospects</h2>
+
+  <h3>Professional Recognition</h3>
+  <p>No professional-body exemptions apply to this doctoral programme. The PhD is an academic research degree; its value lies in the original contribution to knowledge and the advanced research competences it certifies, not in exemptions from professional qualifications.</p>
+
+  <h3>Career Prospects</h3>
+  <p>Doctoral graduates in hospitality and tourism management are equipped for careers that draw on advanced research, analytical and leadership skills. Typical destinations include, qualitatively:</p>
+  <ul>
+    <li><strong>Academia</strong> — university teaching and research posts, postdoctoral research and academic careers in tourism and hospitality management and related disciplines.</li>
+    <li><strong>Research</strong> — research roles in institutes, think-tanks and organisations conducting tourism and hospitality research.</li>
+    <li><strong>Policy and the public sector</strong> — advisory, analytical and policy roles in tourism authorities, development organisations and government bodies.</li>
+    <li><strong>Industry leadership</strong> — senior, strategy and expert advisory roles within the hospitality, tourism, transport and wider services sectors.</li>
+  </ul>
+  <div class="note">Employment and graduate-outcome statistics for the doctoral programme — [PLACEHOLDER — Department to supply, e.g. graduate destinations, time-to-employment, academic placement rates].</div>
+</div>
+
+<!-- ==================== TAB 7: STUDENT SUPPORT ==================== -->
+<div class="tab-content" id="support">
+  <h2>Student Support and Resources</h2>
+
+  <h3>Research Supervisor and Advising</h3>
+  <p>Each doctoral candidate is supported by an assigned research advisor / supervisor who guides the research project, monitors progress and advises on academic and professional development throughout the degree.</p>
+
+  <h3>Learning Development Network (LDN)</h3>
+  <p>Technical support, study and research skills, writing support, and AI literacy training.</p>
+
+  <h3>Library and Research Resources</h3>
+  <p>Access to academic databases, e-journals and full-text platforms (such as JSTOR and ScienceDirect) and to citation-management tools (EndNote, Zotero) to support literature review, data analysis and dissertation writing.</p>
+
+  <h3>Career Services</h3>
+  <p>Career counselling, CV review, interview preparation, and networking events, including support for academic and research career pathways.</p>
+
+  <h3>Counselling Services</h3>
+  <p>Confidential support available in-person and remotely.<br>
+  Email: counseling@cut.ac.cy · Tel: +357 25 002 500 (24/7)</p>
+
+  <div class="note">[PLACEHOLDER — Department to confirm any doctoral-specific support, e.g. research funding for conferences/fieldwork, doctoral seminar series, teaching-assistant opportunities.]</div>
+</div>
+
+<!-- ==================== TAB 8: CONTACT ==================== -->
+<div class="tab-content" id="contact">
+  <h2>Contact</h2>
+
+  <div class="contact-block">
+    <strong>Department of Tourism and Hospitality Management</strong>
+    School of Tourism Management, Hospitality and Entrepreneurship<br>
+    Cyprus University of Technology<br>
+    Arch. Kyprianou 30, 3036 Limassol, Cyprus<br>
+    Tel: +357 25002504 · Fax: +357 25002750<br>
+    Email: administration@cut.ac.cy
+  </div>
+
+  <div class="contact-block">
+    <strong>Recent Doctoral Research Advisors</strong>
+    Sotiroula Liasidou [rank — Department to confirm] — sotiroula.liasidou@cut.ac.cy<br>
+    Dr Petros Kosmas, Lecturer — petros.kosmas@cut.ac.cy
+  </div>
+
+  <div class="contact-block">
+    <strong>General Enquiries</strong>
+    Student Services and Information Centre<br>
+    Email: kep@cut.ac.cy<br>
+    Tel: +357 25 002710/11
+  </div>
+
+  <div class="note">[PLACEHOLDER — Department to confirm a dedicated doctoral-programme contact name and email, and the programme coordinator's details.]</div>
+
+  <a href="https://www.cut.ac.cy/studies/phd/applying/" class="cta-button">Apply Online</a>
+</div>
+
+<!-- ==================== JS ==================== -->
+<script>
+  document.querySelectorAll('.tabs-nav button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tabs-nav button').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tab-content').forEach(tc => tc.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById(btn.dataset.tab).classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  });
+</script>
+</body>
+</html>

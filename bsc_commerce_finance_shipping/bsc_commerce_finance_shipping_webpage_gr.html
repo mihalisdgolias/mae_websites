@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="MG">
+<title>Πτυχίο Εμπορίου Χρηματοοικονομικών και Ναυτιλίας — Τεχνολογικό Πανεπιστήμιο Κύπρου</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;600;700&family=Source+Serif+4:wght@400;600&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.65;
+    color: #2a2a2a;
+    background: #f5f5f5;
+  }
+
+  /* ---- HEADER ---- */
+  .page-header {
+    background: #1a3a5c;
+    color: #fff;
+    padding: 48px 0 40px;
+  }
+  .page-header .wrap {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+  .page-header h1 {
+    font-family: 'Source Serif 4', serif;
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  .page-header .subtitle {
+    font-size: 0.95rem;
+    font-weight: 300;
+    opacity: 0.85;
+  }
+
+  /* ---- TABS NAV ---- */
+  .tabs-nav {
+    background: #fff;
+    border-bottom: 2px solid #ddd;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .tabs-nav .wrap {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    gap: 0;
+  }
+  .tabs-nav button {
+    background: none;
+    border: none;
+    padding: 14px 18px;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: #666;
+    cursor: pointer;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .tabs-nav button:hover { color: #1a3a5c; }
+  .tabs-nav button.active {
+    color: #1a3a5c;
+    border-bottom-color: #1a3a5c;
+  }
+
+  /* ---- CONTENT ---- */
+  .tab-content {
+    display: none;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+  }
+  .tab-content.active { display: block; }
+
+  h2 {
+    font-family: 'Source Serif 4', serif;
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: #1a3a5c;
+    margin-bottom: 24px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+  }
+  h3 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #1a3a5c;
+    margin: 32px 0 12px;
+  }
+  h4 {
+    font-size: 1.02rem;
+    font-weight: 700;
+    color: #333;
+    margin: 28px 0 8px;
+  }
+  p { margin-bottom: 14px; }
+
+  /* ---- TABLES ---- */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0 24px;
+    font-size: 0.93rem;
+  }
+  th, td {
+    text-align: left;
+    padding: 10px 14px;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  th {
+    background: #f0f3f6;
+    font-weight: 600;
+    color: #1a3a5c;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+  tr:hover td { background: #fafbfc; }
+
+  /* key-features table (2-col, no header) */
+  .kf-table th { display: none; }
+  .kf-table td:first-child {
+    font-weight: 600;
+    width: 160px;
+    color: #1a3a5c;
+  }
+
+  /* ---- LISTS ---- */
+  ul, ol { margin: 10px 0 16px 22px; }
+  li { margin-bottom: 6px; }
+
+  /* ---- COURSE CARD ---- */
+  .course {
+    background: #fff;
+    border: 1px solid #e4e4e4;
+    border-radius: 6px;
+    padding: 24px 28px;
+    margin: 20px 0;
+  }
+  .course h4 {
+    margin: 0 0 4px;
+    color: #1a3a5c;
+  }
+  .course .ects {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: #888;
+    margin-bottom: 14px;
+  }
+  .course p { margin-bottom: 12px; }
+  .course p:last-child { margin-bottom: 0; }
+  .course .prereq {
+    font-size: 0.88rem;
+    color: #777;
+    font-style: italic;
+    margin-top: 10px;
+  }
+
+  .course-group-heading {
+    font-family: 'Source Serif 4', serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1a3a5c;
+    margin: 40px 0 8px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid #e0e0e0;
+  }
+
+  /* ---- MISC ---- */
+  .note {
+    background: #fffbe6;
+    border-left: 4px solid #e6c200;
+    padding: 14px 18px;
+    margin: 18px 0;
+    font-size: 0.93rem;
+    border-radius: 0 4px 4px 0;
+  }
+  .cta-button {
+    display: inline-block;
+    background: #1a3a5c;
+    color: #fff;
+    padding: 12px 28px;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 4px;
+    margin-top: 16px;
+    font-size: 0.95rem;
+    transition: background 0.2s;
+  }
+  .cta-button:hover { background: #264d73; }
+
+  .contact-block { margin-bottom: 24px; }
+  .contact-block strong { display: block; margin-bottom: 2px; }
+
+  /* responsive */
+  @media (max-width: 640px) {
+    .page-header h1 { font-size: 1.5rem; }
+    .tabs-nav button { padding: 12px 12px; font-size: 0.8rem; }
+    .course { padding: 18px 16px; }
+    table { font-size: 0.85rem; }
+    th, td { padding: 8px 10px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ==================== HEADER ==================== -->
+<header class="page-header">
+  <div class="wrap">
+    <h1>Πτυχίο Εμπορίου Χρηματοοικονομικών και Ναυτιλίας</h1>
+    <div class="subtitle">Τμήμα Χρηματοοικονομικής, Λογιστικής και Διοικητικής Επιστήμης · Σχολή Διοίκησης και Οικονομίας · Τεχνολογικό Πανεπιστήμιο Κύπρου</div>
+  </div>
+</header>
+
+<!-- ==================== TAB NAV ==================== -->
+<nav class="tabs-nav">
+  <div class="wrap">
+    <button class="active" data-tab="overview">Επισκόπηση</button>
+    <button data-tab="structure">Δομή Προγράμματος</button>
+    <button data-tab="courses">Περιγραφές Μαθημάτων</button>
+    <button data-tab="admission">Εισδοχή</button>
+    <button data-tab="learning">Τρόπος Διδασκαλίας</button>
+    <button data-tab="careers">Αναγνώριση &amp; Σταδιοδρομία</button>
+    <button data-tab="support">Υποστήριξη Φοιτητών</button>
+    <button data-tab="contact">Επικοινωνία</button>
+  </div>
+</nav>
+
+<!-- ==================== TAB 1: OVERVIEW ==================== -->
+<div class="tab-content active" id="overview">
+  <h2>Επισκόπηση</h2>
+
+<table border="1" cellpadding="1" cellspacing="1" style="width:300px">
+	<tbody>
+		<tr>
+			<td>
+			<div>
+			<p><strong>&Omicron;&iota; &epsilon;&iota;&sigma;&alpha;&kappa;&tau;έ&omicron;&iota; &phi;&omicron;&iota;&tau;&eta;&tau;έ&sigmaf;/&tau;&rho;&iota;&epsilon;&sigmaf; &mu;&epsilon; &tau;&iota;&sigmaf; &pi;&alpha;&gamma;&kappa;ύ&pi;&rho;&iota;&epsilon;&sigmaf; &epsilon;&xi;&epsilon;&tau;ά&sigma;&epsilon;&iota;&sigmaf; &tau;&omicron;&upsilon; &alpha;&kappa;&alpha;&delta;&eta;&mu;&alpha;ϊ&kappa;&omicron;ύ έ&tau;&omicron;&upsilon;&sigmaf; 2024-25 &theta;&alpha; &omicron;&lambda;&omicron;&kappa;&lambda;&eta;&rho;ώ&nu;&omicron;&upsilon;&nu; &tau;&iota;&sigmaf; &sigma;&pi;&omicron;&upsilon;&delta;έ&sigmaf; &tau;&omicron;&upsilon;&sigmaf; &mu;ό&nu;&omicron; &mu;&epsilon; &kappa;&alpha;&tau;&epsilon;ύ&theta;&upsilon;&nu;&sigma;&eta; &chi;&rho;&eta;&mu;&alpha;&tau;&omicron;&omicron;&iota;&kappa;&omicron;&nu;&omicron;&mu;&iota;&kappa;ώ&nu;. </strong></p>
+			</div>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<p style="text-align:justify">&Sigma;&tau;&eta;&nu; &pi;&alpha;&gamma;&kappa;&omicron;&sigma;&mu;&iota;&omicron;&pi;&omicron;&iota;&eta;&mu;έ&nu;&eta; &omicron;&iota;&kappa;&omicron;&nu;&omicron;&mu;ί&alpha; o &tau;&omicron;&mu;έ&alpha;&sigmaf; &pi;&alpha;&rho;&omicron;&chi;ή&sigmaf; &chi;&rho;&eta;&mu;&alpha;&tau;&omicron;&omicron;&iota;&kappa;&omicron;&nu;&omicron;&mu;&iota;&kappa;ώ&nu; &upsilon;&pi;&eta;&rho;&epsilon;&sigma;&iota;ώ&nu; &kappa;&alpha;&tau;έ&chi;&epsilon;&iota; &epsilon;&xi;έ&chi;&omicron;&upsilon;&sigma;&alpha; &theta;έ&sigma;&eta; &sigma;&epsilon; &sigma;&chi;έ&sigma;&eta; &mu;&epsilon; &tau;&eta; &sigma;&upsilon;&mu;&beta;&omicron;&lambda;ή &tau;&omicron;&upsilon; &sigma;&tau;&eta;&nu; &alpha;&nu;ά&pi;&tau;&upsilon;&xi;&eta;. &Gamma;&epsilon;&nu;&iota;&kappa;ά, &eta; &chi;&rho;&eta;&mu;&alpha;&tau;&omicron;&omicron;&iota;&kappa;&omicron;&nu;&omicron;&mu;&iota;&kappa;ή &epsilon;&pi;&iota;&sigma;&tau;ή&mu;&eta; &epsilon;&sigma;&tau;&iota;ά&zeta;&epsilon;&iota; &sigma;&tau;&eta; &delta;&iota;&alpha;&chi;&epsilon;ί&rho;&iota;&sigma;&eta; &omicron;&iota;&kappa;&omicron;&nu;&omicron;&mu;&iota;&kappa;ώ&nu; &pi;ό&rho;&omega;&nu; &kappa;&alpha;&iota; &kappa;&iota;&nu;&delta;ύ&nu;&omega;&nu; &kappa;&alpha;&iota; &sigma;&tau;&iota;&sigmaf; &mu;&epsilon;&theta;ό&delta;&omicron;&upsilon;&sigmaf; ά&nu;&tau;&lambda;&eta;&sigma;&eta;&sigmaf; &chi;&rho;&eta;&mu;&alpha;&tau;&omicron;&delta;ό&tau;&eta;&sigma;&eta;&sigmaf; &tau;&omega;&nu; &omicron;&iota;&kappa;&omicron;&nu;&omicron;&mu;&iota;&kappa;ώ&nu; &delta;&rho;&alpha;&sigma;&tau;&eta;&rho;&iota;&omicron;&tau;ή&tau;&omega;&nu; &alpha;&pi;ό &tau;&iota;&sigmaf; &omicron;&pi;&omicron;ί&epsilon;&sigmaf; &epsilon;&xi;&alpha;&rho;&tau;ά&tau;&alpha;&iota; &mu;&epsilon;&gamma;ά&lambda;&omicron; &mu;έ&rho;&omicron;&sigmaf; &tau;&eta;&sigmaf; &pi;&alpha;&gamma;&kappa;ό&sigma;&mu;&iota;&alpha;&sigmaf; &omicron;&iota;&kappa;&omicron;&nu;&omicron;&mu;&iota;&kappa;ή&sigmaf; &delta;&rho;&alpha;&sigma;&tau;&eta;&rho;&iota;ό&tau;&eta;&tau;&alpha;&sigmaf;. &Tau;&omicron; &pi;&rho;&omicron;&pi;&tau;&upsilon;&chi;&iota;&alpha;&kappa;ό &pi;&rho;ό&gamma;&rho;&alpha;&mu;&mu;&alpha; &sigma;&pi;&omicron;&upsilon;&delta;ώ&nu; &tau;&omicron;&upsilon; &Tau;&mu;ή&mu;&alpha;&tau;&omicron;&sigmaf; &epsilon;&sigma;&tau;&iota;ά&zeta;&epsilon;&iota; &sigma;&tau;&omicron;&upsilon;&sigmaf; &delta;ύ&omicron; &alpha;&upsilon;&tau;&omicron;ύ&sigmaf; &tau;&omicron;&mu;&epsilon;ί&sigmaf;. &Sigma;&tau;&alpha; &delta;ύ&omicron; &pi;&rho;ώ&tau;&alpha; έ&tau;&eta; &tau;&omicron; &pi;&rho;ό&gamma;&rho;&alpha;&mu;&mu;&alpha; &pi;&rho;&omicron;&sigma;&phi;έ&rho;&epsilon;&iota; &gamma;&epsilon;&nu;&iota;&kappa;ή &epsilon;&kappa;&pi;&alpha;ί&delta;&epsilon;&upsilon;&sigma;&eta; &mu;&epsilon; &sigma;&kappa;&omicron;&pi;ό &tau;&eta;&nu; &kappa;&alpha;&tau;&alpha;&nu;ό&eta;&sigma;&eta; &theta;&epsilon;&omega;&rho;ί&alpha;&sigmaf; &kappa;&alpha;&iota; &alpha;&nu;ά&lambda;&upsilon;&sigma;&eta;&sigmaf;. &Sigma;&tau;&omicron; &tau;&rho;ί&tau;&omicron; &kappa;&alpha;&iota; &tau;έ&tau;&alpha;&rho;&tau;&omicron; έ&tau;&omicron;&sigmaf;, &omicron;&iota; &phi;&omicron;&iota;&tau;&eta;&tau;έ&sigmaf;/&tau;&rho;&iota;&epsilon;&sigmaf; &theta;&alpha; &delta;&iota;&delta;ά&sigma;&kappa;&omicron;&nu;&tau;&alpha;&iota; &epsilon;&xi;&epsilon;&iota;&delta;&iota;&kappa;&epsilon;&upsilon;&mu;έ&nu;&alpha; &mu;&alpha;&theta;ή&mu;&alpha;&tau;&alpha;, ώ&sigma;&tau;&epsilon; &nu;&alpha; &alpha;&pi;&omicron;&kappa;&tau;ή&sigma;&omicron;&upsilon;&nu; &epsilon;&iota;&sigmaf; &beta;ά&theta;&omicron;&sigmaf; &gamma;&nu;ώ&sigma;&eta; &sigma;&tau;&alpha; &Chi;&rho;&eta;&mu;&alpha;&tau;&omicron;&omicron;&iota;&kappa;&omicron;&nu;&omicron;&mu;&iota;&kappa;ά.</p>
+
+<p style="text-align:justify">&Sigma;&kappa;&omicron;&pi;ό&sigmaf; &tau;&omicron;&upsilon; &pi;&rho;&omicron;&gamma;&rho;ά&mu;&mu;&alpha;&tau;&omicron;&sigmaf; &epsilon;ί&nu;&alpha;&iota; &eta; &kappa;&alpha;&tau;&alpha;&nu;ό&eta;&sigma;&eta; &tau;&omega;&nu; &theta;&epsilon;&mu;&epsilon;&lambda;&iota;&omega;&delta;ώ&nu; &alpha;&rho;&chi;ώ&nu; &lambda;&epsilon;&iota;&tau;&omicron;&upsilon;&rho;&gamma;ί&alpha;&sigmaf; &tau;&omega;&nu; &chi;&rho;&eta;&mu;&alpha;&tau;&omicron;&omicron;&iota;&kappa;&omicron;&nu;&omicron;&mu;&iota;&kappa;ώ&nu; &mu;έ&sigma;&alpha; &sigma;&epsilon; έ&nu;&alpha; &sigma;ύ&gamma;&chi;&rho;&omicron;&nu;&omicron; &omicron;&iota;&kappa;&omicron;&nu;&omicron;&mu;&iota;&kappa;ό &sigma;ύ&sigma;&tau;&eta;&mu;&alpha;.</p>
+
+<p style="text-align:justify">&Pi;&rho;&omega;&tau;&alpha;&rho;&chi;&iota;&kappa;ό&sigmaf; &sigma;&tau;ό&chi;&omicron;&sigmaf; &tau;&omicron;&upsilon; &pi;&rho;&omicron;&gamma;&rho;ά&mu;&mu;&alpha;&tau;&omicron;&sigmaf; &epsilon;ί&nu;&alpha;&iota; &nu;&alpha; &epsilon;&phi;&omicron;&delta;&iota;ά&sigma;&epsilon;&iota; &tau;&omicron;&upsilon;&sigmaf; &alpha;&pi;ό&phi;&omicron;&iota;&tau;&omicron;&upsilon;&sigmaf; &mu;&epsilon; &tau;&iota;&sigmaf; &alpha;&pi;&alpha;&rho;&alpha;ί&tau;&eta;&tau;&epsilon;&sigmaf; &gamma;&nu;ώ&sigma;&epsilon;&iota;&sigmaf; &kappa;&alpha;&iota; &iota;&kappa;&alpha;&nu;ό&tau;&eta;&tau;&epsilon;&sigmaf; &kappa;&alpha;&iota; &nu;&alpha; &tau;&omicron;&upsilon;&sigmaf; &pi;&rho;&omicron;&sigma;&phi;έ&rho;&epsilon;&iota; έ&nu;&alpha; &iota;&sigma;&chi;&upsilon;&rho;ό &alpha;&kappa;&alpha;&delta;&eta;&mu;&alpha;ϊ&kappa;ό &kappa;&alpha;&iota; &epsilon;&pi;&alpha;&gamma;&gamma;&epsilon;&lambda;&mu;&alpha;&tau;&iota;&kappa;ό &upsilon;&pi;ό&beta;&alpha;&theta;&rho;&omicron; &gamma;&iota;&alpha; &nu;&alpha; &mu;&pi;&omicron;&rho;&omicron;ύ&nu; &nu;&alpha; &delta;&iota;&epsilon;&kappa;&delta;&iota;&kappa;ή&sigma;&omicron;&upsilon;&nu; &epsilon;&pi;&alpha;&gamma;&gamma;&epsilon;&lambda;&mu;&alpha;&tau;&iota;&kappa;έ&sigmaf; &theta;έ&sigma;&epsilon;&iota;&sigmaf; &sigma;&epsilon; &chi;&rho;&eta;&mu;&alpha;&tau;&omicron;&pi;&iota;&sigma;&tau;&omega;&tau;&iota;&kappa;ά &iota;&delta;&rho;ύ&mu;&alpha;&tau;&alpha;, &epsilon;&lambda;&epsilon;&gamma;&kappa;&tau;&iota;&kappa;ά &gamma;&rho;&alpha;&phi;&epsilon;ί&alpha;, &epsilon;&pi;&epsilon;&nu;&delta;&upsilon;&tau;&iota;&kappa;έ&sigmaf; &epsilon;&tau;&alpha;&iota;&rho;&epsilon;ί&epsilon;&sigmaf;, &nbsp;&omicron;&rho;&gamma;&alpha;&nu;&iota;&sigma;&mu;&omicron;ύ&sigmaf; &kappa;&alpha;&iota; &gamma;&epsilon;&nu;&iota;&kappa;ά &epsilon;&tau;&alpha;&iota;&rho;&epsilon;ί&epsilon;&sigmaf; &pi;&alpha;&rho;&omicron;&chi;ή&sigmaf; &epsilon;&pi;&iota;&chi;&epsilon;&iota;&rho;&eta;&mu;&alpha;&tau;&iota;&kappa;ώ&nu; &upsilon;&pi;&eta;&rho;&epsilon;&sigma;&iota;ώ&nu;.</p>
+
+<p style="text-align:justify">&Tau;&omicron; &pi;&rho;ό&gamma;&rho;&alpha;&mu;&mu;&alpha; &alpha;&pi;&omicron;&sigma;&kappa;&omicron;&pi;&epsilon;ί &sigma;&tau;&omicron; &nu;&alpha; &alpha;&nu;&alpha;&pi;&tau;ύ&xi;&epsilon;&iota; &tau;&eta;&nu; &iota;&kappa;&alpha;&nu;ό&tau;&eta;&tau;&alpha; &tau;&omega;&nu; &phi;&omicron;&iota;&tau;&eta;&tau;ώ&nu; &nu;&alpha; &alpha;&nu;&alpha;&lambda;ύ&omicron;&upsilon;&nu;, &nu;&alpha; &kappa;&alpha;&tau;&alpha;&nu;&omicron;&omicron;ύ&nu; &kappa;&alpha;&iota; &nu;&alpha; &alpha;&xi;&iota;&omicron;&lambda;&omicron;&gamma;&omicron;ύ&nu; &delta;&iota;ά&phi;&omicron;&rho;&alpha; &theta;έ&mu;&alpha;&tau;&alpha; &pi;&omicron;&upsilon; &sigma;&chi;&epsilon;&tau;ί&zeta;&omicron;&nu;&tau;&alpha;&iota; &mu;&epsilon; &tau;&eta; &lambda;&epsilon;&iota;&tau;&omicron;&upsilon;&rho;&gamma;ί&alpha; &tau;&omega;&nu; &chi;&rho;&eta;&mu;&alpha;&tau;&omicron;&omicron;&iota;&kappa;&omicron;&nu;&omicron;&mu;&iota;&kappa;ώ&nu; &alpha;&gamma;&omicron;&rho;ώ&nu;, &tau;&eta; &delta;&iota;&alpha;&chi;&epsilon;ί&rho;&iota;&sigma;&eta; &kappa;&epsilon;&phi;&alpha;&lambda;&alpha;ί&omega;&nu;, &tau;&eta;&nu; &alpha;&pi;&omicron;&tau;ί&mu;&eta;&sigma;&eta; &pi;&epsilon;&rho;&iota;&omicron;&upsilon;&sigma;&iota;&alpha;&kappa;ώ&nu; &sigma;&tau;&omicron;&iota;&chi;&epsilon;ί&omega;&nu; &tau;&eta;&nu; &alpha;&xi;&iota;&omicron;&lambda;ό&gamma;&eta;&sigma;&eta; &epsilon;&pi;&epsilon;&nu;&delta;ύ&sigma;&epsilon;&omega;&nu;, &tau;&eta; &delta;&iota;&alpha;&chi;&epsilon;ί&rho;&iota;&sigma;&eta; &chi;&rho;&eta;&mu;&alpha;&tau;&omicron;&omicron;&iota;&kappa;&omicron;&nu;&omicron;&mu;&iota;&kappa;ώ&nu; &kappa;&iota;&nu;&delta;ύ&nu;&omega;&nu; &kappa;&alpha;&iota; &tau;&eta;&nu; &alpha;&nu;ά&lambda;&upsilon;&sigma;&eta; &chi;&rho;&eta;&mu;&alpha;&tau;&omicron;&omicron;&iota;&kappa;&omicron;&nu;&omicron;&mu;&iota;&kappa;ή&sigmaf; &phi;ύ&sigma;&epsilon;&omega;&sigmaf; &pi;&lambda;&eta;&rho;&omicron;&phi;&omicron;&rho;&iota;ώ&nu;.</p>
+
+<p style="text-align:justify">&Omicron;&iota; &epsilon;&iota;&sigma;&alpha;&kappa;&tau;έ&omicron;&iota; &phi;&omicron;&iota;&tau;&eta;&tau;έ&sigmaf;/&tau;&rho;&iota;&epsilon;&sigmaf; &mu;&epsilon; &tau;&iota;&sigmaf; &pi;&alpha;&gamma;&kappa;ύ&pi;&rho;&iota;&epsilon;&sigmaf; &epsilon;&xi;&epsilon;&tau;ά&sigma;&epsilon;&iota;&sigmaf; &tau;&omicron;&upsilon; &alpha;&kappa;&alpha;&delta;&eta;&mu;&alpha;ϊ&kappa;&omicron;ύ έ&tau;&omicron;&upsilon;&sigmaf; 2024-25 &theta;&alpha; &omicron;&lambda;&omicron;&kappa;&lambda;&eta;&rho;ώ&nu;&omicron;&upsilon;&nu; &tau;&iota;&sigmaf; &sigma;&pi;&omicron;&upsilon;&delta;έ&sigmaf; &tau;&omicron;&upsilon;&sigmaf; &mu;ό&nu;&omicron; &mu;&epsilon; &kappa;&alpha;&tau;&epsilon;ύ&theta;&upsilon;&nu;&sigma;&eta; &chi;&rho;&eta;&mu;&alpha;&tau;&omicron;&omicron;&iota;&kappa;&omicron;&nu;&omicron;&mu;&iota;&kappa;ώ&nu;. &Gamma;&iota;&alpha; &alpha;&upsilon;&tau;&omicron;ύ&sigmaf; &tau;&omicron;&upsilon;&sigmaf; &phi;&omicron;&iota;&tau;&eta;&tau;έ&sigmaf;/&tau;&rho;&iota;&epsilon;&sigmaf; &iota;&sigma;&chi;ύ&omicron;&upsilon;&nu; &tau;&alpha; &pi;&iota;&omicron; &kappa;ά&tau;&omega;:</p>
+
+<p style="text-align:justify">&Tau;&alpha; &pi;&rho;ώ&tau;&alpha; &delta;&upsilon;&omicron; έ&tau;&eta; &pi;&rho;&omicron;&phi;έ&rho;&omicron;&nu;&tau;&alpha;&iota; &mu;&alpha;&theta;ή&mu;&alpha;&tau;&alpha; &pi;&omicron;&upsilon; &delta;ί&nu;&omicron;&upsilon;&nu; &sigma;&tau;&omicron;&upsilon;&sigmaf; &phi;&omicron;&iota;&tau;&eta;&tau;έ&sigmaf;/&tau;&rho;&iota;&epsilon;&sigmaf; &tau;&iota;&sigmaf; &alpha;&pi;&alpha;&rho;&alpha;ί&tau;&eta;&tau;&epsilon;&sigmaf; &theta;&epsilon;&omega;&rho;&eta;&tau;&iota;&kappa;έ&sigmaf; &gamma;&nu;ώ&sigma;&epsilon;&iota;&sigmaf; &kappa;&alpha;&iota; &tau;&alpha; &pi;&omicron;&sigma;&omicron;&tau;&iota;&kappa;ά &epsilon;&rho;&gamma;&alpha;&lambda;&epsilon;ί&alpha; &pi;&omicron;&upsilon; &chi;&rho;&eta;&sigma;&iota;&mu;&omicron;&pi;&omicron;&iota;&omicron;ύ&nu;&tau;&alpha;&iota; &sigma;&tau;&eta; &sigma;ύ&gamma;&chi;&rho;&omicron;&nu;&eta; &pi;&rho;&alpha;&kappa;&tau;&iota;&kappa;ή &chi;&rho;&eta;&mu;&alpha;&tau;&omicron;&omicron;&iota;&kappa;&omicron;&nu;&omicron;&mu;&iota;&kappa;ώ&nu;. &Kappa;&alpha;&tau;ά &tau;&eta; &delta;&iota;ά&rho;&kappa;&epsilon;&iota;&alpha; &tau;&omega;&nu; &delta;ύ&omicron; &pi;&rho;ώ&tau;&omega;&nu; &epsilon;&tau;ώ&nu;, &tau;&omicron; &pi;&rho;ό&gamma;&rho;&alpha;&mu;&mu;&alpha; &sigma;&pi;&omicron;&upsilon;&delta;ώ&nu; &alpha;&kappa;&omicron;&lambda;&omicron;&upsilon;&theta;&epsilon;ί έ&nu;&alpha; &beta;&alpha;&sigma;&iota;&kappa;ό &pi;&upsilon;&rho;ή&nu;&alpha; &pi;&omicron;&upsilon; &epsilon;&xi;&omicron;&pi;&lambda;ί&zeta;&epsilon;&iota; &tau;&omicron;&upsilon;&sigmaf; &phi;&omicron;&iota;&tau;&eta;&tau;έ&sigmaf; &mu;&epsilon; &iota;&sigma;&chi;&upsilon;&rho;έ&sigmaf; &beta;ά&sigma;&epsilon;&iota;&sigmaf; &sigma;&tau;&eta;&nu; &pi;&omicron;&sigma;&omicron;&tau;&iota;&kappa;ή &kappa;&alpha;&iota; &alpha;&nu;&alpha;&lambda;&upsilon;&tau;&iota;&kappa;ή &kappa;&rho;&iota;&tau;&iota;&kappa;ή &sigma;&kappa;έ&psi;&eta;. &Pi;&rho;&omicron;&sigma;&phi;έ&rho;&omicron;&nu;&tau;&alpha;&iota; &mu;&epsilon;&tau;&alpha;&xi;ύ ά&lambda;&lambda;&omega;&nu; &mu;&alpha;&theta;ή&mu;&alpha;&tau;&alpha; &Omicron;&iota;&kappa;&omicron;&nu;&omicron;&mu;&iota;&kappa;ώ&nu;, &Lambda;&omicron;&gamma;&iota;&sigma;&tau;&iota;&kappa;ή&sigmaf;, &Sigma;&tau;&alpha;&tau;&iota;&sigma;&tau;&iota;&kappa;ή&sigmaf; &Alpha;&nu;ά&lambda;&upsilon;&sigma;&eta;&sigmaf;, &Chi;&rho;&eta;&mu;&alpha;&tau;&omicron;&omicron;&iota;&kappa;&omicron;&nu;&omicron;&mu;&iota;&kappa;ώ&nu; &kappa;&alpha;&iota; &sigma;&tau;&eta; &sigma;&upsilon;&nu;έ&chi;&epsilon;&iota;&alpha; &mu;&alpha;&theta;ή&mu;&alpha;&tau;&alpha; &epsilon;&iota;&delta;ί&kappa;&epsilon;&upsilon;&sigma;&eta;&sigmaf;/&epsilon;&mu;&beta;ά&theta;&upsilon;&nu;&sigma;&eta;&sigmaf; &sigma;&epsilon; &sigma;ύ&gamma;&chi;&rho;&omicron;&nu;&alpha; &theta;έ&mu;&alpha;&tau;&alpha; &Chi;&rho;&eta;&mu;&alpha;&tau;&omicron;&omicron;&iota;&kappa;&omicron;&nu;&omicron;&mu;&iota;&kappa;ώ&nu;.</p>
+
+<p style="text-align:justify">&Sigma;&tau;&eta; &sigma;&upsilon;&nu;έ&chi;&epsilon;&iota;&alpha; (&epsilon;&xi;ά&mu;&eta;&nu;&omicron; 5 &kappa;&alpha;&iota; &epsilon;&nu;&tau;&epsilon;ύ&theta;&epsilon;&nu;) &tau;&omicron; &pi;&rho;ό&gamma;&rho;&alpha;&mu;&mu;&alpha; &sigma;&pi;&omicron;&upsilon;&delta;ώ&nu; &pi;&epsilon;&rho;&iota;&lambda;&alpha;&mu;&beta;ά&nu;&epsilon;&iota; &epsilon;&xi;&epsilon;&iota;&delta;&iota;&kappa;&epsilon;&upsilon;&mu;έ&nu;&alpha; &kappa;&alpha;&iota; &sigma;&tau;&omicron;&chi;&epsilon;&upsilon;&mu;έ&nu;&alpha; &mu;&alpha;&theta;ή&mu;&alpha;&tau;&alpha; &sigma;&tau;&alpha; &chi;&rho;&eta;&mu;&alpha;&tau;&omicron;&omicron;&iota;&kappa;&omicron;&nu;&omicron;&mu;&iota;&kappa;ά. &Omicron;&iota; &phi;&omicron;&iota;&tau;&eta;&tau;έ&sigmaf;/&tau;&rho;&iota;&epsilon;&sigmaf; &epsilon;&pi;&iota;&lambda;έ&gamma;&omicron;&upsilon;&nu; &mu;&alpha;&theta;ή&mu;&alpha;&tau;&alpha; &pi;&rho;&omicron;&chi;&omega;&rho;&eta;&mu;έ&nu;&omicron;&upsilon; &epsilon;&pi;&iota;&pi;έ&delta;&omicron;&upsilon; &sigma;&tau;&alpha; &chi;&rho;&eta;&mu;&alpha;&tau;&omicron;&omicron;&iota;&kappa;&omicron;&nu;&omicron;&mu;&iota;&kappa;ά, &pi;&rho;&omicron;&kappa;&epsilon;&iota;&mu;έ&nu;&omicron;&upsilon; &nu;&alpha; &epsilon;&mu;&beta;&alpha;&theta;ύ&nu;&omicron;&upsilon;&nu; &tau;&iota;&sigmaf; &gamma;&nu;ώ&sigma;&epsilon;&iota;&sigmaf; &tau;&omicron;&upsilon;&sigmaf; &pi;&rho;&omicron;&sigma;&phi;έ&rho;&omicron;&nu;&tau;&alpha;&sigmaf; έ&nu;&alpha; &iota;&sigma;&chi;&upsilon;&rho;ό &alpha;&kappa;&alpha;&delta;&eta;&mu;&alpha;ϊ&kappa;ό &kappa;&alpha;&iota; &epsilon;&pi;&alpha;&gamma;&gamma;&epsilon;&lambda;&mu;&alpha;&tau;&iota;&kappa;ό &upsilon;&pi;ό&beta;&alpha;&theta;&rho;&omicron;. &Eta; &epsilon;&xi;&epsilon;&iota;&delta;ί&kappa;&epsilon;&upsilon;&sigma;&eta; &alpha;&upsilon;&tau;ή &delta;ί&nu;&epsilon;&iota; &sigma;&tau;&omicron;&upsilon;&sigmaf; &phi;&omicron;&iota;&tau;&eta;&tau;έ&sigmaf;/&tau;&rho;&iota;&epsilon;&sigmaf; &tau;&eta;&nu; &epsilon;&upsilon;&kappa;&alpha;&iota;&rho;ί&alpha; &nu;&alpha; &epsilon;&sigma;&tau;&iota;ά&sigma;&omicron;&upsilon;&nu; &sigma;&tau;&iota;&sigmaf; &sigma;&pi;&omicron;&upsilon;&delta;έ&sigmaf; &tau;&omicron;&upsilon;&sigmaf; &theta;έ&tau;&omicron;&nu;&tau;&alpha;&sigmaf; &gamma;&epsilon;&rho;έ&sigmaf; &beta;ά&sigma;&epsilon;&iota;&sigmaf; &gamma;&iota;&alpha; &mu;&epsilon;&lambda;&lambda;&omicron;&nu;&tau;&iota;&kappa;ή &sigma;&tau;&alpha;&delta;&iota;&omicron;&delta;&rho;&omicron;&mu;ί&alpha; &omega;&sigmaf; &eta;&gamma;&epsilon;&tau;&iota;&kappa;ά &sigma;&tau;&epsilon;&lambda;έ&chi;&eta; &epsilon;ί&tau;&epsilon; &sigma;&tau;&omicron;&nu; &iota;&delta;&iota;&omega;&tau;&iota;&kappa;ό &epsilon;ί&tau;&epsilon; &sigma;&tau;&omicron; &delta;&eta;&mu;ό&sigma;&iota;&omicron; &epsilon;ί&tau;&epsilon; &omega;&sigmaf; &alpha;&upsilon;&tau;&omicron;&alpha;&pi;&alpha;&sigma;&chi;&omicron;&lambda;&omicron;ύ&mu;&epsilon;&nu;&omicron;&iota; &epsilon;&pi;&iota;&chi;&epsilon;&iota;&rho;&eta;&mu;&alpha;&tau;ί&epsilon;&sigmaf;. &Pi;&rho;&omicron;&sigma;&phi;έ&rho;&omicron;&nu;&tau;&alpha;&iota;, &mu;&epsilon;&tau;&alpha;&xi;ύ ά&lambda;&lambda;&omega;&nu;, &mu;&alpha;&theta;ή&mu;&alpha;&tau;&alpha; &alpha;&nu;ά&lambda;&upsilon;&sigma;&eta;&sigmaf; &chi;&rho;&eta;&mu;&alpha;&tau;&omicron;&omicron;&iota;&kappa;&omicron;&nu;&omicron;&mu;&iota;&kappa;ώ&nu; &kappa;&alpha;&tau;&alpha;&sigma;&tau;ά&sigma;&epsilon;&omega;&nu;, &omicron;&iota;&kappa;&omicron;&nu;&omicron;&mu;&epsilon;&tau;&rho;ί&alpha;&sigmaf;, &delta;&iota;&epsilon;&theta;&nu;ώ&nu; &chi;&rho;&eta;&mu;&alpha;&tau;&omicron;&omicron;&iota;&kappa;&omicron;&nu;&omicron;&mu;&iota;&kappa;ώ&nu; &alpha;&gamma;&omicron;&rho;ώ&nu;, &delta;&iota;&alpha;&chi;&epsilon;ί&rho;&iota;&sigma;&eta;&sigmaf; &epsilon;&pi;&epsilon;&nu;&delta;ύ&sigma;&epsilon;&omega;&nu; &kappa;&alpha;&iota; &kappa;&iota;&nu;&delta;ύ&nu;&omicron;&upsilon; &alpha;&gamma;&omicron;&rho;ώ&nu; &kappa;&alpha;&iota; &tau;&rho;&alpha;&pi;&epsilon;&zeta;&iota;&kappa;ή&sigmaf;.</p>
+
+<p style="text-align:justify">&Tau;&omicron; &pi;&tau;&upsilon;&chi;ί&omicron; &Epsilon;&mu;&pi;&omicron;&rho;ί&omicron;&upsilon;, &Chi;&rho;&eta;&mu;&alpha;&tau;&omicron;&omicron;&iota;&kappa;&omicron;&nu;&omicron;&mu;&iota;&kappa;ώ&nu; &kappa;&alpha;&iota; &Nu;&alpha;&upsilon;&tau;&iota;&lambda;ί&alpha;&sigmaf;, &pi;&alpha;&rho;έ&chi;&epsilon;&iota; &sigma;&tau;&omicron;&upsilon;&sigmaf; &phi;&omicron;&iota;&tau;&eta;&tau;έ&sigmaf;/&tau;&rho;&iota;&epsilon;&sigmaf; &tau;&alpha; &epsilon;&chi;έ&gamma;&gamma;&upsilon;&alpha; &gamma;&iota;&alpha; ά&mu;&epsilon;&sigma;&eta; &epsilon;&rho;&gamma;&omicron;&delta;ό&tau;&eta;&sigma;&eta; &sigma;&tau;&omicron;&upsilon;&sigmaf; &tau;&omicron;&mu;&epsilon;ί&sigmaf; &tau;&eta;&sigmaf; &delta;&iota;&omicron;ί&kappa;&eta;&sigma;&eta;&sigmaf;, &tau;&omega;&nu; &omicron;&iota;&kappa;&omicron;&nu;&omicron;&mu;&iota;&kappa;ώ&nu;, &chi;&rho;&eta;&mu;&alpha;&tau;&omicron;&omicron;&iota;&kappa;&omicron;&nu;&omicron;&mu;&iota;&kappa;ώ&nu;, &sigma;&tau;&omicron;&nu; &tau;&rho;&alpha;&pi;&epsilon;&zeta;&iota;&kappa;ό &tau;&omicron;&mu;έ&alpha;, &sigma;&epsilon; &omicron;&rho;&gamma;&alpha;&nu;&iota;&sigma;&mu;&omicron;ύ&sigmaf; &delta;&iota;&alpha;&mu;ό&rho;&phi;&omega;&sigma;&eta;&sigmaf; &pi;&omicron;&lambda;&iota;&tau;&iota;&kappa;ή&sigmaf; &kappa;&alpha;.. &Epsilon;&pi;ί&sigma;&eta;&sigmaf; &tau;&omicron;&upsilon;&sigmaf; &pi;&alpha;&rho;έ&chi;&epsilon;&iota; &tau;&eta; &delta;&upsilon;&nu;&alpha;&tau;ό&tau;&eta;&tau;&alpha; &pi;&rho;ό&sigma;&beta;&alpha;&sigma;&eta;&sigmaf; &sigma;&epsilon; &mu;&epsilon;&tau;&alpha;&pi;&tau;&upsilon;&chi;&iota;&alpha;&kappa;ά &pi;&rho;&omicron;&gamma;&rho;ά&mu;&mu;&alpha;&tau;&alpha; &pi;&alpha;&nu;&epsilon;&pi;&iota;&sigma;&tau;&eta;&mu;ί&omega;&nu; &epsilon;&gamma;&nu;&omega;&sigma;&mu;έ&nu;&omicron;&upsilon; &kappa;ύ&rho;&omicron;&upsilon;&sigmaf;, &alpha;&lambda;&lambda;ά &kappa;&alpha;&iota; &tau;&eta; &sigma;&upsilon;&nu;έ&chi;&iota;&sigma;&eta; &tau;&omega;&nu; &sigma;&pi;&omicron;&upsilon;&delta;ώ&nu; &sigma;&epsilon; &pi;&rho;ό&gamma;&rho;&alpha;&mu;&mu;&alpha; &epsilon;&pi;&alpha;&gamma;&gamma;&epsilon;&lambda;&mu;&alpha;&tau;&iota;&kappa;ώ&nu; &tau;ί&tau;&lambda;&omega;&nu; (ACCA, &Alpha;CA, &kappa;&lambda;&pi;.). &Omicron; &pi;&rho;&omicron;&pi;&tau;&upsilon;&chi;&iota;&alpha;&kappa;ό&sigmaf; &tau;ί&tau;&lambda;&omicron;&sigmaf; &sigma;&pi;&omicron;&upsilon;&delta;ώ&nu; &tau;&omicron;&upsilon; &Tau;&mu;ή&mu;&alpha;&tau;&omicron;&sigmaf; &epsilon;ί&nu;&alpha;&iota; &sigma;&chi;&epsilon;&delta;&iota;&alpha;&sigma;&mu;έ&nu;&omicron;&sigmaf; ώ&sigma;&tau;&epsilon; &nu;&alpha; &pi;&rho;&omicron;&epsilon;&tau;&omicron;&iota;&mu;ά&zeta;&epsilon;&iota; &sigma;&omega;&sigma;&tau;ά &tau;&omicron;&upsilon;&sigmaf; &phi;&omicron;&iota;&tau;&eta;&tau;έ&sigmaf;/&tau;&rho;&iota;&epsilon;&sigmaf; &gamma;&iota;&alpha; &nu;&alpha; &alpha;&kappa;&omicron;&lambda;&omicron;&upsilon;&theta;ή&sigma;&omicron;&upsilon;&nu; &mu;&epsilon;&tau;&alpha;&pi;&tau;&upsilon;&chi;&iota;&alpha;&kappa;ά &pi;&rho;&omicron;&gamma;&rho;ά&mu;&mu;&alpha;&tau;&alpha;, &pi;&omicron;&upsilon; &theta;&alpha; &tau;&omicron;&upsilon;&sigmaf; &omicron;&delta;&eta;&gamma;ή&sigma;&omicron;&upsilon;&nu; &sigma;&tau;&eta;&nu; &alpha;&pi;ό&kappa;&tau;&eta;&sigma;&eta; &Mu;&epsilon;&tau;&alpha;&pi;&tau;&upsilon;&chi;&iota;&alpha;&kappa;&omicron;ύ &Delta;&iota;&pi;&lambda;ώ&mu;&alpha;&tau;&omicron;&sigmaf; &sigma;&tau;&alpha; &Chi;&rho;&eta;&mu;&alpha;&tau;&omicron;&omicron;&iota;&kappa;&omicron;&nu;&omicron;&mu;&iota;&kappa;ά ή &sigma;&tau;&eta; &Delta;&iota;&omicron;ί&kappa;&eta;&sigma;&eta; &Epsilon;&pi;&iota;&chi;&epsilon;&iota;&rho;ή&sigma;&epsilon;&omega;&nu; (&Mu;&Beta;&Alpha;) ή &kappa;&alpha;&iota; &sigma;&epsilon; ά&lambda;&lambda;&alpha; &pi;&alpha;&rho;&epsilon;&mu;&phi;&epsilon;&rho;ή &alpha;&nu;&tau;&iota;&kappa;&epsilon;ί&mu;&epsilon;&nu;&alpha; &sigma;&pi;&omicron;&upsilon;&delta;ώ&nu;.</p>
+
+<p>&nbsp;</p>
+
+<h3 style="text-align:justify"><strong>&Pi;&iota;&sigma;&tau;&omicron;&pi;&omicron;&iota;ή&sigma;&epsilon;&iota;&sigmaf; &kappa;&alpha;&iota; &Epsilon;&xi;&alpha;&iota;&rho;έ&sigma;&epsilon;&iota;&sigmaf;</strong></h3>
+
+<p style="text-align:justify">&Tau;&omicron; &Tau;&mu;ή&mu;&alpha; &Chi;&rho;&eta;&Lambda;&omicron;&Delta;&Epsilon; &sigma;&upsilon;&nu;&epsilon;&rho;&gamma;ά&zeta;&epsilon;&tau;&alpha;&iota; &mu;&epsilon; &delta;&iota;&epsilon;&theta;&nu;ώ&sigmaf; &alpha;&nu;&alpha;&gamma;&nu;&omega;&rho;&iota;&sigma;&mu;έ&nu;&omicron;&upsilon;&sigmaf; &phi;&omicron;&rho;&epsilon;ί&sigmaf; &pi;&rho;&omicron;&gamma;&rho;&alpha;&mu;&mu;ά&tau;&omega;&nu; &epsilon;&pi;&alpha;&gamma;&gamma;&epsilon;&lambda;&mu;&alpha;&tau;&iota;&kappa;ώ&nu; &tau;ί&tau;&lambda;&omega;&nu;. &Tau;&omicron; &pi;&rho;ό&gamma;&rho;&alpha;&mu;&mu;&alpha; &sigma;&pi;&omicron;&upsilon;&delta;ώ&nu; &tau;&omicron;&upsilon; &Tau;&mu;ή&mu;&alpha;&tau;&omicron;&sigmaf; έ&chi;&epsilon;&iota; &lambda;ά&beta;&epsilon;&iota; &pi;&iota;&sigma;&tau;&omicron;&pi;&omicron;&iota;ή&sigma;&epsilon;&iota;&sigmaf; &alpha;&pi;ό &pi;&alpha;&gamma;&kappa;ό&sigma;&mu;&iota;&omicron;&upsilon;&sigmaf; &phi;&omicron;&rho;&epsilon;ί&sigmaf; &pi;&iota;&sigma;&tau;&omicron;&pi;&omicron;&iota;&eta;&mu;έ&nu;&omega;&nu; &epsilon;&pi;&alpha;&gamma;&gamma;&epsilon;&lambda;&mu;&alpha;&tau;&iota;ώ&nu; &lambda;&omicron;&gamma;&iota;&sigma;&tau;ώ&nu; ό&pi;&omega;&sigmaf; &tau;&omicron; &Iota;CAEW Chartered Accountant qualification (ACA) &kappa;&alpha;&iota; &tau;&omicron; Association of Chartered Certified Accountants (ACCA).</p>
+
+<p><strong>&Iota;</strong><strong>CAEW Chartered Accountant qualification (ACA)</strong></p>
+
+<p>&Omicron;&iota; &alpha;&pi;ό&phi;&omicron;&iota;&tau;&omicron;&iota; &tau;&omicron;&upsilon; &Tau;&mu;ή&mu;&alpha;&tau;&omicron;&sigmaf; &lambda;&alpha;&mu;&beta;ά&nu;&omicron;&upsilon;&nu; &alpha;&upsilon;&tau;ό&mu;&alpha;&tau;&eta; &alpha;&pi;&alpha;&lambda;&lambda;&alpha;&gamma;ή-&epsilon;&xi;&alpha;ί&rho;&epsilon;&sigma;&eta; &alpha;&pi;ό &omicron;&kappa;&tau;ώ &epsilon;&nu;ό&tau;&eta;&tau;&epsilon;&sigmaf;. &Omicron;&iota; &epsilon;&nu;&delta;&iota;&alpha;&phi;&epsilon;&rho;ό&mu;&epsilon;&nu;&omicron;&iota; &mu;&pi;&omicron;&rho;&omicron;ύ&nu; &nu;&alpha; &delta;&omicron;&upsilon;&nu; &tau;&omicron;&nu; &alpha;&nu;&alpha;&lambda;&upsilon;&tau;&iota;&kappa;ό &pi;ί&nu;&alpha;&kappa;&alpha; &sigma;&tau;&omicron;&nu; &iota;&sigma;&tau;&omicron;&chi;ώ&rho;&omicron; &tau;&omicron;&upsilon; &omicron;&rho;&gamma;&alpha;&nu;&iota;&sigma;&mu;&omicron;ύ, <a href="http://apps.icaew.com/cpldirectory/Search/AcademicCreditsAvailable?id=492&amp;cplName=All%20Undergraduate%20Degrees">&epsilon;&delta;ώ</a>.</p>
+
+<p>&Eta; &sigma;&upsilon;&nu;&epsilon;&rho;&gamma;&alpha;&sigma;ί&alpha; &Tau;&Epsilon;&Pi;&Alpha;&Kappa; &kappa;&alpha;&iota; ICAEW &phi;&alpha;ί&nu;&epsilon;&tau;&alpha;&iota; <a href="/digitalAssets/84/84570_100certificate.pdf">&epsilon;&delta;ώ</a>.</p>
+
+<p><strong>Association of Chartered Certified Accountants (</strong><strong>&Alpha;</strong><strong>CCA)</strong></p>
+
+<p>O&iota; &pi;&rho;&omicron;&pi;&tau;&upsilon;&chi;&iota;&alpha;&kappa;&omicron;ί &phi;&omicron;&iota;&tau;&eta;&tau;έ&sigmaf; &tau;&omicron;&upsilon; &tau;&mu;ή&mu;&alpha;&tau;&omicron;&sigmaf; &Chi;&rho;&eta;&Lambda;&omicron;&Delta;&Epsilon; &delta;&iota;&kappa;&alpha;&iota;&omicron;ύ&nu;&tau;&alpha;&iota; &epsilon;&pi;ί&sigma;&eta;&sigmaf; &epsilon;&xi;&alpha;&iota;&rho;έ&sigma;&epsilon;&iota;&sigmaf; &alpha;&pi;ό &tau;&omicron; Association of Chartered Certified Accountants (&Alpha;CCA), &epsilon;&pi;ί &tau;&eta;&sigmaf; &pi;&alpha;&rho;&omicron;ύ&sigma;&eta;&sigmaf; &epsilon;&nu;&nu;έ&alpha;<a href="#_ftn1" name="_ftnref1">[1]</a>. &Omicron;&iota; &epsilon;&nu;&delta;&iota;&alpha;&phi;&epsilon;&rho;ό&mu;&epsilon;&nu;&omicron;&iota; &mu;&pi;&omicron;&rho;&omicron;ύ&nu; &nu;&alpha; &chi;&rho;&eta;&sigma;&iota;&mu;&omicron;&pi;&omicron;&iota;ή&sigma;&omicron;&upsilon;&nu; &tau;&omicron; &epsilon;&rho;&gamma;&alpha;&lambda;&epsilon;ί&omicron; &alpha;&upsilon;&tau;ό&mu;&alpha;&tau;&omicron;&upsilon; &upsilon;&pi;&omicron;&lambda;&omicron;&gamma;&iota;&sigma;&mu;&omicron;ύ &tau;&omega;&nu; &epsilon;&xi;&alpha;&iota;&rho;έ&sigma;&epsilon;&omega;&nu; &pi;&omicron;&upsilon; &delta;&iota;&kappa;&alpha;&iota;&omicron;ύ&nu;&tau;&alpha;&iota;, &tau;&omicron; &omicron;&pi;&omicron;ί&omicron; &pi;&alpha;&rho;έ&chi;&epsilon;&iota; &omicron; &Sigma;ύ&nu;&delta;&epsilon;&sigma;&mu;&omicron;&sigmaf;, &epsilon;&pi;&iota;&sigma;&kappa;&epsilon;&pi;&tau;ό&mu;&epsilon;&nu;&omicron;&iota; <a href="http://www.accaglobal.com/gb/en/help/exemptions-calculator.html">&tau;&omicron;&nu; &iota;&sigma;&tau;&omicron;&chi;ώ&rho;&omicron; &alpha;&upsilon;&tau;ό</a>.</p>
+
+<p>&nbsp;</p>
+
+<div>
+<hr />
+<div id="ftn1">
+<p><a href="#_ftnref1" name="_ftn1">[1]</a> &Omicron;&iota; &epsilon;&xi;&alpha;&iota;&rho;έ&sigma;&epsilon;&iota;&sigmaf; &delta;&iota;&alpha;&phi;έ&rho;&omicron;&upsilon;&nu; &alpha;&nu;&alpha;&lambda;ό&gamma;&omega;&sigmaf; &tau;&omicron;&upsilon; έ&tau;&omicron;&upsilon;&sigmaf; &alpha;&pi;&omicron;&phi;&omicron;ί&tau;&eta;&sigma;&eta;&sigmaf;.</p>
+</div>
+</div>
+
+<p style="text-align:justify">&nbsp;</p>
+
+  <h3>Βασικά Χαρακτηριστικά</h3>
+  <table class="kf-table">
+    <tr><td>Διάρκεια</td><td>4 έτη / 8 εξάμηνα</td></tr>
+    <tr><td>Πιστωτικές Μονάδες</td><td>240 ECTS</td></tr>
+    <tr><td>Επίπεδο</td><td>Προπτυχιακό (Πτυχίο Bachelor)</td></tr>
+    <tr><td>Γλώσσα</td><td>Ελληνικά (τα περισσότερα μαθήματα) και Αγγλικά (γλωσσικά μαθήματα Αγγλικών για Χρηματοοικονομικά)</td></tr>
+    <tr><td>Κατεύθυνση</td><td>Χρηματοοικονομικά (η κατεύθυνση που είναι διαθέσιμη για την τελευταία εισαγωγή του 2024–25)</td></tr>
+    <tr><td>Τμήμα</td><td>Χρηματοοικονομικής, Λογιστικής και Διοικητικής Επιστήμης</td></tr>
+  </table>
+
+  <div class="note">Κατανομή ECTS ανά έτος (από το δημοσιευμένο πρόγραμμα σπουδών): Τα Έτη 1–2 φέρουν 28 ECTS ανά εξάμηνο (56 ECTS ανά έτος)· το Έτος 3 φέρει 30 ECTS ανά εξάμηνο (60 ECTS)· το Έτος 4 φέρει 30 ECTS στο Εξάμηνο 7 και 34 ECTS στο Εξάμηνο 8 (64 ECTS). Τα δημοσιευμένα σύνολα ανά εξάμηνο αθροίζονται σε 248 ECTS αντί για τα δηλωμένα 240 ECTS —.</div>
+
+  <h3>Μαθησιακά Αποτελέσματα</h3>
+  <p>Το δημοσιευμένο υλικό του προγράμματος παρουσιάζει τους μαθησιακούς στόχους σε επίπεδο μεμονωμένων μαθημάτων παρά ως ολοκληρωμένη διατύπωση σε επίπεδο προγράμματος. Τα αποτελέσματα που ακολουθούν έχουν εξαχθεί ποιοτικά από τους δηλωμένους σκοπούς του προγράμματος και τους στόχους των μαθημάτων· το Τμήμα θα πρέπει να τα επανεξετάσει και να τα επιβεβαιώσει ως τα επίσημα μαθησιακά αποτελέσματα σε επίπεδο προγράμματος.</p>
+
+  <h4>Γνώσεις</h4>
+  <ul>
+    <li>Κατανόηση των θεμελιωδών αρχών των χρηματοοικονομικών λειτουργιών εντός των σύγχρονων οικονομικών συστημάτων.</li>
+    <li>Επεξήγηση βασικών εννοιών στη μικρο- και μακροοικονομική, στα διεθνή οικονομικά και στη λειτουργία των χρηματοοικονομικών αγορών.</li>
+    <li>Περιγραφή των αρχών της χρηματοοικονομικής και της διοικητικής λογιστικής και της ανάλυσης των χρηματοοικονομικών καταστάσεων.</li>
+    <li>Κατανόηση των αρχών της χρηματοοικονομικής επιχειρήσεων, της τραπεζικής, της διαχείρισης επενδύσεων, των χρηματοοικονομικών παραγώγων και της χρηματοδότησης της ναυτιλίας.</li>
+  </ul>
+
+  <h4>Δεξιότητες</h4>
+  <ul>
+    <li>Ανάλυση, κατανόηση και αξιολόγηση ζητημάτων που αφορούν τη λειτουργία των χρηματοοικονομικών αγορών.</li>
+    <li>Εφαρμογή μαθηματικών, στατιστικών και οικονομετρικών μεθόδων σε οικονομικά και επιχειρηματικά προβλήματα.</li>
+    <li>Χρήση πληροφοριών από τις χρηματοοικονομικές καταστάσεις για την υποστήριξη επενδυτικών, χρηματοδοτικών και διοικητικών αποφάσεων.</li>
+    <li>Εφαρμογή ποσοτικών και ποιοτικών μεθόδων έρευνας σε προβλήματα των χρηματοοικονομικών.</li>
+  </ul>
+
+  <h4>Ικανότητες</h4>
+  <ul>
+    <li>Ανάληψη επαγγελματικών θέσεων σε χρηματοπιστωτικά ιδρύματα, ελεγκτικά γραφεία, επενδυτικές εταιρείες και οργανισμούς παροχής επιχειρηματικών υπηρεσιών.</li>
+    <li>Αποτελεσματική λειτουργία σε πραγματικά εργασιακά περιβάλλοντα, όπως αναπτύσσεται μέσω της πρακτικής άσκησης.</li>
+    <li>Συνέχιση σπουδών σε μεταπτυχιακό επίπεδο και απόκτηση επαγγελματικών λογιστικών προσόντων (π.χ. ACA, ACCA).</li>
+    <li>Πορεία προς ηγετικούς ρόλους στον ιδιωτικό ή δημόσιο τομέα, ή ως αυτοαπασχολούμενοι επιχειρηματίες.</li>
+  </ul>
+
+  <h3>Συντονιστής Προγράμματος</h3>
+  <p>Συντονιστές του προγράμματος (συν-συντονιστές): <strong>Καθηγητής Christos Savva</strong> — <a href="mailto:christos.savva@cut.ac.cy">christos.savva@cut.ac.cy</a>, +357 25002349· και <strong>Αναπληρώτρια Καθηγήτρια Eleni Kalotychou</strong> — <a href="mailto:eleni.kalotychou@cut.ac.cy">eleni.kalotychou@cut.ac.cy</a>, +357 25002167.</p>
+</div>
+
+<!-- ==================== TAB 2: PROGRAMME STRUCTURE ==================== -->
+<div class="tab-content" id="structure">
+  <h2>Δομή Προγράμματος</h2>
+  <p>Το πρόγραμμα αποτελείται από κοινά μαθήματα στα Έτη 1–2 (Εξάμηνα 1–4), ακολουθούμενα από την κατεύθυνση Χρηματοοικονομικών στα Έτη 3–4 (Εξάμηνα 5–8). Η τελευταία εισαγωγή (2024–25) ολοκληρώνει την κατεύθυνση Χρηματοοικονομικών. Οι κωδικοί μαθημάτων και οι πιστωτικές μονάδες ECTS που ακολουθούν αναπαράγονται από το δημοσιευμένο πρόγραμμα σπουδών.</p>
+
+  <div class="note">Δύο μαθήματα εμφανίζονται στο δημοσιευμένο πρόγραμμα σπουδών με γενικό κωδικό «CFS XXX» (Εισαγωγή στον Προγραμματισμό στο Εξάμηνο 4, και αρκετά μαθήματα επιλογής). Αναπαράγονται όπως δημοσιεύθηκαν —.</div>
+
+  <h3>Έτη 1–2 — Κοινά Μαθήματα</h3>
+
+  <h4>Εξάμηνο 1 (28 ECTS)</h4>
+  <table>
+    <tr><th>Κωδικός</th><th>Μάθημα</th><th>ECTS</th></tr>
+    <tr><td>CFS 101</td><td>Οικονομικά Ι</td><td>6</td></tr>
+    <tr><td>CFS 110</td><td>Μαθηματικές Μέθοδοι στα Οικονομικά και Διοίκηση Ι</td><td>6</td></tr>
+    <tr><td>HTM 140</td><td>Αρχές Χρηματοοικονομικής Λογιστικής</td><td>6</td></tr>
+    <tr><td>LCE 107</td><td>Αγγλικά για Εμπόριο, Χρηματοοικονομικά και Ναυτιλία Ι</td><td>4</td></tr>
+    <tr><td>HTM 201</td><td>Επιχειρηματική Ηθική</td><td>6</td></tr>
+  </table>
+
+  <h4>Εξάμηνο 2 (28 ECTS)</h4>
+  <table>
+    <tr><th>Κωδικός</th><th>Μάθημα</th><th>ECTS</th></tr>
+    <tr><td>CFS 102</td><td>Οικονομικά ΙΙ</td><td>6</td></tr>
+    <tr><td>CFS 111</td><td>Στατιστικές Μέθοδοι στα Οικονομικά και Διοίκηση Ι</td><td>6</td></tr>
+    <tr><td>CFS 141</td><td>Τεχνολογία της Πληροφορίας για Επιχειρήσεις</td><td>6</td></tr>
+    <tr><td>LCE 108</td><td>Αγγλικά για Εμπόριο, Χρηματοοικονομικά και Ναυτιλία ΙI</td><td>4</td></tr>
+    <tr><td>HTM 141</td><td>Διοικητική Λογιστική</td><td>6</td></tr>
+  </table>
+
+  <h4>Εξάμηνο 3 (30 ECTS)</h4>
+  <table>
+    <tr><th>Κωδικός</th><th>Μάθημα</th><th>ECTS</th></tr>
+    <tr><td>CFS 221</td><td>Χρηματοοικονομική Ι</td><td>6</td></tr>
+    <tr><td>CFS 201</td><td>Διεθνή Οικονομικά Ι</td><td>6</td></tr>
+    <tr><td>SHP 111</td><td>Εισαγωγή στη Ναυτιλία</td><td>6</td></tr>
+    <tr><td>CFS 210</td><td>Μαθηματικές Μέθοδοι στα Οικονομικά και Διοίκηση ΙΙ</td><td>6</td></tr>
+    <tr><td>CFS 203</td><td>Εμπόριο Ι</td><td>6</td></tr>
+  </table>
+
+  <h4>Εξάμηνο 4 (30 ECTS)</h4>
+  <table>
+    <tr><th>Κωδικός</th><th>Μάθημα</th><th>ECTS</th></tr>
+    <tr><td>CFS 222</td><td>Χρηματοοικονομική ΙΙ</td><td>6</td></tr>
+    <tr><td>CFS 202</td><td>Διεθνή Οικονομικά ΙΙ</td><td>6</td></tr>
+    <tr><td>CFS XXX</td><td>Εισαγωγή στον Προγραμματισμό</td><td>6</td></tr>
+    <tr><td>CFS 211</td><td>Στατιστικές Μέθοδοι στα Οικονομικά και Διοίκηση ΙΙ</td><td>6</td></tr>
+    <tr><td>CFS 204</td><td>Εμπόριο ΙΙ</td><td>6</td></tr>
+  </table>
+
+  <h3>Έτη 3–4 — Κατεύθυνση Χρηματοοικονομικών</h3>
+
+  <h4>Εξάμηνο 5 (30 ECTS)</h4>
+  <table>
+    <tr><th>Κωδικός</th><th>Μάθημα</th><th>ECTS</th></tr>
+    <tr><td>CFS 310</td><td>Εισαγωγή στη Οικονομετρία</td><td>6</td></tr>
+    <tr><td>CFS 320</td><td>Χρηματοοικονομική Επιχειρήσεων</td><td>6</td></tr>
+    <tr><td>CFS 330</td><td>Ναυτιλιακή Χρηματοοικονομική</td><td>6</td></tr>
+    <tr><td>CFS 424</td><td>Ανάλυση Χρηματοοικονομικών Καταστάσεων</td><td>6</td></tr>
+    <tr><td></td><td>Μάθημα επιλογής</td><td>6</td></tr>
+  </table>
+
+  <h4>Εξάμηνο 6 (30 ECTS)</h4>
+  <table>
+    <tr><th>Κωδικός</th><th>Μάθημα</th><th>ECTS</th></tr>
+    <tr><td>CFS 143</td><td>Εμπορικό Δίκαιο</td><td>6</td></tr>
+    <tr><td>CFS 312</td><td>Χρηματοοικονομική Οικονομετρία</td><td>6</td></tr>
+    <tr><td>CFS 323</td><td>Χρηματοοικονομικά Παράγωγα</td><td>6</td></tr>
+    <tr><td>CFS 324</td><td>Διεθνής Χρηματοοικονομική Διοίκηση</td><td>6</td></tr>
+    <tr><td>CFS 420</td><td>Μέθοδοι Έρευνας στα Χρηματοοικονομικά</td><td>6</td></tr>
+  </table>
+
+  <h4>Εξάμηνο 7 (30 ECTS)</h4>
+  <table>
+    <tr><th>Κωδικός</th><th>Μάθημα</th><th>ECTS</th></tr>
+    <tr><td>CFS 321</td><td>Τραπεζική Οικονομική</td><td>6</td></tr>
+    <tr><td>CFS 322</td><td>Αποτίμηση Κεφαλαιουχικών Στοιχείων</td><td>6</td></tr>
+    <tr><td></td><td>Μαθήματα επιλογής</td><td>18</td></tr>
+  </table>
+
+  <h4>Εξάμηνο 8 (34 ECTS)</h4>
+  <table>
+    <tr><th>Κωδικός</th><th>Μάθημα</th><th>ECTS</th></tr>
+    <tr><td>CFS 325</td><td>Διαχείριση Επενδύσεων</td><td>6</td></tr>
+    <tr><td>CFS 441</td><td>Πρακτική Άσκηση</td><td>12</td></tr>
+    <tr><td>LCE 410</td><td>Αγγλικά για Χρηματοοικονομικά</td><td>4</td></tr>
+    <tr><td></td><td>Μαθήματα επιλογής</td><td>12</td></tr>
+  </table>
+
+  <h3>Μαθήματα Επιλογής (Κατεύθυνση Χρηματοοικονομικών)</h3>
+  <p>Τουλάχιστον δύο μαθήματα επιλογής πρέπει να επιλεγούν από το εσωτερικό του Τμήματος. Μέγιστο 18 ECTS μπορούν να ληφθούν από άλλα προγράμματα εντός της Σχολής Διοίκησης και Οικονομίας, και μέγιστο 12 ECTS από τμήματα εκτός της Σχολής (με την έγκριση του Τμήματος).</p>
+  <table>
+    <tr><th>Κωδικός</th><th>Μάθημα</th><th>ECTS</th></tr>
+    <tr><td>CFS 326</td><td>Χρηματοοικονομική Λογιστική ΙΙ</td><td>6</td></tr>
+    <tr><td>CFS 327</td><td>Διοικητική Λογιστική ΙΙ</td><td>6</td></tr>
+    <tr><td>CFS XXX</td><td>Χρηματοοικονομική Τεχνολογία</td><td>6</td></tr>
+    <tr><td>CFS XXX</td><td>Θεωρία Παιγνίων</td><td>6</td></tr>
+    <tr><td>CFS XXX</td><td>Ανάλυση Δεδομένων για Χρηματοοικονομικά και Λογιστική</td><td>6</td></tr>
+    <tr><td>CFS 342</td><td>Εταιρικό Δίκαιο</td><td>6</td></tr>
+    <tr><td>CFS 423</td><td>Διαχείριση Κινδύνου Προϊόντων</td><td>6</td></tr>
+    <tr><td>CFS 426</td><td>Χρηματοοικονομική Λογιστική ΙΙI</td><td>6</td></tr>
+    <tr><td>CFS 427</td><td>Ελεγκτική Ι</td><td>6</td></tr>
+    <tr><td>CFS 428</td><td>Φορολογική</td><td>6</td></tr>
+    <tr><td>CFS 440</td><td>Διπλωματική Μελέτη</td><td>12</td></tr>
+    <tr><td>CFS 452</td><td>Συμπεριφορική Χρηματοοικονομική</td><td>6</td></tr>
+    <tr><td>SHP 354</td><td>Διοίκηση Λειτουργιών Ναυτιλίας</td><td>6</td></tr>
+  </table>
+</div>
+
+<!-- ==================== TAB 3: COURSE DESCRIPTIONS ==================== -->
+<div class="tab-content" id="courses">
+  <h2>Περιγραφές Μαθημάτων</h2>
+  <p>Οι περιγραφές που ακολουθούν χρησιμοποιούν το δημοσιευμένο κείμενο των μαθημάτων όπου αυτό είναι διαθέσιμο.</p>
+
+  <!-- COMMON / YEARS 1-2 -->
+  <div class="course-group-heading">Έτη 1–2 — Κοινά Μαθήματα</div>
+
+  <div class="course">
+    <h4>CFS 101 — Οικονομικά Ι</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Εισαγωγικό μάθημα στα οικονομικά που στοχεύει στο να βοηθήσει τους φοιτητές να αναπτύξουν οικονομική σκέψη και επιπρόσθετα να τους εισαγάγει στις βασικές έννοιες της μικροοικονομίας. Αρχικά το μάθημα εστιάζει σε βασικές αρχές και έννοιες των οικονομικών. Στην συνέχεια, οι φοιτητές μελετούν τον μηχανισμό με τον οποίο οι δυνάμεις της προσφοράς και της ζήτησης καθορίζουν τις τιμές στην αγορά καθώς και την έννοια της ελαστικότητας. Επιπρόσθετος στόχος του μαθήματος είναι η εξέταση της αποτελεσματικότητας των αγορών και η κατανόηση των επιπτώσεων που έχουν οι κυβερνητικές πολιτικές στις αγορές και την αποτελεσματικότητα τους. Τέλος, το μάθημα εξετάζει το κόστος παραγωγής καθώς και τις αποφάσεις των παραγωγών κάτω από διαφορετικές δομές αγοράς.</p>
+  </div>
+
+  <div class="course">
+    <h4>CFS 110 — Μαθηματικές Μέθοδοι στα Οικονομικά και Διοίκηση Ι</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Σκοπός του μαθήματος είναι η εξοικείωση των φοιτητών με τις βασικές έννοιες του ορίου, της συνέχειας, της παραγώγισης και του ολοκληρώματος. Επιπλέον σκοπεύει να φέρει το φοιτητή σε μια πρώτη επαφή με την θεωρία βελτιστοποίησης καθώς και να τον βοηθήσει στην κατανόηση και εκμάθηση των κατάλληλων μαθηματικών μεθόδων, που θα τον οδηγήσουν, στην καλύτερη δυνατή ανάλυση, μελέτη και επίλυση οικονομικών, διοικητικών και άλλων προβλημάτων της επιχείρησης με τη χρησιμοποίηση της μαθηματικής ανάλυσης.</p>
+  </div>
+
+  <div class="course">
+    <h4>HTM 140 — Αρχές Χρηματοοικονομικής Λογιστικής</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Στόχοι του μαθήματος είναι να δώσει στους φοιτητές μία γενική ιδέα του τι εστί χρηματοοικονομική λογιστική με μια γενική ανάπτυξη των εννοιών του ενεργητικού, παθητικού, διπλογραφική μεθόδου και του ρυθμιστικό και εννοιολογικό πλαίσιο αναφορικά με την λογιστική. Οι φοιτητές θα μάθουν να ετοιμάζουν και να ερμηνεύουν ένα ισολογισμό, κατάσταση συμφιλίωσης λογαριασμών, κατάσταση λογαριασμού αποτελεσμάτων, κατάσταση ταμειακών ροών και να ερμηνεύει αριθμοδείκτες.</p>
+  </div>
+
+  <div class="course">
+    <h4>LCE 107 — Αγγλικά για Εμπόριο, Χρηματοοικονομικά και Ναυτιλία Ι</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Γενικός στόχος του μαθήματος είναι να καταστήσει τους φοιτητές ικανούς να επικοινωνούν στα Αγγλικά σε επίπεδο Β1-Β2 του Κοινού Ευρωπαϊκού Πλαισίου Αναφοράς (ΚΕΠΑ) για τις Γλώσσες, σε θέματα σχετικά με την κοινωνική και φοιτητική τους ζωή (πανεπιστήμιο, πρόγραμμα σπουδών, κλάδος σπουδών τους), καθώς και σε θέματα που αφορούν στη μελλοντική τους επαγγελματική σταδιοδρομία (επαγγέλματα του κλάδου, είδη εταιριών, διεθνή λάθη στη διαφήμιση, ηγεσία, κ.λπ.). Η υποβοηθούμενη από τις νέες τεχνολογίες εκμάθηση της γλώσσας και του πολιτισμού γίνεται μέσα από επικοινωνιακές περιστάσεις οι οποίες αντλούνται από περιστάσεις αυθεντικής επικοινωνίας, που πιθανόν να βρεθούν οι φοιτητές στη ζωή τους, κατά τη διάρκεια των σπουδών τους και της επαγγελματικής τους σταδιοδρομίας. Η απόκτηση γλωσσικής ικανότητας γίνεται μέσα από αντίστοιχα κειμενικά είδη, σενάρια, και ρόλους παραγωγής και κατανόησης προφορικού και γραπτού λόγου. Το πρόγραμμα βασίζεται σε σύγχρονες θεωρίες μάθησης όπως τον εποικοδομητισμό και τον κοινωνικό εποικοδομητισμό και μαθητοκεντρικές μεθόδους διδασκαλίας, και αναπτύσσει τόσο τις γλωσσικές δεξιότητες των φοιτητών όσο και μεταβιβάσιμες δεξιότητες του 21ου αιώνα όπως επικοινωνία, χρήση των νέων τεχνολογιών πληροφόρησης και επικοινωνίας, συνεργασία, δημιουργικότητα και καινοτομία, κριτική σκέψη και διαπολιτισμική συνείδηση καθώς και δεξιότητες όπως την αυτόνομη και δια βίου μάθηση. Ειδικότερα, σε σχέση με τους κλάδους Εμπορίου, Χρηματοοικονομικών και Ναυτιλίας, το μάθημα στοχεύει να καταστήσει τους φοιτητές ικανούς στη διαχείριση αγγλόγλωσσης βιβλιογραφίας, όπως και στην κατανόηση ομιλιών και σεμιναρίων από ξένους επισκέπτες στο Τμήμα, αλλά και στην παραγωγή γραπτού και προφορικού λόγου που σχετίζεται με τις σπουδές και αργότερα με το επάγγελμά τους.</p>
+  </div>
+
+  <div class="course">
+    <h4>HTM 201 — Επιχειρηματική Ηθική</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Θεωρητικό μάθημα που στόχο έχει να δώσει στους φοιτητές μια γενική ιδέα του τι εστί ηθική στις επιχειρήσεις, μια γενική ανάπτυξη θεμάτων που ενδιαφέρουν τους σύγχρονους επιχειρηματίες με αρκετές αναφορές σε case studies, διλήμματα και συζήτηση γύρω από πρόσφατα σχετικά θέματα όπως διαφάνεια, αξιοκρατία, ηθικές αξίες κ.ο.κ.</p>
+  </div>
+
+  <div class="course">
+    <h4>CFS 102 — Οικονομικά ΙΙ</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Στόχος του μαθήματος είναι να δοθεί μια εκτεταμένη εισαγωγή στην μακροοικονομική θεωρία καθώς και απαντήσεις σε ερωτήματα που αφορούν την οικονομία ως σύνολο. Πιο συγκεκριμένα, αρχικός στόχος του μαθήματος είναι η κατανόηση βασικών μακροοικονομικών εννοιών όπως αυτές του εθνικού εισοδήματος, του πληθωρισμού και της ανεργίας καθώς και η κατανόηση των προσδιοριστικών παραγόντων της οικονομικής ανάπτυξης και παραγωγικότητας. Επιπρόσθετος και εξίσου σημαντικός στόχος του μαθήματος είναι να βοηθήσει τους φοιτητές να κατανοήσουν την λειτουργία του χρηματοπιστωτικού συστήματος καθώς και τον ρόλο της κεντρικής τράπεζας στην άσκηση νομισματικών πολιτικών. Τέλος, το μάθημα έχει ως στόχο να εισαγάγει τους φοιτητές σε βασικές έννοιες της ανοικτής οικονομίας συμπεριλαμβανομένης αυτής της συναλλαγματικής ισοτιμίας καθώς και στην διερεύνηση των βραχυχρόνιων διακυμάνσεων της οικονομίας.</p>
+  </div>
+
+  <div class="course">
+    <h4>CFS 111 — Στατιστικές Μέθοδοι στα Οικονομικά και Διοίκηση Ι</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Σκοπός του μαθήματος είναι να εισαγάγει τους φοιτητές στις βασικές έννοιες της Στατιστικής και τις αναλυτικές διαδικασίες που χρησιμοποιούνται στην ποσοτική έρευνα στα οικονομικά και τη διοίκηση επιχειρήσεων. Οι φοιτητές θα πρέπει να κατανοήσουν βασικά θέματα της Θεωρίας Πιθανοτήτων και της Στατιστικής ώστε να μπορούν να εφαρμόζουν σωστά βασικές Στατιστικές Μεθόδους. Το μάθημα θέτει ως κύριο στόχο να εκτιμήσουν οι φοιτητές το ρόλο της Στατιστικής ως θεμελιώδες εργαλείο της ποσοτικής έρευνας από τη συλλογή, ανάλυση και ερμηνεία στατιστικών εκτιμήσεων. Με το τέλος του μαθήματος οι φοιτητές θα είναι σε θέση να επεξεργάζεται δεδομένα, να ετοιμάζει πίνακες και διαγράμματα και να παράγει στατιστικά αποτελέσματα.</p>
+  </div>
+
+  <div class="course">
+    <h4>CFS 141 — Τεχνολογία της Πληροφορίας για Επιχειρήσεις</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Το μάθημα αυτό δίνει την ευκαιρία στους φοιτητές να αξιοποιήσουν πλήρως την Τεχνολογία Πληροφοριών (IT) στις μελλοντικές τους σπουδές και στην μελλοντική τους σταδιοδρομία. Στην αρχή το μάθημα εξετάζει τη συμβολή μηχανογραφημένων πληροφοριακών συστημάτων σε οργανισμούς, και τις προοπτικές που προσφέρει η εξέλιξη της πληροφορικής. Καλύπτονται βασικά θέματα που αφορούν την πληροφορική τεχνολογία, εφαρμογές της στο επιχειρηματικό περιβάλλον, σύγχρονες μεθόδους ανάπτυξης και διοίκησης πληροφορικών συστημάτων. Στη συνέχεια οι φοιτητές θα καταστούν ικανοί χρήστες του προγράμματος ΜS-EXCEL με το οποίο θα μπορούν να διαχειρίζονται και να αναλύουν διάφορα δεδομένα. Το μάθημα προετοιμάζει επίσης τους φοιτητές να μπορούν να χρησιμοποιούν και άλλα είδη λογισμικών που πιθανόν να χρειαστούν να χρησιμοποιήσουν στα τελευταία έτη των σπουδών τους όπως τα στατιστικά πακέτα EVIEWS και SPSS.</p>
+  </div>
+
+  <div class="course">
+    <h4>LCE 108 — Αγγλικά για Εμπόριο, Χρηματοοικονομικά και Ναυτιλία ΙI</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Γενικός στόχος του μαθήματος είναι να καταστήσει τους φοιτητές ικανούς να επικοινωνούν στα Αγγλικά σε επίπεδο Β2 του Κοινού Ευρωπαϊκού Πλαισίου Αναφοράς (ΚΕΠΑ) για τις Γλώσσες, σε ακαδημαϊκά θέματα και σε θέματα που αφορούν στη μελλοντική τους επαγγελματική σταδιοδρομία (ανάπτυξη, διαφήμιση, εξωτερική ανάθεση, αγορές, επικοινωνία, κλπ.). Η υποβοηθούμενη από τις νέες τεχνολογίες εκμάθηση της γλώσσας και του πολιτισμού γίνεται μέσα από επικοινωνιακές περιστάσεις οι οποίες αντλούνται από περιστάσεις αυθεντικής επικοινωνίας, που πιθανόν να βρεθούν οι φοιτητές στη ζωή τους, κατά τη διάρκεια των σπουδών τους και της επαγγελματικής τους σταδιοδρομίας. Η απόκτηση γλωσσικής ικανότητας γίνεται μέσα από αντίστοιχα κειμενικά είδη, σενάρια, και ρόλους παραγωγής και κατανόησης προφορικού και γραπτού λόγου. Το πρόγραμμα βασίζεται σε σύγχρονες θεωρίες μάθησης όπως τον εποικοδομητισμό και τον κοινωνικό εποικοδομητισμό και μαθητοκεντρικές μεθόδους διδασκαλίας, και αναπτύσσει τόσο τις γλωσσικές δεξιότητες των φοιτητών όσο και μεταβιβάσιμες δεξιότητες του 21ου αιώνα όπως επικοινωνία, χρήση των νέων τεχνολογιών πληροφόρησης και επικοινωνίας, συνεργασία, δημιουργικότητα και καινοτομία, κριτική σκέψη και διαπολιτισμική συνείδηση καθώς και δεξιότητες όπως την αυτόνομη και δια βίου μάθηση. Ειδικότερα, σε σχέση με τους κλάδους Εμπορίου, Χρηματοοικονομικών και Ναυτιλίας, το μάθημα στοχεύει να καταστήσει τους φοιτητές ικανούς στη διαχείριση αγγλόγλωσσης βιβλιογραφίας, όπως και στην κατανόηση ομιλιών και σεμιναρίων από ξένους επισκέπτες στο Τμήμα, αλλά και στην παραγωγή γραπτού και προφορικού λόγου που σχετίζεται με τις σπουδές και αργότερα με το επάγγελμά τους.</p>
+  </div>
+
+  <div class="course">
+    <h4>HTM 141 — Διοικητική Λογιστική</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Σκοπός του μαθήματος είναι να δώσει στους φοιτητές μία γενική ιδέα του τη εστί διοικητική λογιστική με μια γενική ανάπτυξη των εννοιών της κοστολόγησης, προϋπολογισμού, στρατηγικής και διαχείρισης κεφαλαίου κίνησης</p>
+  </div>
+
+  <div class="course">
+    <h4>CFS 221 — Χρηματοοικονομική Ι</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Παρουσίαση των βασικών εννοιών και των εργαλείων που χρησιμοποιούνται από τις επιχειρήσεις και τους επενδυτές στις χρηματοοικονομικές τους αποφάσεις. Η ύλη του μαθήματος περιλαμβάνει διαλέξεις και ασκήσεις για χρηματοοικονομικά ιδρύματα, τις αγορές, και τα αξιόγραφα της Κυπριακής Δημοκρατίας, υπόδειγμα δανειακών κεφαλαίων, τους προσδιοριστικούς παράγοντες των επιτοκίων, τις καμπύλη αποδόσεων, τα τρέχοντα και μελλοντικά επιτόκια, την χρονική αξία του χρήματος και εφαρμογές, τη χρηματοδότηση μικρομεσαίων επιχειρήσεων, τιμολόγηση και απόδοση των ομολόγων, την αποτίμηση και αξιολόγηση των μετοχών τη μέτρηση επενδυτικού κινδύνου, το υπόδειγμα τιμολόγησης κεφαλαιουχικών περιουσιακών στοιχείων (CAPM), την αξιολόγηση κεφαλαιουχικών επενδύσεων και υπολογισμός ταμειακών ροών.</p>
+  </div>
+
+  <div class="course">
+    <h4>CFS 201 — Διεθνή Οικονομικά Ι</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Το μάθημα είναι μια εισαγωγή στο Διεθνές Εμπόριο, δηλαδή οικονομικές συναλλαγές μεταξύ κρατών. Το μάθημα εξετάζει το διεθνές εμπόριο από την σκοπιά της ανταλλαγής μεταξύ χωρών αγαθών και υπηρεσιών. Το πρώτο μέρος του μαθήματος παρουσιάζει μια γενική επισκόπηση της παγκόσμιας οικονομίας και τις μορφές των διεθνών οικονομικών συναλλαγών μεταξύ χωρών, Συνεχίζει με μια εισαγωγή στις διάφορες οικονομικές θεωρίες διεθνούς εμπορίου. Το μάθημα εξετάζει επίσης τα κόστη και οφέλη μιας χώρας από την συμμετοχή της στις παγκόσμιες αγορές. Στην συνέχεια του μαθήματος εξετάζουμε την φύση και τις μορφές των φραγμών που επιβάλουν στην ροή του παγκοσμίου εμπορίου διάφορες χώρες και τους λόγους για τους οποίους επιβάλλονται οι φραγμοί. Καθ’ όλη την διάρκεια του μαθήματος θα δίνεται έμφαση στις εφαρμοσμένες διαστάσεις του διεθνούς εμπορίου και θα χρησιμοποιούνται παραδείγματα από διάφορες χώρες με ιδιαίτερη αναφορά στο εξωτερικό εμπόριο της Ευρωπαϊκής Ένωσης.</p>
+  </div>
+
+  <div class="course">
+    <h4>SHP 111 — Εισαγωγή στη Ναυτιλία</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Αυτό το μάθημα εισαγάγει τις θεμελιώδεις αρχές της ναυτιλίας, περιγράφοντας και αναλύοντας ζητήματα σχετικά με το σχεδιασμό και την οργάνωση της παγκόσμιας ναυτιλιακής βιομηχανίας. Εξετάζει το μεταφερόμενο φορτίο, τους τύπους πλοίων και τα χαρακτηριστικά τους, καθώς και την ανάλυση των βασικών παιχτών της βιομηχανίας. Οι φοιτητές θα αποκτήσουν ολοκληρωμένη γνώση της γεωγραφίας των θαλάσσιων μεταφορών, αναλύοντας το παγκόσμιο θαλάσσιο εμπόριο, τα βασικά εμπορικά δρομολόγια, τα σημαντικά περάσματα στο διεθνές εμπόριο, και τη σημασία της ολοκλήρωσης της εφοδιαστικής αλυσίδας και της επιμελητείας.</p>
+  </div>
+
+  <div class="course">
+    <h4>CFS 210 — Μαθηματικές Μέθοδοι στα Οικονομικά και Διοίκηση ΙΙ</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Το μάθημα αυτό έχει στόχο να αποκτήσουν οι φοιτητές γνώσεις μαθηματικών που θα τους είναι απαραίτητες για να κατανοήσουν προχωρημένα θέματα σχετικά με το αντικείμενο τους. Επιπλέον σκοπεύει επιτρέψει στους φοιτητές να εφαρμόσουν αυτές τις μαθηματικές τεχνικές για την επίλυση διαφόρων προβλημάτων με τη χρήση υπολογιστών και να τους βοηθήσει να αναπτύξουν και να ενισχύσουν την κριτική τους σκέψη. Το μάθημα περιλαμβάνει εργαστήριο στο λογισμικό MATLAB (ή Octave) και LINDO ή (solver) ExceL</p>
+  </div>
+
+  <div class="course">
+    <h4>CFS 203 — Εμπόριο Ι</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Στόχος του μαθήματος είναι η κατανόηση του τρόπου με τον οποίο παίρνονται οι αποφάσεις σε μια οικονομία από νοικοκυριά/καταναλωτές, εταιρείες/παραγωγούς και πως αλληλοεπιδρούν αυτές οι επιλογές για τον καθορισμό τιμών στην ισορροπία. Θα ασχοληθούμε εκτεταμένα με το πως τα νοικοκυριά επιλέγουν τι θα καταναλώσουν με βάση τις προτιμήσεις τους, τις σχετικές τιμές και το εισόδημά τους. Στη συνέχεια θα εξετάσουμε πως η ανάλυση αλλάζει όταν εισάγουμε αβεβαιότητα στα διάφορα μοντέλα. Επιπρόσθετα θα κατανοήσουμε πως επιλέγουν οι εταιρείες τις τιμές και την ποσότητα που θα παράξουν με δεδομένη τεχνολογία. Θα μιλήσουμε για τέλειο ανταγωνισμό, για μονοπώλιο και ολιγοπώλιο. Αν το επιτρέψει ο χρόνος θα αναφερθούμε στη θεωρία παιγνίων.</p>
+  </div>
+
+  <div class="course">
+    <h4>CFS 222 — Χρηματοοικονομική ΙΙ</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Ο κύριος στόχος του μαθήματος είναι να εισαγάγει τους μαθητές στα βασικά στοιχεία της χρηματοοικονομικής διαχείρισης. Το μάθημα στοχεύει να παρέχει στους φοιτητές πλήρη γνώση των βασικών προσεγγίσεων που χρησιμοποιούν οι εταιρείες και τα χρηματοπιστωτικά ιδρύματα για τη διαχείριση κεφαλαίου κίνησης, απογραφής και λογαριασμών, την αξιολόγηση επενδύσεων και τη διαχείριση κινδύνου. Οι εκπαιδευτικοί στόχοι είναι: ➢ Εισαγωγή των μαθητών στις βασικές αρχές της χρηματοοικονομικής διαχείρισης. ➢ Να αναπτύξει μια καλή κατανόηση της σημασίας της εταιρικής στρατηγικής, των κινδύνων που συνεπάγεται η λήψη χρηματοοικονομικών αποφάσεων και πως αυτοί μπορούν να διαχειριστούν. ➢ Να αναπτύξει καλή γνώση των βασικών μεθόδων που χρησιμοποιούνται για τη διαχείριση του κεφαλαίου κίνησης, του αποθέματος, των εισπρακτέων λογαριασμών, των πληρωτέων λογαριασμών και των μετρητών. ➢ Να εισαγάγει τους φοιτητές στις τεχνικές αξιολόγησης επενδύσεων στην την παρουσία φορολογίας, πληθωρισμού και κινδύνου. ➢ Να εισαγάγει τους φοιτητές στη εφαρμογή στρατηγικών διαχείρισης κινδύνου για την αντιστάθμιση του κινδύνου επιτοκίου και συναλλαγματικού κινδύνου με τη χρήση συμβολαίων μελλοντικής εκπλήρωσης και δικαιωμάτων προαίρεσης.</p>
+  </div>
+
+  <div class="course">
+    <h4>CFS 202 — Διεθνή Οικονομικά ΙΙ</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Το μάθημα αυτό είναι μια εισαγωγή στη Διεθνή Χρηματοοικονομική, δηλαδή χρηματοοικονομικές συναλλαγές μεταξύ κρατών. Το πρώτο μέρος του μαθήματος παρουσιάζει μια γενική επισκόπηση των διεθνών χρηματοοικονομικών συναλλαγών και εισαγάγει τις βασικές έννοιες του ισοζυγίου πληρωμών μιας χώρας. Ακολούθως γίνεται μια γενική επισκόπηση της αγοράς συναλλάγματος και των διαφόρων συνθηκών ισοτιμίας στην αγορά συναλλάγματος. Στη συνέχεια το μάθημα εξετάζει τις βασικές θεωρίες του ισοζυγίου πληρωμών και του καθορισμού των συναλλαγματικών ισοτιμιών. Καθ’ όλη την διάρκεια του μαθήματος θα δίνεται έμφαση στις εφαρμοσμένες διαστάσεις της διεθνούς χρηματοοικονομικής και θα χρησιμοποιούνται παραδείγματα με ιδιαίτερη αναφορά στην Ευρωπαϊκή Ένωση και τον ρόλο του ευρώ στις διεθνείς χρηματοοικονομικές συναλλαγές.</p>
+  </div>
+
+  <div class="course">
+    <h4>CFS XXX — Εισαγωγή στον Προγραμματισμό</h4>
+    <div class="ects">6 ECTS</div>
+  </div>
+
+  <div class="course">
+    <h4>CFS 211 — Στατιστικές Μέθοδοι στα Οικονομικά και Διοίκηση ΙΙ</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Το μάθημα αυτό έχει στόχο να αποκτήσουν οι φοιτητές επαρκείς γνώσεις πιθανοτήτων και στατιστικής που είναι απαραίτητες για να κατανοήσουν προχωρημένα θέματα σχετικά με το αντικείμενο τους. Περιέχει, μεταξύ άλλων θέματα που καλύπτουν, ροπογεννήτριες, τυχαίες μεταβλητές, συνδιακύμανση/συσχέτιση, κεντρικό οριακό θεώρημα, εκτιμήσεις, μέθοδος των ροπών, μέθοδος μέγιστης πιθανοφάνειας. κατανομές, ελέγχους υποθέσεων, μοντέλα παλινδρόμησης κλπ</p>
+  </div>
+
+  <div class="course">
+    <h4>CFS 204 — Εμπόριο ΙΙ</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Στο μάθημα θα προσπαθήσουμε να απαντήσουμε σημαντικά ερωτήματα των μακροοικονομικών χρησιμοποιώντας απλά μοντέλα. Θα παρακολουθήσουμε το πως η χρήση θεωρίας και εμπειρικών δεδομένων μας βοηθούν να κατανοήσουμε τα μακροοικονομικά φαινόμενα. Αρχικά το μάθημα ασχολείται με την μακροχρόνια περίοδο και συγκεκριμένα με την οικονομική μεγέθυνση και τον πληθωρισμό μακροχρόνια. Στη συνέχεια γίνεται ανάλυση της βραχυχρόνιας περιόδου και τους λόγους που η οικονομία παρεκκλίνει από την μακροχρόνια τάση της δημιουργώντας πληθωρισμό ή/και ανεργία. Επίσης γίνεται αναφορά για την Κεντρική τράπεζα και για το πως η νομισματική πολιτική επηρεάζει την οικονομία και με ποιες μεθόδους και εργαλεία</p>
+  </div>
+
+  <!-- FINANCE SPECIALISATION -->
+  <div class="course-group-heading">Κατεύθυνση Χρηματοοικονομικών (Έτη 3–4)</div>
+
+  <div class="course">
+    <h4>CFS 310 — Εισαγωγή στη Οικονομετρία</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Εισαγωγικό μάθημα στην Οικονομετρία που έχει ως στόχο οι φοιτητές να αποκτήσουν επαρκή γνώση στη στατιστική και οικονομετρία, που είναι απαραίτητη έτσι ώστε να κατανοούν, να αξιολογούν και να ερμηνεύουν οικονομετρικές έρευνες, χρησιμοποιώντας βασικά μοντέλα παλινδρόμησης. Στην αρχή του μαθήματος γίνεται η σύνδεση των στατιστικών εννοιών με το μοντέλο γραμμικής παλινδρόμησης και τις παραδοχές του. Στην πορεία εξετάζονται οι παραβιάσεις των παραδοχών του μοντέλου και οι επιπτώσεις τους στις εκτιμήσεις.</p>
+  </div>
+
+  <div class="course">
+    <h4>CFS 320 — Χρηματοοικονομική Επιχειρήσεων</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Σκοπός του μαθήματος είναι η διαμόρφωση μιας ολοκληρωμένης εικόνας αναφορικά με τη Χρηματοοικονομική Επιχειρήσεων σε θεωρητικό και πρακτικό επίπεδο. Η διδασκόμενη θεματολογία καλύπτει ζητήματα προσέγγισης των αγορών κεφαλαίου, αξιολόγησης και επιλογής των πηγών και τρόπων χρηματοδότησης, καθώς και ασκούμενης επιρροής πάνω στη χρηματοοικονομική αξία μιας επιχείρησης μέσω της μερισματικής πολιτικής. Πρόσθετο πλεονέκτημα του μαθήματος αποτελεί το γεγονός ότι η παράλληλη χρήση και της αγγλικής γλώσσας, βοηθά στην εξοικείωση και απόκτηση της διεθνούς αγγλικής ορολογίας, καθώς φυσικά και στην βελτίωση της γλώσσας στο επίπεδο της επιχειρησιακής χρήσης της</p>
+  </div>
+
+  <div class="course">
+    <h4>CFS 330 — Ναυτιλιακή Χρηματοοικονομική</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Οι βασικοί στόχοι του μαθήματος είναι η εισαγωγή των φοιτητών στις θεμελιώδεις αρχές της χρηματοδότησης της ναυτιλίας. Τα θέματα που καλύπτονται περιλαμβάνουν τη θεωρία της χρηματοδότησης κεφαλαίου, την ιστορία της χρηματοδότησης της ναυτιλίας, των πηγών χρηματοδότησης εξαγορών πλοίων, των αξιολογήσεων των ναυτιλιακών χορηγήσεων, της πιστωτική ανάλυση και τις αρχές διαχείρισης κινδύνου.</p>
+  </div>
+
+  <div class="course">
+    <h4>CFS 424 — Ανάλυση Χρηματοοικονομικών Καταστάσεων</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Οι κύριοι στόχοι αυτού του μαθήματος είναι η ανάπτυξη της ικανότητας των φοιτητών να χρησιμοποιούν τις πληροφορίες των οικονομικών καταστάσεων για την επένδυση, τη χρηματοδότηση και τη διαχειριστική λήψη αποφάσεων. Ειδικότερα, η έμφαση θα δοθεί στην αξιολόγηση των οικονομικών στοιχείων μιας επιχείρησης, όπως τα χαρακτηριστικά της βιομηχανίας, η ανταγωνιστική στρατηγική, οι παρελθούσες επιδόσεις, ο κίνδυνος και η ποιότητα των χρηματοοικονομικών πληροφοριών και οι προβλέψεις μελλοντικών επιδόσεων που βοηθά στην εκτίμηση της θεμελιώδους αξίας της συμμετοχής μιας επιχείρησης χρησιμοποιώντας διάφορα πλαίσια αποτίμησης.</p>
+  </div>
+
+  <div class="course">
+    <h4>CFS 143 — Εμπορικό Δίκαιο</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Οι στόχοι του μαθήματος είναι οι ακόλουθοι: · Να δώσει στους φοιτητές και τις φοιτήτριες της απαραίτητες γνώσεις για το νομικό σύστημα της Κύπρου με το να αναλύσει τις πηγές του δικαίου και τη δομή των δικαστηρίων (δικαστικό σύστημα). · Να εξοικειώσει τους φοιτητές και τις φοιτήτριες με το ευρύτερο πλαίσιο λειτουργίας των νόμων και του νομικού συστήματος, όπως τις αρχές ερμηνείας του δικαίου, τα ανθρώπινα δικαιώματα, και πώς αυτά επηρεάζουν την εφαρμογή της νομοθεσίας και τη νομική ανάλυση. · Να βοηθήσει τους φοιτητές και τις φοιτήτριες να κατανοήσουν τις πτυχές του δικαίου που αφορούν τις εταιρίες και το επιχειρησιακό περιβάλλον. · Να δώσει στους φοιτητές και στις φοιτήτριες τα απαραίτητα στοιχεία και γνώσεις σχετικά με τις υποθέσεις και αποφάσεις (case law), δηλαδή το δικαστικό προηγούμενο, και το νομοθετικό πλαίσιο που επηρεάζει τη λειτουργία των εταιριών και επιχειρήσεων.</p>
+  </div>
+
+  <div class="course">
+    <h4>CFS 312 — Χρηματοοικονομική Οικονομετρία</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Προχωρημένο μάθημα στην Οικονομετρία που έχει ως στόχο οι φοιτητές να αποκτήσουν επαρκή γνώση σε θέματα που άπτονται στην χρηματοοικονομική οικονομετρία. Καλύπτει θέματα σχετικά με οικονομικές και χρηματοοικονομικές σχέσεις, αναλύει σημαντικά αποτελέσματα εμπειρικών μελετών στα χρηματοοικονομικά και προσφέρει τα εφόδια για εφαρμογές οικονομετρικών μοντέλων στη χρηματοοικονομική θεωρία.</p>
+  </div>
+
+  <div class="course">
+    <h4>CFS 323 — Χρηματοοικονομικά Παράγωγα</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Το μάθημα περιγράφει τη φύση, τα χαρακτηριστικά, και τις αγορές για τα προαιρετικά δικαιώματα και προθεσμιακά συμβόλαια. Αναλύει τους παράγοντες που καθορίζουν την αξία τους και τις βασικές τεχνικές αποτίμησης, καθώς και εφαρμογές τους στις χρηματοοικονομικές δραστηριότητες της επιχείρησης και στις επενδυτικές αποφάσεις. Εξετάζει επίσης ειδικά το ρόλο τους στην αντιστάθμιση ή μείωση χρηματοοικονομικού κινδύνου.</p>
+  </div>
+
+  <div class="course">
+    <h4>CFS 324 — Διεθνής Χρηματοοικονομική Διοίκηση</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Το μάθημα εξετάζει θέματα που αντιμετωπίζουν πολυεθνικές εταιρείες και διεθνείς επενδυτές στις διεθνείς χρηματοοικονομικές αγορές. Τα διάφορα προβλήματα και προκλήσεις που αντιμετωπίζουν οι συμμετέχοντες στις διεθνείς αγορές αναλύονται, καθώς και οι θεωρίες που διέπουν τις συναλλαγές των συμμετεχόντων. Το μάθημα εξετάζει τις διεθνείς συνθήκες ισοτιμίας στις χρηματοοικονομικές αγορές. Αμέσως μετά γίνεται μια σύντομη ανασκόπηση των εργαλείων αντιστάθμισης συναλλαγματικού κινδύνου. Το μεγαλύτερο μέρος του μαθήματος αναλύει την έκθεση των δραστηριοτήτων πολυεθνικών εταιρειών στις διεθνείς αγορές. Το κόστος και η διαθεσιμότητα του κεφαλαίου στις παγκόσμιες αγορές είναι το επόμενο θέμα. Το μάθημα εξετάζει τους τρόπους με τους οποίους οι πολυεθνικές εταιρείες χρηματοδοτούν τις δραστηριότητες τους, π.χ. μετοχικό κεφάλαιο ή δανειοδότηση. Συνοψίζοντας γίνεται ανάλυση της διεθνούς διαχείρισης χαρτοφυλακίων από επενδυτές. Η έμφαση του μαθήματος είναι στην πρακτική εφαρμογή των θεωριών στην διεθνή χρηματοοικονομική διοίκηση με ιδιαίτερη έμφαση σε παραδείγματα από την Ευρωπαϊκή Ένωση.</p>
+  </div>
+
+  <div class="course">
+    <h4>CFS 420 — Μέθοδοι Έρευνας στα Χρηματοοικονομικά</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Σκοπός του μαθήματος είναι η εμβάθυνση σε προηγμένες ποσοτικές μεθόδους, στατιστικές τεχνικές και λογισμικά προγράμματα με στόχο την εφαρμογή τους για την ανάλυση εμπειρικών προβλημάτων (ανάλυση δεδομένων) και λήψης αποφάσεων στα χρηματοοικονομικά. Το μάθημα περιλαμβάνει εργαστήριο στο λογισμικό SPSS και συμπεριλαμβάνει την παρουσίαση και ανάλυση ερευνητικής εργασίας.</p>
+  </div>
+
+  <div class="course">
+    <h4>CFS 321 — Τραπεζική Οικονομική</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Το μάθημα περιλαμβάνει ανάλυση νομισματικών, τραπεζικών και χρηματοοικονομικών αγορών όπως και των αντίστοιχων νομισματικών και χρηματοοικονομικών ιδρυμάτων. Αναλύει τον τρόπο καθορισμού τον επιτοκίων στην αγορά ομολόγων και τον τρόπο που η νομισματική πολιτική μπορεί να τα επηρεάσει. Εξετάζει την έννοια της ασύμμετρης πληροφόρησης και τα προβλήματα που δημιουργεί στις χρηματοοικονομικές αγορές. Κάνει αναφορά στον ρόλο των τραπεζών και δικαιολογεί την ανάγκη για έλεγχο των εργασιών τους από τη νομισματική αρχή. Τέλος αναφέρεται στις κεντρικές τράπεζες και τα εργαλεία νομισματικής πολιτικής, τους στόχους και μαθήματα από τις διάφορες κρίσεις στο παρελθόν.</p>
+  </div>
+
+  <div class="course">
+    <h4>CFS 322 — Αποτίμηση Κεφαλαιουχικών Στοιχείων</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Στόχος του μαθήματος είναι μέσα από τη διδασκαλία και μελέτη των κυριότερων εννοιών αποτίμησης κεφαλαιουχικών στοιχείων οι φοιτητές να μπορούν να χρησιμοποιήσουν τις γνώσεις και εργαλεία του μαθήματος σε μελέτες περιπτώσεων (case studies). Έτσι το μάθημα προσβλέπει περισσότερο στην πρακτική εφαρμογή των χρηματοοικονομικών εργαλείων του μαθήματος έτσι ώστε να προετοιμάσει τους φοιτητές κατάλληλα στην αντιμετώπιση πραγματικών σεναρίων. Επίσης μέσα από τη μελέτη περιπτώσεων οι φοιτητές θα είναι σε θέση να αφομοιώσουν τις χρηματοοικονομικές έννοιες και τα εργαλεία αποτίμησης καλύτερα.</p>
+  </div>
+
+  <div class="course">
+    <h4>CFS 325 — Διαχείριση Επενδύσεων</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Οι στόχοι του μαθήματος είναι οι εξής: • Η ανάπτυξη της γνώσης και κατανόησης των φοιτητών σχετικά με τα βασικά θέματα της κατανομής των περιουσιακών στοιχείων και της σύνθεσης και διαχείρισης χαρτοφυλακίου • Να δοθεί στους φοιτητές η ευκαιρία να αναπτύξουν την ικανότητα να κατανοούν με κριτικό πνεύμα την τρέχουσα θεωρητική και εμπειρική έρευνα στον τομέα των θεωριών χαρτοφυλακίου και τις επιπτώσεις τους στην εναλλακτική σύνθεση χαρτοφυλακίων και τις στρατηγικές διαχείρισης. .</p>
+  </div>
+
+  <div class="course">
+    <h4>CFS 441 — Πρακτική Άσκηση</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Βασικός στόχος της Πρακτικής Άσκησης είναι να δώσει στους φοιτητές την ευκαιρία να κατανοήσουν τα προβλήματα και τις τάσεις στον τομέα των Χρηματοοικονομικών και Ναυτιλιακών επιχειρήσεων, εντάσσοντάς τους σε ένα εργασιακό περιβάλλον σε πραγματικές συνθήκες εργασίας. Οι φοιτητές μπορούν να εκτιμήσουν κατά πόσο το εν λόγω περιβάλλον σχετίζεται με τις ακαδημαϊκές τους σπουδές και να προετοιμαστούν κατάλληλα για την ένταξη τους στον κλάδο επιλογής τους, μετά την ολοκλήρωση των σπουδών τους. Κατ’ επέκταση, το Τμήμα Εμπορίου, Χρηματοοικονομικών και Ναυτιλίας (ΕΧΝ) του Τεχνολογικού Πανεπιστήμιου Κύπρου (ΤΕΠΑΚ) επωφελείται από τη συνισταμένη των ενισχυμένων σχέσεων με τη βιομηχανία και με άλλους οργανισμούς.</p>
+  </div>
+
+  <div class="course">
+    <h4>LCE 410 — Αγγλικά για Χρηματοοικονομικά</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Το LCE 410 είναι ένα υποχρεωτικό μάθημα πτυχιακού επιπέδου, τριών ωρών εβδομαδιαίως, 4 πιστωτικών μονάδων (ECTS), το οποίο επικεντρώνεται στην εκμάθηση των Αγγλικών για Ειδικούς Ακαδημαϊκούς Σκοπούς (English for Specific Academic Purposes — ESAP). Το LCE 410 είναι ειδικά σχεδιασμένο ώστε να ανταποκρίνεται στις ανάγκες των φοιτητών που σπουδάζουν στον τομέα των Χρηματοοικονομικών και να αναπτύξει την αγγλική τους γλώσσα σε ακαδημαϊκό επίπεδο αντίστοιχο με τα επίπεδα B2 – C1 του Κοινού Ευρωπαϊκού Πλαισίου Αναφοράς (ΚΕΠΑ) για τις Γλώσσες. Το μάθημα στοχεύει να καταστήσει τους φοιτητές ικανούς να κατανοούν προφορικά και γραπτά Αγγλικά σε μια σειρά ρεαλιστικών πλαισίων, όπως αυτά που πιθανόν να συναντήσουν οι επαγγελματίες του Εμπορίου και των Χρηματοοικονομικών στην καθημερινή εργασιακή τους ζωή. Τα προφορικά κείμενα περιλαμβάνουν παρουσιάσεις, διαλέξεις, δελτία ειδήσεων, συζητήσεις και συνεντεύξεις για θέματα σχετικά με τα χρηματοοικονομικά, ενώ τα γραπτά κείμενα περιλαμβάνουν κείμενα όπως ηλεκτρονικά μηνύματα, φαξ, άρθρα περιοδικών, επιχειρηματικές επιστολές, χρηματοοικονομικές εκθέσεις, υπομνήματα και άλλα.</p>
+  </div>
+
+  <!-- ELECTIVES -->
+  <div class="course-group-heading">Μαθήματα Επιλογής (Κατεύθυνση Χρηματοοικονομικών)</div>
+
+  <div class="course">
+    <h4>CFS 326 — Χρηματοοικονομική Λογιστική ΙΙ</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Ο στόχος του μαθήματος είναι η κατανόηση του πλαισίου μέσα στο οποίο αναπτύσσονται τα Διεθνή Λογιστικά Πρότυπα, η κατανόηση εφαρμογής τους και η τεχνική επάρκεια για την προετοιμασία των οικονομικών καταστάσεων.</p>
+  </div>
+
+  <div class="course">
+    <h4>CFS 327 — Διοικητική Λογιστική ΙΙ</h4>
+    <div class="ects">6 ECTS</div>
+    <p>O βασικός σκοπός του μαθήματος Διοικητική Λογιστική ΙΙ είναι η διεύρυνση της γνώσης και της κατανόησης των φοιτητών σε σημαντικά και πιο εξειδικευμένα θέματα διοικητικής λογιστικής και η διεύρυνση του τεχνικού υπόβαθρου τους στη διοικητική λογιστική. Η Διοικητική Λογιστική ΙΙ επικεντρώνεται στην οικοδόμηση δεξιοτήτων στην αξιολόγηση και ερμηνεία πληροφοριών διοικητικής λογιστικής με στόχο την βελτίωση της διαδικασίας λήψης αποφάσεων και την αξιολόγηση της επίδοσης.</p>
+  </div>
+
+  <div class="course">
+    <h4>CFS XXX — Χρηματοοικονομική Τεχνολογία</h4>
+    <div class="ects">6 ECTS</div>
+  </div>
+
+  <div class="course">
+    <h4>CFS XXX — Θεωρία Παιγνίων</h4>
+    <div class="ects">6 ECTS</div>
+  </div>
+
+  <div class="course">
+    <h4>CFS XXX — Ανάλυση Δεδομένων για Χρηματοοικονομικά και Λογιστική</h4>
+    <div class="ects">6 ECTS</div>
+  </div>
+
+  <div class="course">
+    <h4>CFS 342 — Εταιρικό Δίκαιο</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Οι στόχοι του μαθήματος είναι οι ακόλουθοι: · Να δώσει στους φοιτητές και τις φοιτήτριες τις απαραίτητες γνώσεις για τις νομικές αρχές και κανονισμούς που διέπουν τις εταιρίες και γενικά τις διάφορες μορφές επιχείρησης. · Να εξοικειώσει τους φοιτητές και τις φοιτήτριες με το νομικό πλαίσιο μέσα στο οποίο εγγράφεται, διοικείται, λειτουργεί και εν τέλει δύναται να διαλυθεί ή να διαγραφεί μια εταιρία. · Να δώσει στους φοιτητές και φοιτήτριες τις γνώσεις που αφορούν αδικήματα όπως ξέπλυμα βρώμικου χρήματος και κατάχρηση προσωπικών δεδομένων, και πώς προστατεύεται μια εταιρία ή ένα γραφείο από αυτά. · Να δώσει στους φοιτητές και στις φοιτήτριες τα απαραίτητα στοιχεία και γνώσεις σχετικά με τις υποθέσεις και αποφάσεις (case law), που αφορούν τις εταιρίες.</p>
+  </div>
+
+  <div class="course">
+    <h4>CFS 423 — Διαχείριση Κινδύνου Προϊόντων</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Το μάθημα αυτό μελετά τις διεθνείς αγορές εμπορεύσιμων αγαθών και τους μηχανισμούς συναλλαγών σε αυτές τις αγορές, δίνοντας έμφαση στους τομείς της Ναυτιλίας. Οι φοιτητές λαμβάνουν την απαραίτητη γνώση για να αναλύσουν και να μετρήσουν τον αντίκτυπο των χρηματοοικονομικών κινδύνων σε ναυτιλιακές επενδύσεις και επενδύσεις σε εμπορεύσιμα αγαθά. Ένας από τους σημαντικούς στόχους του μαθήματος είναι να εφοδιάσει τους φοιτητές με τα εργαλεία που θα τους επιτρέψουν να επιλέξουν αποτελεσματικές στρατηγικές για την ελαχιστοποίηση των κινδύνων αυτών. Το μάθημα στοχεύει ιδιαίτερα στα ακόλουθα: ➢Εισαγωγή των φοιτητών στο θεωρητικό υπόβαθρο για την εφαρμογή στρατηγικών διαπραγμάτευσης και αντιστάθμισης στις διεθνείς αγορές εμπορευμάτων. ➢ Ανάπτυξη κατανόησης των χαρακτηριστικών της αγοράς προϊόντων, των κινδύνων που ενέχονται και του τρόπου με τον οποίο μπορούν να χρησιμοποιηθούν παράγωγα μέσα για τη διαχείριση των κινδύνων. ➢ Απόκτηση καλής γνώσης των βασικών στρατηγικών συναλλαγών στις αγορές βασικών προϊόντων με έμφαση στις αγορές ναυτιλίας και εμπορευματικών μεταφορών. ➢ Να διδάξει τους φοιτητές πως να εφαρμόζουν στρατηγικές αντιστάθμισης κινδύνου χρησιμοποιώντας συμβόλαια μελλοντικής εκπλήρωσης και δικαιώματα προαίρεσης καθώς και επενδυτικές στρατηγικές για κερδοσκοπία.</p>
+  </div>
+
+  <div class="course">
+    <h4>CFS 426 — Χρηματοοικονομική Λογιστική ΙΙI</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Ο στόχος του μαθήματος είναι η ανάπτυξη της γνώσης και της κατανόησης των φοιτητών κατά την εφαρμογή μιας σειράς Διεθνών Λογιστικών Προτύπων (ΔΛΠ) στην ετοιμασία, ανάλυση και ερμηνεία των οικονομικών καταστάσεων για μια ενιαία εταιρεία και για έναν όμιλο εταιρειών.</p>
+  </div>
+
+  <div class="course">
+    <h4>CFS 427 — Ελεγκτική Ι</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Το πρόγραμμα διδασκαλίας και αξιολόγησης διαρθρώνεται βασικά σε πέντε τομείς. Το πρόγραμμα σπουδών αρχίζει με τη φύση, το σκοπό και το πεδίο των εσωτερικών και εξωτερικών δεσμεύσεων διασφάλισης, συμπεριλαμβανομένου του υποχρεωτικού ελέγχου, του ρυθμιστικού περιβάλλοντος και εισάγει τη διακυβέρνηση και την επαγγελματική δεοντολογία όσον αφορά τον έλεγχο και τη διασφάλιση. Στη συνέχεια, οδηγεί σε έλεγχο σχεδιασμού και εκτίμησης κινδύνου. Στη συνέχεια, το αναλυτικό πρόγραμμα καλύπτει ένα φάσμα τομέων που σχετίζονται με τον έλεγχο των οικονομικών καταστάσεων, συμπεριλαμβανομένου του πεδίου εφαρμογής του εσωτερικού ελέγχου. Αυτά περιλαμβάνουν την αξιολόγηση των εσωτερικών ελέγχων, τα αποδεικτικά στοιχεία ελέγχου και την ανασκόπηση των οικονομικών καταστάσεων. Εκτός από τις τελικές διαδικασίες επανεξέτασης, η τελευταία ενότητα επικεντρώνεται στην αναφορά, συμπεριλαμβανομένης της μορφής και του περιεχομένου της έκθεσης του ανεξάρτητου ελεγκτή.</p>
+  </div>
+
+  <div class="course">
+    <h4>CFS 428 — Φορολογική</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Το πρόγραμμα αυτό εισάγει υποψήφιους στο θέμα της φορολογίας και παρέχει τις βασικές γνώσεις σχετικά με τις βασικές αρχές και τους σημαντικούς τεχνικούς τομείς της φορολογίας, καθώς επηρεάζουν τις δραστηριότητες των ατόμων και των επιχειρήσεων. Σε αυτό το αναλυτικό πρόγραμμα, οι υποψήφιοι εισάγονται στο σκεπτικό και τις λειτουργίες του φορολογικού συστήματος. Το πρόγραμμα σπουδών εξετάζει στη συνέχεια τους χωριστούς φόρους στους οποίους θα χρειαστεί μια λεπτομερής γνώση ενός λογιστή, όπως ο φόρος εισοδήματος από την αυτοαπασχόληση, την απασχόληση και τις επενδύσεις. η φορολογική υποχρέωση των εταιρειών και των ομίλων επιχειρήσεων · ειδική συνεισφορά για τις υποχρεώσεις υπεράσπισης και τις φορολογικές υποχρεώσεις των ιδιωτών και των εταιρειών. τις εισφορές κοινωνικής ασφάλισης των μισθωτών και των αυτοαπασχολούμενων · και της φορολογικής οφειλής των επιχειρήσεων. Αφού καλύπτονται οι βασικοί τομείς των βασικών φόρων, ο υποψήφιος πρέπει να είναι σε θέση να υπολογίζει φορολογικές υποχρεώσεις, να εξηγεί τη βάση των υπολογισμών τους, να εφαρμόζει τεχνικές φορολογικού σχεδιασμού για ιδιώτες και εταιρείες και να προσδιορίζει τα θέματα συμμόρφωσης για κάθε σημαντικό φόρο μέσω μιας ποικιλίας επιχειρηματικών και προσωπικά σενάρια και καταστάσεις.</p>
+  </div>
+
+  <div class="course">
+    <h4>CFS 440 — Διπλωματική Μελέτη</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Στο μάθημα αυτό ο φοιτητής καλείται να εκπονήσει διπλωματική μελέτη υπό την επίβλεψη κάποιου καθηγητή του Τμήματος. Ο φοιτητής αναμένεται να μπορεί να ολοκληρώσει μια ανεξάρτητη έρευνα για ένα επιχειρησιακό θέμα χρησιμοποιώντας τις γνώσεις και δεξιότητες που ανέπτυξε μέχρι αυτό το σημείο (για το οποίο θα πρέπει να έχει την έγκριση του ακαδημαϊκού επιβλέποντα). Οι στόχοι του μαθήματος είναι: · Να παρέχεται στους φοιτητές η απαιτούμενη κατάρτιση για την διεξαγωγή προηγμένης έρευνας στα Χρηματοοικονομικά / Ναυτιλιακά / Οικονομικά / Λογιστική. · Να παρέχει στους φοιτητές μια προηγμένη κατανόηση της συνάφειας και της σημασίας των εναλλακτικών επιστημολογικών θέσεων στις κοινωνικές επιστήμες και τη φύση τόσο ποιοτικών όσο και ποσοτικών προσεγγίσεων στην έρευνα. · Να αναπτύξει την κατανόηση των φοιτητών σε ένα προηγμένο επίπεδο της φύσης της έρευνας στις κοινωνικές επιστήμες, εξετάζοντας τις δεξιότητες μελέτης που απαιτούνται για τη διαχείριση και την ανάληψη ενός ερευνητικού έργου. · Να δώσει στους σπουδαστές ευκαιρίες να εξοικειωθούν με την εμπειρική και θεωρητική έρευνα αιχμής. · Να δοθεί στους σπουδαστές η δυνατότητα διεξαγωγής εμπεριστατωμένης έρευνας σε προχωρημένο επίπεδο ενός ζητήματος το οποίο είναι εφαρμόσιμο στον κόσμο των επιχειρήσεων. · Η τοποθέτηση της διατριβής στο τέλος του προγράμματος αποσκοπεί στην προώθηση της ενσωμάτωσης του διδακτικού και επιστημονικού υλικού που καλύπτεται στον πυρήνα των προγραμμάτων σπουδών.</p>
+  </div>
+
+  <div class="course">
+    <h4>CFS 452 — Συμπεριφορική Χρηματοοικονομική</h4>
+    <div class="ects">6 ECTS</div>
+  </div>
+
+  <div class="course">
+    <h4>SHP 354 — Διοίκηση Λειτουργιών Ναυτιλίας</h4>
+    <div class="ects">6 ECTS</div>
+  </div>
+</div>
+
+<!-- ==================== TAB 4: ADMISSION ==================== -->
+<div class="tab-content" id="admission">
+  <h2>Εισδοχή</h2>
+  <p>Η πρόσβαση στο εν λόγω πρόγραμμα σπουδών θα γίνεται μέσω του πλαισίου πρόσβασης υπ’ αριθμό 22.</p>
+</div>
+
+<!-- ==================== TAB 5: TUITION ==================== -->
+
+
+<!-- ==================== TAB 6: HOW YOU WILL LEARN ==================== -->
+<div class="tab-content" id="learning">
+  <h2>Τρόπος Διδασκαλίας</h2>
+
+  <p>Το πρόγραμμα συνδυάζει διαλέξεις, φροντιστήρια και ποσοτική και εφαρμοσμένη εργασία στα οικονομικά, τα μαθηματικά, τη στατιστική, την οικονομετρία, τη λογιστική και τα χρηματοοικονομικά. Τα εξειδικευμένα μαθήματα χρηματοοικονομικών οικοδομούνται σταδιακά πάνω στην κοινή βάση των Ετών 1–2, ενώ το πρόγραμμα σπουδών ενσωματώνει επαγγελματική ορολογία και επικοινωνία στα Αγγλικά μέσω των γλωσσικών μαθημάτων Αγγλικών για Χρηματοοικονομικά.</p>
+
+  <h3>Εφαρμοσμένες και Ερευνητικές Συνιστώσες</h3>
+  <ul>
+    <li><strong>Πρακτική Άσκηση (CFS 441, 12 ECTS):</strong> μια δομημένη τοποθέτηση που εντάσσει τους φοιτητές σε πραγματικά εργασιακά περιβάλλοντα στους κλάδους των χρηματοοικονομικών και της ναυτιλίας, βοηθώντας τους να αξιολογήσουν τη συνάφεια των σπουδών τους και να προετοιμαστούν για την ένταξη στον κλάδο επιλογής τους.</li>
+    <li><strong>Μέθοδοι Έρευνας στα Χρηματοοικονομικά (CFS 420):</strong> αναπτύσσει τις ερευνητικές δεξιότητες που απαιτούνται για ανεξάρτητη μελέτη στα χρηματοοικονομικά.</li>
+    <li><strong>Διπλωματική Μελέτη (CFS 440, 12 ECTS, επιλογής):</strong> ένα ανεξάρτητο ερευνητικό έργο για τους φοιτητές που επιλέγουν την ερευνητική διαδρομή.</li>
+  </ul>
+
+  <h3>Γλώσσα Διδασκαλίας</h3>
+  <p>Τα περισσότερα μαθήματα διδάσκονται στα Ελληνικά. Τα γλωσσικά μαθήματα Αγγλικών για Χρηματοοικονομικά (LCE 107, LCE 108, LCE 410) προσφέρονται στα Αγγλικά, ενώ η επαγγελματική ορολογία στα Αγγλικά δίνεται με έμφαση σε όλη τη διάρκεια του προγράμματος.</p>
+</div>
+
+<!-- ==================== TAB 7: RECOGNITION & CAREERS ==================== -->
+<div class="tab-content" id="careers">
+  <h2>Επαγγελματική Αναγνώριση και Προοπτικές Σταδιοδρομίας</h2>
+
+  <h3>Επαγγελματική Αναγνώριση και Απαλλαγές</h3>
+  <p>Το πρόγραμμα κατέχει αναγνώριση από επαγγελματικούς φορείς που παρέχει στους αποφοίτους απαλλαγές από επαγγελματικά λογιστικά προσόντα.</p>
+
+  <h4>ICAEW — Ορκωτός Λογιστής (ACA)</h4>
+  <p>Οι απόφοιτοι λαμβάνουν αυτόματα απαλλαγή από οκτώ ενότητες του προσόντος ICAEW ACA. Ο αναλυτικός πίνακας απαλλαγών δημοσιεύεται από το ICAEW (αναζήτηση με τον κωδικό ιδρύματος 492 στον κατάλογο ακαδημαϊκών πιστώσεων του ICAEW).</p>
+
+  <h4>ACCA — Association of Chartered Certified Accountants</h4>
+  <p>Οι προπτυχιακοί φοιτητές δικαιούνται απαλλαγές ACCA· ο ακριβής αριθμός διαφέρει ανάλογα με το έτος αποφοίτησης. Το ACCA παρέχει ένα αυτόματο εργαλείο υπολογισμού απαλλαγών για επιβεβαίωση.</p>
+
+  <h3>Προοπτικές Σταδιοδρομίας</h3>
+  <p>Το πτυχίο είναι σχεδιασμένο ώστε να υποστηρίζει την άμεση απασχόληση σε ρόλους διοίκησης και οικονομικών. Οι απόφοιτοι ακολουθούν σταδιοδρομία σε:</p>
+  <ul>
+    <li>Χρηματοπιστωτικά ιδρύματα και τραπεζικό τομέα</li>
+    <li>Ελεγκτικά γραφεία</li>
+    <li>Επενδυτικές εταιρείες</li>
+    <li>Οργανισμούς παροχής επιχειρηματικών υπηρεσιών</li>
+    <li>Οργανισμούς που εμπλέκονται στη διαμόρφωση οικονομικής πολιτικής</li>
+  </ul>
+  <p>Το πρόγραμμα προετοιμάζει επίσης τους αποφοίτους για περαιτέρω σπουδές, συμπεριλαμβανομένων μεταπτυχιακών προγραμμάτων σε αναγνωρισμένα πανεπιστήμια και προγραμμάτων επαγγελματικών προσόντων όπως τα ACA και ACCA. Με προηγμένη εξειδίκευση, οι απόφοιτοι μπορούν να εξελιχθούν προς ηγετικές θέσεις στον ιδιωτικό ή δημόσιο τομέα, ή να εργαστούν ως αυτοαπασχολούμενοι επιχειρηματίες.</p>
+
+  <h3>Στατιστικά Στοιχεία Απασχόλησης</h3>
+</div>
+
+<!-- ==================== TAB 8: STUDENT SUPPORT ==================== -->
+<div class="tab-content" id="support">
+  <h2>Υποστήριξη και Πόροι Φοιτητών</h2>
+
+  <h3>Ακαδημαϊκός Σύμβουλος</h3>
+  <p>Στους φοιτητές ανατίθεται ακαδημαϊκός σύμβουλος για την καθοδήγηση στην επιλογή μαθημάτων, την παρακολούθηση της ακαδημαϊκής προόδου και την υποστήριξη στον σχεδιασμό της σταδιοδρομίας.</p>
+
+  <h3>Δίκτυο Ανάπτυξης Μάθησης (LDN)</h3>
+  <p>Υποστήριξη σε δεξιότητες μελέτης, ακαδημαϊκή γραφή, καθώς και τεχνικό και ψηφιακό γραμματισμό.</p>
+
+  <h3>Βιβλιοθήκη</h3>
+  <p>Πρόσβαση σε ακαδημαϊκές βάσεις δεδομένων, ηλεκτρονικά περιοδικά και εργαλεία διαχείρισης βιβλιογραφικών αναφορών.</p>
+
+  <h3>Υπηρεσίες Σταδιοδρομίας</h3>
+  <p>Συμβουλευτική σταδιοδρομίας, επιμέλεια βιογραφικού, προετοιμασία για συνεντεύξεις και εκδηλώσεις δικτύωσης, που συμπληρώνουν τη δομημένη πρακτική άσκηση (CFS 441).</p>
+
+  <h3>Υπηρεσίες Συμβουλευτικής</h3>
+  <p>Εμπιστευτική συμβουλευτική φοιτητών και υποστήριξη ευημερίας.</p>
+</div>
+
+<!-- ==================== TAB 9: CONTACT ==================== -->
+<div class="tab-content" id="contact">
+  <h2>Επικοινωνία</h2>
+
+  <div class="contact-block">
+    <strong>Τμήμα</strong>
+    Τμήμα Χρηματοοικονομικής, Λογιστικής και Διοικητικής Επιστήμης<br>
+    Σχολή Διοίκησης και Οικονομίας<br>
+    Τεχνολογικό Πανεπιστήμιο Κύπρου
+  </div>
+
+  <div class="contact-block">
+    <strong>Διοικητική Υποστήριξη Τμήματος</strong>
+    Dimitra Christodoulidou, Διοικητική Βοηθός<br>
+    Email: d.christodoulidou@cut.ac.cy<br>
+    Τηλ: +357 25 002628
+  </div>
+
+  <div class="contact-block">
+    <strong>Γενικές Πληροφορίες Πανεπιστημίου</strong>
+    Τεχνολογικό Πανεπιστήμιο Κύπρου<br>
+    Αρχιεπισκόπου Κυπριανού 30, 3036 Λεμεσός, Κύπρος<br>
+    Email: administration@cut.ac.cy<br>
+    Τηλ: +357 25 002500 · Φαξ: +357 25 002750
+  </div>
+</div>
+
+<!-- ==================== JS ==================== -->
+<script>
+  document.querySelectorAll('.tabs-nav button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tabs-nav button').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tab-content').forEach(tc => tc.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById(btn.dataset.tab).classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  });
+</script>
+</body>
+</html>

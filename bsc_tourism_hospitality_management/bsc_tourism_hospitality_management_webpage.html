@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="MG">
+<title>Bachelor in Hotel and Tourism Management — Cyprus University of Technology</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;600;700&family=Source+Serif+4:wght@400;600&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.65;
+    color: #2a2a2a;
+    background: #f5f5f5;
+  }
+
+  /* ---- HEADER ---- */
+  .page-header {
+    background: #1a3a5c;
+    color: #fff;
+    padding: 48px 0 40px;
+  }
+  .page-header .wrap {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+  .page-header h1 {
+    font-family: 'Source Serif 4', serif;
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  .page-header .subtitle {
+    font-size: 0.95rem;
+    font-weight: 300;
+    opacity: 0.85;
+  }
+
+  /* ---- TABS NAV ---- */
+  .tabs-nav {
+    background: #fff;
+    border-bottom: 2px solid #ddd;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .tabs-nav .wrap {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    gap: 0;
+  }
+  .tabs-nav button {
+    background: none;
+    border: none;
+    padding: 14px 18px;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: #666;
+    cursor: pointer;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .tabs-nav button:hover { color: #1a3a5c; }
+  .tabs-nav button.active {
+    color: #1a3a5c;
+    border-bottom-color: #1a3a5c;
+  }
+
+  /* ---- CONTENT ---- */
+  .tab-content {
+    display: none;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+  }
+  .tab-content.active { display: block; }
+
+  h2 {
+    font-family: 'Source Serif 4', serif;
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: #1a3a5c;
+    margin-bottom: 24px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+  }
+  h3 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #1a3a5c;
+    margin: 32px 0 12px;
+  }
+  h4 {
+    font-size: 1.02rem;
+    font-weight: 700;
+    color: #333;
+    margin: 28px 0 8px;
+  }
+  p { margin-bottom: 14px; }
+
+  /* ---- TABLES ---- */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0 24px;
+    font-size: 0.93rem;
+  }
+  th, td {
+    text-align: left;
+    padding: 10px 14px;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  th {
+    background: #f0f3f6;
+    font-weight: 600;
+    color: #1a3a5c;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+  tr:hover td { background: #fafbfc; }
+
+  /* key-features table (2-col, no header) */
+  .kf-table th { display: none; }
+  .kf-table td:first-child {
+    font-weight: 600;
+    width: 160px;
+    color: #1a3a5c;
+  }
+
+  /* ---- LISTS ---- */
+  ul, ol { margin: 10px 0 16px 22px; }
+  li { margin-bottom: 6px; }
+
+  /* ---- COURSE CARD ---- */
+  .course {
+    background: #fff;
+    border: 1px solid #e4e4e4;
+    border-radius: 6px;
+    padding: 24px 28px;
+    margin: 20px 0;
+  }
+  .course h4 {
+    margin: 0 0 4px;
+    color: #1a3a5c;
+  }
+  .course .ects {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: #888;
+    margin-bottom: 14px;
+  }
+  .course p { margin-bottom: 12px; }
+  .course p:last-child { margin-bottom: 0; }
+  .course .prereq {
+    font-size: 0.88rem;
+    color: #777;
+    font-style: italic;
+    margin-top: 10px;
+  }
+
+  .course-group-heading {
+    font-family: 'Source Serif 4', serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1a3a5c;
+    margin: 40px 0 8px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid #e0e0e0;
+  }
+
+  /* ---- MISC ---- */
+  .note {
+    background: #fffbe6;
+    border-left: 4px solid #e6c200;
+    padding: 14px 18px;
+    margin: 18px 0;
+    font-size: 0.93rem;
+    border-radius: 0 4px 4px 0;
+  }
+  .cta-button {
+    display: inline-block;
+    background: #1a3a5c;
+    color: #fff;
+    padding: 12px 28px;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 4px;
+    margin-top: 16px;
+    font-size: 0.95rem;
+    transition: background 0.2s;
+  }
+  .cta-button:hover { background: #264d73; }
+
+  .contact-block { margin-bottom: 24px; }
+  .contact-block strong { display: block; margin-bottom: 2px; }
+
+  /* responsive */
+  @media (max-width: 640px) {
+    .page-header h1 { font-size: 1.5rem; }
+    .tabs-nav button { padding: 12px 12px; font-size: 0.8rem; }
+    .course { padding: 18px 16px; }
+    table { font-size: 0.85rem; }
+    th, td { padding: 8px 10px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ==================== HEADER ==================== -->
+<header class="page-header">
+  <div class="wrap">
+    <h1>Bachelor in Hotel and Tourism Management</h1>
+    <div class="subtitle">Department of Tourism and Hospitality Management · School of Tourism Management, Hospitality and Entrepreneurship · Cyprus University of Technology</div>
+  </div>
+</header>
+
+<!-- ==================== TAB NAV ==================== -->
+<nav class="tabs-nav">
+  <div class="wrap">
+    <button class="active" data-tab="overview">Overview</button>
+    <button data-tab="structure">Programme Structure</button>
+    <button data-tab="courses">Course Descriptions</button>
+    <button data-tab="admission">Admission</button>
+    <button data-tab="tuition">Tuition &amp; Scholarships</button>
+    <button data-tab="learning">How You Will Learn</button>
+    <button data-tab="careers">Recognition &amp; Careers</button>
+    <button data-tab="support">Student Support</button>
+    <button data-tab="contact">Contact</button>
+  </div>
+</nav>
+
+<!-- ==================== TAB 1: OVERVIEW ==================== -->
+<div class="tab-content active" id="overview">
+  <h2>Overview</h2>
+  <p>The Bachelor in Hotel and Tourism Management (Bachelor in Tourism and Hospitality Management) is a four-year undergraduate programme offered by the Department of Tourism and Hospitality Management at the Cyprus University of Technology. The programme provides specialised scientific training in the management of tourism and hotel enterprises, with emphasis on strategy, marketing, e-commerce, and human resource management.</p>
+  <p>The curriculum combines a strong foundation in general business education with core hotel and tourism management courses, supervised practical training in the industry, and a final-year thesis. In their final years, students choose one of two specialisation tracks — Hotel Management or Tourism Management — allowing them to tailor their studies toward their career goals while keeping a broad managerial base.</p>
+
+  <h3>Key Features</h3>
+  <table class="kf-table">
+    <tr><td>Level</td><td>Undergraduate (Bachelor's degree)</td></tr>
+    <tr><td>Duration</td><td>4 years (8 semesters)</td></tr>
+    <tr><td>Credits</td><td>240 ECTS (minimum)</td></tr>
+    <tr><td>Campus</td><td>Paphos</td></tr>
+    <tr><td>Established</td><td>2007</td></tr>
+    <tr><td>Specialisations</td><td>Hotel Management · Tourism Management</td></tr>
+    <tr><td>Language</td><td>[PLACEHOLDER — Department to supply: language(s) of instruction]</td></tr>
+  </table>
+
+  <h3>Credit Distribution</h3>
+  <p>The 240 ECTS required for completion are distributed as follows:</p>
+  <table>
+    <tr><th>Component</th><th>ECTS</th></tr>
+    <tr><td>General Business Education</td><td>95</td></tr>
+    <tr><td>Core Hotel &amp; Tourism Management</td><td>71</td></tr>
+    <tr><td>Practical Training</td><td>20</td></tr>
+    <tr><td>Elective Courses</td><td>24</td></tr>
+    <tr><td>Specialisation Courses</td><td>18</td></tr>
+    <tr><td>English Language Programme</td><td>12</td></tr>
+    <tr><td>Thesis</td><td>12</td></tr>
+  </table>
+
+  <h3>Specialisations</h3>
+  <p><strong>1. Hotel Management</strong> — Focused on the operational and managerial dimensions of hotel enterprises, covering service quality and total quality management, risk and crisis management in the hospitality industry, and expense (cost) management and control. Prepares graduates for management roles within hotel units and the wider hospitality sector.</p>
+  <p><strong>2. Tourism Management</strong> — Focused on the planning, development, and marketing of tourism, covering tourist organisation and development, destination management and marketing, and cultural heritage tourism. Designed for students aiming for careers in tourism organisations, destination management, and the design of tourism experiences.</p>
+
+  <h3>Intended Learning Outcomes</h3>
+  <p>The following intended learning outcomes are derived qualitatively from the programme aims published by the Department. They are organised under Knowledge, Skills, and Competences. The Department should confirm or refine these against the official programme specification.</p>
+
+  <h4>Knowledge</h4>
+  <ul>
+    <li>Explain the structure and operation of the hospitality and tourism industries, including hotel units, food and beverage operations, and tourism enterprises.</li>
+    <li>Describe the principles of general business education — economics, finance, accounting, marketing, and management — as they apply to tourism and hospitality.</li>
+    <li>Outline the role of public and private sectors in shaping tourism policy and in the planning and development of tourist destinations.</li>
+    <li>Identify the principles of sustainable tourism development, service quality, and total quality management.</li>
+  </ul>
+
+  <h4>Skills</h4>
+  <ul>
+    <li>Apply marketing, e-commerce, and revenue management techniques to hospitality and tourism enterprises.</li>
+    <li>Analyse business environments and use statistical and research methods to support decision-making.</li>
+    <li>Develop strategic and operational plans for hotel and tourism organisations.</li>
+    <li>Communicate effectively in professional English within the hospitality and tourism context.</li>
+  </ul>
+
+  <h4>Competences</h4>
+  <ul>
+    <li>Act as executive and managerial staff in the hotel and tourism industry, taking responsibility for strategic and operational decisions.</li>
+    <li>Manage human resources, risk, and quality in hospitality and tourism settings.</li>
+    <li>Integrate theory and supervised practical training to operate effectively in real working conditions.</li>
+    <li>Conduct independent research, culminating in a supervised thesis on a topic relevant to the chosen specialisation.</li>
+  </ul>
+  <div class="note">The Intended Learning Outcomes above are an editorial derivation from the published programme aims. The Department should supply the official, validated learning-outcome statements for the final publication.</div>
+
+  <h3>Programme Coordinator</h3>
+  <p>Christina Mazaraki, Programme Coordinator<br>
+  [PLACEHOLDER — Department to supply: coordinator title, email, and telephone]</p>
+</div>
+
+<!-- ==================== TAB 2: PROGRAMME STRUCTURE ==================== -->
+<div class="tab-content" id="structure">
+  <h2>Programme Structure</h2>
+  <p>The programme is delivered over four years (eight semesters) and requires a minimum of 240 ECTS. It comprises general business education and core hotel and tourism management courses, an English language programme, a six-month managerial internship, two specialisation tracks (chosen in the final years), elective courses, and a final-year thesis.</p>
+  <div class="note">Course codes in the tables below follow the English programme-structure prefixes published in the University study guide (HTM = Hotel and Tourism Management core; CFS = business/economics/accounting and finance; LCE = English language; MGT = management). The University's module catalogue lists the same courses under Greek-derived prefixes (e.g. ΔΞΤ / DXT, ΟΞΝ / EXN, ΑΓΓ). Both the code system to publish and the precise ECTS per course should be confirmed by the Department.</div>
+
+  <h3>Year 1</h3>
+  <h4>Semester 1 (28 ECTS)</h4>
+  <table>
+    <tr><th>Code</th><th>Course</th><th>ECTS</th></tr>
+    <tr><td>HTM 100</td><td>Introduction to the Hospitality and Tourism Industry</td><td>6</td></tr>
+    <tr><td>HTM 140</td><td>Principles of Financial Accounting</td><td>6</td></tr>
+    <tr><td>CFS 101</td><td>Economics I</td><td>6</td></tr>
+    <tr><td>CFS 110</td><td>Mathematical Methods I</td><td>6</td></tr>
+    <tr><td>LCE 105</td><td>English for Academic Purposes</td><td>4</td></tr>
+  </table>
+
+  <h4>Semester 2 (28 ECTS)</h4>
+  <table>
+    <tr><th>Code</th><th>Course</th><th>ECTS</th></tr>
+    <tr><td>HTM 111</td><td>Food and Beverage Management</td><td>6</td></tr>
+    <tr><td>HTM 141</td><td>Managerial Accounting</td><td>6</td></tr>
+    <tr><td>CFS 102</td><td>Economics II</td><td>6</td></tr>
+    <tr><td>CFS 111</td><td>[PLACEHOLDER — course title to be confirmed by Department]</td><td>6</td></tr>
+    <tr><td>LCE 106</td><td>English for the Hospitality and Tourism Industry</td><td>4</td></tr>
+  </table>
+
+  <h3>Year 2</h3>
+  <h4>Semester 3 (28 ECTS)</h4>
+  <table>
+    <tr><th>Code</th><th>Course</th><th>ECTS</th></tr>
+    <tr><td>HTM 201</td><td>Business Ethics</td><td>6</td></tr>
+    <tr><td>HTM 220</td><td>Management of Hotel Units</td><td>6</td></tr>
+    <tr><td>HTM 260</td><td>Principles of Marketing</td><td>6</td></tr>
+    <tr><td>CFS 221</td><td>Finance I</td><td>6</td></tr>
+    <tr><td>LCE 207</td><td>English for Business Communication</td><td>4</td></tr>
+  </table>
+
+  <h4>Semester 4 (30 ECTS)</h4>
+  <table>
+    <tr><th>Code</th><th>Course</th><th>ECTS</th></tr>
+    <tr><td>HTM 202</td><td>Corporate Legislation</td><td>6</td></tr>
+    <tr><td>HTM 203</td><td>Social Psychology</td><td>6</td></tr>
+    <tr><td>HTM 230</td><td>Tourism Policy</td><td>6</td></tr>
+    <tr><td>MGT 100</td><td>[PLACEHOLDER — course title to be confirmed by Department]</td><td>6</td></tr>
+    <tr><td>HTM 271</td><td>Information Systems in the Hospitality and Tourism Industry</td><td>6</td></tr>
+  </table>
+
+  <h3>Year 3</h3>
+  <h4>Semester 5 (34 ECTS)</h4>
+  <table>
+    <tr><th>Code</th><th>Course</th><th>ECTS</th></tr>
+    <tr><td>HTM 322</td><td>Management of Professional Tourism Events</td><td>6</td></tr>
+    <tr><td>HTM 334</td><td>Sustainable Tourism Development</td><td>6</td></tr>
+    <tr><td>HTM 350</td><td>Human Resource Management</td><td>6</td></tr>
+    <tr><td>HTM 351</td><td>Organizational Behavior</td><td>6</td></tr>
+    <tr><td>HTM 361</td><td>Consumer Behavior</td><td>6</td></tr>
+    <tr><td>HTM 370</td><td>E-Commerce in the Tourism Industry</td><td>6</td></tr>
+    <tr><td>HTM 381</td><td>Research Methods</td><td>6</td></tr>
+  </table>
+
+  <h4>Semester 6 (32 ECTS)</h4>
+  <table>
+    <tr><th>Code</th><th>Course</th><th>ECTS</th></tr>
+    <tr><td>HTM 390</td><td>Managerial Internship in the Hospitality and Tourism Industry</td><td>18</td></tr>
+    <tr><td>—</td><td>Specialisation Course (see list below)</td><td>6</td></tr>
+    <tr><td>—</td><td>Elective Course (see list below)</td><td>6</td></tr>
+  </table>
+  <div class="note">The Overview credit table records Practical Training as 20 ECTS, while the semester breakdown shows the HTM 390 internship at 18 ECTS. The Department should reconcile and confirm the exact ECTS value for the internship/practical training.</div>
+
+  <h3>Year 4</h3>
+  <h4>Semester 7 (30 ECTS)</h4>
+  <table>
+    <tr><th>Code</th><th>Course</th><th>ECTS</th></tr>
+    <tr><td>HTM 453</td><td>Leadership Skills in the Hospitality and Tourism Industry</td><td>6</td></tr>
+    <tr><td>HTM 462</td><td>Strategic Marketing in the Hospitality and Tourism Industry</td><td>6</td></tr>
+    <tr><td>—</td><td>Specialisation Course (see list below)</td><td>6</td></tr>
+    <tr><td>—</td><td>Elective Courses</td><td>12</td></tr>
+  </table>
+
+  <h4>Semester 8 (30 ECTS)</h4>
+  <table>
+    <tr><th>Code</th><th>Course</th><th>ECTS</th></tr>
+    <tr><td>HTM 421</td><td>Revenue Management</td><td>6</td></tr>
+    <tr><td>HTM 426</td><td>Strategy in the Hospitality and Tourism Industry</td><td>6</td></tr>
+    <tr><td>—</td><td>Specialisation Course (see list below)</td><td>6</td></tr>
+    <tr><td>—</td><td>Elective Courses</td><td>12</td></tr>
+  </table>
+  <div class="note">The thesis (HTM 482 Thesis I / HTM 483 Thesis II, 12 ECTS total per the credit distribution) is undertaken in the final years under faculty supervision. The Department should confirm the exact semester placement of the two thesis courses within the structure above.</div>
+
+  <h3>Specialisation Courses</h3>
+  <h4>Hotel Management</h4>
+  <table>
+    <tr><th>Code</th><th>Course</th><th>ECTS</th></tr>
+    <tr><td>HTM 324</td><td>Service Quality and Total Quality Management</td><td>6</td></tr>
+    <tr><td>HTM 428</td><td>Risk and Crisis Management in the Hospitality Industry</td><td>6</td></tr>
+    <tr><td>HTM 441</td><td>Cost (Expense) Management and Control</td><td>6</td></tr>
+  </table>
+
+  <h4>Tourism Management</h4>
+  <table>
+    <tr><th>Code</th><th>Course</th><th>ECTS</th></tr>
+    <tr><td>HTM 332</td><td>Tourism Organization and Development</td><td>6</td></tr>
+    <tr><td>HTM 431</td><td>Management and Marketing of Tourism Destinations</td><td>6</td></tr>
+    <tr><td>HTM 433</td><td>Cultural Heritage Tourism</td><td>6</td></tr>
+  </table>
+
+  <h3>Elective Courses</h3>
+  <p>Elective courses (6 ECTS each) include the following. Courses not chosen as specialisation courses may also be available as electives, alongside business, accounting, finance, and language offerings.</p>
+  <table>
+    <tr><th>Code</th><th>Course</th></tr>
+    <tr><td>HTM 312</td><td>Oenology and Beverages</td></tr>
+    <tr><td>HTM 352</td><td>Executive Development in the Hospitality and Tourism Industry</td></tr>
+    <tr><td>HTM 409</td><td>Special Topics in the Hospitality and Tourism Industry</td></tr>
+    <tr><td>HTM 436</td><td>Sociology of Tourism</td></tr>
+    <tr><td>HTM 437</td><td>Special Interest Tourism</td></tr>
+    <tr><td>HTM 485</td><td>[PLACEHOLDER — course title to be confirmed by Department]</td></tr>
+    <tr><td>CFS 201 / CFS 202 / CFS 222 / CFS 231 / CFS 326 / CFS 327 / CFS 426</td><td>Business, economics, accounting and finance electives [titles to be confirmed by Department]</td></tr>
+    <tr><td>—</td><td>Additional language courses</td></tr>
+  </table>
+  <div class="note">The University study guide lists the elective pool by code (HTM 312, HTM 352, HTM 409, HTM 436, HTM 437, HTM 485, CFS 201, CFS 202, CFS 222, CFS 231, CFS 326, CFS 327, CFS 426, plus language courses). Full titles and ECTS for the CFS-prefixed electives should be supplied by the Department.</div>
+</div>
+
+<!-- ==================== TAB 3: COURSE DESCRIPTIONS ==================== -->
+<div class="tab-content" id="courses">
+  <h2>Course Descriptions</h2>
+  <p>The descriptions below are drawn from the University's module catalogue. Where the catalogue lists a course by title only, or where the description was not available in English, a placeholder is shown for the Department to supply. ECTS values follow the programme structure; the Department should confirm them per course.</p>
+
+  <!-- CORE HOSPITALITY & TOURISM -->
+  <div class="course-group-heading">Core Hospitality and Tourism Courses</div>
+
+  <div class="course">
+    <h4>HTM 100 — Introduction to the Hospitality and Tourism Industry</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Provides a basic understanding of the hospitality and tourism industry, with emphasis on the operation of the hotel unit, quality concepts, and tourism planning.</p>
+  </div>
+
+  <div class="course">
+    <h4>HTM 111 — Food and Beverage Management</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Investigates the fundamental principles and operations of the food and beverage department. Emphasis is given to the different types of units and to their structure and organisation.</p>
+  </div>
+
+  <div class="course">
+    <h4>HTM 220 — Management of Hotel Units</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Studies the basic functions of the hotel carried out by the Front Office (Reception) and the Housekeeping (Rooms) Department, including reservations and hotel management software.</p>
+  </div>
+
+  <div class="course">
+    <h4>HTM 230 — Tourism Policy</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Examines the interaction of the public and private sectors in the formulation of tourism policy at local, regional, and national level.</p>
+  </div>
+
+  <div class="course">
+    <h4>HTM 260 — Principles of Marketing</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Helps students understand the principles, philosophy, and applications of marketing, covering its nature, definition, and objectives, as well as consumer behaviour and the marketing mix.</p>
+  </div>
+
+  <div class="course">
+    <h4>HTM 271 — Information Systems in the Hospitality and Tourism Industry</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Examines the types and functions of the various systems used today in hotel, catering, and tourism enterprises.</p>
+  </div>
+
+  <div class="course">
+    <h4>HTM 322 — Management of Professional Tourism Events</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Examines the challenges in managing conference tourism, incentive travel, and exhibitions.</p>
+  </div>
+
+  <div class="course">
+    <h4>HTM 334 — Sustainable Tourism Development</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Aims to help students understand the principles and philosophy of sustainable tourism development, including definitions and measurement tools.</p>
+  </div>
+
+  <div class="course">
+    <h4>HTM 350 — Human Resource Management</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Analyses the management and development practices of human resources in the hospitality and tourism industry from a strategic perspective.</p>
+  </div>
+
+  <div class="course">
+    <h4>HTM 351 — Organizational Behavior</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Studies individual and group behaviours in organisations using organisational theory.</p>
+  </div>
+
+  <div class="course">
+    <h4>HTM 361 — Consumer Behavior</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Analyses the principles and applications of consumer behaviour with emphasis on the tourism industry.</p>
+  </div>
+
+  <div class="course">
+    <h4>HTM 370 — E-Commerce in the Tourism Industry</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Covers the role and application of e-commerce in hospitality and tourism businesses.</p>
+  </div>
+
+  <div class="course">
+    <h4>HTM 381 — Research Methods</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Covers the basic elements and key concepts of research methodology for the purpose of conducting a research study.</p>
+  </div>
+
+  <div class="course">
+    <h4>HTM 390 — Managerial Internship in the Hospitality and Tourism Industry</h4>
+    <div class="ects">18 ECTS</div>
+    <p>A six-month supervised practical training placement in a department or unit related to the student's specialty. It reinforces theoretical knowledge and develops managerial skills in real working conditions.</p>
+    <p class="prereq">Prerequisite: completion of at least 110 ECTS.</p>
+  </div>
+
+  <div class="course">
+    <h4>HTM 421 — Revenue Management</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Addresses the control, supervision, and management of revenue sources through supply and demand constraints.</p>
+  </div>
+
+  <div class="course">
+    <h4>HTM 426 — Strategy in the Hospitality and Tourism Industry</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Covers the understanding, application, and evaluation of the strategy of hospitality and tourism organisations.</p>
+  </div>
+
+  <div class="course">
+    <h4>HTM 453 — Leadership Skills in the Hospitality and Tourism Industry</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Covers leadership theory, style, and development in the hospitality and tourism context.</p>
+  </div>
+
+  <div class="course">
+    <h4>HTM 462 — Strategic Marketing in the Hospitality and Tourism Industry</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Develops a substantial understanding of the strategic marketing management process in hospitality and tourism.</p>
+    <p class="prereq">Prerequisite: HTM 260 (Principles of Marketing).</p>
+  </div>
+
+  <div class="course">
+    <h4>HTM 482 — Thesis I</h4>
+    <div class="ects">6 ECTS (12 ECTS combined with Thesis II)</div>
+    <p>A supervised thesis undertaken under the guidance of department faculty. The subject of the study must be relevant to the student's main specialty.</p>
+    <p class="prereq">Prerequisite: HTM 381 (Research Methods).</p>
+  </div>
+
+  <div class="course">
+    <h4>HTM 483 — Thesis II</h4>
+    <div class="ects">6 ECTS (12 ECTS combined with Thesis I)</div>
+    <p>Completes the thesis with data collection, analysis, and a public presentation.</p>
+    <p class="prereq">Prerequisite: HTM 482 (Thesis I).</p>
+  </div>
+
+  <!-- SPECIALISATION: HOTEL MANAGEMENT -->
+  <div class="course-group-heading">Specialisation — Hotel Management</div>
+
+  <div class="course">
+    <h4>HTM 324 — Service Quality and Total Quality Management</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Covers the principles and philosophy of Service Quality and Total Quality Management and their applications in the hotel and tourism sector.</p>
+  </div>
+
+  <div class="course">
+    <h4>HTM 428 — Risk and Crisis Management in the Hospitality Industry</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Addresses modern safety concerns in the hospitality industry, including emergency planning and security systems.</p>
+  </div>
+
+  <div class="course">
+    <h4>HTM 441 — Cost (Expense) Management and Control</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Studies the principles and techniques of expense management and control in the hospitality context.</p>
+    <p class="prereq">Prerequisite: Principles of Financial Accounting (per the module catalogue).</p>
+  </div>
+
+  <!-- SPECIALISATION: TOURISM MANAGEMENT -->
+  <div class="course-group-heading">Specialisation — Tourism Management</div>
+
+  <div class="course">
+    <h4>HTM 332 — Tourism Organization and Development</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Examines the planning and development of tourist destinations within a geographic area and covers the related fields of knowledge.</p>
+  </div>
+
+  <div class="course">
+    <h4>HTM 431 — Management and Marketing of Tourism Destinations</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Investigates the management and marketing functions of tourism destinations through theory, destination branding, and positioning.</p>
+  </div>
+
+  <div class="course">
+    <h4>HTM 433 — Cultural Heritage Tourism</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Covers the principles and philosophy of Cultural Heritage Tourism, including product development and promotion.</p>
+  </div>
+
+  <!-- ELECTIVES -->
+  <div class="course-group-heading">Elective Courses</div>
+
+  <div class="course">
+    <h4>HTM 312 — Oenology and Beverages</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Examines the history, science, and categories of wines and basic bar management principles.</p>
+  </div>
+
+  <div class="course">
+    <h4>HTM 352 — Executive Development in the Hospitality and Tourism Industry</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Examines the strategic role of training and development for hospitality and tourism professionals.</p>
+  </div>
+
+  <div class="course">
+    <h4>HTM 409 — Special Topics in the Hospitality and Tourism Industry</h4>
+    <div class="ects">6 ECTS</div>
+    <p>A series of sessions examining contemporary issues of interest to the hospitality and tourism industry. Content varies by offering.</p>
+  </div>
+
+  <div class="course">
+    <h4>HTM 436 — Sociology of Tourism</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Examines the social aspects of tourism, including economic impact and cultural effects.</p>
+  </div>
+
+  <div class="course">
+    <h4>HTM 437 — Special Interest Tourism</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Introduces theories of special interest tourism forms, including agritourism and ecotourism.</p>
+  </div>
+
+  <div class="course">
+    <h4>HTM 485 — [Course title to be confirmed by Department]</h4>
+    <div class="ects">6 ECTS</div>
+    <p>[PLACEHOLDER — course description to be supplied]</p>
+  </div>
+
+  <!-- GENERAL BUSINESS / ECONOMICS / ACCOUNTING / FINANCE -->
+  <div class="course-group-heading">General Business, Economics, Accounting and Finance Courses</div>
+  <p>The following general business education courses (listed in the module catalogue under economics, accounting, and finance) support the programme. Codes shown are the catalogue (module-page) codes; the programme structure groups several of these under the CFS/MGT prefixes. The Department should confirm the mapping and ECTS.</p>
+
+  <div class="course">
+    <h4>EXN 101 — Economics I</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Introduces Microeconomics, covering household behaviour, business behaviour, and market structure.</p>
+  </div>
+
+  <div class="course">
+    <h4>EXN 102 — Economics II</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Introduces Macroeconomics, covering monetary policy, inflation, and economic growth.</p>
+  </div>
+
+  <div class="course">
+    <h4>EXN 110 — Mathematical Methods I</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Introduces the mathematical methods used in business management, including derivatives.</p>
+  </div>
+
+  <div class="course">
+    <h4>EXN 221 — Finance I</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Introduces basic financial concepts, including market efficiency and asset valuation.</p>
+  </div>
+
+  <div class="course">
+    <h4>EXN 222 — Finance II</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Deepens the material from Finance I, covering cost of capital and business valuation methods.</p>
+  </div>
+
+  <div class="course">
+    <h4>EXN 311 — Business Forecasting</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Introduces various forecasting techniques used in business, with emphasis on practical application.</p>
+    <p class="prereq">Prerequisite: Statistical Analysis (DXT 180) and department consent.</p>
+  </div>
+
+  <div class="course">
+    <h4>DXT 140 — Principles of Financial Accounting</h4>
+    <div class="ects">6 ECTS</div>
+    <p>An introductory course covering accounting conventions, transaction recording, and financial statement preparation.</p>
+  </div>
+
+  <div class="course">
+    <h4>DXT 141 — Managerial Accounting</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Introduces managerial accounting concepts for control and decision-making.</p>
+    <p class="prereq">Prerequisite: DXT 140.</p>
+  </div>
+
+  <div class="course">
+    <h4>DXT 180 — Statistical Analysis</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Covers the fundamentals of statistics, probability theory, and regression analysis.</p>
+  </div>
+
+  <div class="course">
+    <h4>DXT 201 — Business Ethics</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Examines ethical behaviour in business, corporate governance, and professional conduct.</p>
+  </div>
+
+  <div class="course">
+    <h4>DXT 202 — Corporate Legislation</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Familiarises students with the basics of corporate law specific to hospitality and tourism.</p>
+  </div>
+
+  <div class="course">
+    <h4>DXT 203 — Social Psychology</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Studies the relationship between the individual and society through psychology and sociology.</p>
+  </div>
+
+  <div class="course">
+    <h4>DXT 204 — Business Environment</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Analyses the main elements of the external environment affecting hospitality and tourism businesses.</p>
+  </div>
+
+  <div class="course">
+    <h4>DXT 441 — Cost Management and Control</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Studies the principles and techniques of expense management in hospitality.</p>
+    <p class="prereq">Prerequisite: DXT 140.</p>
+  </div>
+
+  <div class="course">
+    <h4>EXN 326 — Financial Accounting II</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Develops knowledge of basic principles and concepts related to financial accounting and technical competence for preparing financial statements.</p>
+  </div>
+
+  <div class="course">
+    <h4>EXN 327 — Managerial Accounting II</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Deepens knowledge of cost analysis, cost allocation, budgeting, and valuation methods.</p>
+    <p class="prereq">Prerequisite: DXT 141.</p>
+  </div>
+
+  <div class="course">
+    <h4>EXN 342 — Corporate Law</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Covers the legal framework of corporate law, including company formation and dissolution.</p>
+  </div>
+
+  <div class="course">
+    <h4>EXN 426 — Financial Accounting III</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Develops understanding of accounting principles and double-entry techniques for financial statement preparation.</p>
+  </div>
+
+  <!-- ENGLISH LANGUAGE -->
+  <div class="course-group-heading">English Language Programme</div>
+
+  <div class="course">
+    <h4>LCE 105 — English for Academic Purposes (AΓΓ 122)</h4>
+    <div class="ects">4 ECTS</div>
+    <p>A three-hour mandatory course at B1–B2 level developing academic English skills.</p>
+  </div>
+
+  <div class="course">
+    <h4>LCE 106 — English for the Hospitality and Tourism Industry (AΓΓ 190)</h4>
+    <div class="ects">4 ECTS</div>
+    <p>Specialised English at B2 level for hospitality and tourism professionals.</p>
+    <p class="prereq">Prerequisite: English for Academic Purposes (AΓΓ 122).</p>
+  </div>
+
+  <div class="course">
+    <h4>LCE 207 — English for Business Communication (AΓΓ 240)</h4>
+    <div class="ects">4 ECTS</div>
+    <p>Develops skills in business communication, public presentations, and professional correspondence.</p>
+    <p class="prereq">Prerequisite: English for the Hospitality and Tourism Industry (AΓΓ 190).</p>
+  </div>
+</div>
+
+<!-- ==================== TAB 4: ADMISSION ==================== -->
+<div class="tab-content" id="admission">
+  <h2>Admission Requirements</h2>
+
+  <h3>Eligibility</h3>
+  <p>Admission to the programme is through the national admissions system, under the published examination framework for entry to public universities in Cyprus (Framework 27 for this programme).</p>
+
+  <h3>Examination Subjects (Framework 27)</h3>
+  <p><strong>Mandatory subjects:</strong></p>
+  <ul>
+    <li>Modern Greek</li>
+    <li>Mathematics</li>
+  </ul>
+  <p><strong>Optional subjects:</strong></p>
+  <ul>
+    <li>Physics</li>
+    <li>Biology</li>
+    <li>History</li>
+    <li>Ancient Greek</li>
+    <li>Foreign Languages</li>
+    <li>Economics</li>
+    <li>Accounting</li>
+    <li>Information Technology (IT)</li>
+    <li>Design / Technology</li>
+    <li>Fine Arts</li>
+    <li>Graphic Arts</li>
+  </ul>
+
+  <h3>Other Admission Routes</h3>
+  <div class="note">Additional admission routes (e.g. transfers, international/EU applicants, holders of recognised equivalent qualifications) and any minimum entry score — to be supplied by the Department.</div>
+
+  <h3>How to Apply</h3>
+  <p>Applications are submitted through the national admissions process and the University's procedures.</p>
+  <a href="#" class="cta-button">Apply Online</a>
+  <p style="margin-top:8px; font-size:0.88rem; color:#888;">[Application link — TBC]</p>
+</div>
+
+<!-- ==================== TAB 5: TUITION ==================== -->
+<div class="tab-content" id="tuition">
+  <h2>Tuition and Scholarships</h2>
+
+  <h3>Tuition Fees</h3>
+  <div class="note">Tuition fee information is not stated on the source pages. [PLACEHOLDER — Department to supply: annual/total tuition fees, and whether tuition for state-supported undergraduate places is covered by the Republic of Cyprus.]</div>
+
+  <h3>Scholarships</h3>
+  <div class="note">[PLACEHOLDER — Department to supply: scholarship schemes, amounts, eligibility criteria, and application process.]</div>
+</div>
+
+<!-- ==================== TAB 6: HOW YOU WILL LEARN ==================== -->
+<div class="tab-content" id="learning">
+  <h2>How You Will Learn</h2>
+  <p>The programme combines academic coursework with applied learning. Across four years, students build a foundation in general business education and core hotel and tourism management, then specialise and complete an independent thesis. A central feature is the supervised managerial internship in the industry.</p>
+
+  <h3>Practical Training</h3>
+  <p>Students undertake a six-month managerial internship (HTM 390) in a department or unit related to their specialty. The University study guide describes the practical training as 1,200 hours of work-based experience, reinforcing theoretical knowledge and developing managerial skills in real working conditions. The internship requires completion of at least 110 ECTS beforehand.</p>
+
+  <h3>Thesis</h3>
+  <p>In the final years, students complete a supervised thesis (Thesis I and Thesis II) on a topic relevant to their specialisation, involving a literature review, data collection, analysis, and a public presentation.</p>
+
+  <h3>English Language Programme</h3>
+  <p>Students complete a sequence of three English courses (English for Academic Purposes; English for the Hospitality and Tourism Industry; English for Business Communication), progressing from B1–B2 to B2 level and developing academic and professional communication skills relevant to the industry.</p>
+
+  <h3>Teaching, Assessment, and Platforms</h3>
+  <div class="note">[PLACEHOLDER — Department to supply: teaching methods, class formats, assessment structure, and learning platforms used.]</div>
+</div>
+
+<!-- ==================== TAB 7: RECOGNITION & CAREERS ==================== -->
+<div class="tab-content" id="careers">
+  <h2>Professional Recognition and Career Prospects</h2>
+
+  <h3>Professional Recognition</h3>
+  <p>The programme holds certifications from global professional accountancy bodies, including the Institute of Chartered Accountants in England and Wales (ICAEW) and the Association of Chartered Certified Accountants (ACCA). Graduates may receive automatic exemptions where they meet the relevant pass thresholds (the source notes a 6-out-of-10 pass threshold).</p>
+  <div class="note">Exact exemptions (which papers, and the precise conditions for ICAEW and ACCA) — to be confirmed and detailed by the Department.</div>
+
+  <h3>Career Prospects</h3>
+  <p>Graduates work as executive and managerial staff in the hotel and tourism industry. They develop strategic plans, manage operations, and design innovative travel experiences across tourism markets.</p>
+  <p>Typical roles and sectors include:</p>
+  <ul>
+    <li>Hotel and resort management (front office, rooms division, food and beverage, operations)</li>
+    <li>Tourism organisations and destination management organisations</li>
+    <li>Travel, events, conference, and exhibition management</li>
+    <li>Marketing, e-commerce, and revenue management within hospitality and tourism enterprises</li>
+    <li>Human resources, quality, and risk management functions in the sector</li>
+  </ul>
+
+  <h3>Employment Statistics</h3>
+  <div class="note">[PLACEHOLDER — Department to supply: graduate employment rate, time-to-employment, and any graduate-destination data.]</div>
+</div>
+
+<!-- ==================== TAB 8: STUDENT SUPPORT ==================== -->
+<div class="tab-content" id="support">
+  <h2>Student Support and Resources</h2>
+
+  <h3>Academic Advisor</h3>
+  <p>Assigned at enrolment to guide course selection, academic progress, and career planning.</p>
+
+  <h3>Learning Development Network (LDN)</h3>
+  <p>Technical support, study skills, writing support, and AI literacy training.</p>
+
+  <h3>Library</h3>
+  <p>Access to academic databases, e-journals, and citation management tools (e.g. EndNote, Zotero).</p>
+
+  <h3>Career Services</h3>
+  <p>Career counselling, CV review, interview preparation, and networking events, including support for securing the managerial internship.</p>
+
+  <h3>Counselling Services</h3>
+  <p>Confidential support available in-person and remotely.<br>
+  Email: counseling@cut.ac.cy · Tel: +357 25 002 500 (24/7)</p>
+  <div class="note">Student support contact details adapted from generic University services; the Department should confirm the channels and hours specific to the Paphos campus and this programme.</div>
+</div>
+
+<!-- ==================== TAB 9: CONTACT ==================== -->
+<div class="tab-content" id="contact">
+  <h2>Contact</h2>
+
+  <div class="contact-block">
+    <strong>Programme Coordinator</strong>
+    Christina Mazaraki<br>
+    [PLACEHOLDER — Department to supply: coordinator title, email, and telephone]
+  </div>
+
+  <div class="contact-block">
+    <strong>Department</strong>
+    Department of Tourism and Hospitality Management<br>
+    School of Tourism Management, Hospitality and Entrepreneurship<br>
+    Cyprus University of Technology · Paphos campus<br>
+    [PLACEHOLDER — Department to supply: postal address, department email, and telephone]
+  </div>
+
+  <div class="contact-block">
+    <strong>General Enquiries</strong>
+    Student Services and Information Centre<br>
+    Email: kep@cut.ac.cy<br>
+    Tel: +357 25 002710/11
+  </div>
+
+  <a href="#" class="cta-button">Apply Online</a>
+  <p style="margin-top:8px; font-size:0.88rem; color:#888;">[Application link — TBC]</p>
+</div>
+
+<!-- ==================== JS ==================== -->
+<script>
+  document.querySelectorAll('.tabs-nav button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tabs-nav button').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tab-content').forEach(tc => tc.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById(btn.dataset.tab).classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  });
+</script>
+</body>
+</html>

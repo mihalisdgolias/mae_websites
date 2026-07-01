@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="MG">
+<title>BSc in Finance and Accounting — Cyprus University of Technology</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;600;700&family=Source+Serif+4:wght@400;600&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.65;
+    color: #2a2a2a;
+    background: #f5f5f5;
+  }
+
+  /* ---- HEADER ---- */
+  .page-header {
+    background: #1a3a5c;
+    color: #fff;
+    padding: 48px 0 40px;
+  }
+  .page-header .wrap {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+  .page-header h1 {
+    font-family: 'Source Serif 4', serif;
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  .page-header .subtitle {
+    font-size: 0.95rem;
+    font-weight: 300;
+    opacity: 0.85;
+  }
+
+  /* ---- TABS NAV ---- */
+  .tabs-nav {
+    background: #fff;
+    border-bottom: 2px solid #ddd;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .tabs-nav .wrap {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    gap: 0;
+  }
+  .tabs-nav button {
+    background: none;
+    border: none;
+    padding: 14px 18px;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: #666;
+    cursor: pointer;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .tabs-nav button:hover { color: #1a3a5c; }
+  .tabs-nav button.active {
+    color: #1a3a5c;
+    border-bottom-color: #1a3a5c;
+  }
+
+  /* ---- CONTENT ---- */
+  .tab-content {
+    display: none;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+  }
+  .tab-content.active { display: block; }
+
+  h2 {
+    font-family: 'Source Serif 4', serif;
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: #1a3a5c;
+    margin-bottom: 24px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+  }
+  h3 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #1a3a5c;
+    margin: 32px 0 12px;
+  }
+  h4 {
+    font-size: 1.02rem;
+    font-weight: 700;
+    color: #333;
+    margin: 28px 0 8px;
+  }
+  p { margin-bottom: 14px; }
+
+  /* ---- TABLES ---- */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0 24px;
+    font-size: 0.93rem;
+  }
+  th, td {
+    text-align: left;
+    padding: 10px 14px;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  th {
+    background: #f0f3f6;
+    font-weight: 600;
+    color: #1a3a5c;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+  tr:hover td { background: #fafbfc; }
+
+  /* key-features table (2-col, no header) */
+  .kf-table th { display: none; }
+  .kf-table td:first-child {
+    font-weight: 600;
+    width: 160px;
+    color: #1a3a5c;
+  }
+
+  /* ---- LISTS ---- */
+  ul, ol { margin: 10px 0 16px 22px; }
+  li { margin-bottom: 6px; }
+
+  /* ---- COURSE CARD ---- */
+  .course {
+    background: #fff;
+    border: 1px solid #e4e4e4;
+    border-radius: 6px;
+    padding: 24px 28px;
+    margin: 20px 0;
+  }
+  .course h4 {
+    margin: 0 0 4px;
+    color: #1a3a5c;
+  }
+  .course .ects {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: #888;
+    margin-bottom: 14px;
+  }
+  .course p { margin-bottom: 12px; }
+  .course p:last-child { margin-bottom: 0; }
+  .course .prereq {
+    font-size: 0.88rem;
+    color: #777;
+    font-style: italic;
+    margin-top: 10px;
+  }
+
+  .course-group-heading {
+    font-family: 'Source Serif 4', serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1a3a5c;
+    margin: 40px 0 8px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid #e0e0e0;
+  }
+
+  /* ---- MISC ---- */
+  .note {
+    background: #fffbe6;
+    border-left: 4px solid #e6c200;
+    padding: 14px 18px;
+    margin: 18px 0;
+    font-size: 0.93rem;
+    border-radius: 0 4px 4px 0;
+  }
+  .cta-button {
+    display: inline-block;
+    background: #1a3a5c;
+    color: #fff;
+    padding: 12px 28px;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 4px;
+    margin-top: 16px;
+    font-size: 0.95rem;
+    transition: background 0.2s;
+  }
+  .cta-button:hover { background: #264d73; }
+
+  .contact-block { margin-bottom: 24px; }
+  .contact-block strong { display: block; margin-bottom: 2px; }
+
+  /* responsive */
+  @media (max-width: 640px) {
+    .page-header h1 { font-size: 1.5rem; }
+    .tabs-nav button { padding: 12px 12px; font-size: 0.8rem; }
+    .course { padding: 18px 16px; }
+    table { font-size: 0.85rem; }
+    th, td { padding: 8px 10px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ==================== HEADER ==================== -->
+<header class="page-header">
+  <div class="wrap">
+    <h1>BSc in Finance and Accounting</h1>
+    <div class="subtitle">Department of Finance, Accounting and Management Science · Faculty of Management and Economics · Cyprus University of Technology</div>
+  </div>
+</header>
+
+<!-- ==================== TAB NAV ==================== -->
+<nav class="tabs-nav">
+  <div class="wrap">
+    <button class="active" data-tab="overview">Overview</button>
+    <button data-tab="structure">Programme Structure</button>
+    <button data-tab="courses">Course Descriptions</button>
+    <button data-tab="admission">Admission</button>
+    <button data-tab="tuition">Tuition &amp; Scholarships</button>
+    <button data-tab="learning">How You Will Learn</button>
+    <button data-tab="careers">Recognition &amp; Careers</button>
+    <button data-tab="support">Student Support</button>
+    <button data-tab="contact">Contact</button>
+  </div>
+</nav>
+
+<!-- ==================== TAB 1: OVERVIEW ==================== -->
+<div class="tab-content active" id="overview">
+  <h2>Overview</h2>
+  <p>The BSc in Finance and Accounting is a four-year undergraduate programme designed to provide graduates with the knowledge, professional acumen and skills required to distinguish themselves as professionals in the fields of finance and accounting. The programme combines a broad understanding of business with rigorous training in the analytical, quantitative and technological methods used to support strategic decision-making.</p>
+  <p>Students build a strong common foundation across the first two years — in economics, financial accounting, finance, management, mathematics, statistics, law and programming — before choosing a specialisation in either Finance or Accounting in their third year. Across the curriculum, graduates gain knowledge in financial accounting, corporate finance, financial management, investments, auditing, taxation and economics, and develop the critical thinking and IT skills needed to apply this knowledge to real strategic objectives.</p>
+
+  <h3>Key Features</h3>
+  <table class="kf-table">
+    <tr><td>Duration</td><td>4 years (8 semesters), full-time</td></tr>
+    <tr><td>Credits</td><td>240 ECTS</td></tr>
+    <tr><td>Specialisations</td><td>Finance or Accounting (selected in year 3)</td></tr>
+    <tr><td>Professional recognition</td><td>ICAEW — up to 12 exemptions; ACCA — 9 exemptions</td></tr>
+    <tr><td>Award</td><td>Bachelor of Science (BSc) in Finance and Accounting</td></tr>
+    <tr><td>First intake</td><td>2025</td></tr>
+  </table>
+
+  <h3>Specialisations</h3>
+  <p><strong>1. Finance</strong> — Builds advanced expertise in corporate finance, investment management, financial econometrics, banking economics, derivatives, financial statement analysis and asset valuation. Depth electives extend into sustainable finance, fixed-income portfolio management, risk management, financial technology, alternative investments and behavioural finance. The track prepares graduates for careers in banking, investment, asset management, financial analysis and FinTech.</p>
+  <p><strong>2. Accounting</strong> — Develops advanced competence in financial accounting, consolidated financial statements, tax accounting, auditing and corporate strategy and technology. Depth electives extend into contemporary issues in accounting, shipping accounting, oil and gas company accounting, advanced financial accounting, banking-sector accounting and accounting information systems. The track prepares graduates for careers in auditing, professional accountancy, taxation and financial reporting, and is aligned with leading professional accountancy qualifications (ICAEW, ACCA).</p>
+  <p>Both specialisations share a common third- and fourth-year structure that includes a supervised Practical Training placement (FAMS500, 12 ECTS) and a Dissertation (FAMS501, 12 ECTS).</p>
+
+  <h3>Intended Learning Outcomes</h3>
+  <p>The intended learning outcomes below are expressed in the Knowledge / Skills / Competences framework and are derived qualitatively from the programme aims and course content. They are illustrative and intended for confirmation by the Department.</p>
+
+  <h4>Knowledge</h4>
+  <ul>
+    <li>Explain the core principles of microeconomics, macroeconomics and the functioning of financial systems and markets.</li>
+    <li>Describe the conceptual framework of financial accounting, the double-entry method, the accounting cycle and the preparation of financial statements under International Accounting Standards.</li>
+    <li>Outline theories and methods of corporate finance, financial management, investment management and asset valuation within a risk–return framework.</li>
+    <li>Identify the legal, regulatory, taxation, ethical and sustainability frameworks that govern business, finance and the accountancy profession.</li>
+  </ul>
+
+  <h4>Skills</h4>
+  <ul>
+    <li>Apply quantitative methods — calculus, statistics, regression analysis, econometrics and matrix computation — to economic, financial and accounting problems.</li>
+    <li>Use information technology and analytical tools (e.g. MS Excel, R, and data-analysis/visualisation software) to manage, analyse and interpret financial and accounting data.</li>
+    <li>Prepare, analyse and interpret financial statements and use this information for investment, financing and managerial decision-making.</li>
+    <li>Design and conduct independent research using appropriate methodologies, culminating in a supervised dissertation.</li>
+  </ul>
+
+  <h4>Competences</h4>
+  <ul>
+    <li>Exercise critical thinking and professional judgement to evaluate economic policy, business strategy and financial decisions.</li>
+    <li>Act ethically and responsibly, taking account of sustainability, governance and the public interest in finance and accounting practice.</li>
+    <li>Communicate financial and accounting information effectively and collaborate in professional team settings.</li>
+    <li>Operate independently and adapt to a changing professional environment, including continued study at postgraduate level.</li>
+  </ul>
+  <div class="note">[PLACEHOLDER — Department to supply: the official, validated Intended Learning Outcomes statement. The outcomes above are derived qualitatively from the published programme aims and course descriptions and should be replaced with the formally approved list.]</div>
+
+  <h3>Programme Coordinator</h3>
+  <div class="note">[PLACEHOLDER — Department to supply: programme coordinator name, title, email and telephone. Not published on the live programme page.]</div>
+</div>
+
+<!-- ==================== TAB 2: PROGRAMME STRUCTURE ==================== -->
+<div class="tab-content" id="structure">
+  <h2>Programme Structure</h2>
+  <p>The programme totals 240 ECTS over four years (eight semesters), with 30 ECTS per semester. Semesters 1–4 form a common core taken by all students. From the third year, students follow either the Finance or the Accounting specialisation, each with its own required courses and depth/breadth elective lists. Course codes, titles and ECTS are as published on the programme page; English titles are translations of the official Greek course titles.</p>
+
+  <div class="course-group-heading">Common Core — Semesters 1–4 (all students)</div>
+
+  <h3>Semester 1 (30 ECTS)</h3>
+  <table>
+    <tr><th>Code</th><th>Course</th><th>ECTS</th></tr>
+    <tr><td>FAMS111</td><td>Principles of Microeconomics</td><td>6</td></tr>
+    <tr><td>FAMS112</td><td>Calculus and Applications</td><td>6</td></tr>
+    <tr><td>FAMS113</td><td>Principles of Financial Accounting</td><td>6</td></tr>
+    <tr><td>LCE136</td><td>English for Finance, Accounting and Management Science I</td><td>6</td></tr>
+    <tr><td>FAMS114</td><td>Personal Money and Capital Management</td><td>6</td></tr>
+  </table>
+
+  <h3>Semester 2 (30 ECTS)</h3>
+  <table>
+    <tr><th>Code</th><th>Course</th><th>ECTS</th></tr>
+    <tr><td>FAMS121</td><td>Principles of Macroeconomics</td><td>6</td></tr>
+    <tr><td>FAMS122</td><td>Statistics</td><td>6</td></tr>
+    <tr><td>FAMS123</td><td>Principles of Finance</td><td>6</td></tr>
+    <tr><td>LCE137</td><td>English for Finance, Accounting and Management Science II</td><td>6</td></tr>
+    <tr><td>FAMS124</td><td>Principles of Management</td><td>6</td></tr>
+  </table>
+
+  <h3>Semester 3 (30 ECTS)</h3>
+  <table>
+    <tr><th>Code</th><th>Course</th><th>ECTS</th></tr>
+    <tr><td>FAMS211</td><td>Financial Accounting I</td><td>6</td></tr>
+    <tr><td>FAMS212</td><td>Business Skills</td><td>6</td></tr>
+    <tr><td>FAMS213</td><td>Commercial and Corporate Law</td><td>6</td></tr>
+    <tr><td>FAMS214</td><td>Statistics and Regression Analysis</td><td>6</td></tr>
+    <tr><td>FAMS215</td><td>Introduction to Programming</td><td>6</td></tr>
+  </table>
+
+  <h3>Semester 4 (30 ECTS)</h3>
+  <table>
+    <tr><th>Code</th><th>Course</th><th>ECTS</th></tr>
+    <tr><td>FAMS221</td><td>International Financial Markets</td><td>6</td></tr>
+    <tr><td>FAMS222</td><td>Financial Management</td><td>6</td></tr>
+    <tr><td>FAMS223</td><td>Management Science</td><td>6</td></tr>
+    <tr><td>FAMS224</td><td>Algebra and Matrix Computations</td><td>6</td></tr>
+    <tr><td>FAMS225</td><td>Management Accounting and Costing I</td><td>6</td></tr>
+  </table>
+
+  <p>At the end of the second year, students choose their specialisation — <strong>Finance</strong> or <strong>Accounting</strong> — which determines the required courses and elective options for semesters 5–8.</p>
+
+  <!-- FINANCE TRACK -->
+  <div class="course-group-heading">Finance Specialisation — Semesters 5–8</div>
+
+  <h3>Semester 5 (30 ECTS)</h3>
+  <table>
+    <tr><th>Code</th><th>Course</th><th>ECTS</th></tr>
+    <tr><td>FAMS310</td><td>Financial Econometrics</td><td>6</td></tr>
+    <tr><td>FAMS311</td><td>Corporate Finance</td><td>6</td></tr>
+    <tr><td>FAMS312</td><td>Investment Management</td><td>6</td></tr>
+    <tr><td>FAMS —</td><td>Elective</td><td>6</td></tr>
+    <tr><td>FAMS —</td><td>Elective</td><td>6</td></tr>
+  </table>
+
+  <h3>Semester 6 (30 ECTS)</h3>
+  <table>
+    <tr><th>Code</th><th>Course</th><th>ECTS</th></tr>
+    <tr><td>FAMS321</td><td>Banking Economics</td><td>6</td></tr>
+    <tr><td>FAMS322</td><td>Research Methods</td><td>6</td></tr>
+    <tr><td>FAMS323</td><td>Derivatives</td><td>6</td></tr>
+    <tr><td>FAMS —</td><td>Elective</td><td>6</td></tr>
+    <tr><td>FAMS —</td><td>Elective</td><td>6</td></tr>
+    <tr><td>FAMS500</td><td>Practical Training (Internship)</td><td>12</td></tr>
+  </table>
+  <div class="note">As published, Semester 6 lists three required courses, two electives and the 12-ECTS Practical Training. The course-by-course total shown on the live page exceeds 30 ECTS. [PLACEHOLDER — Department to confirm the exact distribution of credits and the timing of the Practical Training (FAMS500) within semesters 5–8.]</div>
+
+  <h3>Semester 7 (30 ECTS)</h3>
+  <table>
+    <tr><th>Code</th><th>Course</th><th>ECTS</th></tr>
+    <tr><td>FAMS411</td><td>Financial Statement Analysis</td><td>6</td></tr>
+    <tr><td>FAMS412</td><td>Asset Valuation</td><td>6</td></tr>
+    <tr><td>FAMS —</td><td>Elective</td><td>6</td></tr>
+    <tr><td>FAMS —</td><td>Elective</td><td>6</td></tr>
+    <tr><td>FAMS —</td><td>Elective</td><td>6</td></tr>
+  </table>
+
+  <h3>Semester 8 (30 ECTS)</h3>
+  <table>
+    <tr><th>Code</th><th>Course</th><th>ECTS</th></tr>
+    <tr><td>FAMS429</td><td>Sustainable Development — Sustainability and Ethics</td><td>6</td></tr>
+    <tr><td>FAMS —</td><td>Elective</td><td>6</td></tr>
+    <tr><td>FAMS —</td><td>Elective</td><td>6</td></tr>
+    <tr><td>FAMS —</td><td>Elective</td><td>6</td></tr>
+    <tr><td>FAMS —</td><td>Elective</td><td>6</td></tr>
+    <tr><td>FAMS501</td><td>Dissertation</td><td>12</td></tr>
+  </table>
+  <div class="note">As published, Semester 8 lists one required course, four electives and the 12-ECTS Dissertation. The course-by-course total shown on the live page exceeds 30 ECTS. [PLACEHOLDER — Department to confirm the exact distribution of credits in semester 8.]</div>
+
+  <h4>Finance — Depth Electives (minimum 2 of 6)</h4>
+  <table>
+    <tr><th>Code</th><th>Course</th><th>ECTS</th></tr>
+    <tr><td>FAMS316</td><td>Sustainable Finance</td><td>6</td></tr>
+    <tr><td>FAMS326</td><td>Fixed Income Portfolio Management</td><td>6</td></tr>
+    <tr><td>FAMS414</td><td>Risk Management and Analysis</td><td>6</td></tr>
+    <tr><td>FAMS415</td><td>Financial Technology</td><td>6</td></tr>
+    <tr><td>FAMS422</td><td>Alternative Investments</td><td>6</td></tr>
+    <tr><td>FAMS423</td><td>Behavioural Finance</td><td>6</td></tr>
+  </table>
+
+  <h4>Finance — Breadth Electives</h4>
+  <table>
+    <tr><th>Code</th><th>Course</th><th>ECTS</th></tr>
+    <tr><td>FAMS317</td><td>Data Analysis for Finance and Accounting</td><td>6</td></tr>
+    <tr><td>FAMS327</td><td>Machine Learning for Finance and Accounting</td><td>6</td></tr>
+    <tr><td>FAMS —</td><td>Accounting courses (selectable)</td><td>up to 54</td></tr>
+    <tr><td>FAMS —</td><td>Courses from outside the Department</td><td>up to 24</td></tr>
+  </table>
+  <div class="note">[PLACEHOLDER — Department to confirm the exact minimum/maximum rules for Finance depth and breadth electives and the totals shown on the live page.]</div>
+
+  <!-- ACCOUNTING TRACK -->
+  <div class="course-group-heading">Accounting Specialisation — Semesters 5–8</div>
+
+  <h3>Semester 5 (30 ECTS)</h3>
+  <div class="note">[PLACEHOLDER — Department to supply: the Accounting-track Semester 5 required courses, codes and ECTS. The live programme page does not list Semester 5 separately for the Accounting specialisation.]</div>
+
+  <h3>Semester 6 (30 ECTS)</h3>
+  <table>
+    <tr><th>Code</th><th>Course</th><th>ECTS</th></tr>
+    <tr><td>FAMS322</td><td>Research Methods</td><td>6</td></tr>
+    <tr><td>FAMS324</td><td>Financial Accounting III</td><td>6</td></tr>
+    <tr><td>FAMS325</td><td>Tax Accounting I</td><td>6</td></tr>
+    <tr><td>FAMS —</td><td>Elective</td><td>6</td></tr>
+    <tr><td>FAMS —</td><td>Elective</td><td>6</td></tr>
+    <tr><td>FAMS500</td><td>Practical Training (Internship)</td><td>12</td></tr>
+  </table>
+
+  <h3>Semester 7 (30 ECTS)</h3>
+  <table>
+    <tr><th>Code</th><th>Course</th><th>ECTS</th></tr>
+    <tr><td>FAMS413</td><td>Corporate Strategy and Technology</td><td>6</td></tr>
+    <tr><td>FAMS —</td><td>Elective</td><td>6</td></tr>
+    <tr><td>FAMS —</td><td>Elective</td><td>6</td></tr>
+    <tr><td>FAMS —</td><td>Elective</td><td>6</td></tr>
+    <tr><td>FAMS —</td><td>Elective</td><td>6</td></tr>
+  </table>
+
+  <h3>Semester 8 (30 ECTS)</h3>
+  <table>
+    <tr><th>Code</th><th>Course</th><th>ECTS</th></tr>
+    <tr><td>FAMS429</td><td>Sustainable Development — Sustainability and Ethics</td><td>6</td></tr>
+    <tr><td>FAMS —</td><td>Elective</td><td>6</td></tr>
+    <tr><td>FAMS —</td><td>Elective</td><td>6</td></tr>
+    <tr><td>FAMS —</td><td>Elective</td><td>6</td></tr>
+    <tr><td>FAMS —</td><td>Elective</td><td>6</td></tr>
+    <tr><td>FAMS501</td><td>Dissertation</td><td>12</td></tr>
+  </table>
+
+  <h4>Accounting — Depth Electives (4 of 8 required)</h4>
+  <table>
+    <tr><th>Code</th><th>Course</th><th>ECTS</th></tr>
+    <tr><td>FAMS318</td><td>Contemporary Issues in Accounting</td><td>6</td></tr>
+    <tr><td>FAMS319</td><td>Shipping Accounting</td><td>6</td></tr>
+    <tr><td>FAMS328</td><td>Oil and Gas Company Accounting</td><td>6</td></tr>
+    <tr><td>FAMS424</td><td>Auditing II</td><td>6</td></tr>
+    <tr><td>FAMS425</td><td>Tax Accounting II</td><td>6</td></tr>
+    <tr><td>FAMS426</td><td>Advanced Financial Accounting</td><td>6</td></tr>
+    <tr><td>FAMS427</td><td>Financial Accounting in the Banking Sector</td><td>6</td></tr>
+    <tr><td>FAMS428</td><td>Accounting Information Systems</td><td>6</td></tr>
+  </table>
+
+  <h4>Accounting — Breadth Electives</h4>
+  <table>
+    <tr><th>Code</th><th>Course</th><th>ECTS</th></tr>
+    <tr><td>FAMS317</td><td>Data Analysis for Finance and Accounting</td><td>6</td></tr>
+    <tr><td>FAMS327</td><td>Machine Learning for Finance and Accounting</td><td>6</td></tr>
+    <tr><td>FAMS —</td><td>Finance courses (selectable)</td><td>up to 48</td></tr>
+    <tr><td>FAMS —</td><td>Courses from outside the Department</td><td>up to 24</td></tr>
+  </table>
+  <div class="note">[PLACEHOLDER — Department to confirm the exact minimum/maximum rules for Accounting depth and breadth electives and the totals shown on the live page.]</div>
+</div>
+
+<!-- ==================== TAB 3: COURSE DESCRIPTIONS ==================== -->
+<div class="tab-content" id="courses">
+  <h2>Course Descriptions</h2>
+  <p>Descriptions below are English translations of the official course descriptions published on the programme page. Course codes and ECTS are as published.</p>
+
+  <!-- COMMON CORE -->
+  <div class="course-group-heading">Common Core (Semesters 1–4)</div>
+
+  <div class="course">
+    <h4>FAMS111 — Principles of Microeconomics</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Microeconomics is a foundational pillar of economic science. This course presents elementary economic tools to enable students to understand and apply economic principles, develop economic thinking, and use basic tools to analyse markets and evaluate economic policies.</p>
+  </div>
+
+  <div class="course">
+    <h4>FAMS112 — Calculus and Applications</h4>
+    <div class="ects">6 ECTS</div>
+    <p>This course familiarises students with fundamental concepts of limits, continuity, differentiation and integration. It introduces optimisation theory and equips students with appropriate mathematical methods for analysing economic, administrative and business problems using mathematical analysis.</p>
+  </div>
+
+  <div class="course">
+    <h4>FAMS113 — Principles of Financial Accounting</h4>
+    <div class="ects">6 ECTS</div>
+    <p>The course introduces students to accounting, the need for financial information, and its reliability within regulatory frameworks. Objectives include understanding the conceptual framework of accounting (assets, liabilities, revenues, expenses), the double-entry method, the accounting cycle, and the preparation of financial statements.</p>
+  </div>
+
+  <div class="course">
+    <h4>LCE136 — English for Finance, Accounting and Management Science I</h4>
+    <div class="ects">6 ECTS</div>
+    <p>[PLACEHOLDER — course description to be supplied]</p>
+  </div>
+
+  <div class="course">
+    <h4>FAMS114 — Personal Money and Capital Management</h4>
+    <div class="ects">6 ECTS</div>
+    <p>This course provides tools for students to acquire financial and economic literacy. It covers concepts of economic and financial management needed to understand how various financial events affect decision-making, helping students develop rational attitudes toward sound financial choices throughout life.</p>
+  </div>
+
+  <div class="course">
+    <h4>FAMS121 — Principles of Macroeconomics</h4>
+    <div class="ects">6 ECTS</div>
+    <p>This course provides a comprehensive introduction to macroeconomic theory and addresses economy-wide questions. Students develop an understanding of key macroeconomic concepts (national income, inflation, unemployment), the determinants of economic growth, the functioning of the financial system, and the basics of the international economy.</p>
+  </div>
+
+  <div class="course">
+    <h4>FAMS122 — Statistics</h4>
+    <div class="ects">6 ECTS</div>
+    <p>The course introduces students to basic statistical concepts and analytical procedures used in quantitative research in economics and business administration. Students learn probability theory and statistical methods to correctly apply fundamental statistical techniques in analysis and interpretation.</p>
+  </div>
+
+  <div class="course">
+    <h4>FAMS123 — Principles of Finance</h4>
+    <div class="ects">6 ECTS</div>
+    <p>This course helps students understand the fundamental principles of corporate financial management by combining theory with practice. It explains how financial theory applies to practical business problems and investment decisions, focusing on asset valuation within a risk–return framework.</p>
+  </div>
+
+  <div class="course">
+    <h4>LCE137 — English for Finance, Accounting and Management Science II</h4>
+    <div class="ects">6 ECTS</div>
+    <p>[PLACEHOLDER — course description to be supplied]</p>
+  </div>
+
+  <div class="course">
+    <h4>FAMS124 — Principles of Management</h4>
+    <div class="ects">6 ECTS</div>
+    <p>This course introduces students to general management principles through a historical review and various contemporary approaches. It covers the planning, organisation, direction and control functions, and examines the manager's role in promoting change and providing effective leadership.</p>
+  </div>
+
+  <div class="course">
+    <h4>FAMS211 — Financial Accounting I</h4>
+    <div class="ects">6 ECTS</div>
+    <p>The course deepens knowledge of accounting for events affecting asset and liability elements and their valuation. Emphasis is placed on the valuation rules recommended by International Accounting Standards, developing the ability to use published accounting information for financial decision-making and analysis.</p>
+  </div>
+
+  <div class="course">
+    <h4>FAMS212 — Business Skills</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Designed to provide students with essential skills for business success through lectures, case studies and guest speakers. Students learn effective communication, critical thinking, collaborative work, information-technology applications, and data analysis using MS Excel for managing and analysing information.</p>
+  </div>
+
+  <div class="course">
+    <h4>FAMS213 — Commercial and Corporate Law</h4>
+    <div class="ects">6 ECTS</div>
+    <p>This course presents Cyprus's legal system, and specifically the commercial law affecting companies and traders. It covers commercial transactions, commercial status, company formation and dissolution, corporate obligations, and the duties of directors and auditors.</p>
+  </div>
+
+  <div class="course">
+    <h4>FAMS214 — Statistics and Regression Analysis</h4>
+    <div class="ects">6 ECTS</div>
+    <p>This course equips students with sufficient probability and statistical knowledge for advanced topics in their field. It covers moment-generating functions, random variables, covariance and correlation, the central limit theorem, estimation methods, distributions, hypothesis testing and regression models.</p>
+  </div>
+
+  <div class="course">
+    <h4>FAMS215 — Introduction to Programming</h4>
+    <div class="ects">6 ECTS</div>
+    <p>This foundational course introduces programming concepts and computational thinking using the R language. Addressed to beginners, it covers data types, control structures, functions, and basic data manipulation and visualisation techniques, developing problem-solving skills through practical applications.</p>
+  </div>
+
+  <div class="course">
+    <h4>FAMS221 — International Financial Markets</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Examines the challenges faced by multinational corporations and international investors in global money markets. Covers the balance of payments, foreign exchange markets, international parity conditions, exchange rate theories and capital availability. Emphasises practical applications, with a focus on the EU and the euro's role in international transactions.</p>
+  </div>
+
+  <div class="course">
+    <h4>FAMS222 — Financial Management</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Introduces the fundamental elements of financial management. Provides comprehensive knowledge of the approaches used by companies and financial institutions to manage working capital, inventory and receivables, evaluate investments, and manage risk.</p>
+  </div>
+
+  <div class="course">
+    <h4>FAMS223 — Management Science</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Studies operational-research techniques and methodologies for optimal managerial decision-making. Emphasises problem-solving and model development in finance, management science, economics and the shipping sector using specialised software.</p>
+  </div>
+
+  <div class="course">
+    <h4>FAMS224 — Algebra and Matrix Computations</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Provides the mathematical and algorithmic knowledge for matrix problems essential in data science, multivariate statistics, econometrics and machine learning. Equips students to apply these techniques and develop critical thinking through MATLAB, R and Python labs.</p>
+  </div>
+
+  <div class="course">
+    <h4>FAMS225 — Management Accounting and Costing I</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Develops foundational costing concepts and teaches the use of accounting tools such as budgeting. Students learn to use accounting instruments to solve internal business-information problems and to prepare reports for managerial decision-making.</p>
+  </div>
+
+  <!-- FINANCE TRACK -->
+  <div class="course-group-heading">Finance Specialisation — Required Courses</div>
+
+  <div class="course">
+    <h4>FAMS310 — Financial Econometrics</h4>
+    <div class="ects">6 ECTS</div>
+    <p>An advanced course providing adequate knowledge of financial econometrics. It covers economic and financial relationships, analyses significant empirical research results, and offers tools for applying econometric models to financial theory.</p>
+  </div>
+
+  <div class="course">
+    <h4>FAMS311 — Corporate Finance</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Develops an integrated understanding of corporate finance at both theoretical and practical levels. Uses case studies to introduce corporate financial management, reviews analytical tools, and explains their application to companies' economic problems.</p>
+  </div>
+
+  <div class="course">
+    <h4>FAMS312 — Investment Management</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Develops knowledge and understanding of asset allocation and portfolio composition and management. Enables students to critically interpret current theoretical and empirical research on portfolio theories and their implications for alternative portfolio compositions.</p>
+  </div>
+
+  <div class="course">
+    <h4>FAMS321 — Banking Economics</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Analyses monetary, banking and financial markets and institutions. Covers bond-market interest-rate determination, asymmetric-information problems, bank regulation, central banks, monetary-policy tools, and lessons from past crises.</p>
+  </div>
+
+  <div class="course">
+    <h4>FAMS322 — Research Methods</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Provides the training in research methodologies needed for students to conduct research in finance and accounting. Covers theoretical, applied and critical skills for effective research using tools from statistics, mathematics, econometrics and computer science.</p>
+  </div>
+
+  <div class="course">
+    <h4>FAMS323 — Derivatives</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Describes the characteristics and markets for options and forward contracts. Analyses value determinants and basic valuation techniques, and examines the role of derivatives in corporate finance and investment decisions, particularly for hedging financial risk.</p>
+  </div>
+
+  <div class="course">
+    <h4>FAMS411 — Financial Statement Analysis</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Develops the ability to use financial-statement information for investment, financing and managerial decision-making. Emphasises evaluating a company's financial position, including industry characteristics, competitive strategy, past performance and forecasting future results.</p>
+  </div>
+
+  <div class="course">
+    <h4>FAMS412 — Asset Valuation</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Teaches fundamental asset-valuation concepts and their practical application through case studies. Emphasises the practical use of financial tools for analysing real-world scenarios and for understanding valuation concepts and methodologies in depth.</p>
+  </div>
+
+  <!-- ACCOUNTING TRACK -->
+  <div class="course-group-heading">Accounting Specialisation — Required Courses</div>
+
+  <div class="course">
+    <h4>FAMS324 — Financial Accounting III</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Develops students' knowledge and understanding of the application of International Accounting Standards in preparing consolidated financial statements for groups of companies.</p>
+  </div>
+
+  <div class="course">
+    <h4>FAMS325 — Tax Accounting I</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Explains Cyprus's tax system, principles and provisions, with examples of the various taxes imposed on companies, cooperatives, the self-employed and employees.</p>
+  </div>
+
+  <div class="course">
+    <h4>FAMS413 — Corporate Strategy and Technology</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Helps students understand how companies plan, develop and implement strategies using information technology and data.</p>
+  </div>
+
+  <!-- SHARED FINAL-YEAR -->
+  <div class="course-group-heading">Shared Final-Year Courses</div>
+
+  <div class="course">
+    <h4>FAMS429 — Sustainable Development — Sustainability and Ethics</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Develops knowledge of fundamental ethical challenges and enhances understanding of the diverse approaches that frame contemporary ethics and governance scandals. Cultivates the cognitive and emotional capabilities needed to address real-life business and professional accountant dilemmas.</p>
+  </div>
+
+  <div class="course">
+    <h4>FAMS500 — Practical Training (Internship)</h4>
+    <div class="ects">12 ECTS</div>
+    <p>Provides students with the opportunity to understand problems and trends in the finance and accounting sectors within real working conditions. Allows students to assess the relevance of their academic studies and prepare for a successful entry into the labour market after graduation.</p>
+  </div>
+
+  <div class="course">
+    <h4>FAMS501 — Dissertation</h4>
+    <div class="ects">12 ECTS</div>
+    <p>Requires students to complete independent research on a business topic under faculty supervision, using the knowledge and skills they have acquired. Develops advanced research skills, an understanding of research methodologies, and the ability to conduct sophisticated empirical and theoretical research applicable to business practice.</p>
+  </div>
+
+  <!-- FINANCE ELECTIVES -->
+  <div class="course-group-heading">Finance — Depth Electives</div>
+
+  <div class="course">
+    <h4>FAMS316 — Sustainable Finance</h4>
+    <div class="ects">6 ECTS</div>
+    <p>This course introduces students to green finance and how environmental parameters can be incorporated into financial decision-making. Students examine contemporary trends and the strategic business implications of social and environmental challenges.</p>
+  </div>
+
+  <div class="course">
+    <h4>FAMS326 — Fixed Income Portfolio Management</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Introduces the unique characteristics of fixed-income securities and reviews global debt markets. It covers bond-pricing calculations, yield interpretation, interest-rate risk measurement, and securitisation analysis including its various types and associated risks.</p>
+  </div>
+
+  <div class="course">
+    <h4>FAMS414 — Risk Management and Analysis</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Students gain a comprehensive understanding of financial risk and develop skills to measure and manage it. The course covers theoretical knowledge and practical techniques for analysing, evaluating and mitigating economic risks through various assessment methods.</p>
+  </div>
+
+  <div class="course">
+    <h4>FAMS415 — Financial Technology</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Familiarises students with rapidly developing technology in finance, covering blockchain, cryptocurrencies, advanced payment systems, big-data challenges and algorithmic trading. Students gain critical knowledge of FinTech fundamentals applicable to modern finance.</p>
+  </div>
+
+  <div class="course">
+    <h4>FAMS422 — Alternative Investments</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Provides fundamental knowledge of alternative investments including real estate, commodities, private equity and hedge funds. Students explore how these investments enable risk diversification and the pursuit of higher returns.</p>
+  </div>
+
+  <div class="course">
+    <h4>FAMS423 — Behavioural Finance</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Develops an understanding of the role of psychology in financial decision-making, explaining phenomena that classical finance cannot. Students critically examine research on the factors affecting investment decisions and capital markets.</p>
+  </div>
+
+  <!-- ACCOUNTING ELECTIVES -->
+  <div class="course-group-heading">Accounting — Depth Electives</div>
+
+  <div class="course">
+    <h4>FAMS318 — Contemporary Issues in Accounting</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Develops a deeper understanding of accounting in complex business environments and of accounting's role in relation to businesses, the environment and society. Emphasises controversial issues in measurement and reporting.</p>
+  </div>
+
+  <div class="course">
+    <h4>FAMS319 — Shipping Accounting</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Students specialise in financial accounting within the shipping industry, understanding the accounting particularities of shipping enterprises and developing the relevant conceptual knowledge.</p>
+  </div>
+
+  <div class="course">
+    <h4>FAMS328 — Oil and Gas Company Accounting</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Provides skills and knowledge about the nature, operations and reporting practices of petroleum and gas companies. Students learn to analyse, interpret and evaluate company performance.</p>
+  </div>
+
+  <div class="course">
+    <h4>FAMS424 — Auditing II</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Prepares students to interpret significant audit issues including the acceptance, planning, management, completion, conclusion and reporting processes for company audits.</p>
+  </div>
+
+  <div class="course">
+    <h4>FAMS425 — Tax Accounting II</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Students learn to calculate various taxes for individuals and legal entities, computing income tax, VAT and capital gains tax. The course emphasises ethical tax practices.</p>
+  </div>
+
+  <div class="course">
+    <h4>FAMS426 — Advanced Financial Accounting</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Prepares students to prepare financial statements for companies and corporate groups using International Accounting Standards and International Financial Reporting Standards.</p>
+  </div>
+
+  <div class="course">
+    <h4>FAMS427 — Financial Accounting in the Banking Sector</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Students develop expertise in addressing compliance and ethics issues in preparing financial reports and in auditing banking institutions.</p>
+  </div>
+
+  <div class="course">
+    <h4>FAMS428 — Accounting Information Systems</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Students learn to use computerised accounting programs to maintain accounting records electronically, produce statements such as balance sheets, and complete forms such as VAT returns.</p>
+  </div>
+
+  <!-- BREADTH ELECTIVES -->
+  <div class="course-group-heading">Breadth Electives (available to both specialisations)</div>
+
+  <div class="course">
+    <h4>FAMS317 — Data Analysis for Finance and Accounting</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Students learn technological skills for using big data in decision-making, including data preparation, visualisation using Power BI, machine learning, and natural-language-processing techniques for extracting knowledge.</p>
+  </div>
+
+  <div class="course">
+    <h4>FAMS327 — Machine Learning for Finance and Accounting</h4>
+    <div class="ects">6 ECTS</div>
+    <p>Teaches students to analyse different data types for knowledge extraction, recognising patterns and selecting appropriate methodologies and algorithms for various applications in finance and accounting.</p>
+  </div>
+</div>
+
+<!-- ==================== TAB 4: ADMISSION ==================== -->
+<div class="tab-content" id="admission">
+  <h2>Admission Requirements</h2>
+
+  <h3>Access Subjects (Pancyprian Examinations)</h3>
+  <p>Admission is based on the Pancyprian Examinations access subjects below:</p>
+  <ul>
+    <li><strong>Mandatory:</strong> Greek Language; Mathematics</li>
+    <li><strong>Elective (any two of):</strong> Economics; Accounting; Physics; English / Foreign Languages; Informatics</li>
+  </ul>
+
+  <h3>Other Admission Routes</h3>
+  <div class="note">[PLACEHOLDER — Department to supply: admission requirements for other routes (e.g. transfer students, international applicants, distribution of places, and any minimum-grade thresholds), as well as the application procedure and deadlines. Not detailed on the live programme page.]</div>
+
+  <h3>How to Apply</h3>
+  <p>Applications are submitted through the University's central admissions process.</p>
+  <a href="#" class="cta-button">Apply Online</a>
+  <p style="margin-top:8px; font-size:0.88rem; color:#888;">[Application link — TBC]</p>
+</div>
+
+<!-- ==================== TAB 5: TUITION ==================== -->
+<div class="tab-content" id="tuition">
+  <h2>Tuition and Scholarships</h2>
+
+  <h3>Tuition Fees</h3>
+  <div class="note">[PLACEHOLDER — Department to supply: tuition fees for the programme. Not published on the live programme page.]</div>
+
+  <h3>Scholarships</h3>
+  <div class="note">[PLACEHOLDER — Department to supply: scholarship schemes, amounts, eligibility criteria and the application process. Not published on the live programme page.]</div>
+</div>
+
+<!-- ==================== TAB 6: HOW YOU WILL LEARN ==================== -->
+<div class="tab-content" id="learning">
+  <h2>How You Will Learn</h2>
+  <p>The programme combines academic study with practical, technology-enabled and research-based learning. Teaching draws on lectures, case studies, guest speakers from industry, computer labs, and project work, with strong use of analytical software (e.g. MS Excel, R, Python, MATLAB and data-analysis/visualisation tools) across the curriculum.</p>
+
+  <h3>Practical Training</h3>
+  <p>A supervised Practical Training placement (FAMS500, 12 ECTS) gives students the opportunity to understand problems and trends in the finance and accounting sectors under real working conditions, assess the relevance of their academic studies, and prepare for entry into the labour market. Practical internship placements and summer internships are available in financial services firms.</p>
+
+  <h3>Independent Research</h3>
+  <p>In the final year, students complete a Dissertation (FAMS501, 12 ECTS) — an independent research project on a business topic conducted under faculty supervision, developing advanced research skills and methodological understanding.</p>
+
+  <h3>Quantitative and Technological Skills</h3>
+  <p>Across the four years, students build quantitative and computational competence through calculus, statistics, regression analysis, econometrics, matrix computation, programming (R), and electives in data analysis and machine learning for finance and accounting.</p>
+
+  <div class="note">[PLACEHOLDER — Department to supply: language(s) of instruction, mode of delivery, attendance policy, assessment methods and weekly study-commitment details.]</div>
+</div>
+
+<!-- ==================== TAB 7: RECOGNITION & CAREERS ==================== -->
+<div class="tab-content" id="careers">
+  <h2>Professional Recognition and Career Prospects</h2>
+
+  <h3>Professional Recognition</h3>
+  <p>The programme is aligned with leading professional accountancy qualifications and offers the following exemptions, as published on the programme page:</p>
+  <ul>
+    <li><strong>ICAEW (Institute of Chartered Accountants in England and Wales):</strong> up to twelve (12) exemptions (subject to approval of the new professional-title structure).</li>
+    <li><strong>ACCA (Association of Chartered Certified Accountants):</strong> nine (9) exemptions.</li>
+  </ul>
+
+  <h3>Typical Job Roles and Sectors</h3>
+  <p>The programme provides excellent academic training and practical familiarity, opening direct employment opportunities in:</p>
+  <ul>
+    <li>Audit firms</li>
+    <li>Banks</li>
+    <li>FinTech companies</li>
+    <li>The stock exchange and insurance companies</li>
+    <li>Policy organisations</li>
+    <li>Semi-public and public bodies</li>
+  </ul>
+  <p>The programme also enables progression to postgraduate study, including Master's and doctoral programmes.</p>
+
+  <h3>Employment Statistics</h3>
+  <p>This programme admitted its first students in 2025. As a newly established degree it has not yet produced graduates, so graduate-employment statistics are not yet available. Graduate-outcome data will be reported as the first cohorts complete their studies.</p>
+</div>
+
+<!-- ==================== TAB 8: STUDENT SUPPORT ==================== -->
+<div class="tab-content" id="support">
+  <h2>Student Support and Resources</h2>
+
+  <h3>Academic Advisor</h3>
+  <p>Each student is assigned an academic advisor to guide course selection, academic progress and career planning.</p>
+
+  <h3>Learning Development Network (LDN)</h3>
+  <p>Technical support, study skills, writing support and AI-literacy training.</p>
+
+  <h3>Library and Databases</h3>
+  <p>Access to academic e-resources (e.g. JSTOR, ScienceDirect), e-journals and citation-management tools (EndNote, Zotero).</p>
+  <div class="note">[PLACEHOLDER — Department to supply: any specialised finance/accounting databases provided to students (e.g. Bloomberg, Datastream, Refinitiv).]</div>
+
+  <h3>Career Services</h3>
+  <p>Career counselling, CV review, interview preparation and networking events, together with the programme's Practical Training placements and summer internships in financial services firms.</p>
+
+  <h3>Counselling Services</h3>
+  <p>Confidential support available in-person and remotely.<br>
+  Email: counseling@cut.ac.cy · Tel: +357 25 002 500</p>
+  <div class="note">[PLACEHOLDER — Department to confirm CUT counselling contact details and hours.]</div>
+</div>
+
+<!-- ==================== TAB 9: CONTACT ==================== -->
+<div class="tab-content" id="contact">
+  <h2>Contact</h2>
+
+  <div class="contact-block">
+    <strong>Department</strong>
+    Department of Finance, Accounting and Management Science<br>
+    Faculty of Management and Economics<br>
+    Cyprus University of Technology
+  </div>
+
+  <div class="contact-block">
+    <strong>Programme Coordinator</strong>
+    [PLACEHOLDER — Department to supply: name, title, email and telephone of the programme coordinator.]
+  </div>
+
+  <div class="contact-block">
+    <strong>General Enquiries</strong>
+    Student Services and Information Centre<br>
+    Email: kep@cut.ac.cy<br>
+    Tel: +357 25 002710/11
+  </div>
+
+  <div class="note">[PLACEHOLDER — Department to supply: programme/department email address and direct telephone.]</div>
+
+  <a href="#" class="cta-button">Apply Online</a>
+  <p style="margin-top:8px; font-size:0.88rem; color:#888;">[Application link — TBC]</p>
+</div>
+
+<!-- ==================== JS ==================== -->
+<script>
+  document.querySelectorAll('.tabs-nav button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tabs-nav button').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tab-content').forEach(tc => tc.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById(btn.dataset.tab).classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="MG">
+<title>PhD in Business Administration and Entrepreneurship — Cyprus University of Technology</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;600;700&family=Source+Serif+4:wght@400;600&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.65;
+    color: #2a2a2a;
+    background: #f5f5f5;
+  }
+
+  /* ---- HEADER ---- */
+  .page-header {
+    background: #1a3a5c;
+    color: #fff;
+    padding: 48px 0 40px;
+  }
+  .page-header .wrap {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+  .page-header h1 {
+    font-family: 'Source Serif 4', serif;
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  .page-header .subtitle {
+    font-size: 0.95rem;
+    font-weight: 300;
+    opacity: 0.85;
+  }
+
+  /* ---- TABS NAV ---- */
+  .tabs-nav {
+    background: #fff;
+    border-bottom: 2px solid #ddd;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .tabs-nav .wrap {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    gap: 0;
+  }
+  .tabs-nav button {
+    background: none;
+    border: none;
+    padding: 14px 18px;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: #666;
+    cursor: pointer;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .tabs-nav button:hover { color: #1a3a5c; }
+  .tabs-nav button.active {
+    color: #1a3a5c;
+    border-bottom-color: #1a3a5c;
+  }
+
+  /* ---- CONTENT ---- */
+  .tab-content {
+    display: none;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+  }
+  .tab-content.active { display: block; }
+
+  h2 {
+    font-family: 'Source Serif 4', serif;
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: #1a3a5c;
+    margin-bottom: 24px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+  }
+  h3 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #1a3a5c;
+    margin: 32px 0 12px;
+  }
+  h4 {
+    font-size: 1.02rem;
+    font-weight: 700;
+    color: #333;
+    margin: 28px 0 8px;
+  }
+  p { margin-bottom: 14px; }
+
+  /* ---- TABLES ---- */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0 24px;
+    font-size: 0.93rem;
+  }
+  th, td {
+    text-align: left;
+    padding: 10px 14px;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  th {
+    background: #f0f3f6;
+    font-weight: 600;
+    color: #1a3a5c;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+  tr:hover td { background: #fafbfc; }
+
+  /* key-features table (2-col, no header) */
+  .kf-table th { display: none; }
+  .kf-table td:first-child {
+    font-weight: 600;
+    width: 160px;
+    color: #1a3a5c;
+  }
+
+  /* ---- LISTS ---- */
+  ul, ol { margin: 10px 0 16px 22px; }
+  li { margin-bottom: 6px; }
+
+  /* ---- COURSE CARD ---- */
+  .course {
+    background: #fff;
+    border: 1px solid #e4e4e4;
+    border-radius: 6px;
+    padding: 24px 28px;
+    margin: 20px 0;
+  }
+  .course h4 {
+    margin: 0 0 4px;
+    color: #1a3a5c;
+  }
+  .course .ects {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: #888;
+    margin-bottom: 14px;
+  }
+  .course p { margin-bottom: 12px; }
+  .course p:last-child { margin-bottom: 0; }
+  .course .prereq {
+    font-size: 0.88rem;
+    color: #777;
+    font-style: italic;
+    margin-top: 10px;
+  }
+
+  .course-group-heading {
+    font-family: 'Source Serif 4', serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1a3a5c;
+    margin: 40px 0 8px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid #e0e0e0;
+  }
+
+  /* ---- MISC ---- */
+  .note {
+    background: #fffbe6;
+    border-left: 4px solid #e6c200;
+    padding: 14px 18px;
+    margin: 18px 0;
+    font-size: 0.93rem;
+    border-radius: 0 4px 4px 0;
+  }
+  .cta-button {
+    display: inline-block;
+    background: #1a3a5c;
+    color: #fff;
+    padding: 12px 28px;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 4px;
+    margin-top: 16px;
+    font-size: 0.95rem;
+    transition: background 0.2s;
+  }
+  .cta-button:hover { background: #264d73; }
+
+  .contact-block { margin-bottom: 24px; }
+  .contact-block strong { display: block; margin-bottom: 2px; }
+
+  /* responsive */
+  @media (max-width: 640px) {
+    .page-header h1 { font-size: 1.5rem; }
+    .tabs-nav button { padding: 12px 12px; font-size: 0.8rem; }
+    .course { padding: 18px 16px; }
+    table { font-size: 0.85rem; }
+    th, td { padding: 8px 10px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ==================== HEADER ==================== -->
+<header class="page-header">
+  <div class="wrap">
+    <h1>PhD in Business Administration and Entrepreneurship</h1>
+    <div class="subtitle">Department of Management, Entrepreneurship and Digital Enterprise · School of Tourism Management, Hospitality and Entrepreneurship · Cyprus University of Technology</div>
+  </div>
+</header>
+
+<!-- ==================== TAB NAV ==================== -->
+<nav class="tabs-nav">
+  <div class="wrap">
+    <button class="active" data-tab="overview">Overview</button>
+    <button data-tab="structure">Programme Structure</button>
+    <button data-tab="admission">Admission</button>
+    <button data-tab="research">Research Areas</button>
+    <button data-tab="learning">How You Will Learn</button>
+    <button data-tab="careers">Recognition &amp; Careers</button>
+    <button data-tab="support">Student Support</button>
+    <button data-tab="contact">Contact</button>
+  </div>
+</nav>
+
+<!-- ==================== TAB 1: OVERVIEW ==================== -->
+<div class="tab-content active" id="overview">
+  <h2>Overview</h2>
+  <p>The PhD in Business Administration and Entrepreneurship is the doctoral programme of the Department of Management, Entrepreneurship and Digital Enterprise at Cyprus University of Technology. It is designed for outstanding graduates who wish to make an original contribution to knowledge through advanced, supervised research and to develop into independent scholars and thought leaders.</p>
+  <p>The department brings together distinguished academics and researchers with specialisations across the business sector — including management, innovation, entrepreneurship, marketing, and strategy — who hold academic qualifications and teaching experience from prominent universities in the USA, UK, Germany, and Australia. Doctoral candidates work closely with these faculty members to design and conduct research that addresses real-world challenges and advances their field.</p>
+  <p>The programme cultivates researchers who can become leaders in their field through research, combining rigorous theory with practical relevance, and preparing graduates for demanding careers in academia, research, and industry.</p>
+
+  <h3>Key Features</h3>
+  <table class="kf-table">
+    <tr><td>Level</td><td>Doctoral (PhD)</td></tr>
+    <tr><td>Credits</td><td>240 ECTS</td></tr>
+    <tr><td>Typical Duration</td><td>4 years (full-time)</td></tr>
+    <tr><td>Campus</td><td>Paphos</td></tr>
+    <tr><td>Established</td><td>2022</td></tr>
+    <tr><td>Language</td><td>English</td></tr>
+    <tr><td>Research Areas</td><td>Management · Entrepreneurship and Innovation · Information Systems</td></tr>
+  </table>
+  <div class="note">Annual intake, part-time study options, and start dates are to be confirmed. [PLACEHOLDER — Department to supply: intake size, part-time pathway, and intake/start dates.]</div>
+
+  <h3>Intended Learning Outcomes</h3>
+  <p>The intended learning outcomes below are expressed qualitatively as the research competences expected of a doctoral graduate, derived from the programme's stated aim of developing independent researchers and leaders in their field. They are grouped as Knowledge, Skills, and Competences.</p>
+
+  <h4>Knowledge</h4>
+  <ul>
+    <li>A systematic and comprehensive understanding of a substantial body of knowledge at the forefront of their chosen field within management, entrepreneurship and innovation, or information systems.</li>
+    <li>Mastery of the theoretical frameworks, research paradigms, and scholarly debates relevant to their area of specialisation.</li>
+    <li>Detailed knowledge of advanced research methodologies — qualitative, quantitative, and mixed methods — and of the principles of research design and ethics.</li>
+  </ul>
+
+  <h4>Skills</h4>
+  <ul>
+    <li>The ability to conceive, design, and carry out an original programme of research that generates new knowledge and meets the standards of peer review.</li>
+    <li>The ability to critically analyse, evaluate, and synthesise complex information and competing perspectives, and to identify gaps that warrant investigation.</li>
+    <li>Advanced competence in collecting, analysing, and interpreting data using appropriate research methods and tools.</li>
+    <li>The ability to communicate research findings clearly and persuasively to specialist and non-specialist audiences, in writing and orally, including in academic publications and at conferences.</li>
+  </ul>
+
+  <h4>Competences</h4>
+  <ul>
+    <li>The capacity to work autonomously and with sustained scholarly integrity, managing a long-term research project to completion.</li>
+    <li>The judgement to make informed decisions in complex and unpredictable situations and to contribute to the advancement of the discipline and professional practice.</li>
+    <li>A commitment to ethical conduct, academic integrity, and the responsible application of research to address challenges in business and society.</li>
+    <li>The readiness to assume leadership roles in academic, research, or professional environments and to mentor and collaborate with others.</li>
+  </ul>
+  <div class="note">The formal, programme-approved learning outcomes statement should replace the qualitative outcomes above when available. [PLACEHOLDER — Department to supply: official Intended Learning Outcomes as approved.]</div>
+
+  <h3>Programme Coordinator / Department Chair</h3>
+  <p>Professor Andreas Petrou, Chair of the Department of Management, Entrepreneurship and Digital Enterprise<br>
+  Email: andreas.petrou@cut.ac.cy · Tel: [PLACEHOLDER — phone to be supplied by the Department]</p>
+</div>
+
+<!-- ==================== TAB 2: PROGRAMME STRUCTURE ==================== -->
+<div class="tab-content" id="structure">
+  <h2>Programme Structure</h2>
+  <p>The PhD is a research degree carrying a total of 240 ECTS and a typical full-time duration of four years. The doctorate is awarded on the basis of an original research thesis, defended in an oral examination, that makes a distinct contribution to knowledge in the candidate's field.</p>
+
+  <h3>Stages of the Doctorate</h3>
+  <p>The published programme page does not list specific taught course codes, ECTS allocations per stage, or a detailed stage-by-stage breakdown. The outline below describes the standard progression of a research doctorate; exact course codes, ECTS weights, and milestone requirements must be confirmed by the Department.</p>
+  <ul>
+    <li><strong>Coursework / research training</strong> — where required by the programme regulations, doctoral candidates complete advanced coursework and research-methods training in the early phase of study.</li>
+    <li><strong>Comprehensive / qualifying examination</strong> — candidates demonstrate mastery of their field and readiness to proceed to independent research.</li>
+    <li><strong>Research proposal</strong> — candidates develop and defend a detailed proposal setting out the research questions, methodology, and contribution.</li>
+    <li><strong>Original research and thesis writing</strong> — the principal phase, conducted under the guidance of a supervisor and advisory committee.</li>
+    <li><strong>Thesis submission and oral defence (viva)</strong> — public defence of the completed thesis before an examination committee.</li>
+  </ul>
+
+  <div class="note">[PLACEHOLDER — programme structure to be supplied by the Department: taught course list (codes and titles), ECTS allocation across coursework / comprehensive examination / proposal / thesis, and the credit weighting summing to 240 ECTS.] The live programme page does not currently publish course codes or per-stage ECTS, so none have been invented here.</div>
+</div>
+
+<!-- ==================== TAB 3: ADMISSION ==================== -->
+<div class="tab-content" id="admission">
+  <h2>Admission Requirements</h2>
+
+  <h3>Eligibility</h3>
+  <p>Admission to the PhD programme normally requires a recognised postgraduate (master's) degree in a relevant field, or an equivalent qualification recognised by the Cyprus Council for the Recognition of Higher Education Qualifications (KY.S.A.T.S.). Candidates are selected on the basis of academic excellence, the strength of their proposed research, and the fit between their interests and the department's research expertise.</p>
+  <div class="note">[PLACEHOLDER — Department to supply: exact entry qualifications (minimum degree class / GPA), English-language proficiency requirements, and any field-of-study prerequisites for this specific programme.]</div>
+
+  <h3>Required Documents</h3>
+  <p>Applicants typically submit the following electronically through the University's online application portal:</p>
+  <ul>
+    <li>Copy of national identity card or passport</li>
+    <li>Curriculum vitae (CV)</li>
+    <li>Copies of university degree(s) and academic transcript(s)</li>
+    <li>A research proposal outlining the proposed area of study, research questions, and methodology</li>
+    <li>A personal statement describing academic and research interests and career plans</li>
+    <li>Contact details of academic referees</li>
+    <li>Evidence of English-language proficiency, where applicable</li>
+  </ul>
+  <div class="note">[PLACEHOLDER — Department to supply: the definitive required-documents checklist and any programme-specific items, e.g. research-proposal length and format.]</div>
+
+  <h3>How to Apply</h3>
+  <p>Applications and supporting documents are submitted online through the University's portal. Prospective candidates are encouraged to contact a prospective supervisor in the department before applying to discuss the fit of their research interests.</p>
+  <a href="#" class="cta-button">Apply Online</a>
+  <p style="margin-top:8px; font-size:0.88rem; color:#888;">[Application link — TBC]</p>
+
+  <h3>Tuition Fees</h3>
+  <div class="note">Tuition fees for the doctoral programme are not published on the live programme page. [PLACEHOLDER — Department to supply: PhD tuition fees and payment schedule.] For scholarship information, applicants may contact Dr. Isabella Karasamani (Tel: +357 25002375).</div>
+
+  <h3>Scholarships and Funding</h3>
+  <p>Doctoral candidates may be eligible for scholarships, teaching assistantships, or research-funded positions, subject to availability.</p>
+  <div class="note">[PLACEHOLDER — Department to supply: scholarship and assistantship details — amounts, eligibility, and application process.]</div>
+</div>
+
+<!-- ==================== TAB 4: RESEARCH AREAS ==================== -->
+<div class="tab-content" id="research">
+  <h2>Research Areas</h2>
+  <p>The department's research is organised around three areas. Doctoral projects are developed within these areas in collaboration with faculty whose expertise spans management, innovation, entrepreneurship, marketing, and strategy.</p>
+
+  <div class="course-group-heading">The Three Research Areas</div>
+
+  <div class="course">
+    <h4>Management</h4>
+    <p>Research in organisational management, strategy, leadership, human resource management, and the broader theory and practice of managing organisations. Doctoral projects in this area examine how organisations are structured, led, and adapted to deliver sustainable performance and positive impact.</p>
+  </div>
+
+  <div class="course">
+    <h4>Entrepreneurship and Innovation</h4>
+    <p>Research into how new ventures are created and grown, how innovation is generated and managed, and how entrepreneurial activity contributes to economic and social value. This area connects to the department's mission of helping people create and manage pioneering and sustainable businesses with a positive impact on society.</p>
+  </div>
+
+  <div class="course">
+    <h4>Information Systems</h4>
+    <p>Research on digital innovation, digital enterprise, and the role of information systems in transforming organisations and entrepreneurial activity — reflecting the department's focus on digital enterprise alongside management and entrepreneurship.</p>
+  </div>
+
+  <h3>Supervisory Faculty</h3>
+  <p>Doctoral candidates are supervised by members of the department's academic staff. Faculty members and their areas of specialisation are listed below; prospective applicants should identify potential supervisors whose interests align with their proposed research and contact them before applying. Specific supervisor–project assignments are confirmed by the Department.</p>
+  <table>
+    <tr><th>Name</th><th>Title</th><th>Email</th></tr>
+    <tr><td>Andreas Petrou</td><td>Professor (Department Chair)</td><td>andreas.petrou@cut.ac.cy</td></tr>
+    <tr><td>Maria Kapardis</td><td>Professor</td><td>maria.kapardis@cut.ac.cy</td></tr>
+    <tr><td>Pavlos Symeou</td><td>Professor</td><td>pavlos.symeou@cut.ac.cy</td></tr>
+    <tr><td>Georgios Kokkinidis</td><td>Associate Professor</td><td>georgios.kokkinidis@cut.ac.cy</td></tr>
+    <tr><td>Konstantinos Kontoghiorghes</td><td>Associate Professor</td><td>c.kontoghiorghes@cut.ac.cy</td></tr>
+    <tr><td>Elias Hadjielias</td><td>Associate Professor</td><td>elias.hadjielias@cut.ac.cy</td></tr>
+    <tr><td>Michael Christofi</td><td>Lecturer</td><td>michael.christofi@cut.ac.cy</td></tr>
+    <tr><td>Ariana Polyviou</td><td>Lecturer in Information Systems, Digital Innovation and Entrepreneurship</td><td>ariana.polyviou@cut.ac.cy</td></tr>
+    <tr><td>Angelos Vouldis</td><td>Research Scientist</td><td>angelos.vouldis@cut.ac.cy</td></tr>
+    <tr><td>Lambrianos Lambrianou</td><td>Research Scientist</td><td>l.lambrianou@cut.ac.cy</td></tr>
+  </table>
+  <div class="note">Faculty titles are translated from the department's published staff list. [PLACEHOLDER — Department to supply / confirm: each supervisor's specific research interests and current capacity to take new doctoral candidates.]</div>
+</div>
+
+<!-- ==================== TAB 5: HOW YOU WILL LEARN ==================== -->
+<div class="tab-content" id="learning">
+  <h2>How You Will Learn</h2>
+  <p>A doctorate is learned primarily through the practice of original research, undertaken with expert supervision rather than through taught classes alone. The programme combines individual supervision, research training, and integration into the department's research community.</p>
+
+  <h3>Supervision</h3>
+  <p>Each doctoral candidate works under the guidance of an academic supervisor (and, where applicable, an advisory committee) drawn from the department's faculty. Supervision involves regular meetings to plan and review the research, develop the candidate's methodological and writing skills, and prepare work for publication and examination.</p>
+  <div class="note">[PLACEHOLDER — Department to supply: supervision model details — number of supervisors per candidate, advisory-committee composition, and progress-review schedule.]</div>
+
+  <h3>Research Training</h3>
+  <p>Candidates develop advanced competence in research design, methodology, data analysis, and academic writing. Where required by the programme regulations, this includes structured coursework and research-methods training in the early phase of the doctorate.</p>
+
+  <h3>Research Community</h3>
+  <p>Doctoral candidates are part of an active research community of distinguished academics and fellow researchers. They are encouraged to participate in seminars, present at conferences, and publish in peer-reviewed outlets, building the scholarly profile expected of an independent researcher.</p>
+
+  <h3>Progression and Examination</h3>
+  <p>Progress is assessed through milestones such as the research proposal, periodic progress reviews, and ultimately the submission and oral defence of the doctoral thesis before an examination committee.</p>
+  <div class="note">[PLACEHOLDER — Department to supply: formal milestone timeline, annual progress-review requirements, and thesis examination procedure.]</div>
+</div>
+
+<!-- ==================== TAB 6: RECOGNITION & CAREERS ==================== -->
+<div class="tab-content" id="careers">
+  <h2>Recognition and Career Prospects</h2>
+
+  <h3>Professional Recognition</h3>
+  <p>No professional-body exemptions apply to this doctoral programme. The PhD is an academic research degree; its value lies in the original contribution to knowledge and the advanced research expertise it certifies, rather than in exemptions from professional examinations.</p>
+
+  <h3>Career Prospects</h3>
+  <p>Doctoral graduates are equipped to become leaders in their field through research and to pursue demanding careers across several sectors. Typical destinations include, qualitatively:</p>
+  <ul>
+    <li><strong>Academia</strong> — university teaching and research posts, postdoctoral research positions, and academic leadership.</li>
+    <li><strong>Research institutes and think tanks</strong> — applied and policy-oriented research roles.</li>
+    <li><strong>Industry, management, and consulting</strong> — senior analytical, strategic, and advisory roles in business, where advanced research and problem-solving skills are valued.</li>
+  </ul>
+  <p>This doctoral programme was established in 2022 and has not yet produced graduates, so graduate-employment and destination statistics are not yet available. Outcome data will be reported as candidates complete and defend their dissertations.</p>
+</div>
+
+<!-- ==================== TAB 7: STUDENT SUPPORT ==================== -->
+<div class="tab-content" id="support">
+  <h2>Student Support and Resources</h2>
+
+  <h3>Academic Supervisor and Advisory Support</h3>
+  <p>Each doctoral candidate is supported by an academic supervisor who guides research progress, skills development, and career planning throughout the doctorate.</p>
+
+  <h3>Learning Development Network (LDN)</h3>
+  <p>Technical support, study skills, academic writing support, and AI literacy training.</p>
+
+  <h3>Library and Research Resources</h3>
+  <p>Access to academic databases, e-journals, and citation management tools (e.g. EndNote, Zotero) to support advanced research and literature review.</p>
+
+  <h3>Career Services</h3>
+  <p>Career counselling, CV review, interview preparation, and networking events.</p>
+
+  <h3>Counselling Services</h3>
+  <p>Confidential support available in-person and remotely.<br>
+  Email: counseling@cut.ac.cy · Tel: +357 25 002 500 (24/7)</p>
+
+  <div class="note">[PLACEHOLDER — Department to supply: any doctoral-specific support, e.g. research-funding for conference travel, doctoral training programmes, or graduate-school services.]</div>
+</div>
+
+<!-- ==================== TAB 8: CONTACT ==================== -->
+<div class="tab-content" id="contact">
+  <h2>Contact</h2>
+
+  <div class="contact-block">
+    <strong>Department Chair</strong>
+    Professor Andreas Petrou<br>
+    Email: andreas.petrou@cut.ac.cy<br>
+    Tel: [PLACEHOLDER — phone to be supplied by the Department]
+  </div>
+
+  <div class="contact-block">
+    <strong>Programme Contact</strong>
+    Ms Dora Kousoulou (contact person for the doctoral programme)<br>
+    Department of Management, Entrepreneurship and Digital Enterprise
+  </div>
+
+  <div class="contact-block">
+    <strong>Scholarship Information</strong>
+    Dr. Isabella Karasamani<br>
+    Tel: +357 25002375
+  </div>
+
+  <div class="contact-block">
+    <strong>University Address</strong>
+    Cyprus University of Technology<br>
+    Archbishop Kyprianou 30, 3036 Limassol, Cyprus<br>
+    Tel: +357 2500 2500 · Email: administration@cut.ac.cy
+  </div>
+
+  <div class="note">[PLACEHOLDER — Department to supply: direct department/programme email address and phone, and the Paphos campus address for the programme.]</div>
+
+  <a href="#" class="cta-button">Apply Online</a>
+  <p style="margin-top:8px; font-size:0.88rem; color:#888;">[Application link — TBC]</p>
+</div>
+
+<!-- ==================== JS ==================== -->
+<script>
+  document.querySelectorAll('.tabs-nav button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tabs-nav button').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tab-content').forEach(tc => tc.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById(btn.dataset.tab).classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  });
+</script>
+</body>
+</html>
